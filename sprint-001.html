@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint 001: Ship Your First Thing — Badir</title>
+    <meta name="description" content="Your first Badir design sprint. 48 hours. One idea. Ship it. No excuses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A; --surface-3: #222222;
+            --emerald: #10B981; --emerald-dim: rgba(16, 185, 129, 0.15); --emerald-glow: rgba(16, 185, 129, 0.3);
+            --gold: #F59E0B; --gold-dim: rgba(245, 158, 11, 0.15);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280; --red: #EF4444;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-logo .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--emerald); font-weight: 700; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+
+        .content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 120px 32px 80px; }
+
+        .sprint-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.3); border-radius: 100px; padding: 8px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+        .sprint-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; }
+        h1 .emerald { color: var(--emerald); }
+
+        .sprint-meta { display: flex; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
+        .meta-item { display: flex; flex-direction: column; }
+        .meta-item .label { font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+        .meta-item .value { font-family: var(--font-heading); font-size: 16px; font-weight: 600; }
+
+        .sprint-intro { font-size: 18px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 640px; }
+        .sprint-intro strong { color: var(--white); font-weight: 600; }
+
+        h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 24px; margin-top: 64px; letter-spacing: -0.5px; }
+
+        .phase-card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; margin-bottom: 16px; position: relative; transition: border-color 0.3s; }
+        .phase-card:hover { border-color: var(--emerald-glow); }
+        .phase-time { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .phase-card h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .phase-card p { font-size: 15px; color: var(--gray); line-height: 1.7; }
+        .phase-card ul { list-style: none; margin-top: 16px; }
+        .phase-card ul li { font-size: 14px; color: var(--gray); padding: 6px 0; display: flex; align-items: flex-start; gap: 8px; }
+        .phase-card ul li::before { content: ''; flex-shrink: 0; margin-top: 7px; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+
+        .rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .rule { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px; }
+        .rule .number { font-family: var(--font-mono); font-size: 24px; color: var(--emerald); font-weight: 700; margin-bottom: 8px; }
+        .rule h4 { font-family: var(--font-heading); font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .rule p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+        .cta-box { margin-top: 64px; padding: 48px; background: var(--surface); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; text-align: center; }
+        .cta-box h3 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+        .cta-box p { font-size: 16px; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
+
+        .cta-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+        .cta-form input[type="email"] { flex: 1; min-width: 220px; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: var(--surface-2); color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; transition: border-color 0.2s; }
+        .cta-form input[type="email"]::placeholder { color: var(--gray-dark); }
+        .cta-form input[type="email"]:focus { border-color: var(--emerald); box-shadow: 0 0 0 3px var(--emerald-dim); }
+        .cta-form button { padding: 14px 24px; border-radius: 8px; border: none; background: var(--emerald); color: var(--dark); font-family: var(--font-heading); font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .cta-form button:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-1px); }
+        .cta-form button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .cta-success { display: none; padding: 16px; background: var(--emerald-dim); border: 1px solid var(--emerald); border-radius: 8px; margin: 16px auto 0; max-width: 440px; font-size: 14px; text-align: center; }
+
+        .verse-footer { text-align: center; margin-top: 80px; padding-bottom: 40px; }
+        .verse-footer .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--gold); direction: rtl; }
+        .verse-footer .ref { font-size: 13px; color: var(--gray-dark); margin-top: 4px; }
+
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .content { padding: 100px 20px 60px; }
+            .rules-grid { grid-template-columns: 1fr; }
+            .sprint-meta { gap: 20px; }
+            .cta-box { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">Tauranga Mosque</a>
+    <div class="nav-links">
+        <a href="index.html">Mosque</a>
+        <a href="badir.html">Badir</a>
+        <a href="reverts.html">New Muslims</a>
+        <a href="scorecard.html">Assessment</a>
+        <a href="community.html">Dashboard</a>
+        <a href="community.html#join">Join Community</a>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="sprint-badge"><span class="dot"></span> Sprint 001 — Open for Registration</div>
+
+    <h1>Ship Your <span class="emerald">First Thing.</span></h1>
+
+    <div class="sprint-meta">
+        <div class="meta-item">
+            <span class="label">Duration</span>
+            <span class="value">48 hours</span>
+        </div>
+        <div class="meta-item">
+            <span class="label">Format</span>
+            <span class="value">Design Sprint</span>
+        </div>
+        <div class="meta-item">
+            <span class="label">Skill Level</span>
+            <span class="value">All welcome</span>
+        </div>
+        <div class="meta-item">
+            <span class="label">Cost</span>
+            <span class="value">Free</span>
+        </div>
+    </div>
+
+    <p class="sprint-intro">
+        This is it. Your first Badir sprint. <strong>One weekend. One idea. Ship it.</strong>
+        No slides. No lectures. No "let's circle back." You pick an idea, you build it, you ship it live by Sunday night.
+        The 313 didn't wait for perfect conditions. <strong>Neither will you.</strong>
+    </p>
+
+    <h2>The Weekend</h2>
+
+    <div class="phase-card">
+        <div class="phase-time">Friday Evening — 2 hours</div>
+        <h3>Map &amp; Decide</h3>
+        <p>Pick your idea and map it out. What's the smallest version that's still useful? Write it down. Commit.</p>
+        <ul>
+            <li>Pick ONE idea from your notes app (the simplest one)</li>
+            <li>Define the MVP — what's the absolute minimum to ship?</li>
+            <li>Choose your tools: Lovable, Cursor, Figma, pen + paper, whatever</li>
+            <li>Post your idea in the community — you're now accountable</li>
+        </ul>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">Saturday — Full Day</div>
+        <h3>Build</h3>
+        <p>Heads down, build mode. No perfectionism. No "I need to learn X first." Use what you know. Ship ugly if you have to.</p>
+        <ul>
+            <li>Build the core feature (just one — not five)</li>
+            <li>Use AI tools to speed up: Claude, ChatGPT, Lovable, v0</li>
+            <li>Post progress updates — the community is building alongside you</li>
+            <li>If you're stuck, ask. Mentors and builders are here to help.</li>
+        </ul>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">Sunday — Ship Day</div>
+        <h3>Ship &amp; Demo</h3>
+        <p>Deploy. Share the link. Show the world. It doesn't have to be perfect — it has to be LIVE.</p>
+        <ul>
+            <li>Deploy to Vercel, Netlify, Lovable, or anywhere public</li>
+            <li>Share the link with the community + one person outside it</li>
+            <li>Record a 60-second demo video (phone is fine)</li>
+            <li>Post your demo — you just shipped. Bismillah.</li>
+        </ul>
+    </div>
+
+    <h2>Sprint Rules</h2>
+
+    <div class="rules-grid">
+        <div class="rule">
+            <div class="number">01</div>
+            <h4>Ship, don't plan</h4>
+            <p>You can plan for 10% of the sprint. The other 90% is building.</p>
+        </div>
+        <div class="rule">
+            <div class="number">02</div>
+            <h4>Ugly is fine</h4>
+            <p>A shipped ugly product beats a beautiful mockup that lives in Figma forever.</p>
+        </div>
+        <div class="rule">
+            <div class="number">03</div>
+            <h4>One feature only</h4>
+            <p>Your MVP does ONE thing. Not three. Not "phase 1 of a bigger vision." One thing.</p>
+        </div>
+        <div class="rule">
+            <div class="number">04</div>
+            <h4>Share your progress</h4>
+            <p>Post updates as you build. Accountability beats willpower every time.</p>
+        </div>
+    </div>
+
+    <h2>What You Can Build</h2>
+
+    <div class="phase-card">
+        <div class="phase-time">Ideas to get you started</div>
+        <h3>Anything that ships.</h3>
+        <p>It doesn't matter what you build — it matters that you BUILD. Here are some starting points:</p>
+        <ul>
+            <li>A landing page for your business idea (Lovable, HTML, Webflow)</li>
+            <li>A simple tool that solves a problem you have (calculator, tracker, automator)</li>
+            <li>A Chrome extension that does one useful thing</li>
+            <li>A mobile app prototype (React Native, Flutter, or just Figma)</li>
+            <li>An AI-powered tool using Claude or OpenAI APIs</li>
+            <li>A Shopify store with your first product listed</li>
+            <li>A content piece: a video, a blog post, a podcast episode</li>
+            <li>Literally anything. The bar is: it's live and someone else can use it.</li>
+        </ul>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+        <h3>Ready to ship?</h3>
+        <p>Join Sprint 001. Get the brief, the community, and the accountability to actually build something this weekend.</p>
+        <form class="cta-form" id="sprintForm">
+            <input type="email" id="sprintEmail" placeholder="your@email.com" required autocomplete="email">
+            <button type="submit" id="sprintBtn">I'm in &rarr;</button>
+        </form>
+        <div class="cta-success" id="sprintSuccess">
+            Bismillah — you're registered for Sprint 001. Check your inbox for the full brief.
+        </div>
+    </div>
+
+    <div class="verse-footer">
+        <div class="arabic">فَاسْتَبِقُوا الْخَيْرَاتِ</div>
+        <div class="ref">"So race to all that is good." — Al-Baqarah 2:148</div>
+    </div>
+</div>
+
+<script>
+(function() {
+    "use strict";
+    var form = document.getElementById("sprintForm");
+    var emailInput = document.getElementById("sprintEmail");
+    var btn = document.getElementById("sprintBtn");
+    var success = document.getElementById("sprintSuccess");
+    if (!form) return;
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        var email = emailInput.value.trim();
+        if (!email) return;
+
+        var waitlist = [];
+        try { waitlist = JSON.parse(localStorage.getItem("badir_waitlist") || "[]"); } catch(err) { waitlist = []; }
+        if (waitlist.indexOf(email) === -1) {
+            waitlist.push(email);
+            try { localStorage.setItem("badir_waitlist", JSON.stringify(waitlist)); } catch(err) {}
+        }
+
+        // Track sprint signup separately
+        var sprinters = [];
+        try { sprinters = JSON.parse(localStorage.getItem("badir_sprint_001") || "[]"); } catch(err) { sprinters = []; }
+        if (sprinters.indexOf(email) === -1) {
+            sprinters.push(email);
+            try { localStorage.setItem("badir_sprint_001", JSON.stringify(sprinters)); } catch(err) {}
+        }
+
+        btn.disabled = true;
+        btn.textContent = "Joining...";
+        setTimeout(function() {
+            form.style.display = "none";
+            success.style.display = "block";
+        }, 500);
+    });
+})();
+</script>
+
+</body>
+</html>

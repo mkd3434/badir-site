@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Founder — Badir</title>
+    <meta name="description" content="Why a pentester who runs 8 businesses started the Muslim builder community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A; --surface-3: #222222;
+            --emerald: #10B981; --emerald-dim: rgba(16, 185, 129, 0.15); --emerald-glow: rgba(16, 185, 129, 0.3);
+            --gold: #F59E0B; --gold-dim: rgba(245, 158, 11, 0.15);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-logo .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--emerald); font-weight: 700; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+
+        .content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 120px 32px 80px; }
+
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--emerald); }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.15; letter-spacing: -1px; margin-bottom: 40px; }
+        h1 .emerald { color: var(--emerald); }
+
+        .story p { font-size: 18px; color: var(--gray); line-height: 1.9; margin-bottom: 28px; }
+        .story p strong { color: var(--white); font-weight: 600; }
+        .story p em { color: var(--emerald); font-style: normal; font-weight: 600; }
+
+        .story h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 600; margin-top: 56px; margin-bottom: 20px; }
+
+        .highlight-box { margin: 40px 0; padding: 28px 32px; background: var(--surface); border-left: 3px solid var(--emerald); border-radius: 0 8px 8px 0; }
+        .highlight-box p { font-size: 17px; color: var(--white); line-height: 1.7; margin-bottom: 0; }
+
+        .businesses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin: 28px 0 40px; }
+        .biz-tag { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 16px; text-align: center; font-family: var(--font-mono); font-size: 13px; color: var(--gray); transition: border-color 0.3s; }
+        .biz-tag:hover { border-color: var(--emerald-glow); color: var(--white); }
+
+        .gold-box { margin: 40px 0; padding: 28px 32px; background: var(--surface); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
+        .gold-box .arabic-text { font-family: var(--font-arabic); font-size: 22px; color: var(--gold); direction: rtl; margin-bottom: 8px; }
+        .gold-box .translation { font-size: 16px; color: var(--gray); font-style: italic; }
+
+        .cta-section { margin-top: 64px; text-align: center; padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.06); }
+        .cta-section p { font-size: 18px; color: var(--gray); margin-bottom: 24px; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--emerald); color: var(--dark); padding: 16px 32px; border-radius: 8px; font-family: var(--font-heading); font-size: 16px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
+        .btn-primary:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-1px); }
+
+        .signature { margin-top: 48px; }
+        .signature .name { font-family: var(--font-heading); font-size: 20px; font-weight: 600; }
+        .signature .title { font-size: 14px; color: var(--gray-dark); margin-top: 4px; }
+
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .content { padding: 100px 20px 60px; }
+            .businesses-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">Tauranga Mosque</a>
+    <div class="nav-links">
+        <a href="index.html">Mosque</a>
+        <a href="badir.html">Badir</a>
+        <a href="reverts.html">New Muslims</a>
+        <a href="sprint-001.html">Sprint 001</a>
+        <a href="community.html">Dashboard</a>
+        <a href="community.html#join">Join Community</a>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="eyebrow">The Founder</div>
+
+    <h1>I run 8 businesses.<br>I built this because <span class="emerald">nobody else would.</span></h1>
+
+    <div class="story">
+        <p>
+            My name is <strong>Mustafa Kivanc Demirsoy</strong>. I'm a penetration tester, a builder, and a Muslim.
+            I run a cybersecurity company. I run an AI automation agency. I run a jewellery brand, a kebab restaurant,
+            a marketplace, an escrow platform, and two SaaS products. Eight businesses across four industries.
+        </p>
+
+        <div class="businesses-grid">
+            <div class="biz-tag">WeHack</div>
+            <div class="biz-tag">MKD AI</div>
+            <div class="biz-tag">LUA Jewellery</div>
+            <div class="biz-tag">TSK</div>
+            <div class="biz-tag">InstaSheet</div>
+            <div class="biz-tag">TrustLock</div>
+            <div class="biz-tag">ReRack</div>
+            <div class="biz-tag">MarketMate</div>
+        </div>
+
+        <p>
+            I'm not telling you this to impress you. I'm telling you because <strong>every single one of those
+            businesses started with the same moment:</strong> saying Bismillah and shipping something ugly.
+        </p>
+
+        <p>
+            WeHack started as a one-page website. LUA started as three rings on a Shopify store.
+            ReRack started as a Lovable.dev prototype built in a weekend. None of them were perfect.
+            All of them were <em>shipped</em>.
+        </p>
+
+        <h2>The gap I kept seeing</h2>
+
+        <p>
+            I'd go to Muslim events — conferences, meetups, MSA gatherings. Brilliant people everywhere.
+            CS students, designers, marketers, engineers. All of them had ideas. All of them were "working on something."
+        </p>
+
+        <p>
+            Six months later? Same conversations. Same "I'm almost ready to launch." Same Notes app full of ideas,
+            same portfolio empty of shipped products.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                The gap isn't talent. It isn't funding. It isn't knowledge.
+                The gap is that nobody is building <strong>daily</strong>. Nobody has a community that pushes them to ship
+                — not once a year at a conference, but every single day.
+            </p>
+        </div>
+
+        <h2>Why Badr?</h2>
+
+        <p>
+            The name comes from the <strong>Battle of Badr</strong> — the first major battle in Islamic history.
+            313 Muslims faced over 1,000 Quraysh soldiers. They were outmanned, outfunded, outequipped.
+        </p>
+
+        <p>
+            Before the battle, some people left. They had their reasons. They had their doubts.
+            But the 313 who stayed? They trusted Allah, tied their camels, and went to battle.
+            <strong>They won.</strong>
+        </p>
+
+        <p>
+            That's the spirit I wanted for this community. Not "let's talk about building."
+            Not "let's plan to maybe launch someday." But: <em>say Bismillah, pick an idea, ship it this weekend.</em>
+        </p>
+
+        <div class="gold-box">
+            <div class="arabic-text">بادِرْ</div>
+            <div class="translation">"Take the initiative. Be the first to act. Hasten to do good."</div>
+        </div>
+
+        <h2>What I want Badir to be</h2>
+
+        <p>
+            A community where Muslim youth build things. Every day. Not because someone's watching — because
+            the rhythm becomes who you are. You wake up, say Bismillah, and build.
+        </p>
+
+        <p>
+            I want the student with 47 ideas to ship one this weekend.
+            I want the side hustler who got inspired at Muslim Tech Fest to actually finish something.
+            I want the senior dev with 10 years of experience to mentor the next generation of Muslim builders.
+        </p>
+
+        <p>
+            <strong>I want 313 builders who ship.</strong> Not 10,000 followers who watch.
+        </p>
+
+        <p>
+            If that's you — if you're tired of talking and ready to build — come join us.
+            The 313 didn't wait for perfect conditions. Neither should you.
+        </p>
+
+        <div class="signature">
+            <div class="name">Mustafa Kivanc Demirsoy</div>
+            <div class="title">Founder, Badir</div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <p>Ready to be one of the 313?</p>
+        <a href="badir.html#join" class="btn-primary">Join Badir &rarr;</a>
+    </div>
+</div>
+
+</body>
+</html>

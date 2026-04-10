@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Home — New Muslims | Tauranga Mosque</title>
+    <meta name="description" content="You just took the biggest step of your life. Here's everything you need — step by step, at your pace, with a community behind you.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A; --surface-3: #222222;
+            --emerald: #10B981; --emerald-dim: rgba(16, 185, 129, 0.15); --emerald-glow: rgba(16, 185, 129, 0.3);
+            --gold: #F59E0B; --gold-dim: rgba(245, 158, 11, 0.15);
+            --blue: #3B82F6; --blue-dim: rgba(59, 130, 246, 0.15);
+            --rose: #F43F5E; --rose-dim: rgba(244, 63, 94, 0.15);
+            --purple: #8B5CF6; --purple-dim: rgba(139, 92, 246, 0.15);
+            --teal: #14B8A6; --teal-dim: rgba(20, 184, 166, 0.15);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { font-family: var(--font-heading); font-size: 22px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-logo .crescent { color: var(--gold); font-size: 20px; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-cta { background: var(--emerald) !important; color: var(--dark) !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; }
+
+        .content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 120px 32px 80px; }
+
+        .eyebrow { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+        .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--emerald); }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(32px, 5vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+        h1 .gold { color: var(--gold); }
+        h1 .emerald { color: var(--emerald); }
+
+        .hero-sub { font-size: 18px; color: var(--gray); line-height: 1.8; margin-bottom: 32px; max-width: 640px; }
+
+        .hero-arabic {
+            font-family: var(--font-arabic); font-size: 32px; color: var(--gold);
+            direction: rtl; line-height: 1.8; margin-bottom: 8px;
+        }
+        .hero-arabic-trans { font-size: 16px; color: var(--gray); font-style: italic; margin-bottom: 48px; }
+
+        .story p { font-size: 17px; color: var(--gray); line-height: 1.9; margin-bottom: 24px; }
+        .story p strong { color: var(--white); font-weight: 600; }
+        .story p em { color: var(--emerald); font-style: normal; font-weight: 500; }
+
+        .story h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-top: 64px; margin-bottom: 12px; }
+        .story h2 .num { color: var(--emerald); font-family: var(--font-mono); font-size: 16px; font-weight: 400; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+
+        .story h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-top: 40px; margin-bottom: 12px; }
+
+        .highlight-box { margin: 32px 0; padding: 24px 28px; background: var(--surface); border-left: 3px solid var(--emerald); border-radius: 0 8px 8px 0; }
+        .highlight-box p { font-size: 16px; color: var(--white); line-height: 1.7; margin-bottom: 0; }
+
+        .gold-box { margin: 32px 0; padding: 24px 28px; background: var(--surface); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
+        .gold-box .arabic-text { font-family: var(--font-arabic); font-size: 22px; color: var(--gold); direction: rtl; line-height: 1.8; margin-bottom: 8px; }
+        .gold-box .translation { font-size: 15px; color: var(--gray); font-style: italic; }
+        .gold-box .source { font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); margin-top: 6px; }
+
+        /* ── REASSURANCE FEARS ── */
+        .fears-grid {
+            display: grid; grid-template-columns: 1fr; gap: 12px;
+            margin: 24px 0 32px;
+        }
+        .fear-item {
+            display: flex; gap: 14px; align-items: flex-start;
+            padding: 18px 22px; background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 10px;
+        }
+        .fear-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+        .fear-thought { font-size: 15px; color: var(--white); font-weight: 500; margin-bottom: 4px; }
+        .fear-answer { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+        /* ── ROADMAP ── */
+        .roadmap { margin: 32px 0; }
+        .roadmap-step {
+            display: flex; gap: 20px; margin-bottom: 20px;
+            padding: 24px; background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+            transition: border-color 0.3s;
+        }
+        .roadmap-step:hover { border-color: var(--emerald-glow); }
+        .step-marker {
+            width: 52px; height: 52px; border-radius: 12px;
+            background: var(--emerald-dim); color: var(--emerald);
+            font-family: var(--font-heading); font-size: 14px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; text-align: center; line-height: 1.2;
+        }
+        .step-content h4 { font-family: var(--font-heading); font-size: 17px; font-weight: 600; margin-bottom: 6px; }
+        .step-content ul { list-style: none; }
+        .step-content ul li {
+            font-size: 14px; color: var(--gray); padding: 4px 0;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .step-content ul li::before { content: '\2714'; color: var(--emerald); font-size: 12px; }
+
+        /* ── BASICS GRID ── */
+        .basics-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 16px; margin: 24px 0;
+        }
+        .basics-card {
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; padding: 24px; transition: border-color 0.3s;
+        }
+        .basics-card:hover { border-color: var(--emerald-glow); }
+        .basics-card .bc-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 14px;
+        }
+        .basics-card h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .basics-card p { font-size: 14px; color: var(--gray); line-height: 1.7; }
+        .basics-card .steps-list { list-style: none; margin-top: 10px; }
+        .basics-card .steps-list li {
+            font-size: 13px; color: var(--gray); padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            display: flex; gap: 8px;
+        }
+        .basics-card .steps-list li .sn {
+            font-family: var(--font-mono); font-size: 11px; color: var(--emerald);
+            min-width: 18px; font-weight: 600;
+        }
+
+        /* ── FAQ ── */
+        .faq-list { margin: 24px 0; }
+        .faq-card {
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px; margin-bottom: 10px; overflow: hidden;
+        }
+        .faq-q {
+            padding: 18px 22px; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            transition: background 0.2s;
+        }
+        .faq-q:hover { background: var(--surface-2); }
+        .faq-q .faq-arrow { color: var(--emerald); font-size: 18px; transition: transform 0.3s; }
+        .faq-card.open .faq-arrow { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .faq-card.open .faq-a { max-height: 500px; }
+        .faq-a-inner { padding: 0 22px 18px; font-size: 14px; color: var(--gray); line-height: 1.8; }
+        .faq-a-inner strong { color: var(--white); }
+
+        /* ── SUPPORT NETWORK ── */
+        .support-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px; margin: 24px 0;
+        }
+        .support-card {
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; padding: 22px; text-align: center;
+        }
+        .support-card .sc-icon { font-size: 28px; margin-bottom: 10px; }
+        .support-card h4 { font-family: var(--font-heading); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+        .support-card p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+        /* ── STORIES ── */
+        .stories-grid { margin: 24px 0; display: flex; flex-direction: column; gap: 16px; }
+        .story-card {
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px; padding: 28px;
+            border-left: 3px solid var(--gold);
+        }
+        .story-card .quote-mark {
+            font-family: var(--font-heading); font-size: 48px; color: var(--gold);
+            line-height: 1; margin-bottom: 8px; opacity: 0.5;
+        }
+        .story-card .quote-text { font-size: 16px; color: var(--white); line-height: 1.8; font-style: italic; }
+        .story-card .quote-author {
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            margin-top: 64px; text-align: center; padding: 48px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        .cta-section h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+        .cta-section p { font-size: 17px; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
+        .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--emerald); color: var(--dark);
+            padding: 16px 32px; border-radius: 8px;
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .btn-primary:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-1px); }
+        .btn-secondary {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--white);
+            padding: 16px 32px; border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.15);
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            text-decoration: none; transition: all 0.2s;
+        }
+        .btn-secondary:hover { border-color: var(--white); }
+
+        .cta-note { font-size: 14px; color: var(--gray-dark); margin-top: 20px; font-style: italic; }
+
+        /* ── FOOTER ── */
+        footer { border-top: 1px solid rgba(255,255,255,0.06); padding: 48px 32px; max-width: 800px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+        .footer-left { display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-size: 16px; font-weight: 600; }
+        .footer-left .crescent { color: var(--gold); }
+        .footer-right { font-size: 13px; color: var(--gray-dark); }
+        .footer-right a { color: var(--gray); text-decoration: none; }
+        .footer-right a:hover { color: var(--white); }
+
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .content { padding: 100px 20px 60px; }
+            .basics-grid { grid-template-columns: 1fr; }
+            .support-grid { grid-template-columns: 1fr 1fr; }
+            .roadmap-step { flex-direction: column; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            footer { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+    <a href="index.html" class="nav-logo">
+        <span class="crescent">&#9774;</span> Tauranga Mosque
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Mosque</a>
+        <a href="community.html">Dashboard</a>
+        <a href="badir.html">Badir</a>
+        <a href="about.html">Founder</a>
+        <a href="community.html#join" class="nav-cta">Join Community</a>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="eyebrow">For New Muslims</div>
+
+    <h1>Welcome <span class="gold">home.</span></h1>
+
+    <p class="hero-sub">
+        You just took the biggest step of your life. Whether you said your shahada yesterday,
+        last month, or you're still thinking about it &mdash; this page is for you.
+        No pressure. No judgement. Just a community that's got your back.
+    </p>
+
+    <div class="hero-arabic">&#x0644;&#x064E;&#x0627; &#x0625;&#x0650;&#x0644;&#x064E;&#x0647;&#x064E; &#x0625;&#x0650;&#x0644;&#x0651;&#x064E;&#x0627; &#x0627;&#x0644;&#x0644;&#x0651;&#x064E;&#x0647;&#x064F; &#x0645;&#x064F;&#x062D;&#x064E;&#x0645;&#x0651;&#x064E;&#x062F;&#x064C; &#x0631;&#x064E;&#x0633;&#x064F;&#x0648;&#x0644;&#x064F; &#x0627;&#x0644;&#x0644;&#x0651;&#x064E;&#x0647;&#x0650;</div>
+    <p class="hero-arabic-trans">"There is no god but Allah, and Muhammad is the Messenger of Allah."</p>
+
+    <div class="story">
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 1: YOU'RE NOT ALONE -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">01</span>You're not alone.</h2>
+
+        <p>
+            Becoming Muslim can feel overwhelming. New words, new routines, new everything.
+            Maybe your family doesn't understand. Maybe you don't know anyone else who's been through this.
+            <strong>That's okay. That's normal. And you are not the first.</strong>
+        </p>
+
+        <div class="fears-grid">
+            <div class="fear-item">
+                <span class="fear-icon">&#x1f614;</span>
+                <div>
+                    <div class="fear-thought">"Am I doing this right?"</div>
+                    <div class="fear-answer">There's no perfect Muslim. The Prophet &#xFDFA; said: "Every son of Adam sins, and the best sinners are those who repent." Just keep trying.</div>
+                </div>
+            </div>
+            <div class="fear-item">
+                <span class="fear-icon">&#x1f46a;</span>
+                <div>
+                    <div class="fear-thought">"My family doesn't understand."</div>
+                    <div class="fear-answer">Many reverts face this. You don't have to choose between Islam and your family. Show them through your character, not arguments. We'll help you navigate this.</div>
+                </div>
+            </div>
+            <div class="fear-item">
+                <span class="fear-icon">&#x1f30d;</span>
+                <div>
+                    <div class="fear-thought">"I feel alone in this."</div>
+                    <div class="fear-answer">You're not. Our community has people who have walked this exact path. We'll connect you with a mentor who genuinely understands.</div>
+                </div>
+            </div>
+            <div class="fear-item">
+                <span class="fear-icon">&#x1f4da;</span>
+                <div>
+                    <div class="fear-thought">"There's so much to learn. Where do I even start?"</div>
+                    <div class="fear-answer">Right here. We've broken it down into small, manageable steps. You don't need to learn everything today. The Quran itself was revealed over 23 years.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>
+                There is no such thing as a perfect Muslim. Even the companions of the Prophet &#xFDFA; learned step by step.
+                <strong>Islam was revealed gradually &mdash; and that's how you should learn it too.</strong>
+            </p>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 2: FIRST 30 DAYS -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">02</span>Your first 30 days</h2>
+
+        <p>
+            No rush. No pressure. Just a gentle roadmap to help you settle in.
+            <strong>Go at your own pace</strong> &mdash; there's no exam at the end.
+        </p>
+
+        <div class="roadmap">
+            <div class="roadmap-step">
+                <div class="step-marker">Week<br>1</div>
+                <div class="step-content">
+                    <h4>Welcome &amp; Foundations</h4>
+                    <ul>
+                        <li>Your shahada is recorded &mdash; you're officially Muslim. Every past sin is wiped clean.</li>
+                        <li>Visit the mosque. Just sit, observe, feel the peace. No expectations.</li>
+                        <li>We'll pair you with a <strong>buddy</strong> &mdash; someone who answers your questions, no judgement.</li>
+                        <li>Start learning <strong>Al-Fatiha</strong> (the opening chapter). It's 7 verses. Take your time.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="step-marker">Week<br>2</div>
+                <div class="step-content">
+                    <h4>First Steps in Practice</h4>
+                    <ul>
+                        <li>Learn <strong>wudu</strong> (ablution) &mdash; it's just washing in a specific way. We'll show you.</li>
+                        <li>Try praying. Even just one prayer a day. Fajr (morning) is a beautiful place to start.</li>
+                        <li>It's okay to use a prayer guide or transliteration &mdash; everyone starts somewhere.</li>
+                        <li>Start reading the Quran in English. Try "The Clear Quran" by Mustafa Khattab.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="step-marker">Week<br>3</div>
+                <div class="step-content">
+                    <h4>Building Rhythm</h4>
+                    <ul>
+                        <li>Try fasting a Monday or Thursday &mdash; it's sunnah and a beautiful experience.</li>
+                        <li>Attend a <strong>halaqa</strong> (study circle) at the mosque. Listen more than you talk. Absorb.</li>
+                        <li>Explore the <a href="community.html" style="color: var(--emerald);">Community Dashboard</a> &mdash; food, events, resources, all in one place.</li>
+                        <li>Start your <strong>morning adhkar</strong> &mdash; short daily supplications. See our <a href="community.html#duas" style="color: var(--emerald);">Dua Collection</a>.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="roadmap-step">
+                <div class="step-marker">Week<br>4</div>
+                <div class="step-content">
+                    <h4>Settling In</h4>
+                    <ul>
+                        <li>Join a study circle or class that matches your learning style.</li>
+                        <li>Ask all the questions you've been holding back. No question is too basic.</li>
+                        <li>Explore what interests you &mdash; sports, volunteering, youth group (<a href="badir.html" style="color: var(--emerald);">Badir</a>), community events.</li>
+                        <li>By now you have friends, a routine, and a place that feels like home.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="gold-box">
+            <div class="arabic-text">&#x0625;&#x0650;&#x0646;&#x0651;&#x064E; &#x0645;&#x064E;&#x0639;&#x064E; &#x0627;&#x0644;&#x0652;&#x0639;&#x064F;&#x0633;&#x0652;&#x0631;&#x0650; &#x064A;&#x064F;&#x0633;&#x0652;&#x0631;&#x064B;&#x0627;</div>
+            <div class="translation">"Indeed, with hardship comes ease."</div>
+            <div class="source">Surah Ash-Sharh, 94:6</div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 3: LEARNING THE BASICS -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">03</span>Learning the basics</h2>
+
+        <p>
+            Here are the essentials, broken down simply. You don't need to memorise everything &mdash;
+            just <strong>bookmark this page</strong> and come back whenever you need it.
+        </p>
+
+        <div class="basics-grid">
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--blue-dim);">&#x1f4a7;</div>
+                <h4>How to Make Wudu</h4>
+                <p>Wudu (ablution) is the ritual wash before prayer. It takes 2 minutes.</p>
+                <ol class="steps-list">
+                    <li><span class="sn">1.</span> Say Bismillah. Wash hands 3 times.</li>
+                    <li><span class="sn">2.</span> Rinse mouth 3 times, then nose 3 times.</li>
+                    <li><span class="sn">3.</span> Wash face 3 times (forehead to chin, ear to ear).</li>
+                    <li><span class="sn">4.</span> Wash arms to elbows, 3 times each (right first).</li>
+                    <li><span class="sn">5.</span> Wipe head once (front to back and back).</li>
+                    <li><span class="sn">6.</span> Wipe ears once (inside and behind).</li>
+                    <li><span class="sn">7.</span> Wash feet to ankles, 3 times each (right first).</li>
+                </ol>
+            </div>
+
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--emerald-dim);">&#x1f54c;</div>
+                <h4>How to Pray (Simplified)</h4>
+                <p>Prayer has a set of movements repeated in "raka'at" (cycles).</p>
+                <ol class="steps-list">
+                    <li><span class="sn">1.</span> Stand facing Qibla. Say "Allahu Akbar" (hands raised).</li>
+                    <li><span class="sn">2.</span> Recite Al-Fatiha + a short surah. Hands on chest.</li>
+                    <li><span class="sn">3.</span> Bow (ruku'). Say "SubhanAllah" 3x. Stand back up.</li>
+                    <li><span class="sn">4.</span> Prostrate (sujood). Say "SubhanAllah" 3x. Sit. Repeat.</li>
+                </ol>
+                <p style="margin-top: 10px; font-size: 13px; color: var(--emerald);">Use a transliteration card at first. Nobody is judging you.</p>
+            </div>
+
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--gold-dim);">&#x1f4ac;</div>
+                <h4>Essential Arabic Phrases</h4>
+                <p>You'll hear these daily. Learn them naturally over time.</p>
+                <ol class="steps-list">
+                    <li><span class="sn">&bull;</span> <strong>Bismillah</strong> &mdash; "In the name of Allah" (before anything)</li>
+                    <li><span class="sn">&bull;</span> <strong>Alhamdulillah</strong> &mdash; "Praise be to Allah" (gratitude)</li>
+                    <li><span class="sn">&bull;</span> <strong>SubhanAllah</strong> &mdash; "Glory to Allah" (amazement)</li>
+                    <li><span class="sn">&bull;</span> <strong>Allahu Akbar</strong> &mdash; "Allah is Greatest"</li>
+                    <li><span class="sn">&bull;</span> <strong>InshaAllah</strong> &mdash; "If Allah wills" (future plans)</li>
+                    <li><span class="sn">&bull;</span> <strong>MashaAllah</strong> &mdash; "As Allah willed" (appreciation)</li>
+                    <li><span class="sn">&bull;</span> <strong>Assalamu Alaikum</strong> &mdash; "Peace be upon you" (greeting)</li>
+                </ol>
+            </div>
+
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--purple-dim);">&#x1f54b;</div>
+                <h4>The 5 Pillars</h4>
+                <p>The foundation of Islam. You'll build these one by one.</p>
+                <ol class="steps-list">
+                    <li><span class="sn">1.</span> <strong>Shahada</strong> &mdash; Declaration of faith (you've done this!)</li>
+                    <li><span class="sn">2.</span> <strong>Salah</strong> &mdash; 5 daily prayers</li>
+                    <li><span class="sn">3.</span> <strong>Zakat</strong> &mdash; Charity (2.5% of wealth annually)</li>
+                    <li><span class="sn">4.</span> <strong>Sawm</strong> &mdash; Fasting during Ramadan</li>
+                    <li><span class="sn">5.</span> <strong>Hajj</strong> &mdash; Pilgrimage to Makkah (once if able)</li>
+                </ol>
+            </div>
+
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--teal-dim);">&#x1f34f;</div>
+                <h4>Halal &amp; Haram Basics</h4>
+                <p>What's permissible and what to avoid.</p>
+                <ol class="steps-list">
+                    <li><span class="sn">&bull;</span> <strong>Halal meat</strong> &mdash; Slaughtered in Allah's name. Check labels.</li>
+                    <li><span class="sn">&bull;</span> <strong>No alcohol</strong> &mdash; In drinks, food, or cooking.</li>
+                    <li><span class="sn">&bull;</span> <strong>No pork</strong> &mdash; Including gelatine and lard in products.</li>
+                    <li><span class="sn">&bull;</span> <strong>Seafood</strong> &mdash; Generally halal (most scholars agree).</li>
+                    <li><span class="sn">&bull;</span> <strong>Interest (riba)</strong> &mdash; Avoid where possible. Explore alternatives.</li>
+                </ol>
+                <p style="margin-top: 10px; font-size: 13px; color: var(--emerald);">Don't stress about perfection. Learn and adjust gradually.</p>
+            </div>
+
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--rose-dim);">&#x1f338;</div>
+                <h4>Clothing &amp; Modesty</h4>
+                <p>Islam encourages modesty, but changes should come naturally.</p>
+                <ol class="steps-list">
+                    <li><span class="sn">&bull;</span> There is <strong>no deadline</strong> to start wearing hijab.</li>
+                    <li><span class="sn">&bull;</span> Modesty looks different for everyone.</li>
+                    <li><span class="sn">&bull;</span> For prayer: cover appropriately (loose clothing is fine).</li>
+                    <li><span class="sn">&bull;</span> Your intention matters more than your outfit.</li>
+                    <li><span class="sn">&bull;</span> <strong>Don't let anyone rush you.</strong> This is between you and Allah.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 4: FAQ -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">04</span>Common questions</h2>
+
+        <p>
+            Questions are good. The Prophet &#xFDFA; was asked questions all the time &mdash;
+            and he answered every single one with patience.
+        </p>
+
+        <div class="faq-list" id="faqList">
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Do I need to change my name?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    <strong>No.</strong> Changing your name is not required in Islam unless your current name has a meaning that contradicts Islamic beliefs (e.g., "servant of the sun"). Many companions kept their original names. If you <em>want</em> to choose a Muslim name, that's your choice &mdash; but it's not obligatory.
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>How do I tell my family?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    Every family is different. Some tips: <strong>Pick the right moment</strong> &mdash; calm, private, no distractions. Lead with love: "I've found something that gives me peace." Don't argue theology. <strong>Show them Islam through your character</strong> &mdash; be kinder, more patient, more helpful. Actions speak louder than words. Some families take time. That's okay. We're here for you through it.
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Can I still see my non-Muslim friends?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    <strong>Absolutely yes.</strong> Islam encourages maintaining good relationships with everyone. The Prophet &#xFDFA; had Jewish neighbours he cared for, and he taught kindness to all people. Your friendships are a way to show the beauty of Islam through your character.
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>I don't speak Arabic &mdash; is that okay?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    <strong>Allah understands every language.</strong> Arabic is used in prayer, but you can learn the short phrases gradually using transliteration. Your du'a (personal supplication) can be in any language. Many born Muslims don't speak Arabic either. The Quran has been translated into every major language &mdash; read it in whatever language touches your heart.
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>What if I make mistakes?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    <strong>You will. And that's okay.</strong> The Prophet &#xFDFA; said: "Every son of Adam sins, and the best sinners are those who repent." Islam is about progress, not perfection. Missed a prayer? Pray the next one. Ate something non-halal by accident? Say Bismillah next time. <strong>Allah is Al-Ghafoor &mdash; the Most Forgiving.</strong> Just keep going.
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Do I have to change everything at once?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    <strong>No. Gradual is the sunnah.</strong> Aisha (RA) said: "If the first thing revealed was 'don't drink alcohol,' people would have said 'we will never stop.'" Allah revealed things step by step over 23 years. Start with what you can. Add more when you're ready. <strong>Consistency in a small action is better than burnout from trying to do everything.</strong>
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>How do I deal with Islamophobia?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    It's real and it can hurt. <strong>You are not alone in facing this.</strong> Practical tips: Stay connected to your Muslim community for support. Document any workplace or public harassment. In NZ, contact the Human Rights Commission (0800 496 877) or NZ Police if you feel unsafe. Remember the Prophet &#xFDFA; faced far worse and responded with patience and dignity. <strong>Your strength is in your character, not in arguments.</strong>
+                </div></div>
+            </div>
+
+            <div class="faq-card">
+                <div class="faq-q" onclick="toggleFaq(this)">
+                    <span>Can I still celebrate Christmas with my family?</span>
+                    <span class="faq-arrow">&#x25BC;</span>
+                </div>
+                <div class="faq-a"><div class="faq-a-inner">
+                    Scholars have different views on this. The mainstream position: you can <strong>maintain family ties and attend family gatherings</strong> without participating in religious rituals (like church services). Sharing a meal with family on Christmas day? Most scholars say that's fine &mdash; it's about family, not worship. <strong>Islam places enormous importance on honouring your parents</strong>, even if they're not Muslim (Quran 31:15). Talk to a local imam for guidance specific to your situation.
+                </div></div>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 5: SUPPORT NETWORK -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">05</span>Your support network</h2>
+
+        <p>
+            You don't have to figure this out alone. Here's what we've set up for you.
+        </p>
+
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="sc-icon">&#x1f91d;</div>
+                <h4>Revert Buddy</h4>
+                <p>We'll pair you with someone who's been through this journey. Text them anytime.</p>
+            </div>
+            <div class="support-card">
+                <div class="sc-icon">&#x1f4f1;</div>
+                <h4>WhatsApp Group</h4>
+                <p>Private group for reverts. Safe space. Ask anything. No judgement.</p>
+            </div>
+            <div class="support-card">
+                <div class="sc-icon">&#x1f54c;</div>
+                <h4>Weekly Halaqa</h4>
+                <p>Study circle at the mosque. Beginner-friendly. Come as you are.</p>
+            </div>
+            <div class="support-card">
+                <div class="sc-icon">&#x1f4de;</div>
+                <h4>Direct Contact</h4>
+                <p>Email or call the mosque. We respond within 24 hours. Promise.</p>
+            </div>
+        </div>
+
+        <h3>Recommended Resources</h3>
+
+        <div class="basics-grid" style="margin-top: 16px;">
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--gold-dim);">&#x1f4d6;</div>
+                <h4>Books</h4>
+                <ol class="steps-list">
+                    <li><span class="sn">&bull;</span> <strong>The Clear Quran</strong> &mdash; Mustafa Khattab (best English translation)</li>
+                    <li><span class="sn">&bull;</span> <strong>Welcome to Islam</strong> &mdash; Mustafa Umar (revert guide)</li>
+                    <li><span class="sn">&bull;</span> <strong>The Sealed Nectar</strong> &mdash; Life of Prophet Muhammad &#xFDFA;</li>
+                    <li><span class="sn">&bull;</span> <strong>Fortress of the Muslim</strong> &mdash; Daily du'a collection</li>
+                </ol>
+            </div>
+            <div class="basics-card">
+                <div class="bc-icon" style="background: var(--emerald-dim);">&#x1f4f2;</div>
+                <h4>Apps &amp; Channels</h4>
+                <ol class="steps-list">
+                    <li><span class="sn">&bull;</span> <strong>Muslim Pro</strong> &mdash; Prayer times, Quran, qibla</li>
+                    <li><span class="sn">&bull;</span> <strong>Quran.com</strong> &mdash; Read with translation + audio</li>
+                    <li><span class="sn">&bull;</span> <strong>Mufti Menk</strong> (YouTube) &mdash; Warm, practical talks</li>
+                    <li><span class="sn">&bull;</span> <strong>Omar Suleiman</strong> (YouTube) &mdash; Deep, relatable content</li>
+                    <li><span class="sn">&bull;</span> <strong>Nouman Ali Khan</strong> (YouTube) &mdash; Quran breakdown</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- SECTION 6: STORIES -->
+        <!-- ═══════════════════════════════════════ -->
+        <h2><span class="num">06</span>You're in good company</h2>
+
+        <p>
+            Every revert has a story. Here are a few from our community.
+        </p>
+
+        <div class="stories-grid">
+            <div class="story-card">
+                <div class="quote-mark">&ldquo;</div>
+                <div class="quote-text">
+                    I took my shahada alone in my room at 2am. I was terrified. The next day I walked into the mosque
+                    and someone just smiled and said 'Assalamu Alaikum.' That one moment changed everything.
+                    I knew I was home.
+                </div>
+                <div class="quote-author">Sister J. &mdash; Revert, 2024</div>
+            </div>
+
+            <div class="story-card">
+                <div class="quote-mark">&ldquo;</div>
+                <div class="quote-text">
+                    The hardest part wasn't learning to pray. It was telling my parents. My mum cried.
+                    But three years later, she says I'm the best version of myself she's ever seen.
+                    She still hasn't converted, but she respects my path now. Patience really works.
+                </div>
+                <div class="quote-author">Brother M. &mdash; Revert, 2022</div>
+            </div>
+
+            <div class="story-card">
+                <div class="quote-mark">&ldquo;</div>
+                <div class="quote-text">
+                    I thought I had to become a completely different person overnight. Change my name,
+                    change my wardrobe, change my friends. My mentor told me: "Just be you, but with Allah."
+                    That advice saved me from burnout. I took it slow, and Alhamdulillah, I'm still here.
+                </div>
+                <div class="quote-author">Sister A. &mdash; Revert, 2023</div>
+            </div>
+        </div>
+
+        <div class="gold-box">
+            <div class="arabic-text">&#x0648;&#x064E;&#x0645;&#x064E;&#x0646; &#x064A;&#x064E;&#x062A;&#x064E;&#x0648;&#x064E;&#x0643;&#x0651;&#x064E;&#x0644;&#x0652; &#x0639;&#x064E;&#x0644;&#x064E;&#x0649; &#x0627;&#x0644;&#x0644;&#x0651;&#x064E;&#x0647;&#x0650; &#x0641;&#x064E;&#x0647;&#x064F;&#x0648;&#x064E; &#x062D;&#x064E;&#x0633;&#x0652;&#x0628;&#x064F;&#x0647;&#x064F;</div>
+            <div class="translation">"And whoever puts their trust in Allah &mdash; He will be enough for them."</div>
+            <div class="source">Surah At-Talaq, 65:3</div>
+        </div>
+
+    </div><!-- end .story -->
+
+    <!-- ═══════════════════════════════════════ -->
+    <!-- CTA -->
+    <!-- ═══════════════════════════════════════ -->
+    <div class="cta-section">
+        <h2>Ready to start?</h2>
+        <p>
+            Join our community. Get a mentor. Find your people.<br>
+            Or just come to the mosque and say salam. That's enough.
+        </p>
+        <div class="cta-buttons">
+            <a href="community.html#join" class="btn-primary">Join Community &rarr;</a>
+            <a href="community.html#welcome" class="btn-secondary">New Arrivals Guide</a>
+        </div>
+        <p class="cta-note">No pressure. No timeline. Just you and Allah.</p>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-left"><span class="crescent">&#9774;</span> Tauranga Mosque</div>
+    <div class="footer-right">
+        <a href="index.html">Home</a> &middot;
+        <a href="community.html">Dashboard</a> &middot;
+        <a href="badir.html">Badir</a>
+    </div>
+</footer>
+
+<script>
+    function toggleFaq(el) {
+        var card = el.parentElement;
+        var wasOpen = card.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-card').forEach(function(c) { c.classList.remove('open'); });
+        // Toggle clicked
+        if (!wasOpen) card.classList.add('open');
+    }
+</script>
+
+</body>
+</html>

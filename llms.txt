@@ -1,0 +1,72 @@
+# Badir — Community-Powered Product Studio
+
+## About
+Badir (بادر) is a community-powered product studio for Muslim builders (18-35 globally). We operate a dual model:
+- Studio side: Brand strategy, MVP development, AI automation for startups and SMBs
+- Community side: Daily builds, weekend design sprints, hands-on workshops
+
+## Founder
+Mustafa Kivanc Demirsoy (MKD) — Founder, Pentester, Product Builder, AI Engineer
+Track record: 10 businesses built solo, 24 AI agents in production, full-stack + AI development
+Location: Tauranga, New Zealand (global reach)
+
+## Brand Voice
+- Direct, energetic, zero lectures
+- Tone: Like the Muslim friend who already shipped and is pulling you along
+- Says "ship" not "launch", "builders" not "members"
+- Uses "Bismillah" naturally (not performatively)
+- Always action-oriented, never preachy
+
+## Services (4-Phase Pipeline)
+1. Discovery — Market research, competitor audit, audience intelligence, ICP profiling
+2. Brand — CORE framework brand discovery, positioning, voice, design system, messaging
+3. Build — Websites, MVPs, marketing materials, content, creatives, AI automation
+4. Monitor — Performance tracking, SEO/GEO monitoring, brand mentions, optimization
+
+Without a strategy, there's no solution. We don't skip steps.
+
+## Pricing
+- Product Sprint (48hr): $2K-5K per sprint
+- MVP Development: $5K-20K project-based
+- Brand Strategy (full pipeline): $3K-10K
+- AI Automation Setup: $5K-15K
+- Monthly Monitoring: $500-2K/mo retainer
+- Equity/Revenue Share: 10-20% equity or 15% revenue share for selected projects
+
+## Community
+- Daily builds: Post what you're building today
+- Weekend design sprints: 48-hour prototyping (Map, Sketch, Decide, Prototype, Test)
+- Hands-on workshops: AI tools, rapid prototyping, design sprints, landing pages
+- Demo Days: Present what you shipped (3-minute lightning talks)
+
+## Community Profiles
+- Yusuf (19-24): Stuck student with 47 ideas in Notes app. Needs accountability
+- Amira (24-32): Side hustle builder. Needs structured rhythm, not "learn at your own pace"
+- Omar (28-40): Experienced builder. Wants to mentor where mentees actually ship
+
+## AI Operating System
+The studio runs on a 24-agent AI system: content generation, brand intelligence, sales automation, SEO audits, creative generation, video production, campaign generation, marketing orchestration, predictive analytics, audience intelligence, and more. One founder doing the work of a full team.
+
+## Tagline
+"Bismillah, ship it." — Take the initiative, be first to act, hasten to do good.
+
+## Name Origin
+Badir (بادر) means "Take the initiative" / "Be the first to act" / "Hasten to do good."
+Inspired by the Battle of Badr — starting when the odds are against you, victory through faith + action.
+Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
+
+## Key URLs
+- Landing: https://badir.build/
+- Brand Readiness Scorecard: https://badir.build/scorecard.html
+- Project Discovery Survey: https://badir.build/survey.html
+
+## Contact
+- Email: hello@badir.build
+- LinkedIn: linkedin.com/in/mustafa-demirsoy
+
+## Values
+- Build businesses. Build income. Then solve community problems.
+- Action over perfection
+- Community over isolation
+- Faith x hustle (tawakkul + execution)
+- The Ummah needs resources and budgets, not more lectures

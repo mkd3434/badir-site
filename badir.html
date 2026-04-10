@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badir — Bismillah, Ship It.</title>
+    <meta name="description" content="The Muslim builder community that ships. Daily builds. Weekend sprints. Design sprint methodology. We build fast, test fast, ship fast.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #0C0C0C;
+            --surface: #141414;
+            --surface-2: #1A1A1A;
+            --surface-3: #222222;
+            --emerald: #10B981;
+            --emerald-dim: rgba(16, 185, 129, 0.15);
+            --emerald-glow: rgba(16, 185, 129, 0.3);
+            --gold: #F59E0B;
+            --gold-dim: rgba(245, 158, 11, 0.15);
+            --white: #FAFAFA;
+            --gray: #9CA3AF;
+            --gray-dark: #6B7280;
+            --red: #EF4444;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--dark);
+            color: var(--white);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--emerald);
+            color: var(--dark);
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(12, 12, 12, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo .arabic {
+            font-family: var(--font-arabic);
+            font-size: 20px;
+            color: var(--emerald);
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--white); }
+
+        .nav-cta {
+            background: var(--emerald) !important;
+            color: var(--dark) !important;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 600 !important;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover { opacity: 0.9; }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 32px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--emerald);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--emerald);
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: clamp(48px, 7vw, 88px);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 28px;
+            max-width: 900px;
+        }
+
+        .hero h1 .emerald {
+            color: var(--emerald);
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            color: var(--gray);
+            max-width: 640px;
+            line-height: 1.7;
+            margin-bottom: 48px;
+        }
+
+        .hero-sub strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--emerald);
+            color: var(--dark);
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 30px var(--emerald-glow);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.2s;
+        }
+
+        .btn-secondary:hover {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 48px;
+            margin-top: 72px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-stat .number {
+            font-family: var(--font-mono);
+            font-size: 32px;
+            font-weight: 500;
+            color: var(--emerald);
+        }
+
+        .hero-stat .label {
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-top: 4px;
+            max-width: 140px;
+        }
+
+        /* ── GRID BG ── */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero, section, footer { position: relative; z-index: 1; }
+
+        /* ── SECTIONS ── */
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 32px;
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--emerald);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+            max-width: 700px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 56px;
+        }
+
+        /* ── PROBLEM ── */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .problem-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.3s;
+        }
+
+        .problem-card:hover {
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .problem-card .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: rgba(239, 68, 68, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .problem-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .problem-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .problem-card .stat {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--red);
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        /* ── SOLUTION ── */
+        .solution-wrap {
+            background: var(--surface);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 16px;
+            padding: 56px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solution-wrap::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--emerald-dim) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .solution-step {
+            position: relative;
+        }
+
+        .solution-step .week {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--emerald);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .solution-step h4 {
+            font-family: var(--font-heading);
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .solution-step p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ── QUOTE / BISMILLAH ── */
+        .bismillah-section {
+            text-align: center;
+            padding: 100px 32px;
+        }
+
+        .bismillah-arabic {
+            font-family: var(--font-arabic);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            color: var(--emerald);
+            margin-bottom: 16px;
+            direction: rtl;
+        }
+
+        .bismillah-meaning {
+            font-family: var(--font-heading);
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .bismillah-sub {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 560px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ── STATS BANNER ── */
+        .stats-banner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .stat-block {
+            background: var(--surface);
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .stat-block .value {
+            font-family: var(--font-mono);
+            font-size: 36px;
+            font-weight: 500;
+            color: var(--emerald);
+            margin-bottom: 8px;
+        }
+
+        .stat-block .desc {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* ── WHO IS BADIR FOR ── */
+        .profiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .profile-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 36px;
+            transition: border-color 0.3s;
+        }
+
+        .profile-card:hover {
+            border-color: var(--emerald-glow);
+        }
+
+        .profile-card .tag {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--emerald);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .profile-card h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .profile-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .profile-card .message {
+            font-family: var(--font-heading);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            padding: 16px;
+            background: var(--surface-3);
+            border-radius: 8px;
+            border-left: 3px solid var(--emerald);
+        }
+
+        /* ── HOW IT WORKS ── */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--emerald), var(--gold));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--emerald);
+            border: 3px solid var(--dark);
+        }
+
+        .timeline-item:last-child::before {
+            background: var(--gold);
+        }
+
+        .timeline-item .phase {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--emerald);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .timeline-item:last-child .phase {
+            color: var(--gold);
+        }
+
+        .timeline-item h3 {
+            font-family: var(--font-heading);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-item p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        /* ── NO SECTION ── */
+        .no-section {
+            padding: 80px 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .no-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .no-list {
+            list-style: none;
+        }
+
+        .no-list li {
+            font-size: 17px;
+            color: var(--gray);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .no-list li .x {
+            color: var(--red);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .yes-list {
+            list-style: none;
+        }
+
+        .yes-list li {
+            font-size: 17px;
+            color: var(--white);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .yes-list li .check {
+            color: var(--emerald);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ── CTA FINAL ── */
+        .cta-section {
+            text-align: center;
+            padding: 120px 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .cta-section .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ── WAITLIST FORM ── */
+        .waitlist-form {
+            display: flex;
+            gap: 12px;
+            max-width: 520px;
+            margin: 0 auto 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .waitlist-form input[type="email"] {
+            flex: 1;
+            min-width: 240px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: var(--surface);
+            color: var(--white);
+            font-family: var(--font-body);
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .waitlist-form input[type="email"]::placeholder {
+            color: var(--gray-dark);
+        }
+
+        .waitlist-form input[type="email"]:focus {
+            border-color: var(--emerald);
+            box-shadow: 0 0 0 3px var(--emerald-dim);
+        }
+
+        .waitlist-form button {
+            padding: 16px 28px;
+            border-radius: 8px;
+            border: none;
+            background: var(--emerald);
+            color: var(--dark);
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .waitlist-form button:hover {
+            box-shadow: 0 0 30px var(--emerald-glow);
+            transform: translateY(-1px);
+        }
+
+        .waitlist-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .waitlist-success {
+            display: none;
+            padding: 20px 24px;
+            background: var(--emerald-dim);
+            border: 1px solid var(--emerald);
+            border-radius: 8px;
+            max-width: 520px;
+            margin: 0 auto 24px;
+            text-align: center;
+        }
+
+        .waitlist-success .check-icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .waitlist-success h4 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .waitlist-success p {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 0;
+        }
+
+        .waitlist-count {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--gray-dark);
+            margin-top: 12px;
+        }
+
+        .waitlist-count span {
+            color: var(--emerald);
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            max-width: 520px;
+            margin: 0 auto 24px;
+            color: var(--gray-dark);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: var(--font-mono);
+        }
+
+        .or-divider::before, .or-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 48px 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-heading);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .footer-left .arabic {
+            font-family: var(--font-arabic);
+            color: var(--emerald);
+            font-size: 14px;
+        }
+
+        .footer-right {
+            font-size: 13px;
+            color: var(--gray-dark);
+        }
+
+        .footer-right a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        .footer-right a:hover { color: var(--white); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 12px 20px; }
+            .nav-links { display: none; }
+            .hero { padding: 100px 20px 60px; }
+            .hero-stats { flex-direction: column; gap: 24px; }
+            section { padding: 80px 20px; }
+            .stats-banner { grid-template-columns: repeat(2, 1fr); }
+            .no-grid { grid-template-columns: 1fr; gap: 40px; }
+            .solution-wrap { padding: 32px 24px; }
+            footer { flex-direction: column; gap: 16px; text-align: center; }
+            .profiles-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── ORIGIN STORY ── */
+        .origin-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .origin-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 56px;
+        }
+
+        .origin-number {
+            font-family: var(--font-mono);
+            font-size: clamp(120px, 15vw, 200px);
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--emerald);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .origin-vs {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            color: var(--gray-dark);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .origin-enemy {
+            font-family: var(--font-mono);
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.08);
+            line-height: 1;
+        }
+
+        .origin-narrative h3 {
+            font-family: var(--font-heading);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .origin-narrative h3 .gold {
+            color: var(--gold);
+        }
+
+        .origin-narrative p {
+            font-size: 17px;
+            color: var(--gray);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .origin-narrative p strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .origin-lessons {
+            list-style: none;
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .origin-lessons li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .origin-lessons li .bullet {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--emerald-dim);
+            color: var(--emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .origin-verse {
+            margin-top: 48px;
+            padding: 24px;
+            background: var(--surface);
+            border-left: 3px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .origin-verse .arabic-text {
+            font-family: var(--font-arabic);
+            font-size: 24px;
+            color: var(--gold);
+            direction: rtl;
+            margin-bottom: 8px;
+        }
+
+        .origin-verse .verse-ref {
+            font-size: 14px;
+            color: var(--gray-dark);
+        }
+
+        @media (max-width: 768px) {
+            .origin-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .origin-number { font-size: 100px; }
+            .origin-enemy { font-size: 48px; }
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .animate-on-scroll {
+                opacity: 0;
+                transform: translateY(24px);
+                transition: all 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .animate-on-scroll.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── TYPING CURSOR ── */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background: var(--emerald);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+    <a href="index.html" class="nav-logo">
+        Badir <span class="arabic">بادر</span>
+    </a>
+    <div class="nav-links">
+        <a href="index.html">Mosque</a>
+        <a href="#origin">The Story</a>
+        <a href="#solution">How It Works</a>
+        <a href="sprint-001.html">Sprint 001</a>
+        <a href="reverts.html">New Muslims</a>
+        <a href="about.html">Founder</a>
+        <a href="community.html#join" class="nav-cta">Join Community</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-eyebrow">313 started it. You continue it.</div>
+    <h1>They were 313.<br>Against <span class="emerald">1,000.</span><span class="cursor"></span></h1>
+    <p class="hero-sub">
+        At the Battle of Badr, <strong>313 Muslims</strong> faced an army three times their size — and won.
+        People left. The odds were impossible. But the ones who stayed <strong>changed history.</strong>
+        That's the spirit of Badir: start building when nobody else will.
+    </p>
+    <div class="hero-ctas">
+        <a href="#join" class="btn-primary">Be One of the 313 &rarr;</a>
+        <a href="#origin" class="btn-secondary">Read the story</a>
+    </div>
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <span class="number">313</span>
+            <span class="label">Faced 1,000. Won. That's our starting spirit.</span>
+        </div>
+        <div class="hero-stat">
+            <span class="number">1.9B</span>
+            <span class="label">Muslims globally. 60% under 30. Waiting to build.</span>
+        </div>
+        <div class="hero-stat">
+            <span class="number">67%</span>
+            <span class="label">Underrepresented in tech & venture capital.</span>
+        </div>
+        <div class="hero-stat">
+            <span class="number">0</span>
+            <span class="label">Daily builder communities for Muslim youth. Until now.</span>
+        </div>
+    </div>
+</div>
+
+<!-- BISMILLAH -->
+<div class="bismillah-section animate-on-scroll">
+    <div class="bismillah-arabic">بِسْمِ اللَّهِ ابْدَأ</div>
+    <div class="bismillah-meaning">Bismillah, ship it.</div>
+    <p class="bismillah-sub">
+        The 313 didn't wait for permission. They said Bismillah and moved.
+        Building is ibadah. Shipping is worship. Action is the only answer.
+    </p>
+</div>
+
+<!-- ORIGIN STORY -->
+<section id="origin" class="origin-section" style="padding-left: 32px; padding-right: 32px;">
+    <div class="section-eyebrow">The Origin</div>
+    <h2 class="section-title">The name comes from a battlefield.</h2>
+    <p class="section-subtitle">
+        Not a boardroom. Not a brainstorm. A battlefield where 313 Muslims changed the course of history.
+    </p>
+
+    <div class="origin-grid animate-on-scroll">
+        <div>
+            <div class="origin-number">313</div>
+            <div class="origin-vs">versus</div>
+            <div class="origin-enemy">1,000+</div>
+        </div>
+        <div class="origin-narrative">
+            <h3>Badr wasn't won by <span class="gold">numbers.</span></h3>
+            <p>
+                In 624 CE, the Muslim community faced its first real test. <strong>313 believers</strong>
+                stood against the Quraysh army of over 1,000 — better equipped, better funded, three times the size.
+            </p>
+            <p>
+                Before the battle, some people left. They had excuses. They had doubts.
+                <strong>But the ones who stayed?</strong> They trusted Allah and took action.
+                They didn't wait for perfect conditions. They moved.
+            </p>
+            <ul class="origin-lessons">
+                <li>
+                    <span class="bullet">1</span>
+                    <span><strong>Start when the odds are against you.</strong> Nobody said it would be easy. They said it would be worth it.</span>
+                </li>
+                <li>
+                    <span class="bullet">2</span>
+                    <span><strong>People will leave.</strong> Some will doubt. Some will wait. The real ones stay and build.</span>
+                </li>
+                <li>
+                    <span class="bullet">3</span>
+                    <span><strong>Victory through faith + action.</strong> Tawakkul is not passive. It's trusting Allah while you move your feet.</span>
+                </li>
+                <li>
+                    <span class="bullet">4</span>
+                    <span><strong>Be first to act.</strong> "Badir" literally means "take the initiative." When everyone else waits, you ship.</span>
+                </li>
+            </ul>
+            <div class="origin-verse">
+                <div class="arabic-text">فَاسْتَبِقُوا الْخَيْرَاتِ</div>
+                <div class="verse-ref">"So race to all that is good." &mdash; Al-Baqarah 2:148</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+    <div class="section-eyebrow">The Problem</div>
+    <h2 class="section-title">1,400 years later, the odds haven't changed.</h2>
+    <p class="section-subtitle">
+        The 313 faced an army. Today's Muslim youth face a different enemy: inaction.
+        They have ideas. They attend events. They join groups. But nobody builds.
+    </p>
+    <div class="problem-grid animate-on-scroll">
+        <div class="problem-card">
+            <div class="icon">&#x1f4ac;</div>
+            <h3>All Talk, No Ship</h3>
+            <p>Muslim orgs run conferences, halaqas, panels, and WhatsApp groups. Everyone's "inspired" for two weeks. Then nothing. The gap between intention and action is a canyon.</p>
+            <div class="stat">40+ Muslim orgs analyzed. Zero cohort-based builder programs.</div>
+        </div>
+        <div class="problem-card">
+            <div class="icon">&#x1f6d1;</div>
+            <h3>Perfection Paralysis</h3>
+            <p>Disguised as ihsan (excellence), it's actually fear. Muslim youth wait until everything is "perfect" before launching. Two years later: still planning. Still haven't started.</p>
+            <div class="stat">Only 3% of top-20 UK VC-backed startups have a Muslim founder.</div>
+        </div>
+        <div class="problem-card">
+            <div class="icon">&#x1f3e2;</div>
+            <h3>The Education-Economy Gap</h3>
+            <p>Muslim youth are highly educated. But 50% of UK Muslim households live in poverty. Degrees don't convert to outcomes. The system fails them. Building is the way out.</p>
+            <div class="stat">46% of UK Muslims are under 24. Half a generation waiting to build.</div>
+        </div>
+    </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-banner animate-on-scroll" style="margin: 0 32px;">
+    <div class="stat-block">
+        <div class="value">$2.43T</div>
+        <div class="desc">Halal economy.<br>Growing to $3.36T by 2028.</div>
+    </div>
+    <div class="stat-block">
+        <div class="value">84%</div>
+        <div class="desc">Muslim students<br>face discrimination.</div>
+    </div>
+    <div class="stat-block">
+        <div class="value">1/1000</div>
+        <div class="desc">Startup founders<br>is a Muslim woman.</div>
+    </div>
+    <div class="stat-block">
+        <div class="value">$688M</div>
+        <div class="desc">Raised on LaunchGood.<br>The money exists. The pipeline doesn't.</div>
+    </div>
+</div>
+
+<!-- SOLUTION -->
+<section id="solution">
+    <div class="section-eyebrow">The Solution</div>
+    <h2 class="section-title">Same spirit. Modern battlefield.</h2>
+    <p class="section-subtitle">
+        The 313 didn't wait for perfect conditions. Neither do we.
+        Daily builds. Weekend sprints. Ship fast. The battlefield is now digital — and we're building on it.
+    </p>
+
+    <div class="solution-wrap animate-on-scroll">
+        <h3 style="font-family: var(--font-heading); font-size: 24px; font-weight: 600; margin-bottom: 8px;">The Badir Rhythm</h3>
+        <p style="color: var(--gray); font-size: 16px;">This isn't a course with a start and end date. It's a community that builds — every single day.</p>
+        <div class="solution-steps">
+            <div class="solution-step">
+                <div class="week">Daily</div>
+                <h4>Build Something</h4>
+                <p>Post in #daily-builds. One commit, one design, one prototype, one test. Something real. Every day. No excuses.</p>
+            </div>
+            <div class="solution-step">
+                <div class="week">Weekends</div>
+                <h4>Design Sprints</h4>
+                <p>GV-style design sprints. Map, sketch, decide, prototype, test. Go from problem to tested prototype in one weekend.</p>
+            </div>
+            <div class="solution-step">
+                <div class="week">Ongoing</div>
+                <h4>Ship & Iterate</h4>
+                <p>Ship to real users. Get feedback. Iterate fast. AI tools, no-code, code — whatever gets your product into hands fastest.</p>
+            </div>
+            <div class="solution-step">
+                <div class="week">Workshops</div>
+                <h4>Learn by Doing</h4>
+                <p>Hands-on workshops on AI, brand strategy, prototyping, no-code, and everything you need to ship. No slides. All building.</p>
+            </div>
+            <div class="solution-step">
+                <div class="week" style="color: var(--gold);">Demo Days</div>
+                <h4 style="color: var(--gold);">Show the World</h4>
+                <p>Regular Demo Days where you present what you shipped. Mentors, community, the world watching. You built this. Show it.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW IT WORKS TIMELINE -->
+<section>
+    <div class="section-eyebrow">Your Journey</div>
+    <h2 class="section-title">From "I have an idea" to "I shipped it."</h2>
+    <p class="section-subtitle">
+        This is not a course. There are no lectures. You learn by building — fast.
+    </p>
+
+    <div class="timeline animate-on-scroll">
+        <div class="timeline-item">
+            <div class="phase">Join</div>
+            <h3>Enter the Community</h3>
+            <p>Join the Discord. Meet the builders. Pick what you want to build — tech, business, AI, digital product. Doesn't matter. What matters is you start.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="phase">Daily</div>
+            <h3>Build Every Day</h3>
+            <p>Post in #daily-builds. One commit. One design. One prototype. One user test. Something real, every day. Momentum beats motivation.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="phase">Weekends</div>
+            <h3>Sprint & Ship</h3>
+            <p>Weekend design sprints — take a problem from zero to tested prototype in 48 hours. Map, sketch, decide, prototype, test. Rinse and repeat.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="phase">Ongoing</div>
+            <h3>Workshops & Mentors</h3>
+            <p>Hands-on workshops on AI, brand strategy, rapid prototyping. Experienced Muslim mentors from real companies. Learn by doing, not watching.</p>
+        </div>
+        <div class="timeline-item">
+            <div class="phase" style="color: var(--gold);">Always</div>
+            <h3>The Network</h3>
+            <p>The builders you sprint with become your collaborators, co-founders, and friends. The network IS the product. Once a builder, always a builder.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT BADIR IS / ISN'T -->
+<div class="no-section">
+    <div class="no-grid animate-on-scroll">
+        <div>
+            <div class="section-eyebrow" style="color: var(--red);">Badir Is Not</div>
+            <h2 class="section-title" style="font-size: 28px;">What we're not.</h2>
+            <ul class="no-list">
+                <li><span class="x">&times;</span> Another conference or summit</li>
+                <li><span class="x">&times;</span> A networking group or meetup</li>
+                <li><span class="x">&times;</span> A course with 47 video modules</li>
+                <li><span class="x">&times;</span> A VC accelerator (we don't invest)</li>
+                <li><span class="x">&times;</span> A halaqa or Islamic study circle</li>
+                <li><span class="x">&times;</span> A WhatsApp group about "ideas"</li>
+                <li><span class="x">&times;</span> Inspiration without implementation</li>
+            </ul>
+        </div>
+        <div>
+            <div class="section-eyebrow">Badir Is</div>
+            <h2 class="section-title" style="font-size: 28px;">What we are.</h2>
+            <ul class="yes-list">
+                <li><span class="check">&#x2713;</span> A builder community that ships every single day</li>
+                <li><span class="check">&#x2713;</span> Weekend design sprints — zero to prototype in 48 hours</li>
+                <li><span class="check">&#x2713;</span> Design sprint methodology (Google Ventures)</li>
+                <li><span class="check">&#x2713;</span> AI tools, rapid prototyping, modern tech stacks</li>
+                <li><span class="check">&#x2713;</span> Hands-on workshops — you build during them, not watch</li>
+                <li><span class="check">&#x2713;</span> Experienced Muslim mentors from real companies</li>
+                <li><span class="check">&#x2713;</span> Demo Days where you show the world what you built</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- WHO IS THIS FOR -->
+<section id="who">
+    <div class="section-eyebrow">Who It's For</div>
+    <h2 class="section-title">The 313 weren't special. They just showed up.</h2>
+    <p class="section-subtitle">
+        They weren't the richest, strongest, or most experienced. They were the ones who said yes when others walked away.
+    </p>
+
+    <div class="profiles-grid animate-on-scroll">
+        <div class="profile-card">
+            <div class="tag">The Student</div>
+            <h3>You have 47 ideas. Zero shipped.</h3>
+            <p>You're studying CS, business, or design. You've been to hackathons, joined MSA, followed every Muslim tech account. Your Notes app is full. Your portfolio is empty.</p>
+            <div class="message">"The 313 didn't wait until they were ready. Pick one idea. Ship it this weekend. Bismillah."</div>
+        </div>
+        <div class="profile-card">
+            <div class="tag">The Side Hustler</div>
+            <h3>Inspired at conferences. Nothing after.</h3>
+            <p>You work a day job. You went to Muslim Tech Fest, got inspired for two weeks, bought three domains, started nothing. You need structure, not motivation.</p>
+            <div class="message">"Conferences inspire for two weeks. The 313 built for eternity. Choose your side."</div>
+        </div>
+        <div class="profile-card">
+            <div class="tag">The Mentor</div>
+            <h3>You built it. Now build the builders.</h3>
+            <p>You're 8+ years in tech. You've shipped products, led teams. You look at Muslim youth and see untapped potential. You want a structured way to give back.</p>
+            <div class="message">"The 313 had experienced fighters leading alongside new ones. That's you. Lead the next wave."</div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="join" class="cta-section">
+    <div class="section-eyebrow">Your Move</div>
+    <h2>313 changed history.<br><span style="color: var(--emerald);">Be one of them.</span></h2>
+    <p>
+        They didn't have the numbers. They didn't have the resources. They had faith and action.
+        The Ummah doesn't need more talkers. It needs builders.
+        This is your Badr moment.
+    </p>
+
+    <!-- WAITLIST FORM -->
+    <form class="waitlist-form" id="waitlistForm">
+        <input type="email" id="waitlistEmail" placeholder="your@email.com" required autocomplete="email">
+        <button type="submit" id="waitlistBtn">Join the 313 &rarr;</button>
+    </form>
+    <div class="waitlist-success" id="waitlistSuccess">
+        <div class="check-icon">&#x2713;</div>
+        <h4>You're in, builder.</h4>
+        <p>Bismillah. Check your inbox — we'll send you the first sprint brief.</p>
+    </div>
+    <div class="waitlist-count">
+        <span id="builderCount">0</span> builders have joined the waitlist
+    </div>
+
+    <div class="or-divider">or</div>
+
+    <div class="cta-buttons">
+        <a href="#" id="whatsapp-link" class="btn-secondary" style="gap: 10px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Join WhatsApp Community
+        </a>
+        <a href="scorecard.html" class="btn-secondary">Take the Builder Assessment &rarr;</a>
+    </div>
+
+    <p style="margin-top: 40px; font-family: var(--font-arabic); font-size: 24px; color: var(--emerald); direction: rtl;">
+        فَاسْتَبِقُوا الْخَيْرَاتِ
+    </p>
+    <p style="margin-top: 8px; font-size: 14px; color: var(--gray-dark);">
+        "So race to all that is good." &mdash; Al-Baqarah 2:148
+    </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-left">
+        Badir <span class="arabic">بادر</span>
+    </div>
+    <div class="footer-right">
+        Built by <a href="#">MKD AI</a> &nbsp;&middot;&nbsp; Bismillah, ship it.
+    </div>
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+    // Make all animate-on-scroll elements visible after a short delay as fallback
+    setTimeout(() => {
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            el.classList.add('visible');
+        });
+    }, 2000);
+
+    // Intersection Observer for staggered reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                // Stagger children if they exist
+                const children = entry.target.querySelectorAll('.problem-card, .profile-card, .solution-step, .timeline-item, .stat-block');
+                if (children.length > 0) {
+                    children.forEach((child, idx) => {
+                        child.style.transition = `all 0.6s cubic-bezier(0.22, 1, 0.36, 1) ${idx * 0.1}s`;
+                        child.style.opacity = '0';
+                        child.style.transform = 'translateY(16px)';
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                child.style.opacity = '1';
+                                child.style.transform = 'translateY(0)';
+                            });
+                        });
+                    });
+                }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+    // ── WAITLIST FORM ──
+    (function() {
+        var form = document.getElementById('waitlistForm');
+        var emailInput = document.getElementById('waitlistEmail');
+        var btn = document.getElementById('waitlistBtn');
+        var success = document.getElementById('waitlistSuccess');
+        var countEl = document.getElementById('builderCount');
+
+        // Load waitlist from localStorage
+        var waitlist = [];
+        try { waitlist = JSON.parse(localStorage.getItem('badir_waitlist') || '[]'); } catch(e) { waitlist = []; }
+
+        // Show count
+        function updateCount() {
+            var count = Math.max(waitlist.length, 0);
+            countEl.textContent = count;
+        }
+        updateCount();
+
+        if (!form) return;
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            var email = emailInput.value.trim();
+            if (!email) return;
+
+            // Check duplicate
+            if (waitlist.indexOf(email) !== -1) {
+                success.style.display = 'block';
+                form.style.display = 'none';
+                var h4 = success.querySelector('h4');
+                if (h4) h4.textContent = "You're already in!";
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Joining...';
+
+            // Simulate brief delay then save
+            setTimeout(function() {
+                waitlist.push(email);
+                try { localStorage.setItem('badir_waitlist', JSON.stringify(waitlist)); } catch(e) {}
+
+                form.style.display = 'none';
+                success.style.display = 'block';
+                updateCount();
+            }, 600);
+        });
+    })();
+</script>
+
+</body>
+</html>

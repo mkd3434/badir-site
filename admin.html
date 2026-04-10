@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Community Members</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A;
+            --emerald: #10B981; --emerald-dim: rgba(16, 185, 129, 0.15);
+            --gold: #F59E0B; --gold-dim: rgba(245, 158, 11, 0.15);
+            --blue: #3B82F6; --blue-dim: rgba(59, 130, 246, 0.15);
+            --rose: #F43F5E; --rose-dim: rgba(244, 63, 94, 0.15);
+            --purple: #8B5CF6; --purple-dim: rgba(139, 92, 246, 0.15);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+        .admin-wrap { max-width: 1400px; margin: 0 auto; padding: 32px; }
+
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+        .admin-header h1 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; }
+        .admin-header .back-link { color: var(--gray); text-decoration: none; font-size: 14px; }
+        .admin-header .back-link:hover { color: var(--white); }
+
+        /* Stats */
+        .stats-row { display: flex; gap: 16px; margin-bottom: 32px; flex-wrap: wrap; }
+        .admin-stat {
+            flex: 1; min-width: 150px; padding: 20px; background: var(--surface);
+            border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+        }
+        .admin-stat .stat-val { font-family: var(--font-heading); font-size: 32px; font-weight: 700; }
+        .admin-stat .stat-lbl { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+        /* Filters */
+        .admin-filters { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .admin-filters input, .admin-filters select {
+            padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);
+            background: var(--surface); color: var(--white); font-family: var(--font-body);
+            font-size: 14px; outline: none;
+        }
+        .admin-filters input:focus, .admin-filters select:focus { border-color: var(--emerald); }
+        .admin-filters input { width: 280px; }
+
+        .btn-export {
+            padding: 10px 20px; border-radius: 8px; border: none;
+            background: var(--emerald); color: var(--dark); font-family: var(--font-heading);
+            font-size: 14px; font-weight: 600; cursor: pointer; margin-left: auto;
+        }
+        .btn-export:hover { box-shadow: 0 0 15px rgba(16,185,129,0.3); }
+
+        /* Table */
+        .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid rgba(255,255,255,0.06); }
+        table { width: 100%; border-collapse: collapse; background: var(--surface); }
+        th {
+            text-align: left; padding: 14px 16px; font-family: var(--font-mono);
+            font-size: 11px; color: var(--gray-dark); text-transform: uppercase;
+            letter-spacing: 1px; border-bottom: 1px solid rgba(255,255,255,0.06);
+            white-space: nowrap;
+        }
+        td {
+            padding: 14px 16px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.03);
+            white-space: nowrap;
+        }
+        tr:hover td { background: var(--surface-2); }
+
+        .tag {
+            display: inline-block; font-family: var(--font-mono); font-size: 10px;
+            padding: 2px 7px; border-radius: 4px; margin: 1px 2px;
+            letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        .tag-interest { background: var(--blue-dim); color: var(--blue); }
+        .tag-volunteer { background: var(--emerald-dim); color: var(--emerald); }
+        .tag-new { background: var(--gold-dim); color: var(--gold); }
+
+        .access-denied {
+            text-align: center; padding: 120px 32px;
+        }
+        .access-denied h2 { font-family: var(--font-heading); font-size: 24px; margin-bottom: 12px; }
+        .access-denied p { color: var(--gray); font-size: 16px; }
+        .access-denied a { color: var(--emerald); }
+
+        .loading { text-align: center; padding: 60px; color: var(--gray); }
+
+        @media (max-width: 768px) {
+            .admin-wrap { padding: 16px; }
+            .admin-filters input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="admin-wrap">
+    <div class="admin-header">
+        <div>
+            <a href="community.html" class="back-link">&larr; Back to Dashboard</a>
+            <h1>Community Members</h1>
+        </div>
+    </div>
+
+    <div id="adminContent" style="display: none;">
+        <!-- Stats -->
+        <div class="stats-row">
+            <div class="admin-stat">
+                <div class="stat-val" id="totalMembers">0</div>
+                <div class="stat-lbl">Total Members</div>
+            </div>
+            <div class="admin-stat">
+                <div class="stat-val" id="totalVolunteers" style="color: var(--emerald);">0</div>
+                <div class="stat-lbl">Volunteers</div>
+            </div>
+            <div class="admin-stat">
+                <div class="stat-val" id="totalNewMuslims" style="color: var(--gold);">0</div>
+                <div class="stat-lbl">New Muslims</div>
+            </div>
+            <div class="admin-stat">
+                <div class="stat-val" id="totalFamilies" style="color: var(--blue);">0</div>
+                <div class="stat-lbl">Family Members</div>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="admin-filters">
+            <input type="text" id="memberSearch" placeholder="Search by name, email, suburb...">
+            <select id="filterSuburb">
+                <option value="">All Suburbs</option>
+            </select>
+            <select id="filterInterest">
+                <option value="">All Interests</option>
+                <option value="prayer">Prayer</option>
+                <option value="youth">Youth (Badir)</option>
+                <option value="education">Education</option>
+                <option value="sports">Sports</option>
+                <option value="business">Business</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="social">Social</option>
+                <option value="newmuslim">New Muslim Support</option>
+            </select>
+            <button class="btn-export" onclick="exportCSV()">Export CSV</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Suburb</th>
+                        <th>Family</th>
+                        <th>Interests</th>
+                        <th>Volunteer</th>
+                        <th>New Muslim</th>
+                        <th>How Found</th>
+                        <th>Joined</th>
+                    </tr>
+                </thead>
+                <tbody id="membersTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="loading" id="loadingState">Loading...</div>
+    <div class="access-denied" id="accessDenied" style="display: none;">
+        <h2>Access Denied</h2>
+        <p>This page is for mosque committee members only.<br>
+        <a href="community.html">Back to Community Dashboard</a></p>
+    </div>
+</div>
+
+<script>
+    // REPLACE with your Supabase credentials (same as community.html)
+    var SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    var SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    var ADMIN_EMAILS = ['mustafa@mkdai.co'];
+
+    var sb = null;
+    var allMembers = [];
+
+    if (typeof supabase !== 'undefined' && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+        sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        checkAdmin();
+    } else {
+        document.getElementById('loadingState').textContent = 'Supabase not configured. Set credentials in admin.html.';
+    }
+
+    function checkAdmin() {
+        sb.auth.getSession().then(function(result) {
+            var session = result.data.session;
+            if (!session) {
+                showDenied(); return;
+            }
+            var email = session.user.email;
+            if (ADMIN_EMAILS.indexOf(email) === -1) {
+                showDenied(); return;
+            }
+            loadMembers();
+        });
+    }
+
+    function showDenied() {
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('accessDenied').style.display = 'block';
+    }
+
+    function loadMembers() {
+        sb.from('members').select('*').order('created_at', { ascending: false }).then(function(result) {
+            document.getElementById('loadingState').style.display = 'none';
+            document.getElementById('adminContent').style.display = '';
+
+            if (result.error) { alert('Error loading members: ' + result.error.message); return; }
+            allMembers = result.data || [];
+            updateStats();
+            populateSuburbFilter();
+            renderTable(allMembers);
+        });
+    }
+
+    function updateStats() {
+        document.getElementById('totalMembers').textContent = allMembers.length;
+        var volunteers = allMembers.filter(function(m) { return m.volunteer_interests && m.volunteer_interests.length > 0; });
+        document.getElementById('totalVolunteers').textContent = volunteers.length;
+        var newMuslims = allMembers.filter(function(m) { return m.new_to_islam; });
+        document.getElementById('totalNewMuslims').textContent = newMuslims.length;
+        var totalFamily = allMembers.reduce(function(sum, m) { return sum + (m.family_size || 1); }, 0);
+        document.getElementById('totalFamilies').textContent = totalFamily;
+    }
+
+    function populateSuburbFilter() {
+        var suburbs = {};
+        allMembers.forEach(function(m) { if (m.suburb) suburbs[m.suburb] = true; });
+        var sel = document.getElementById('filterSuburb');
+        Object.keys(suburbs).sort().forEach(function(s) {
+            var opt = document.createElement('option');
+            opt.value = s;
+            opt.textContent = s;
+            sel.appendChild(opt);
+        });
+    }
+
+    function renderTable(members) {
+        var tbody = document.getElementById('membersTable');
+        while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
+
+        members.forEach(function(m) {
+            var tr = document.createElement('tr');
+
+            var fields = [
+                m.full_name || '-',
+                m.email || '-',
+                m.phone || '-',
+                m.suburb || '-',
+                m.family_size ? m.family_size + '' : '-'
+            ];
+
+            fields.forEach(function(val) {
+                var td = document.createElement('td');
+                td.textContent = val;
+                tr.appendChild(td);
+            });
+
+            // Interests tags
+            var tdInt = document.createElement('td');
+            (m.interests || []).forEach(function(i) {
+                var tag = document.createElement('span');
+                tag.className = 'tag tag-interest';
+                tag.textContent = i;
+                tdInt.appendChild(tag);
+            });
+            tr.appendChild(tdInt);
+
+            // Volunteer tags
+            var tdVol = document.createElement('td');
+            (m.volunteer_interests || []).forEach(function(v) {
+                var tag = document.createElement('span');
+                tag.className = 'tag tag-volunteer';
+                tag.textContent = v;
+                tdVol.appendChild(tag);
+            });
+            tr.appendChild(tdVol);
+
+            // New Muslim
+            var tdNew = document.createElement('td');
+            if (m.new_to_islam) {
+                var tag = document.createElement('span');
+                tag.className = 'tag tag-new';
+                tag.textContent = 'Yes';
+                tdNew.appendChild(tag);
+            } else {
+                tdNew.textContent = '-';
+            }
+            tr.appendChild(tdNew);
+
+            // How found
+            var tdHow = document.createElement('td');
+            tdHow.textContent = m.how_found || '-';
+            tr.appendChild(tdHow);
+
+            // Joined date
+            var tdDate = document.createElement('td');
+            tdDate.textContent = m.created_at ? new Date(m.created_at).toLocaleDateString() : '-';
+            tr.appendChild(tdDate);
+
+            tbody.appendChild(tr);
+        });
+    }
+
+    // Search + filter
+    var searchInput = document.getElementById('memberSearch');
+    var filterSuburb = document.getElementById('filterSuburb');
+    var filterInterest = document.getElementById('filterInterest');
+
+    function applyFilters() {
+        var q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+        var sub = filterSuburb ? filterSuburb.value : '';
+        var int = filterInterest ? filterInterest.value : '';
+
+        var filtered = allMembers.filter(function(m) {
+            var text = (m.full_name + ' ' + m.email + ' ' + m.suburb).toLowerCase();
+            if (q && text.indexOf(q) === -1) return false;
+            if (sub && m.suburb !== sub) return false;
+            if (int && (!m.interests || m.interests.indexOf(int) === -1)) return false;
+            return true;
+        });
+        renderTable(filtered);
+    }
+
+    if (searchInput) searchInput.addEventListener('input', applyFilters);
+    if (filterSuburb) filterSuburb.addEventListener('change', applyFilters);
+    if (filterInterest) filterInterest.addEventListener('change', applyFilters);
+
+    // CSV Export
+    function exportCSV() {
+        var headers = ['Name', 'Email', 'Phone', 'Suburb', 'Family Size', 'Interests', 'Volunteer', 'New Muslim', 'How Found', 'Skills', 'Joined'];
+        var rows = allMembers.map(function(m) {
+            return [
+                m.full_name || '',
+                m.email || '',
+                m.phone || '',
+                m.suburb || '',
+                m.family_size || '',
+                (m.interests || []).join('; '),
+                (m.volunteer_interests || []).join('; '),
+                m.new_to_islam ? 'Yes' : 'No',
+                m.how_found || '',
+                m.skills || '',
+                m.created_at ? new Date(m.created_at).toLocaleDateString() : ''
+            ].map(function(v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(',');
+        });
+
+        var csv = headers.join(',') + '\n' + rows.join('\n');
+        var blob = new Blob([csv], { type: 'text/csv' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'tauranga_mosque_members_' + new Date().toISOString().split('T')[0] + '.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
+</script>
+
+</body>
+</html>
