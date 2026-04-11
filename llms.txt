@@ -56,12 +56,12 @@ Inspired by the Battle of Badr — starting when the odds are against you, victo
 Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
 
 ## Key URLs
-- Landing: https://badir.build/
-- Brand Readiness Scorecard: https://badir.build/scorecard.html
-- Project Discovery Survey: https://badir.build/survey.html
+- Landing: https://badir.studio/
+- Brand Readiness Scorecard: https://badir.studio/scorecard.html
+- Project Discovery Survey: https://badir.studio/survey.html
 
 ## Contact
-- Email: hello@badir.build
+- Email: hello@badir.studio
 - LinkedIn: linkedin.com/in/mustafa-demirsoy
 
 ## Values

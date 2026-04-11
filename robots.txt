@@ -28,4 +28,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://badir.build/sitemap.xml
+Sitemap: https://badir.studio/sitemap.xml
