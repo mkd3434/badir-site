@@ -14,7 +14,7 @@
     <meta name="twitter:site" content="@badir">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Mustafa Kivanc Demirsoy">
-    <link rel="canonical" href="https://badir.build/">
+    <link rel="canonical" href="https://badir.build">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1238,12 +1238,27 @@
             <div class="cta-box fade-in">
                 <div class="cta-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
                 <h2 class="cta-title">Ready to build?</h2>
-                <p class="cta-sub">Start with a free Brand Readiness Scorecard. Find out where you stand — and what to build next.</p>
-                <div class="cta-actions">
-                    <a href="scorecard.html" class="btn-primary">Take the Scorecard →</a>
-                    <a href="survey.html" class="btn-secondary">Project Discovery Survey</a>
+                <p class="cta-sub">Join the waitlist. Be first to access the builder community, weekend sprints, and AI-powered co-building.</p>
+
+                <!-- Email Waitlist -->
+                <form id="waitlist-form" style="display: flex; gap: 12px; max-width: 480px; margin: 0 auto 24px; flex-wrap: wrap; justify-content: center;">
+                    <input type="email" id="waitlist-email" placeholder="your@email.com" required
+                        style="flex: 1; min-width: 240px; padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); color: var(--white); font-family: var(--font-body); font-size: 15px; outline: none; transition: border-color 0.2s;"
+                        onfocus="this.style.borderColor='rgba(16,185,129,0.5)'" onblur="this.style.borderColor='var(--border)'">
+                    <button type="submit" class="btn-primary" style="white-space: nowrap;">Join the Waitlist →</button>
+                </form>
+                <div id="waitlist-success" style="display: none; font-family: var(--font-mono); font-size: 14px; color: var(--emerald); margin-bottom: 24px;">
+                    ✓ You're in. We'll be in touch. Bismillah.
                 </div>
-                <p style="font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark); margin-top: 24px;">
+                <div id="waitlist-count" style="font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark); margin-bottom: 24px;">
+                    Join 0 builders on the waitlist
+                </div>
+
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px;">
+                    <a href="scorecard.html" class="btn-secondary" style="font-size: 13px; padding: 10px 20px;">Take the Brand Scorecard</a>
+                    <a href="survey.html" class="btn-secondary" style="font-size: 13px; padding: 10px 20px;">Project Discovery Survey</a>
+                </div>
+                <p style="font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);">
                     Or just join the community — <a href="https://discord.gg/badir" target="_blank" style="color: var(--emerald); text-decoration: none;">Discord ↗</a>
                 </p>
             </div>
@@ -1268,11 +1283,56 @@
         </div>
     </footer>
 
+    <!-- Vercel Web Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+
     <script>
+        // Fade-in animation
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Waitlist — localStorage for now, upgrade to API later
+        const WAITLIST_KEY = 'badir_waitlist';
+        function getWaitlist() {
+            try { return JSON.parse(localStorage.getItem(WAITLIST_KEY) || '[]'); } catch { return []; }
+        }
+        function updateCount() {
+            const count = getWaitlist().length;
+            const el = document.getElementById('waitlist-count');
+            if (el) el.textContent = count > 0 ? `Join ${count} builder${count > 1 ? 's' : ''} on the waitlist` : '';
+        }
+        updateCount();
+
+        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('waitlist-email').value.trim();
+            if (!email) return;
+
+            const list = getWaitlist();
+            if (list.includes(email)) {
+                document.getElementById('waitlist-success').style.display = 'block';
+                document.getElementById('waitlist-success').textContent = "You're already on the list. We see you. 💪";
+                this.style.display = 'none';
+                return;
+            }
+
+            list.push(email);
+            localStorage.setItem(WAITLIST_KEY, JSON.stringify(list));
+
+            // Send to webhook for collection (fire and forget)
+            fetch('https://hooks.zapier.com/hooks/catch/badir-waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, timestamp: new Date().toISOString(), source: 'badir.build' })
+            }).catch(() => {});
+
+            document.getElementById('waitlist-success').style.display = 'block';
+            this.style.display = 'none';
+            updateCount();
+        });
     </script>
 </body>
 </html>
