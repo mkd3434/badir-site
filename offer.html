@@ -1935,7 +1935,7 @@
         };
 
         try {
-            const res = await fetch('http://localhost:8878/webhook/trial/signup', {
+            const res = await fetch('/api/trial-signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -1958,7 +1958,7 @@
             msg.style.display = 'block';
             msg.style.color = '#EF4444';
             btn.disabled = false;
-            btn.innerHTML = 'Start Free Trial <span aria-hidden="true">&rarr;</span>';
+            btn.innerHTML = 'Get in Touch <span aria-hidden="true">&rarr;</span>';
         }
 
         return false;
