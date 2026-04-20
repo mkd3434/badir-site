@@ -1,3 +1,5 @@
+import { set, sadd, isConfigured } from "./lib/kv.js";
+
 export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== "POST") {
@@ -188,6 +190,25 @@ export default async function handler(req, res) {
     } catch (err) {
       // Log but don't fail the signup
       console.error("Resend error:", err.message);
+    }
+  }
+
+  // Store in KV for drip sequence
+  if (isConfigured()) {
+    try {
+      const subSource = isApplication ? "builder-application" : "waitlist";
+      await set(`seq:${sanitized}`, {
+        email: sanitized,
+        name: (metadata && metadata.name) || null,
+        source: subSource,
+        step: 0,
+        startedAt: timestamp,
+        lastSentAt: timestamp,
+        meta: isApplication ? { track: metadata.track, skills: metadata.skills } : {},
+      });
+      await sadd("seq:active", sanitized);
+    } catch (err) {
+      console.error("KV error:", err.message);
     }
   }
 

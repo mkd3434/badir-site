@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/cron/send-sequences",
+      "schedule": "0 21 * * *"
+    }
+  ],
   "cleanUrls": true,
   "redirects": [
     { "source": "/index", "destination": "/", "permanent": true }

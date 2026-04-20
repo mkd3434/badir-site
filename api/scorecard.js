@@ -1,3 +1,5 @@
+import { set, sadd, isConfigured } from "./lib/kv.js";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -13,6 +15,7 @@ export default async function handler(req, res) {
   const timestamp = new Date().toISOString();
   const ip = req.headers["x-forwarded-for"] || "unknown";
   const email = data.email ? data.email.trim().toLowerCase() : null;
+  const name = data.name ? data.name.trim() : null;
 
   // Log to Vercel function logs
   console.log(`SCORECARD_RESULT | score:${score}/120 | grade:${grade} | ${email || "no-email"} | ${timestamp} | ${ip}`);
@@ -28,6 +31,7 @@ export default async function handler(req, res) {
             .join("\n")
         : "No dimension data";
 
+      // Notification to MKD
       await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
@@ -44,6 +48,7 @@ export default async function handler(req, res) {
             "",
             `Score: ${score}/120`,
             `Grade: ${grade}`,
+            name ? `Name: ${name}` : "",
             email ? `Email: ${email}` : "Email: not provided",
             "",
             "Dimensions:",
@@ -53,11 +58,29 @@ export default async function handler(req, res) {
             `IP: ${ip}`,
             "",
             "— Badir Scorecard Bot",
-          ].join("\n"),
+          ].filter(Boolean).join("\n"),
         }),
       });
     } catch (err) {
       console.error("Resend error:", err.message);
+    }
+  }
+
+  // Store in KV for drip sequence (scorecard sequence starts at step 0 via cron)
+  if (email && isConfigured()) {
+    try {
+      await set(`seq:${email}`, {
+        email,
+        name,
+        source: "scorecard",
+        step: 0,
+        startedAt: timestamp,
+        lastSentAt: null,
+        meta: { score, grade, dimensions },
+      });
+      await sadd("seq:active", email);
+    } catch (err) {
+      console.error("KV error:", err.message);
     }
   }
 

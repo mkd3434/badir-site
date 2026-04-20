@@ -1,3 +1,5 @@
+import { set, sadd, isConfigured } from "./lib/kv.js";
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -100,6 +102,24 @@ export default async function handler(req, res) {
       });
     } catch (err) {
       console.error("Resend error:", err.message);
+    }
+  }
+
+  // Store in KV for drip sequence
+  if (isConfigured()) {
+    try {
+      await set(`seq:${sanitizedEmail}`, {
+        email: sanitizedEmail,
+        name: sanitizedName,
+        source: "trial",
+        step: 0,
+        startedAt: timestamp,
+        lastSentAt: timestamp,
+        meta: { website: sanitizedUrl, businessType: sanitizedType },
+      });
+      await sadd("seq:active", sanitizedEmail);
+    } catch (err) {
+      console.error("KV error:", err.message);
     }
   }
 
