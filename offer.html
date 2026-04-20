@@ -25,8 +25,7 @@
       "@type": "Offer",
       "name": "21 Days Free Marketing Intelligence",
       "description": "Get 21 days of free marketing intelligence for your website — live dashboard, conversion health score, AI search visibility tracking, competitor alerts, and weekly PDF reports.",
-      "price": "0",
-      "priceCurrency": "NZD",
+      "isAccessibleForFree": true,
       "availability": "https://schema.org/InStock",
       "seller": {
         "@type": "Organization",
@@ -519,31 +518,15 @@
         .stack-items li:last-child { border-bottom: none; }
         .stack-items li .stack-label { display: flex; align-items: center; gap: 10px; }
         .stack-items li .stack-icon { font-size: 18px; flex-shrink: 0; }
-        .stack-price {
-            font-family: var(--font-mono); font-size: 14px; color: var(--gray-500);
-            text-decoration: line-through; flex-shrink: 0;
-        }
-        .stack-total {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 0; border-top: 2px solid var(--border-2); margin-top: 8px;
-        }
-        .stack-total-label {
-            font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--white);
-        }
-        .stack-total-price {
-            font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--gray-500);
-            text-decoration: line-through; letter-spacing: -1px;
+        .stack-check {
+            color: var(--emerald); font-size: 18px; font-weight: 700; flex-shrink: 0;
         }
         .stack-yours {
-            text-align: center; padding: 24px 0 0;
+            text-align: center; padding: 24px 0 0; border-top: 2px solid var(--border-2); margin-top: 8px;
         }
         .stack-yours-label {
-            font-size: 14px; color: var(--gray-400); margin-bottom: 8px; text-transform: uppercase;
-            letter-spacing: 1.5px; font-weight: 500;
-        }
-        .stack-yours-price {
-            font-family: var(--font-heading); font-size: 56px; font-weight: 800;
-            color: var(--emerald); letter-spacing: -3px;
+            font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--emerald);
+            letter-spacing: 1px;
         }
         .stack-yours-sub {
             font-size: 14px; color: var(--gray-400); margin-top: 4px;
@@ -867,10 +850,6 @@
                 <div class="stat">
                     <div class="stat-val">14</div>
                     <div class="stat-label">Intelligence Layers</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-val"><span class="accent">$</span>0</div>
-                    <div class="stat-label">To Start</div>
                 </div>
                 <div class="stat">
                     <div class="stat-val">0</div>
@@ -1506,60 +1485,55 @@
                 <ul class="stack-items">
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F4CA;</span> Conversion intelligence dashboard (21 days)</span>
-                        <span class="stack-price">$1,200</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F9E0;</span> Daily prioritized action plans</span>
-                        <span class="stack-price">$800</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F916;</span> AI search visibility tracking &amp; optimization</span>
-                        <span class="stack-price">$600</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F50D;</span> Competitor monitoring &amp; alerts</span>
-                        <span class="stack-price">$500</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F4E2;</span> Social &amp; brand listening</span>
-                        <span class="stack-price">$400</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F4E9;</span> 3x weekly intelligence reports (PDF)</span>
-                        <span class="stack-price">$450</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F3AF;</span> Brand positioning audit</span>
-                        <span class="stack-price">$350</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F4C8;</span> Trend forecasting &amp; audience profiling</span>
-                        <span class="stack-price">$400</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F50E;</span> 200+ point SEO health audit</span>
-                        <span class="stack-price">$500</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x1F4DD;</span> Content gap analysis with briefs</span>
-                        <span class="stack-price">$350</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x2B50;</span> Review &amp; reputation monitoring</span>
-                        <span class="stack-price">$300</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                     <li>
                         <span class="stack-label"><span class="stack-icon">&#x26A1;</span> Page speed &amp; Core Web Vitals monitoring</span>
-                        <span class="stack-price">$250</span>
+                        <span class="stack-check">&#x2713;</span>
                     </li>
                 </ul>
-                <div class="stack-total">
-                    <span class="stack-total-label">Total value</span>
-                    <span class="stack-total-price">$6,100</span>
-                </div>
                 <div class="stack-yours">
-                    <div class="stack-yours-label">YOUR PRICE FOR 21 DAYS</div>
-                    <div class="stack-yours-price">$0</div>
+                    <div class="stack-yours-label">ALL INCLUDED FREE FOR 21 DAYS</div>
                     <div class="stack-yours-sub">No credit card. No commitment. Just results.</div>
                 </div>
             </div>
@@ -1613,7 +1587,7 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">What happens after 21 days?</div>
-                    <div class="faq-a">You choose. If the intelligence is valuable and you want ongoing monitoring, reports, and recommendations, we discuss a monthly plan (starting from $500/mo). If not, the dashboard simply stops updating. No pressure.</div>
+                    <div class="faq-a">You choose. If the intelligence is valuable and you want ongoing monitoring, reports, and recommendations, we discuss a plan that fits your business. If not, the dashboard simply stops updating. No pressure.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Is my data safe?</div>
