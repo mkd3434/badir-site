@@ -78,7 +78,7 @@ export default async function handler(req, res) {
         "2. We add a lightweight tracking snippet to your site",
         "3. Your dashboard goes live within 24 hours",
         "",
-        "14 intelligence layers running on your website — SEO audit, competitor monitoring, AI search visibility, brand tracking, and more. All free for 21 days.",
+        "14 intelligence layers running on your website — SEO audit, competitor monitoring, AI search visibility, brand tracking, and more. All free for 14 days.",
         "",
         "Talk soon,",
         "Mustafa Kivanc Demirsoy",
