@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Marketing Intelligence — 21 Days, No Commitment | Badir Studio</title>
+    <meta name="description" content="Free 21-day marketing intelligence trial. Live dashboard with conversion insights, AI search visibility, competitor alerts, and weekly reports for your website. No commitment.">
+    <meta property="og:title" content="21 Days Free Marketing Intelligence — Badir Studio">
+    <meta property="og:description" content="Get a live dashboard showing where your website leaks money. Conversion insights, AI search traffic, competitor alerts, and prioritized action items. Free for 21 days.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/offer">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta property="og:locale" content="en_NZ">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="21 Days Free Marketing Intelligence — Badir Studio">
+    <meta name="twitter:description" content="Live dashboard showing where your website leaks money. Conversion insights, AI search traffic, competitor alerts. Free for 21 days.">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/offer">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Offer",
+      "name": "21 Days Free Marketing Intelligence",
+      "description": "Get 21 days of free marketing intelligence for your website — live dashboard, conversion health score, AI search visibility tracking, competitor alerts, and weekly PDF reports.",
+      "price": "0",
+      "priceCurrency": "NZD",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Badir Studio",
+        "url": "https://badir.studio"
+      },
+      "validFrom": "2026-04-19",
+      "category": "AI Marketing Services"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #050505;
+            --surface: #0a0a0a;
+            --surface-2: #111111;
+            --surface-3: #181818;
+            --surface-4: #1f1f1f;
+            --border: rgba(255,255,255,0.06);
+            --border-2: rgba(255,255,255,0.1);
+            --border-hover: rgba(16,185,129,0.4);
+            --emerald: #10B981;
+            --emerald-light: #34D399;
+            --emerald-dim: rgba(16,185,129,0.1);
+            --emerald-glow: rgba(16,185,129,0.15);
+            --gold: #F59E0B;
+            --gold-dim: rgba(245,158,11,0.1);
+            --white: #F5F5F5;
+            --white-pure: #FFFFFF;
+            --gray-100: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --font-heading: 'Space Grotesk', system-ui, sans-serif;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg); color: var(--gray-300);
+            font-family: var(--font-body); line-height: 1.6;
+            overflow-x: hidden; -webkit-font-smoothing: antialiased;
+        }
+        ::selection { background: var(--emerald); color: var(--bg); }
+
+        /* ─── AMBIENT ─── */
+        .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+        .ambient::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.015) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        .ambient::after {
+            content: ''; position: absolute; top: -20%; left: 50%; width: 800px; height: 800px;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse, rgba(16,185,129,0.06) 0%, transparent 70%);
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 0 24px; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(5,5,5,0.8); backdrop-filter: blur(24px) saturate(1.2);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: var(--font-heading); font-size: 22px; font-weight: 700;
+            color: var(--white); text-decoration: none;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .nav-logo .ar { font-family: var(--font-arabic); font-size: 18px; color: var(--emerald); font-weight: 700; }
+        .nav-right { display: flex; align-items: center; gap: 12px; }
+        .nav-btn {
+            font-family: var(--font-heading); font-size: 13px; font-weight: 600;
+            padding: 8px 20px; border-radius: 8px; text-decoration: none; transition: all 0.2s;
+            border: none; cursor: pointer;
+        }
+        .nav-btn-ghost { color: var(--gray-400); background: transparent; }
+        .nav-btn-ghost:hover { color: var(--white); }
+        .nav-btn-primary { color: var(--bg); background: var(--emerald); }
+        .nav-btn-primary:hover { background: var(--emerald-light); box-shadow: 0 0 24px var(--emerald-glow); }
+
+        /* ─── LAYOUT ─── */
+        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+        section { padding: 80px 0; }
+
+        /* ─── BADGE ─── */
+        .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+        }
+        .badge-emerald { background: var(--emerald-dim); color: var(--emerald); border: 1px solid rgba(16,185,129,0.15); }
+        .badge-gold { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,158,11,0.15); }
+        .badge-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 140px 0 60px; text-align: center; position: relative; overflow: hidden;
+        }
+        .hero-mesh { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 1200px; height: 100%; pointer-events: none; }
+        .hero-mesh::before {
+            content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+            width: 700px; height: 500px;
+            background: radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 60%);
+        }
+        .hero .badge { margin-bottom: 28px; }
+        .hero h1 {
+            font-family: var(--font-heading); font-size: clamp(36px, 5vw, 58px);
+            font-weight: 800; line-height: 1.08; letter-spacing: -2.5px;
+            color: var(--white); margin-bottom: 24px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 50%, var(--gold) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 17px; color: var(--gray-400); max-width: 560px;
+            margin: 0 auto 40px; line-height: 1.7;
+        }
+        .hero-sub strong { color: var(--gray-100); font-weight: 500; }
+        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            padding: 14px 28px; border-radius: 10px; text-decoration: none;
+            transition: all 0.25s var(--ease-out); border: none; cursor: pointer;
+        }
+        .btn-primary { background: var(--emerald); color: var(--bg); }
+        .btn-primary:hover {
+            background: var(--emerald-light);
+            box-shadow: 0 0 40px rgba(16,185,129,0.2), 0 4px 16px rgba(16,185,129,0.15);
+            transform: translateY(-1px);
+        }
+        .btn-outline { background: transparent; color: var(--gray-300); border: 1px solid var(--border-2); }
+        .btn-outline:hover { border-color: var(--border-hover); color: var(--white); background: rgba(255,255,255,0.02); }
+        .btn-large { padding: 16px 36px; font-size: 16px; }
+
+        /* ─── STATS ─── */
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            background: var(--border); border-radius: var(--radius-lg); overflow: hidden;
+            max-width: 720px; margin: 0 auto;
+        }
+        .stat { background: var(--surface); padding: 24px 16px; text-align: center; }
+        .stat-val {
+            font-family: var(--font-heading); font-size: 28px; font-weight: 700;
+            color: var(--white); letter-spacing: -1px;
+        }
+        .stat-val .accent { color: var(--emerald); }
+        .stat-label {
+            font-size: 11px; color: var(--gray-500); margin-top: 4px;
+            text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500;
+        }
+
+        /* ─── SECTION HEADERS ─── */
+        .section-header { text-align: center; margin-bottom: 48px; }
+        .section-header .badge { margin-bottom: 20px; }
+        .section-header h2 {
+            font-family: var(--font-heading); font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 700; color: var(--white); letter-spacing: -1.5px; line-height: 1.15; margin-bottom: 16px;
+        }
+        .section-header p { font-size: 16px; color: var(--gray-400); max-width: 520px; margin: 0 auto; line-height: 1.7; }
+
+        /* ─── VALUE CARDS ─── */
+        .value-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .value-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px 24px;
+            transition: all 0.3s var(--ease-out); position: relative; overflow: hidden;
+        }
+        .value-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .value-card:hover { border-color: var(--border-hover); }
+        .value-card:hover::before { opacity: 0.5; }
+        .value-icon {
+            width: 44px; height: 44px; border-radius: var(--radius-md);
+            background: var(--emerald-dim); display: flex; align-items: center;
+            justify-content: center; font-size: 22px; margin-bottom: 20px;
+        }
+        .value-card h3 {
+            font-family: var(--font-heading); font-size: 17px; font-weight: 700;
+            color: var(--white); margin-bottom: 10px;
+        }
+        .value-card p { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+
+        /* ─── HOW IT WORKS ─── */
+        .how-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .how-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+        .how-step {
+            padding: 32px 28px; position: relative;
+            border-right: 1px solid var(--border);
+            transition: background 0.3s;
+        }
+        .how-step:last-child { border-right: none; }
+        .how-step:hover { background: var(--surface-2); }
+        .how-step::before {
+            content: ''; position: absolute; top: 32px; right: -5px;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--surface-3); border: 2px solid var(--emerald); z-index: 2;
+        }
+        .how-step:last-child::before { display: none; }
+        .step-num {
+            font-family: var(--font-mono); font-size: 10px; color: var(--emerald);
+            letter-spacing: 2px; margin-bottom: 16px; font-weight: 500;
+        }
+        .step-title {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); margin-bottom: 10px;
+        }
+        .step-desc { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+        .step-time {
+            display: inline-block; margin-top: 12px;
+            font-family: var(--font-mono); font-size: 11px; color: var(--emerald);
+            padding: 4px 10px; border-radius: 6px; background: var(--emerald-dim);
+        }
+
+        /* ─── DASHBOARD PREVIEW ─── */
+        .preview-section { padding: 80px 0; }
+        .preview-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px; overflow: hidden;
+        }
+        .preview-header {
+            display: flex; align-items: center; gap: 8px; margin-bottom: 24px;
+            padding-bottom: 16px; border-bottom: 1px solid var(--border);
+        }
+        .preview-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .preview-dot-red { background: #EF4444; }
+        .preview-dot-yellow { background: #F59E0B; }
+        .preview-dot-green { background: #10B981; }
+        .preview-url {
+            flex: 1; text-align: center;
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-500);
+        }
+        .preview-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+        .preview-metric {
+            background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: var(--radius-sm); padding: 16px; text-align: center;
+        }
+        .preview-metric-val {
+            font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--white);
+        }
+        .preview-metric-label {
+            font-size: 11px; color: var(--gray-500); margin-top: 4px;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .preview-metric-trend {
+            font-family: var(--font-mono); font-size: 11px; margin-top: 4px;
+        }
+        .trend-up { color: var(--emerald); }
+        .trend-down { color: #EF4444; }
+        .preview-recs { margin-top: 24px; }
+        .preview-rec {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px; border-radius: var(--radius-sm);
+            border: 1px solid var(--border); margin-bottom: 8px;
+            background: var(--surface-2);
+        }
+        .rec-priority {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            padding: 3px 8px; border-radius: 4px; flex-shrink: 0;
+        }
+        .rec-p0 { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .rec-p1 { background: rgba(245,158,11,0.15); color: #F59E0B; }
+        .rec-p2 { background: rgba(16,185,129,0.15); color: #10B981; }
+        .rec-text { font-size: 13px; color: var(--gray-300); flex: 1; }
+        .rec-impact { font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); flex-shrink: 0; }
+
+        /* ─── HEALTH SCORE ─── */
+        .preview-health {
+            display: flex; align-items: center; gap: 32px;
+            padding: 24px; background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: var(--radius-md); margin-bottom: 24px;
+        }
+        .health-gauge { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .health-gauge svg { width: 100px; height: 100px; transform: rotate(-90deg); }
+        .health-gauge circle { fill: none; stroke-width: 8; }
+        .health-gauge .track { stroke: var(--surface-3); }
+        .health-gauge .fill { stroke: var(--emerald); stroke-linecap: round; stroke-dasharray: 251; stroke-dashoffset: 63; transition: stroke-dashoffset 1s; }
+        .health-score {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--white);
+        }
+        .health-details { flex: 1; }
+        .health-label {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 700;
+            color: var(--white); margin-bottom: 4px;
+        }
+        .health-status {
+            font-family: var(--font-mono); font-size: 12px; color: var(--emerald); margin-bottom: 12px;
+        }
+        .health-bars { display: grid; gap: 6px; }
+        .health-bar-row { display: flex; align-items: center; gap: 8px; }
+        .health-bar-label { font-size: 11px; color: var(--gray-500); width: 100px; flex-shrink: 0; }
+        .health-bar { flex: 1; height: 6px; background: var(--surface-3); border-radius: 3px; overflow: hidden; }
+        .health-bar-fill { height: 100%; border-radius: 3px; }
+        .fill-good { background: var(--emerald); }
+        .fill-ok { background: var(--gold); }
+        .fill-bad { background: #EF4444; }
+
+        /* ─── FAQ ─── */
+        .faq-section { padding: 80px 0; }
+        .faq-list { max-width: 640px; margin: 0 auto; }
+        .faq-item {
+            border-bottom: 1px solid var(--border); padding: 20px 0;
+        }
+        .faq-q {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            color: var(--white); cursor: pointer; display: flex; justify-content: space-between;
+            align-items: center; gap: 16px;
+        }
+        .faq-q::after {
+            content: '+'; font-size: 20px; color: var(--gray-500); flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-q::after { content: '-'; }
+        .faq-a {
+            font-size: 14px; color: var(--gray-400); line-height: 1.7;
+            max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s;
+            padding-top: 0;
+        }
+        .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+        /* ─── SIGNUP FORM ─── */
+        .signup-section {
+            background: var(--surface); border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .signup-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start; }
+        .signup-info h3 {
+            font-family: var(--font-heading); font-size: 28px; font-weight: 700;
+            color: var(--white); margin-bottom: 12px; letter-spacing: -1px;
+        }
+        .signup-info > p { font-size: 15px; color: var(--gray-400); line-height: 1.7; margin-bottom: 24px; }
+        .signup-perks { list-style: none; }
+        .signup-perks li {
+            font-size: 14px; color: var(--gray-400); padding: 8px 0 8px 24px;
+            position: relative; line-height: 1.5;
+        }
+        .signup-perks li::before {
+            content: ''; position: absolute; left: 0; top: 15px;
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--emerald-dim); border: 2px solid var(--emerald);
+        }
+        .signup-perks li strong { color: var(--gray-100); font-weight: 600; }
+        .form-card {
+            background: var(--bg); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px;
+        }
+        .form-card-title {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); margin-bottom: 4px;
+        }
+        .form-card-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 24px; }
+        .form-row { margin-bottom: 16px; }
+        .form-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+        .form-label {
+            display: block; font-size: 12px; font-weight: 600; color: var(--gray-400);
+            margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .form-input, .form-select {
+            width: 100%; padding: 10px 14px; border-radius: 8px;
+            border: 1px solid var(--border); background: var(--surface);
+            color: var(--white); font-family: var(--font-body); font-size: 14px;
+            outline: none; transition: border-color 0.2s;
+        }
+        .form-input:focus, .form-select:focus { border-color: var(--emerald); }
+        .form-input::placeholder { color: var(--gray-600); }
+        .form-select {
+            appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%236B7280' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
+        }
+        .form-select option { background: var(--surface); color: var(--white); }
+        .form-note { font-size: 12px; color: var(--gray-600); margin-top: 8px; }
+        #signup-msg {
+            font-family: var(--font-mono); font-size: 12px; color: var(--emerald);
+            margin-top: 12px; display: none;
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            padding: 40px 0; text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-logo {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); margin-bottom: 8px;
+        }
+        .footer-logo .ar { font-family: var(--font-arabic); color: var(--emerald); font-size: 16px; }
+        footer p { font-size: 13px; color: var(--gray-600); }
+        footer a { color: var(--gray-400); text-decoration: none; }
+        footer a:hover { color: var(--emerald); }
+
+        /* ─── VALUE CARD OUTCOME TAG ─── */
+        .value-outcome {
+            display: inline-block; margin-top: 12px;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            color: var(--emerald); padding: 4px 10px; border-radius: 6px;
+            background: var(--emerald-dim); letter-spacing: 0.3px;
+        }
+
+        /* ─── DEEP DIVE BENEFITS ─── */
+        .deep-section { padding: 80px 0; }
+        .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .deep-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px; position: relative; overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .deep-card:hover { border-color: var(--border-hover); }
+        .deep-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .deep-card-icon {
+            width: 36px; height: 36px; border-radius: var(--radius-sm);
+            display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+        }
+        .deep-card-icon-emerald { background: var(--emerald-dim); }
+        .deep-card-icon-gold { background: var(--gold-dim); }
+        .deep-card h3 {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white);
+        }
+        .deep-card p { font-size: 14px; color: var(--gray-400); line-height: 1.7; margin-bottom: 16px; }
+        .deep-examples { list-style: none; }
+        .deep-examples li {
+            font-size: 13px; color: var(--gray-300); padding: 6px 0 6px 20px;
+            position: relative; line-height: 1.5;
+        }
+        .deep-examples li::before {
+            content: ''; position: absolute; left: 0; top: 12px;
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--emerald); opacity: 0.6;
+        }
+        .deep-card-full { grid-column: 1 / -1; }
+
+        /* ─── TIMELINE ─── */
+        .timeline-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .timeline { position: relative; max-width: 680px; margin: 0 auto; padding-left: 40px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 15px; top: 0; bottom: 0;
+            width: 2px; background: linear-gradient(180deg, var(--emerald), var(--gold));
+        }
+        .timeline-item { position: relative; padding: 0 0 36px 0; }
+        .timeline-item:last-child { padding-bottom: 0; }
+        .timeline-dot {
+            position: absolute; left: -33px; top: 4px; width: 12px; height: 12px;
+            border-radius: 50%; background: var(--bg); border: 2px solid var(--emerald);
+        }
+        .timeline-day {
+            font-family: var(--font-mono); font-size: 11px; color: var(--emerald);
+            letter-spacing: 1.5px; margin-bottom: 6px; font-weight: 500;
+        }
+        .timeline-title {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 700;
+            color: var(--white); margin-bottom: 6px;
+        }
+        .timeline-desc { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+
+        /* ─── VALUE STACK ─── */
+        .stack-section { padding: 80px 0; }
+        .stack-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 40px; max-width: 720px; margin: 0 auto;
+        }
+        .stack-items { list-style: none; margin-bottom: 24px; }
+        .stack-items li {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 0; border-bottom: 1px solid var(--border);
+            font-size: 15px; color: var(--gray-300);
+        }
+        .stack-items li:last-child { border-bottom: none; }
+        .stack-items li .stack-label { display: flex; align-items: center; gap: 10px; }
+        .stack-items li .stack-icon { font-size: 18px; flex-shrink: 0; }
+        .stack-price {
+            font-family: var(--font-mono); font-size: 14px; color: var(--gray-500);
+            text-decoration: line-through; flex-shrink: 0;
+        }
+        .stack-total {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-top: 2px solid var(--border-2); margin-top: 8px;
+        }
+        .stack-total-label {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--white);
+        }
+        .stack-total-price {
+            font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--gray-500);
+            text-decoration: line-through; letter-spacing: -1px;
+        }
+        .stack-yours {
+            text-align: center; padding: 24px 0 0;
+        }
+        .stack-yours-label {
+            font-size: 14px; color: var(--gray-400); margin-bottom: 8px; text-transform: uppercase;
+            letter-spacing: 1.5px; font-weight: 500;
+        }
+        .stack-yours-price {
+            font-family: var(--font-heading); font-size: 56px; font-weight: 800;
+            color: var(--emerald); letter-spacing: -3px;
+        }
+        .stack-yours-sub {
+            font-size: 14px; color: var(--gray-400); margin-top: 4px;
+        }
+
+        /* ─── GUARANTEE ─── */
+        .guarantee-section { padding: 80px 0; }
+        .guarantee-box {
+            background: var(--surface); border: 2px solid rgba(16,185,129,0.2);
+            border-radius: var(--radius-lg); padding: 40px; text-align: center;
+            max-width: 720px; margin: 0 auto; position: relative; overflow: hidden;
+        }
+        .guarantee-box::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--emerald), transparent);
+        }
+        .guarantee-shield { font-size: 48px; margin-bottom: 16px; }
+        .guarantee-title {
+            font-family: var(--font-heading); font-size: 24px; font-weight: 700;
+            color: var(--white); margin-bottom: 12px; letter-spacing: -0.5px;
+        }
+        .guarantee-text { font-size: 15px; color: var(--gray-400); line-height: 1.7; max-width: 520px; margin: 0 auto 20px; }
+        .guarantee-fine { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); }
+
+        /* (social proof CSS removed — add back when real metrics exist) */
+
+        /* ─── KEEP EVERYTHING ─── */
+        .keep-section { padding: 60px 0; }
+        .keep-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 32px 40px;
+            display: flex; align-items: center; gap: 32px;
+            max-width: 800px; margin: 0 auto;
+        }
+        .keep-icon { font-size: 40px; flex-shrink: 0; }
+        .keep-content h3 {
+            font-family: var(--font-heading); font-size: 20px; font-weight: 700;
+            color: var(--white); margin-bottom: 8px;
+        }
+        .keep-content p { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+        .keep-list {
+            list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+        }
+        .keep-list li {
+            font-family: var(--font-mono); font-size: 11px; color: var(--emerald);
+            padding: 4px 10px; border-radius: 6px; background: var(--emerald-dim);
+        }
+
+        /* (scarcity CSS removed — add back when genuinely limited) */
+
+        /* ─── STICKY CTA ─── */
+        .sticky-cta {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+            background: rgba(5,5,5,0.92); backdrop-filter: blur(16px) saturate(1.2);
+            border-top: 1px solid var(--border);
+            padding: 12px 24px; display: flex; align-items: center;
+            justify-content: center; gap: 16px;
+            transform: translateY(100%); transition: transform 0.4s var(--ease-out);
+        }
+        .sticky-cta.visible { transform: translateY(0); }
+        .sticky-cta-text { font-size: 14px; color: var(--gray-400); }
+        .sticky-cta-text strong { color: var(--white); font-weight: 600; }
+        .sticky-cta .btn { padding: 10px 24px; font-size: 14px; }
+        @media (max-width: 600px) {
+            .sticky-cta-text { display: none; }
+            .sticky-cta .btn { width: 100%; justify-content: center; }
+        }
+
+        /* ─── SCORECARD BRIDGE ─── */
+        .score-bridge {
+            background: var(--surface); border: 1px solid rgba(16,185,129,0.15);
+            border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 40px;
+            display: none;
+        }
+        .score-bridge.visible { display: block; }
+        .score-bridge-header {
+            display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
+        }
+        .score-bridge-ring {
+            width: 64px; height: 64px; position: relative; flex-shrink: 0;
+        }
+        .score-bridge-ring svg { width: 64px; height: 64px; transform: rotate(-90deg); }
+        .score-bridge-ring circle { fill: none; stroke-width: 6; }
+        .score-bridge-ring .track { stroke: var(--surface-3); }
+        .score-bridge-ring .fill { stroke: var(--emerald); stroke-linecap: round; }
+        .score-bridge-num {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--white);
+        }
+        .score-bridge-title {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); margin-bottom: 4px;
+        }
+        .score-bridge-sub { font-size: 14px; color: var(--gray-400); line-height: 1.6; }
+        .score-bridge-dims {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
+        }
+        .score-bridge-dim {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            padding: 4px 10px; border-radius: 6px; letter-spacing: 0.3px;
+        }
+        .dim-weak { background: rgba(239,68,68,0.12); color: #EF4444; }
+        .dim-ok { background: rgba(245,158,11,0.12); color: #F59E0B; }
+        .dim-strong { background: rgba(16,185,129,0.12); color: #10B981; }
+        @media (max-width: 600px) {
+            .score-bridge { padding: 20px; }
+            .score-bridge-header { flex-direction: column; text-align: center; }
+        }
+
+        /* ─── WHO IS THIS FOR ─── */
+        .qualifier-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .qualifier-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 24px; text-align: center;
+            transition: border-color 0.3s;
+        }
+        .qualifier-card:hover { border-color: var(--border-hover); }
+        .qualifier-icon { font-size: 32px; margin-bottom: 12px; }
+        .qualifier-type {
+            font-family: var(--font-heading); font-size: 15px; font-weight: 700;
+            color: var(--white); margin-bottom: 8px;
+        }
+        .qualifier-desc { font-size: 13px; color: var(--gray-400); line-height: 1.6; margin-bottom: 12px; }
+        .qualifier-example {
+            font-family: var(--font-mono); font-size: 11px; color: var(--emerald);
+            padding: 4px 10px; border-radius: 6px; background: var(--emerald-dim);
+            display: inline-block;
+        }
+        @media (max-width: 900px) { .qualifier-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .qualifier-grid { grid-template-columns: 1fr; } }
+
+        /* ─── FOUNDER ─── */
+        .founder-section { padding: 80px 0; }
+        .founder-box {
+            display: flex; align-items: center; gap: 40px;
+            max-width: 800px; margin: 0 auto;
+        }
+        .founder-avatar {
+            width: 120px; height: 120px; border-radius: 50%; flex-shrink: 0;
+            background: linear-gradient(135deg, var(--emerald-dim), var(--surface-3));
+            border: 2px solid var(--border-hover);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-heading); font-size: 40px; font-weight: 700;
+            color: var(--emerald);
+        }
+        .founder-content h3 {
+            font-family: var(--font-heading); font-size: 20px; font-weight: 700;
+            color: var(--white); margin-bottom: 4px;
+        }
+        .founder-title { font-size: 14px; color: var(--emerald); margin-bottom: 12px; font-weight: 500; }
+        .founder-bio { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+        @media (max-width: 900px) {
+            .founder-box { flex-direction: column; text-align: center; }
+        }
+
+        /* (case study CSS removed — add back when real client data exists) */
+
+        /* ─── INTERACTIVE DASHBOARD DEMO ─── */
+        .demo-tabs {
+            display: flex; gap: 0; border-bottom: 1px solid var(--border);
+            margin-bottom: 24px; overflow-x: auto;
+        }
+        .demo-tab {
+            padding: 10px 18px; font-family: var(--font-mono); font-size: 12px;
+            color: var(--gray-500); cursor: pointer; border-bottom: 2px solid transparent;
+            transition: all 0.2s; white-space: nowrap; font-weight: 500;
+            letter-spacing: 0.3px; background: none; border-top: none;
+            border-left: none; border-right: none;
+        }
+        .demo-tab:hover { color: var(--gray-300); }
+        .demo-tab.active { color: var(--emerald); border-bottom-color: var(--emerald); }
+        .demo-panel { display: none; animation: fadePanel 0.4s var(--ease-out); }
+        .demo-panel.active { display: block; }
+        @keyframes fadePanel { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* AI referral bars */
+        .ai-bar-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .ai-bar-row:last-child { border-bottom: none; }
+        .ai-bar-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .ai-bar-name { font-size: 13px; color: var(--gray-300); width: 80px; flex-shrink: 0; }
+        .ai-bar-track { flex: 1; height: 8px; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+        .ai-bar-fill { height: 100%; border-radius: 4px; transition: width 1s var(--ease-out); }
+        .ai-bar-count { font-family: var(--font-mono); font-size: 13px; color: var(--white); width: 50px; text-align: right; flex-shrink: 0; }
+        .ai-bar-pct { font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); width: 40px; text-align: right; flex-shrink: 0; }
+
+        /* Competitor feed */
+        .comp-feed { list-style: none; }
+        .comp-item {
+            display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .comp-item:last-child { border-bottom: none; }
+        .comp-type {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            padding: 3px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        .comp-type-price { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .comp-type-content { background: rgba(59,130,246,0.15); color: #3B82F6; }
+        .comp-type-campaign { background: rgba(245,158,11,0.15); color: #F59E0B; }
+        .comp-type-seo { background: rgba(16,185,129,0.15); color: #10B981; }
+        .comp-type-hiring { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+        .comp-info { flex: 1; }
+        .comp-name { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+        .comp-detail { font-size: 13px; color: var(--gray-400); line-height: 1.5; }
+        .comp-time { font-family: var(--font-mono); font-size: 11px; color: var(--gray-600); flex-shrink: 0; margin-top: 2px; }
+
+        /* Social listening feed */
+        .social-feed { list-style: none; }
+        .social-item {
+            display: flex; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--border);
+            align-items: flex-start;
+        }
+        .social-item:last-child { border-bottom: none; }
+        .social-platform {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            padding: 3px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+        .social-reddit { background: rgba(255,69,0,0.15); color: #FF4500; }
+        .social-google { background: rgba(66,133,244,0.15); color: #4285F4; }
+        .social-twitter { background: rgba(29,161,242,0.15); color: #1DA1F2; }
+        .social-forum { background: rgba(139,92,246,0.15); color: #8B5CF6; }
+        .social-info { flex: 1; }
+        .social-quote { font-size: 13px; color: var(--gray-300); line-height: 1.5; font-style: italic; margin-bottom: 4px; }
+        .social-meta { font-size: 12px; color: var(--gray-500); }
+        .social-sentiment {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+        }
+        .sentiment-positive { background: rgba(16,185,129,0.15); color: #10B981; }
+        .sentiment-negative { background: rgba(239,68,68,0.15); color: #EF4444; }
+        .sentiment-neutral { background: rgba(107,114,128,0.15); color: #9CA3AF; }
+        .sentiment-opportunity { background: rgba(245,158,11,0.15); color: #F59E0B; }
+
+        /* Weekly report preview */
+        .report-preview {
+            background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: var(--radius-md); padding: 28px; max-width: 560px; margin: 0 auto;
+        }
+        .report-header-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .report-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); }
+        .report-date { font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); }
+        .report-section { margin-bottom: 20px; }
+        .report-section-title { font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: var(--emerald); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .report-kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px; }
+        .report-kpi { text-align: center; }
+        .report-kpi-val { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--white); }
+        .report-kpi-label { font-size: 11px; color: var(--gray-500); }
+        .report-action { display: flex; align-items: center; gap: 8px; padding: 8px 0; font-size: 13px; color: var(--gray-300); }
+        .report-action-num { font-family: var(--font-mono); font-size: 11px; color: var(--emerald); font-weight: 700; width: 20px; flex-shrink: 0; }
+        .report-pdf-badge { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); }
+
+        /* Auto-cycle indicator */
+        .demo-auto {
+            display: flex; align-items: center; gap: 6px; font-family: var(--font-mono);
+            font-size: 11px; color: var(--gray-600); margin-top: 16px; justify-content: center;
+        }
+        .demo-auto-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); animation: pulse-glow 2s infinite; }
+
+        /* ─── REVEAL ANIMATION ─── */
+        .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .value-grid { grid-template-columns: 1fr; }
+            .how-steps { grid-template-columns: 1fr; }
+            .how-step { border-right: none; border-bottom: 1px solid var(--border); }
+            .how-step:last-child { border-bottom: none; }
+            .how-step::before { display: none; }
+            .signup-layout { grid-template-columns: 1fr; gap: 32px; }
+            .preview-metrics { grid-template-columns: repeat(2, 1fr); }
+            .preview-health { flex-direction: column; text-align: center; }
+            .health-bar-label { width: 80px; }
+            .deep-grid { grid-template-columns: 1fr; }
+            .deep-card-full { grid-column: 1; }
+            .keep-box { flex-direction: column; text-align: center; }
+            .keep-list { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .form-row-half { grid-template-columns: 1fr; }
+            .form-card { padding: 24px 16px; }
+            .preview-box { padding: 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ambient"></div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="/" class="nav-logo">Badir <span class="ar">بادر</span></a>
+        <div class="nav-right">
+            <a href="/services" class="nav-btn nav-btn-ghost">Services</a>
+            <a href="#signup" class="nav-btn nav-btn-primary">Start Free Trial</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-mesh"></div>
+        <div class="container">
+            <span class="badge badge-emerald badge-dot">FREE FOR 21 DAYS</span>
+            <h1>Your website is leaking<br><span class="gradient">money. We'll show you where.</span></h1>
+            <p class="hero-sub">
+                For 21 days, we monitor your website and deliver a <strong>live intelligence dashboard</strong>
+                with traffic insights, conversion opportunities, competitor moves, and AI search visibility.
+                No cost. No commitment. Just clarity.
+            </p>
+            <div class="hero-ctas">
+                <a href="#signup" class="btn btn-primary btn-large">Start Free Trial <span aria-hidden="true">&rarr;</span></a>
+                <a href="#how" class="btn btn-outline">How it works</a>
+            </div>
+            <div class="stats-bar reveal">
+                <div class="stat">
+                    <div class="stat-val">21</div>
+                    <div class="stat-label">Days Free</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-val">14</div>
+                    <div class="stat-label">Intelligence Layers</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-val"><span class="accent">$</span>0</div>
+                    <div class="stat-label">To Start</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-val">0</div>
+                    <div class="stat-label">Commitment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCORECARD BRIDGE (visible only when arriving from scorecard) -->
+    <section style="padding: 40px 0 0;" id="score-bridge-section">
+        <div class="container">
+            <div class="score-bridge" id="score-bridge"></div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section class="what-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-gold">WHAT YOU GET</span>
+                <h2>14 layers of marketing intelligence,<br>running on your actual website</h2>
+                <p>Not a demo. Not a generic report. Real data from your site, analyzed daily, with specific actions you can take immediately.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4CA;</div>
+                    <h3>Conversion Intelligence</h3>
+                    <p>See exactly where visitors drop off, which pages convert, and what's killing your sales. Daily health score tracks your site's conversion fitness over time.</p>
+                    <span class="value-outcome">Know exactly where you're losing revenue</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F9E0;</div>
+                    <h3>Prioritized Action Plan</h3>
+                    <p>Every day you get specific, ranked recommendations &mdash; what to fix first, why it matters, and the expected impact. No guesswork, just a clear to-do list that moves the needle.</p>
+                    <span class="value-outcome">Stop guessing, start fixing what matters</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F916;</div>
+                    <h3>AI Search Visibility</h3>
+                    <p>ChatGPT, Perplexity, Gemini, and Claude are sending traffic to websites right now. We track how much AI-driven traffic you're getting &mdash; and how to get more.</p>
+                    <span class="value-outcome">Capture the traffic your competitors miss</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F50D;</div>
+                    <h3>Competitor Monitoring</h3>
+                    <p>Know when competitors change their pricing, launch campaigns, or shift positioning. Get alerts on market moves so you can respond before they gain ground.</p>
+                    <span class="value-outcome">Never be blindsided by a competitor again</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4E2;</div>
+                    <h3>Social &amp; Brand Listening</h3>
+                    <p>See what people are saying about your brand, your competitors, and your industry across social media, forums, and review sites. Catch complaints before they spread, spot opportunities before competitors do.</p>
+                    <span class="value-outcome">Hear what your market is really thinking</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4E9;</div>
+                    <h3>Weekly Intelligence Report</h3>
+                    <p>Every Monday, a PDF lands in your inbox with the week's performance summary, trend analysis, and your top 5 actions for the week ahead. Read it with your morning coffee.</p>
+                    <span class="value-outcome">Your CMO briefing, every Monday</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F50E;</div>
+                    <h3>SEO Health Audit</h3>
+                    <p>200+ point technical SEO audit covering broken links, missing meta tags, page speed issues, crawl errors, and mobile usability. Prioritised by traffic impact so you fix what matters first.</p>
+                    <span class="value-outcome">Fix the invisible problems killing your rankings</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4DD;</div>
+                    <h3>Content Gap Analysis</h3>
+                    <p>We find the exact topics your competitors rank for that you don't. Each gap comes with search volume, difficulty score, and a content brief so you know exactly what to write.</p>
+                    <span class="value-outcome">Your content roadmap, based on real data</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4C8;</div>
+                    <h3>Trend Forecasting</h3>
+                    <p>Spot rising search trends, seasonal demand shifts, and emerging topics in your industry before they peak. Get ahead of the wave instead of chasing it.</p>
+                    <span class="value-outcome">Act on trends before your competitors see them</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x2B50;</div>
+                    <h3>Review &amp; Reputation Tracking</h3>
+                    <p>Monitor your Google Reviews, social mentions, and industry review sites in one place. Get alerted when negative reviews appear so you can respond fast and protect your reputation.</p>
+                    <span class="value-outcome">Protect your online reputation 24/7</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x26A1;</div>
+                    <h3>Page Speed &amp; Core Web Vitals</h3>
+                    <p>Continuous monitoring of your site's load time, interactivity, and visual stability. Get alerted when performance drops and specific fixes to bring it back &mdash; because speed directly affects conversions and rankings.</p>
+                    <span class="value-outcome">A faster site means more sales, period</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F3AF;</div>
+                    <h3>Audience Intelligence</h3>
+                    <p>Understand who your visitors actually are &mdash; where they come from, what they're looking for, and what language they use. Use real audience signals to shape your messaging, not guesswork.</p>
+                    <span class="value-outcome">Speak your customer's language, literally</span>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F6E1;&#xFE0F;</div>
+                    <h3>Brand Positioning Report</h3>
+                    <p>See how your brand stacks up against competitors across messaging, search presence, social authority, and review sentiment. Know exactly where you lead and where you need to catch up.</p>
+                    <span class="value-outcome">Know where you stand in your market</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT THIS MEANS FOR YOUR BUSINESS -->
+    <section class="deep-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-gold">WHAT THIS MEANS</span>
+                <h2>What each intelligence layer<br>actually does for your bottom line</h2>
+                <p>These aren't vanity metrics. Every insight ties directly to revenue, growth, or protecting what you've already built.</p>
+            </div>
+            <div class="deep-grid">
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F4CA;</div>
+                        <h3>Conversion Intelligence</h3>
+                    </div>
+                    <p>Most businesses lose 60-80% of their website visitors before they ever take action. We find the exact drop-off points &mdash; the pages, the sections, the moments where people leave &mdash; and tell you why.</p>
+                    <ul class="deep-examples">
+                        <li>"Your pricing page has a 73% exit rate &mdash; visitors are comparing but not converting. Add a comparison table and FAQ section below pricing."</li>
+                        <li>"Mobile visitors bounce 2x more than desktop &mdash; your signup form breaks on screens under 400px wide."</li>
+                        <li>"Your highest-traffic blog post sends 0 visitors to your product page &mdash; add a CTA banner after paragraph 3."</li>
+                    </ul>
+                </div>
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F9E0;</div>
+                        <h3>Prioritized Action Plan</h3>
+                    </div>
+                    <p>You don't need more data &mdash; you need to know what to do <em>next</em>. Every day, we rank your opportunities by impact so you always work on the thing that moves revenue most.</p>
+                    <ul class="deep-examples">
+                        <li><strong>P0 (do this today):</strong> "Your checkout page loads in 6.1s &mdash; you're losing ~$2,400/month in abandoned carts. Compress 3 images to fix it."</li>
+                        <li><strong>P1 (this week):</strong> "Add social proof to your landing page &mdash; pages with testimonials convert 34% better in your industry."</li>
+                        <li><strong>P2 (this month):</strong> "Create a case study page &mdash; your competitors have 4, you have 0. This is costing you trust with enterprise buyers."</li>
+                    </ul>
+                </div>
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-gold">&#x1F916;</div>
+                        <h3>AI Search Visibility</h3>
+                    </div>
+                    <p>AI chatbots are becoming the new search engines. When someone asks ChatGPT "best [your product category] in NZ" &mdash; does your business show up? Most businesses have no idea this traffic exists. We track it.</p>
+                    <ul class="deep-examples">
+                        <li>"ChatGPT mentioned your competitor 12 times this week but mentioned you 0 times. Here's how to get cited."</li>
+                        <li>"Perplexity is sending 47 sessions/week to your site &mdash; 3x more than last month. Here's which pages they're citing."</li>
+                        <li>"Your FAQ page is perfectly structured for AI citation &mdash; expand it with 10 more questions to 3x your AI referral traffic."</li>
+                    </ul>
+                </div>
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-gold">&#x1F50D;</div>
+                        <h3>Competitor Monitoring</h3>
+                    </div>
+                    <p>Your competitors are making moves every week &mdash; changing prices, launching campaigns, hiring, pivoting messaging. Without monitoring, you find out months later. We catch it in real time.</p>
+                    <ul class="deep-examples">
+                        <li>"Competitor X just dropped their pricing by 20% &mdash; consider a value-add bundle rather than matching their price."</li>
+                        <li>"Competitor Y launched a new feature page targeting your exact keyword. They're outranking you &mdash; here's how to reclaim that position."</li>
+                        <li>"Three competitors are now advertising on 'best [your category]' &mdash; this keyword is getting expensive. Consider pivoting to longer-tail terms."</li>
+                    </ul>
+                </div>
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F4E2;</div>
+                        <h3>Social &amp; Brand Listening</h3>
+                    </div>
+                    <p>People are talking about your industry right now &mdash; on Reddit, Twitter, Facebook groups, review sites, and forums. They're sharing frustrations, asking for recommendations, and comparing options. We listen so you don't have to.</p>
+                    <ul class="deep-examples">
+                        <li>"12 people asked for '[your product category] recommendations' on Reddit this week. Here are the threads &mdash; and what people said about you vs competitors."</li>
+                        <li>"Negative sentiment spike detected on Google Reviews &mdash; 3 new 2-star reviews mention 'slow delivery'. Respond within 24 hours to contain damage."</li>
+                        <li>"Industry trend alert: conversations about '[emerging topic]' are up 340% this month. Create content around this before competitors do."</li>
+                    </ul>
+                </div>
+                <div class="deep-card reveal">
+                    <div class="deep-card-header">
+                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F4E9;</div>
+                        <h3>Weekly Intelligence Report</h3>
+                    </div>
+                    <p>Every Monday, a concise PDF hits your inbox. Not a wall of charts &mdash; a briefing. What happened this week, what changed, and exactly what to do about it. Think of it as your personal CMO, distilled into a 5-minute read.</p>
+                    <ul class="deep-examples">
+                        <li>Performance summary: traffic up/down, conversions, bounce rate, session time &mdash; with context on <em>why</em></li>
+                        <li>Top 5 actions for the coming week, ranked by expected revenue impact</li>
+                        <li>Competitor moves, market trends, and social signals you should know about</li>
+                        <li>AI search visibility changes &mdash; which chatbots cited you, which didn't, and why</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUR FIRST 21 DAYS -->
+    <section class="timeline-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">YOUR FIRST 21 DAYS</span>
+                <h2>What happens after you sign up</h2>
+                <p>Here's exactly what to expect, day by day. No surprises.</p>
+            </div>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAY 1</div>
+                    <div class="timeline-title">We set up your intelligence system</div>
+                    <div class="timeline-desc">Within 24 hours of signing up, your personal dashboard is live. You add our lightweight tracking snippet (5 minutes, we help if needed), and data starts flowing immediately. No cookies, no consent banners.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAYS 2-3</div>
+                    <div class="timeline-title">First insights start appearing</div>
+                    <div class="timeline-desc">Your Conversion Health Score calculates. You see where visitors are landing, where they're leaving, and which pages are underperforming. AI search visibility baseline is established. First recommendations appear.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAY 7</div>
+                    <div class="timeline-title">Your first weekly report arrives</div>
+                    <div class="timeline-desc">Monday morning, a PDF lands in your inbox. Week 1 summary: traffic patterns, conversion gaps identified, competitor landscape mapped, AI search visibility scored, and your first set of prioritized actions. Read it with your coffee.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAYS 7-14</div>
+                    <div class="timeline-title">Patterns emerge, actions compound</div>
+                    <div class="timeline-desc">With a full week of data, trends become clear. You start seeing which recommendations move the needle. Competitor alerts trigger when your market shifts. Social listening surfaces conversations you didn't know existed.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAY 14</div>
+                    <div class="timeline-title">Second weekly report &mdash; with before/after</div>
+                    <div class="timeline-desc">Now you can see impact. If you acted on Week 1 recommendations, you'll see the change in your metrics. Conversion Health Score adjusts. New opportunities surface based on 2 weeks of intelligence.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-day">DAY 21</div>
+                    <div class="timeline-title">Your decision, with full clarity</div>
+                    <div class="timeline-desc">You now have 3 weeks of data, 3 weekly reports, dozens of actioned recommendations, and a clear picture of your marketing health. Continue with a monthly plan to keep the intelligence flowing &mdash; or walk away with everything you've learned. No pressure.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IS THIS FOR -->
+    <section style="padding: 0 0 80px;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">WHO IS THIS FOR</span>
+                <h2>This works if you have a website and want more from it</h2>
+            </div>
+            <div class="qualifier-grid reveal">
+                <div class="qualifier-card">
+                    <div class="qualifier-icon">&#x1F6D2;</div>
+                    <div class="qualifier-type">Ecommerce</div>
+                    <div class="qualifier-desc">Shopify, WooCommerce, or custom stores. Find where visitors abandon, which products underperform, and how AI search can drive free traffic.</div>
+                    <span class="qualifier-example">Product page CRO + AI citations</span>
+                </div>
+                <div class="qualifier-card">
+                    <div class="qualifier-icon">&#x1F4BB;</div>
+                    <div class="qualifier-type">SaaS</div>
+                    <div class="qualifier-desc">Trial-to-paid conversion gaps, pricing page optimization, feature page performance, and competitive positioning intelligence.</div>
+                    <span class="qualifier-example">Pricing page exit rate analysis</span>
+                </div>
+                <div class="qualifier-card">
+                    <div class="qualifier-icon">&#x1F4CD;</div>
+                    <div class="qualifier-type">Local Business</div>
+                    <div class="qualifier-desc">Restaurants, clinics, trades. Local search visibility, Google Business Profile insights, and review sentiment tracking.</div>
+                    <span class="qualifier-example">Local SEO + review monitoring</span>
+                </div>
+                <div class="qualifier-card">
+                    <div class="qualifier-icon">&#x1F3E2;</div>
+                    <div class="qualifier-type">Services &amp; Agencies</div>
+                    <div class="qualifier-desc">Consulting, marketing, professional services. Lead generation performance, case study optimization, and competitor intelligence.</div>
+                    <span class="qualifier-example">Lead gen funnel optimization</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="how">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">HOW IT WORKS</span>
+                <h2>Three steps. Zero friction.</h2>
+            </div>
+            <div class="how-steps reveal">
+                <div class="how-step">
+                    <div class="step-num">01 // SIGN UP</div>
+                    <div class="step-title">Tell us about your site</div>
+                    <div class="step-desc">Fill out the form below &mdash; your name, email, website URL, and business type. Takes 2 minutes. We handle everything else.</div>
+                    <div class="step-time">2 minutes</div>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">02 // CONNECT</div>
+                    <div class="step-title">Add a simple tracking snippet</div>
+                    <div class="step-desc">We email you a lightweight, privacy-first tracking code to add to your site. No cookies, no consent banners. We can help you install it if needed.</div>
+                    <div class="step-time">5 minutes</div>
+                </div>
+                <div class="how-step">
+                    <div class="step-num">03 // INTELLIGENCE</div>
+                    <div class="step-title">Your dashboard goes live</div>
+                    <div class="step-desc">Within 24 hours, your personal dashboard lights up with live traffic data, conversion health scores, competitor alerts, and prioritized recommendations. Updated daily for 21 days.</div>
+                    <div class="step-time">24 hours</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD PREVIEW — INTERACTIVE DEMO -->
+    <section class="preview-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">YOUR DASHBOARD — LIVE DEMO</span>
+                <h2>This is what you'll see every day</h2>
+                <p>Click the tabs below to explore what your dashboard looks like.</p>
+            </div>
+            <div class="preview-box reveal" id="demo-dashboard">
+                <div class="preview-header">
+                    <span class="preview-dot preview-dot-red"></span>
+                    <span class="preview-dot preview-dot-yellow"></span>
+                    <span class="preview-dot preview-dot-green"></span>
+                    <span class="preview-url">dashboard.badir.studio/client/your-site</span>
+                    <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald); padding: 3px 10px; border-radius: 4px; background: var(--emerald-dim);">14 days remaining</span>
+                </div>
+
+                <!-- Tabs -->
+                <div class="demo-tabs">
+                    <button class="demo-tab active" data-tab="overview">Overview</button>
+                    <button class="demo-tab" data-tab="ai-search">AI Search</button>
+                    <button class="demo-tab" data-tab="competitors">Competitors</button>
+                    <button class="demo-tab" data-tab="social">Social Listening</button>
+                    <button class="demo-tab" data-tab="report">Weekly Report</button>
+                </div>
+
+                <!-- PANEL 1: OVERVIEW -->
+                <div class="demo-panel active" data-panel="overview">
+                    <div class="preview-health">
+                        <div class="health-gauge">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="track" cx="50" cy="50" r="40" />
+                                <circle class="fill" cx="50" cy="50" r="40" />
+                            </svg>
+                            <span class="health-score">75</span>
+                        </div>
+                        <div class="health-details">
+                            <div class="health-label">Conversion Health Score</div>
+                            <div class="health-status">GOOD &mdash; Room for improvement</div>
+                            <div class="health-bars">
+                                <div class="health-bar-row">
+                                    <span class="health-bar-label">Bounce Rate</span>
+                                    <div class="health-bar"><div class="health-bar-fill fill-ok" style="width:65%"></div></div>
+                                </div>
+                                <div class="health-bar-row">
+                                    <span class="health-bar-label">Session Time</span>
+                                    <div class="health-bar"><div class="health-bar-fill fill-good" style="width:82%"></div></div>
+                                </div>
+                                <div class="health-bar-row">
+                                    <span class="health-bar-label">Conversions</span>
+                                    <div class="health-bar"><div class="health-bar-fill fill-bad" style="width:35%"></div></div>
+                                </div>
+                                <div class="health-bar-row">
+                                    <span class="health-bar-label">AI Visibility</span>
+                                    <div class="health-bar"><div class="health-bar-fill fill-good" style="width:78%"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preview-metrics">
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">2,847</div>
+                            <div class="preview-metric-label">Sessions</div>
+                            <div class="preview-metric-trend trend-up">+12.4%</div>
+                        </div>
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">42.1%</div>
+                            <div class="preview-metric-label">Bounce Rate</div>
+                            <div class="preview-metric-trend trend-down">+3.2%</div>
+                        </div>
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">2m 34s</div>
+                            <div class="preview-metric-label">Avg Duration</div>
+                            <div class="preview-metric-trend trend-up">+18s</div>
+                        </div>
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">14</div>
+                            <div class="preview-metric-label">Conversions</div>
+                            <div class="preview-metric-trend trend-up">+3</div>
+                        </div>
+                    </div>
+                    <div class="preview-recs">
+                        <div class="preview-rec">
+                            <span class="rec-priority rec-p0">P0</span>
+                            <span class="rec-text">Add a clear CTA above the fold on your homepage &mdash; 68% of visitors leave without scrolling</span>
+                            <span class="rec-impact">HIGH</span>
+                        </div>
+                        <div class="preview-rec">
+                            <span class="rec-priority rec-p1">P1</span>
+                            <span class="rec-text">Your pricing page loads in 4.2s &mdash; compress images and defer JavaScript to cut this in half</span>
+                            <span class="rec-impact">MED</span>
+                        </div>
+                        <div class="preview-rec">
+                            <span class="rec-priority rec-p2">P2</span>
+                            <span class="rec-text">ChatGPT is sending 89 sessions/week to your site &mdash; optimize your FAQ schema for AI citation</span>
+                            <span class="rec-impact">MED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL 2: AI SEARCH -->
+                <div class="demo-panel" data-panel="ai-search">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">AI Search Referral Traffic</div>
+                            <div style="font-size: 13px; color: var(--gray-500);">Sessions sent to your site by AI chatbots this week</div>
+                        </div>
+                        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--white);">176 <span style="font-size: 13px; color: var(--emerald); font-weight: 500;">+34%</span></div>
+                    </div>
+                    <div class="ai-bar-row">
+                        <div class="ai-bar-dot" style="background: #10B981;"></div>
+                        <span class="ai-bar-name">ChatGPT</span>
+                        <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 51%; background: #10B981;"></div></div>
+                        <span class="ai-bar-count">89</span>
+                        <span class="ai-bar-pct">50.6%</span>
+                    </div>
+                    <div class="ai-bar-row">
+                        <div class="ai-bar-dot" style="background: #8B5CF6;"></div>
+                        <span class="ai-bar-name">Perplexity</span>
+                        <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 27%; background: #8B5CF6;"></div></div>
+                        <span class="ai-bar-count">47</span>
+                        <span class="ai-bar-pct">26.7%</span>
+                    </div>
+                    <div class="ai-bar-row">
+                        <div class="ai-bar-dot" style="background: #3B82F6;"></div>
+                        <span class="ai-bar-name">Gemini</span>
+                        <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 13%; background: #3B82F6;"></div></div>
+                        <span class="ai-bar-count">23</span>
+                        <span class="ai-bar-pct">13.1%</span>
+                    </div>
+                    <div class="ai-bar-row">
+                        <div class="ai-bar-dot" style="background: #F59E0B;"></div>
+                        <span class="ai-bar-name">Claude</span>
+                        <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 7%; background: #F59E0B;"></div></div>
+                        <span class="ai-bar-count">12</span>
+                        <span class="ai-bar-pct">6.8%</span>
+                    </div>
+                    <div class="ai-bar-row">
+                        <div class="ai-bar-dot" style="background: #06B6D4;"></div>
+                        <span class="ai-bar-name">Copilot</span>
+                        <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 3%; background: #06B6D4;"></div></div>
+                        <span class="ai-bar-count">5</span>
+                        <span class="ai-bar-pct">2.8%</span>
+                    </div>
+                    <div style="margin-top: 20px; padding: 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px;">&#x1F4A1; Recommendation</div>
+                        <div style="font-size: 13px; color: var(--gray-400); line-height: 1.6;">Your FAQ page is your #1 AI-cited page. Expand it from 8 to 20 questions with structured Q&amp;A schema to increase AI referrals by an estimated 2-3x. ChatGPT cited your competitor 12 times this week &mdash; 0 citations for you on "best NZ [your category]" queries.</div>
+                    </div>
+                </div>
+
+                <!-- PANEL 3: COMPETITORS -->
+                <div class="demo-panel" data-panel="competitors">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">Competitor Activity Feed</div>
+                            <div style="font-size: 13px; color: var(--gray-500);">Real-time alerts on what your competitors are doing</div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald); padding: 3px 10px; border-radius: 4px; background: var(--emerald-dim);">7 alerts this week</span>
+                    </div>
+                    <ul class="comp-feed">
+                        <li class="comp-item">
+                            <span class="comp-type comp-type-price">PRICING</span>
+                            <div class="comp-info">
+                                <div class="comp-name">Competitor A</div>
+                                <div class="comp-detail">Dropped their Pro plan from $49/mo to $39/mo. Consider a value-add bundle rather than matching &mdash; your feature set is stronger.</div>
+                            </div>
+                            <span class="comp-time">2h ago</span>
+                        </li>
+                        <li class="comp-item">
+                            <span class="comp-type comp-type-content">CONTENT</span>
+                            <div class="comp-info">
+                                <div class="comp-name">Competitor B</div>
+                                <div class="comp-detail">Published new comparison page targeting "vs [your brand]" &mdash; outranking you on page 1. Create a response page.</div>
+                            </div>
+                            <span class="comp-time">8h ago</span>
+                        </li>
+                        <li class="comp-item">
+                            <span class="comp-type comp-type-campaign">AD CAMPAIGN</span>
+                            <div class="comp-info">
+                                <div class="comp-name">Competitor C</div>
+                                <div class="comp-detail">Running new Google Ads targeting "best [your category] NZ" &mdash; bidding on your brand name. Cost ~$2.40/click in your market.</div>
+                            </div>
+                            <span class="comp-time">1d ago</span>
+                        </li>
+                        <li class="comp-item">
+                            <span class="comp-type comp-type-seo">SEO</span>
+                            <div class="comp-info">
+                                <div class="comp-name">Competitor A</div>
+                                <div class="comp-detail">Now ranking #1 for "affordable [your category] auckland" &mdash; they added a new landing page with local schema markup.</div>
+                            </div>
+                            <span class="comp-time">2d ago</span>
+                        </li>
+                        <li class="comp-item">
+                            <span class="comp-type comp-type-hiring">HIRING</span>
+                            <div class="comp-info">
+                                <div class="comp-name">Competitor B</div>
+                                <div class="comp-detail">Hiring 3 new sales reps &mdash; likely expanding into your territory. Signal: aggressive growth phase.</div>
+                            </div>
+                            <span class="comp-time">3d ago</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- PANEL 4: SOCIAL LISTENING -->
+                <div class="demo-panel" data-panel="social">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <div>
+                            <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">Social &amp; Brand Mentions</div>
+                            <div style="font-size: 13px; color: var(--gray-500);">What people are saying about your brand and industry online</div>
+                        </div>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--gold); padding: 3px 10px; border-radius: 4px; background: var(--gold-dim);">18 mentions this week</span>
+                    </div>
+                    <ul class="social-feed">
+                        <li class="social-item">
+                            <span class="social-platform social-reddit">REDDIT</span>
+                            <div class="social-info">
+                                <div class="social-quote">"Can anyone recommend a good [your category] in NZ? I've tried Competitor A but their customer service is terrible..."</div>
+                                <div class="social-meta">r/newzealand &bull; 47 upvotes &bull; 23 comments</div>
+                            </div>
+                            <span class="social-sentiment sentiment-opportunity">OPPORTUNITY</span>
+                        </li>
+                        <li class="social-item">
+                            <span class="social-platform social-google">GOOGLE</span>
+                            <div class="social-info">
+                                <div class="social-quote">"Fast delivery and great product, but the website is confusing to navigate. Took me 10 minutes to find checkout."</div>
+                                <div class="social-meta">Google Reviews &bull; 4 stars</div>
+                            </div>
+                            <span class="social-sentiment sentiment-negative">UX ISSUE</span>
+                        </li>
+                        <li class="social-item">
+                            <span class="social-platform social-twitter">X / TWITTER</span>
+                            <div class="social-info">
+                                <div class="social-quote">"Just discovered @yourbrand &mdash; way better pricing than the alternatives. Why isn't anyone talking about them?"</div>
+                                <div class="social-meta">@nz_shopper &bull; 12 likes &bull; 3 retweets</div>
+                            </div>
+                            <span class="social-sentiment sentiment-positive">POSITIVE</span>
+                        </li>
+                        <li class="social-item">
+                            <span class="social-platform social-forum">FORUM</span>
+                            <div class="social-info">
+                                <div class="social-quote">"Has anyone noticed [your category] prices going up across the board? Looking for budget options..."</div>
+                                <div class="social-meta">NZ Consumer Forum &bull; 34 replies &bull; Trending topic</div>
+                            </div>
+                            <span class="social-sentiment sentiment-opportunity">TREND</span>
+                        </li>
+                        <li class="social-item">
+                            <span class="social-platform social-google">GOOGLE</span>
+                            <div class="social-info">
+                                <div class="social-quote">"Absolutely love this product. Already told 3 friends about it. The quality is unmatched at this price point."</div>
+                                <div class="social-meta">Google Reviews &bull; 5 stars</div>
+                            </div>
+                            <span class="social-sentiment sentiment-positive">POSITIVE</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- PANEL 5: WEEKLY REPORT -->
+                <div class="demo-panel" data-panel="report">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">Weekly Intelligence Report</div>
+                        <div style="font-size: 13px; color: var(--gray-500);">Delivered to your inbox every Monday morning</div>
+                    </div>
+                    <div class="report-preview">
+                        <div class="report-header-bar">
+                            <div>
+                                <div class="report-title">Weekly Intelligence Report</div>
+                                <div style="font-size: 12px; color: var(--gray-500);">Your Business Name</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="report-date">Week of Apr 14-20, 2026</div>
+                                <span class="report-pdf-badge">&#x1F4C4; PDF</span>
+                            </div>
+                        </div>
+                        <div class="report-section">
+                            <div class="report-section-title">Performance Snapshot</div>
+                            <div class="report-kpi-row">
+                                <div class="report-kpi">
+                                    <div class="report-kpi-val">2,847</div>
+                                    <div class="report-kpi-label">Sessions <span style="color: var(--emerald);">+12%</span></div>
+                                </div>
+                                <div class="report-kpi">
+                                    <div class="report-kpi-val">75/100</div>
+                                    <div class="report-kpi-label">Health Score <span style="color: var(--emerald);">+3</span></div>
+                                </div>
+                                <div class="report-kpi">
+                                    <div class="report-kpi-val">176</div>
+                                    <div class="report-kpi-label">AI Sessions <span style="color: var(--emerald);">+34%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-section">
+                            <div class="report-section-title">Top 5 Actions This Week</div>
+                            <div class="report-action"><span class="report-action-num">1.</span> Fix mobile signup form &mdash; broken on screens under 400px (est. +$800/mo)</div>
+                            <div class="report-action"><span class="report-action-num">2.</span> Compress 3 images on pricing page &mdash; cut load time from 4.2s to 2.1s</div>
+                            <div class="report-action"><span class="report-action-num">3.</span> Add FAQ schema for AI citation &mdash; competitors are getting 3x your AI traffic</div>
+                            <div class="report-action"><span class="report-action-num">4.</span> Respond to 3 negative Google reviews (delivery complaints)</div>
+                            <div class="report-action"><span class="report-action-num">5.</span> Create a "vs Competitor A" comparison page &mdash; they're bidding on your brand name</div>
+                        </div>
+                        <div class="report-section" style="margin-bottom: 0;">
+                            <div class="report-section-title">Key Signals</div>
+                            <div style="font-size: 13px; color: var(--gray-400); line-height: 1.6;">
+                                Competitor A dropped prices 20% &bull; Reddit thread requesting recommendations in your category (47 upvotes) &bull; AI referral traffic up 34% after FAQ expansion &bull; Negative sentiment spike on delivery times
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-auto">
+                    <span class="demo-auto-dot"></span>
+                    Auto-cycling &mdash; click any tab to explore
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE STACK -->
+    <section class="stack-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-gold">TOTAL VALUE</span>
+                <h2>Everything included in your<br>21-day free trial</h2>
+            </div>
+            <div class="stack-box reveal">
+                <ul class="stack-items">
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F4CA;</span> Conversion intelligence dashboard (21 days)</span>
+                        <span class="stack-price">$1,200</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F9E0;</span> Daily prioritized action plans</span>
+                        <span class="stack-price">$800</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F916;</span> AI search visibility tracking &amp; optimization</span>
+                        <span class="stack-price">$600</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F50D;</span> Competitor monitoring &amp; alerts</span>
+                        <span class="stack-price">$500</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F4E2;</span> Social &amp; brand listening</span>
+                        <span class="stack-price">$400</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F4E9;</span> 3x weekly intelligence reports (PDF)</span>
+                        <span class="stack-price">$450</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F3AF;</span> Brand positioning audit</span>
+                        <span class="stack-price">$350</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F4C8;</span> Trend forecasting &amp; audience profiling</span>
+                        <span class="stack-price">$400</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F50E;</span> 200+ point SEO health audit</span>
+                        <span class="stack-price">$500</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x1F4DD;</span> Content gap analysis with briefs</span>
+                        <span class="stack-price">$350</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x2B50;</span> Review &amp; reputation monitoring</span>
+                        <span class="stack-price">$300</span>
+                    </li>
+                    <li>
+                        <span class="stack-label"><span class="stack-icon">&#x26A1;</span> Page speed &amp; Core Web Vitals monitoring</span>
+                        <span class="stack-price">$250</span>
+                    </li>
+                </ul>
+                <div class="stack-total">
+                    <span class="stack-total-label">Total value</span>
+                    <span class="stack-total-price">$6,100</span>
+                </div>
+                <div class="stack-yours">
+                    <div class="stack-yours-label">YOUR PRICE FOR 21 DAYS</div>
+                    <div class="stack-yours-price">$0</div>
+                    <div class="stack-yours-sub">No credit card. No commitment. Just results.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- GUARANTEE -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box reveal">
+                <div class="guarantee-shield">&#x1F6E1;&#xFE0F;</div>
+                <div class="guarantee-title">The "5 Revenue Opportunities" Guarantee</div>
+                <div class="guarantee-text">
+                    If we don't identify at least 5 specific, actionable revenue opportunities for your business during the 21-day trial, we'll extend your trial until we do &mdash; at no cost. You get value or you get more time. Either way, you win.
+                </div>
+                <div class="guarantee-fine">Zero risk. Zero commitment. That's a promise.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER -->
+    <section class="founder-section">
+        <div class="container">
+            <div class="founder-box reveal">
+                <div class="founder-avatar">MK</div>
+                <div class="founder-content">
+                    <h3>Mustafa Kivanc Demirsoy</h3>
+                    <div class="founder-title">Founder, Badir Studio</div>
+                    <div class="founder-bio">I built Badir Studio to serve builders who are ready to move. You focus on building &mdash; we make sure your marketing actually works. That's it.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-gold">QUESTIONS</span>
+                <h2>Before you ask</h2>
+            </div>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <div class="faq-q">Is it actually free?</div>
+                    <div class="faq-a">Yes. 21 days, full dashboard access, daily analysis, weekly reports. No credit card, no commitment. After 21 days, you can continue with a monthly plan or simply walk away with all the insights you gained.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What do I need to install?</div>
+                    <div class="faq-a">A lightweight tracking snippet added to your site &mdash; similar to Google Analytics but privacy-first. No cookies, fully GDPR-compliant, won't slow down your site. Takes 5 minutes, and we can walk you through it.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What happens after 21 days?</div>
+                    <div class="faq-a">You choose. If the intelligence is valuable and you want ongoing monitoring, reports, and recommendations, we discuss a monthly plan (starting from $500/mo). If not, the dashboard simply stops updating. No pressure.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Is my data safe?</div>
+                    <div class="faq-a">Absolutely. We use privacy-first tracking &mdash; no cookies, no personally identifiable information collected. Your data is stored securely and never shared with third parties. You can request full deletion at any time.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What kind of businesses is this for?</div>
+                    <div class="faq-a">Any business with a website. Ecommerce stores, SaaS products, service businesses, local businesses, agencies. If your site gets traffic, we can find the conversion gaps, track your AI search visibility, and tell you exactly what to improve.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">How is this different from Google Analytics?</div>
+                    <div class="faq-a">Google Analytics shows you numbers. We show you what to <em>do</em> about them. You get specific, prioritized recommendations every day &mdash; not just charts. Plus we track AI referral traffic (ChatGPT, Perplexity, Gemini) that GA4 misses entirely.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What kind of recommendations will I get?</div>
+                    <div class="faq-a">Things like: "68% of visitors leave your homepage without scrolling &mdash; move your CTA above the fold" or "Your pricing page loads in 4.2 seconds &mdash; compress these 3 images to cut load time in half." Specific, actionable, ranked by impact.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Do I need any technical knowledge?</div>
+                    <div class="faq-a">No. The dashboard is designed for business owners, not developers. Every recommendation is written in plain English with clear next steps. If something needs a developer, we'll tell you exactly what to ask them to do.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOU KEEP EVERYTHING -->
+    <section class="keep-section">
+        <div class="container">
+            <div class="keep-box reveal">
+                <div class="keep-icon">&#x1F4BE;</div>
+                <div class="keep-content">
+                    <h3>You keep everything. Forever.</h3>
+                    <p>Even if you don't continue after 21 days, every report, every insight, every recommendation is yours to keep. We don't delete your data or hold it hostage. It's your business intelligence &mdash; you own it.</p>
+                    <ul class="keep-list">
+                        <li>3 PDF reports</li>
+                        <li>21 days of data</li>
+                        <li>All recommendations</li>
+                        <li>Brand audit</li>
+                        <li>Content gap report</li>
+                        <li>Competitor analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNUP FORM -->
+    <section class="signup-section" id="signup">
+        <div class="container">
+            <div class="signup-layout">
+                <div class="signup-info reveal">
+                    <span class="badge badge-emerald badge-dot">GET STARTED</span>
+                    <h3>Ready to see what's really happening with your marketing?</h3>
+                    <p>Leave your details below. We'll reach out, walk you through how it works, and get your dashboard set up together. No sales pitch &mdash; just a quick setup so you can start seeing results.</p>
+                    <ul class="signup-perks">
+                        <li><strong>Quick setup call</strong> &mdash; we walk you through everything and install the tracking together</li>
+                        <li><strong>Dashboard live within 24 hours</strong> of our call</li>
+                        <li><strong>14 intelligence layers</strong> running on your actual site</li>
+                        <li><strong>Weekly reports</strong> with prioritised actions straight to your inbox</li>
+                        <li><strong>Zero cost, zero commitment</strong> &mdash; walk away anytime</li>
+                    </ul>
+                </div>
+                <div class="form-card reveal">
+                    <div class="form-card-title">Leave your details</div>
+                    <div class="form-card-sub">We'll get in touch to set up your trial together.</div>
+                    <form id="trial-form" onsubmit="return handleTrialSignup(event)">
+                        <div class="form-row-half">
+                            <div>
+                                <label class="form-label" for="trial-name">Your Name</label>
+                                <input class="form-input" type="text" id="trial-name" name="name" placeholder="Mustafa" required>
+                            </div>
+                            <div>
+                                <label class="form-label" for="trial-email">Email</label>
+                                <input class="form-input" type="email" id="trial-email" name="email" placeholder="you@company.com" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label" for="trial-website">Website URL</label>
+                            <input class="form-input" type="url" id="trial-website" name="website_url" placeholder="https://yoursite.com" required>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-label" for="trial-type">Business Type</label>
+                            <select class="form-select" id="trial-type" name="business_type" required>
+                                <option value="" disabled selected>Select your business type</option>
+                                <option value="ecommerce">Ecommerce / Online Store</option>
+                                <option value="saas">SaaS / Software</option>
+                                <option value="service">Service Business / Agency</option>
+                                <option value="local">Local Business</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="trial-btn">
+                            Get in Touch <span aria-hidden="true">&rarr;</span>
+                        </button>
+                        <p class="form-note">No credit card. No commitment. We'll contact you to get everything set up.</p>
+                        <div id="signup-msg"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STICKY CTA -->
+    <div class="sticky-cta" id="sticky-cta">
+        <span class="sticky-cta-text"><strong>21 days free.</strong> No credit card required.</span>
+        <a href="#signup" class="btn btn-primary">Start Free Trial &rarr;</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Badir <span class="ar">بادر</span></div>
+            <p>AI-powered product studio &bull; <a href="/">Home</a> &bull; <a href="/services">Services</a> &bull; <a href="/about">About</a></p>
+            <p style="margin-top:8px;">&copy; 2026 Badir Studio. Tauranga, New Zealand.</p>
+        </div>
+    </footer>
+
+    <!-- Analytics -->
+    <script src="https://queue.simpleanalyticscdn.com/latest.js" defer></script>
+
+    <script>
+    // ─── SCORECARD BRIDGE ───
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const score = parseInt(params.get('score'));
+        const max = parseInt(params.get('max')) || 120;
+        const grade = params.get('grade');
+        const email = params.get('email');
+        if (!score || !grade) return;
+
+        const dimNames = ['Website & CRO', 'SEO & Search', 'AI Search (GEO)', 'Competitors', 'Analytics & Data', 'Brand & Positioning'];
+        const dimScores = [];
+        for (let i = 0; i < 6; i++) {
+            const d = parseInt(params.get('d' + i));
+            if (!isNaN(d)) dimScores.push({ name: dimNames[i], score: d, max: 20 });
+        }
+
+        // Sort weakest first
+        dimScores.sort((a, b) => a.score - b.score);
+
+        const pct = Math.round((score / max) * 100);
+        const circumference = 2 * Math.PI * 24;
+        const offset = circumference - (pct / 100) * circumference;
+        const color = pct >= 80 ? '#10B981' : pct >= 60 ? '#F59E0B' : '#EF4444';
+
+        // Build dim tags
+        let dimTags = '';
+        dimScores.forEach(d => {
+            const dpct = (d.score / d.max) * 100;
+            const cls = dpct <= 40 ? 'dim-weak' : dpct <= 70 ? 'dim-ok' : 'dim-strong';
+            dimTags += '<span class="score-bridge-dim ' + cls + '">' + d.name + ' ' + d.score + '/' + d.max + '</span>';
+        });
+
+        // Weakest dims text
+        const weak = dimScores.slice(0, 3).map(d => d.name);
+        const weakText = weak.length ? 'Your biggest gaps: <strong>' + weak.join(', ') + '</strong>. That\u2019s exactly where we start.' : '';
+
+        const bridge = document.getElementById('score-bridge');
+        bridge.innerHTML =
+            '<div class="score-bridge-header">' +
+                '<div class="score-bridge-ring">' +
+                    '<svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="24" fill="none" stroke-width="5" stroke="rgba(255,255,255,0.06)"/>' +
+                    '<circle class="fill" cx="32" cy="32" r="24" fill="none" stroke-width="5" stroke="' + color + '" stroke-linecap="round" ' +
+                    'stroke-dasharray="' + circumference.toFixed(1) + '" stroke-dashoffset="' + offset.toFixed(1) + '" style="transform:rotate(-90deg);transform-origin:center;"/></svg>' +
+                    '<span class="score-bridge-num">' + score + '</span>' +
+                '</div>' +
+                '<div>' +
+                    '<div class="score-bridge-title">Your Marketing Health Score: ' + score + '/' + max + ' \u2014 ' + grade + '</div>' +
+                    '<div class="score-bridge-sub">' + weakText + '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="score-bridge-dims">' + dimTags + '</div>';
+        bridge.classList.add('visible');
+
+        // Pre-fill email in signup form if available
+        if (email) {
+            const emailInput = document.getElementById('trial-email');
+            if (emailInput) emailInput.value = email;
+        }
+
+        // Add score data to form submission
+        const form = document.getElementById('trial-form');
+        if (form) {
+            const hiddenScore = document.createElement('input');
+            hiddenScore.type = 'hidden';
+            hiddenScore.name = 'scorecard_score';
+            hiddenScore.value = score;
+            form.appendChild(hiddenScore);
+
+            const hiddenGrade = document.createElement('input');
+            hiddenGrade.type = 'hidden';
+            hiddenGrade.name = 'scorecard_grade';
+            hiddenGrade.value = grade;
+            form.appendChild(hiddenGrade);
+        }
+    })();
+
+    // ─── REVEAL ON SCROLL ───
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ─── DASHBOARD DEMO TABS ───
+    const demoTabs = document.querySelectorAll('.demo-tab');
+    const demoPanels = document.querySelectorAll('.demo-panel');
+    const tabOrder = ['overview', 'ai-search', 'competitors', 'social', 'report'];
+    let currentTabIdx = 0;
+    let autoCycleTimer = null;
+    let userInteracted = false;
+
+    function switchTab(tabName) {
+        demoTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+        demoPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === tabName));
+        currentTabIdx = tabOrder.indexOf(tabName);
+    }
+
+    demoTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            switchTab(tab.dataset.tab);
+            userInteracted = true;
+            clearInterval(autoCycleTimer);
+            // Restart auto-cycle after 15s of no interaction
+            setTimeout(() => {
+                if (userInteracted) { userInteracted = false; startAutoCycle(); }
+            }, 15000);
+        });
+    });
+
+    function startAutoCycle() {
+        autoCycleTimer = setInterval(() => {
+            currentTabIdx = (currentTabIdx + 1) % tabOrder.length;
+            switchTab(tabOrder[currentTabIdx]);
+        }, 4000);
+    }
+
+    // Start auto-cycling when dashboard enters viewport
+    const demoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { startAutoCycle(); demoObserver.unobserve(e.target); }
+        });
+    }, { threshold: 0.3 });
+    const demoDash = document.getElementById('demo-dashboard');
+    if (demoDash) demoObserver.observe(demoDash);
+
+    // ─── FAQ TOGGLE ───
+    document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+            q.closest('.faq-item').classList.toggle('open');
+        });
+    });
+
+    // ─── STICKY CTA ───
+    const stickyCta = document.getElementById('sticky-cta');
+    const signupSection = document.getElementById('signup');
+    if (stickyCta && signupSection) {
+        window.addEventListener('scroll', () => {
+            const heroBottom = 600;
+            const signupTop = signupSection.getBoundingClientRect().top;
+            if (window.scrollY > heroBottom && signupTop > window.innerHeight) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        }, { passive: true });
+    }
+
+    // ─── COUNTER ANIMATION ───
+    function animateCounter(el) {
+        const text = el.textContent.trim();
+        const match = text.match(/^([\$]?)([\d,.]+)([%xK+]*)/);
+        if (!match) return;
+        const prefix = match[1];
+        const numStr = match[2].replace(/,/g, '');
+        const suffix = match[3];
+        const target = parseFloat(numStr);
+        if (isNaN(target)) return;
+        const hasDecimal = numStr.includes('.');
+        const duration = 1800;
+        const start = performance.now();
+        function step(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = target * eased;
+            el.textContent = prefix + (hasDecimal ? current.toFixed(1) : Math.floor(current).toLocaleString()) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.querySelectorAll('.stat-val').forEach(animateCounter);
+                counterObserver.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
+
+    // ─── FORM SUBMIT ───
+    async function handleTrialSignup(e) {
+        e.preventDefault();
+        const btn = document.getElementById('trial-btn');
+        const msg = document.getElementById('signup-msg');
+        const form = document.getElementById('trial-form');
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        const data = {
+            name: form.name.value.trim(),
+            email: form.email.value.trim(),
+            website_url: form.website_url.value.trim(),
+            business_type: form.business_type.value,
+            source: 'offer-page',
+            scorecard_score: form.scorecard_score ? form.scorecard_score.value : null,
+            scorecard_grade: form.scorecard_grade ? form.scorecard_grade.value : null
+        };
+
+        try {
+            const res = await fetch('http://localhost:8878/webhook/trial/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+
+            if (res.ok) {
+                msg.textContent = 'Got it. We\'ll be in touch shortly to get you set up.';
+                msg.style.display = 'block';
+                msg.style.color = 'var(--emerald)';
+                form.reset();
+                btn.textContent = 'Request sent!';
+                if (window.hmbl) window.hmbl('event', 'trial_signup', data);
+            } else {
+                throw new Error(result.error || 'Something went wrong');
+            }
+        } catch (err) {
+            msg.textContent = err.message || 'Something went wrong. Email hello@badir.studio directly.';
+            msg.style.display = 'block';
+            msg.style.color = '#EF4444';
+            btn.disabled = false;
+            btn.innerHTML = 'Start Free Trial <span aria-hidden="true">&rarr;</span>';
+        }
+
+        return false;
+    }
+    </script>
+</body>
+</html>

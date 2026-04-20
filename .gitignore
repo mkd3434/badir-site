@@ -1,0 +1,11 @@
+.vercel
+node_modules/
+test-results/
+screenshots/
+exports/
+preview-*.png
+package-lock.json
+package.json
+playwright.config.ts
+og-image.html
+dashboard-preview.html

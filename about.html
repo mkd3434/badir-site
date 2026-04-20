@@ -4,16 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Founder — Badir</title>
-    <meta name="description" content="Why a pentester who runs 8 businesses started the Muslim builder community.">
+    <meta name="description" content="Meet Mustafa — hacker, builder, Muslim. One founder running multiple businesses with 24 AI agents, looking for like-minded people to build with.">
     <meta property="og:title" content="The Founder — Badir">
-    <meta property="og:description" content="Why a pentester who runs 8 businesses started the Muslim builder community.">
+    <meta property="og:description" content="Meet Mustafa — hacker, builder, Muslim. One founder running multiple businesses with 24 AI agents, looking for like-minded people to build with.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://badir.studio/about.html">
+    <meta property="og:url" content="https://badir.studio/about">
     <meta property="og:image" content="https://badir.studio/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Founder — Badir">
+    <meta name="twitter:description" content="Meet Mustafa — hacker, builder, Muslim. One founder running multiple businesses with 24 AI agents, looking for like-minded people to build with.">
     <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="canonical" href="https://badir.studio/about.html">
+    <link rel="canonical" href="https://badir.studio/about">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mustafa Kivanc Demirsoy",
+      "jobTitle": "Founder — Pentester, Product Builder, AI Engineer",
+      "url": "https://badir.studio/about",
+      "sameAs": [
+        "https://linkedin.com/in/mustafa-demirsoy",
+        "https://github.com/mkd3434"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Badir Studio",
+        "url": "https://badir.studio"
+      },
+      "knowsAbout": ["AI automation", "Product development", "Cybersecurity", "Brand strategy", "Community building", "Penetration testing"],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Tauranga",
+        "addressRegion": "Bay of Plenty",
+        "addressCountry": "NZ"
+      }
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -27,7 +55,7 @@
             --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
         }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
         body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
         ::selection { background: var(--emerald); color: var(--dark); }
         .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; pointer-events: none; z-index: 0; }
@@ -73,7 +101,21 @@
         .signature .name { font-family: var(--font-heading); font-size: 20px; font-weight: 600; }
         .signature .title { font-size: 14px; color: var(--gray-dark); margin-top: 4px; }
 
+        /* HAMBURGER MENU */
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 201; position: relative; width: 44px; height: 44px; align-items: center; justify-content: center; }
+        .hamburger span { display: block; width: 22px; height: 2px; background: var(--white); transition: all 0.3s; position: absolute; }
+        .hamburger span:nth-child(1) { transform: translateY(-6px); }
+        .hamburger span:nth-child(3) { transform: translateY(6px); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg); }
+        .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(12,12,12,0.97); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 32px; backdrop-filter: blur(20px); }
+        .mobile-overlay.active { display: flex; }
+        .mobile-overlay a { color: var(--white); text-decoration: none; font-family: var(--font-heading); font-size: 24px; font-weight: 600; transition: color 0.2s; }
+        .mobile-overlay a:hover { color: var(--emerald); }
+
         @media (max-width: 768px) {
+            .hamburger { display: flex; }
             nav .nav-links { display: none; }
             .content { padding: 100px 20px 60px; }
             .businesses-grid { grid-template-columns: repeat(2, 1fr); }
@@ -85,87 +127,96 @@
 <div class="grid-bg"></div>
 
 <nav>
-    <a href="index.html" class="nav-logo">Tauranga Mosque</a>
+    <a href="/" class="nav-logo">Badir <span class="arabic">بادر</span></a>
     <div class="nav-links">
-        <a href="index.html">Mosque</a>
-        <a href="badir.html">Badir</a>
-        <a href="reverts.html">New Muslims</a>
-        <a href="sprint-001.html">Sprint 001</a>
-        <a href="community.html">Dashboard</a>
-        <a href="community.html#join">Join Community</a>
+        <a href="/">Home</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#services">Services</a>
+        <a href="/scorecard">Scorecard</a>
+        <a href="/blog/muslim-builder-ecosystem">Insights</a>
     </div>
+    <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
+<div class="mobile-overlay" id="mobile-overlay">
+    <a href="/" onclick="toggleMenu()">Home</a>
+    <a href="/#portfolio" onclick="toggleMenu()">Portfolio</a>
+    <a href="/#services" onclick="toggleMenu()">Services</a>
+    <a href="/scorecard" onclick="toggleMenu()">Scorecard</a>
+    <a href="/blog/muslim-builder-ecosystem" onclick="toggleMenu()">Insights</a>
+</div>
 
 <div class="content">
     <div class="eyebrow">The Founder</div>
 
-    <h1>I run 8 businesses.<br>I built this because <span class="emerald">nobody else would.</span></h1>
+    <h1>I'm a hacker, a builder,<br>and a <span class="emerald">Muslim.</span></h1>
 
     <div class="story">
         <p>
-            My name is <strong>Mustafa Kivanc Demirsoy</strong>. I'm a penetration tester, a builder, and a Muslim.
-            I run a cybersecurity company. I run an AI automation agency. I run a jewellery brand, a kebab restaurant,
-            a marketplace, an escrow platform, and two SaaS products. Eight businesses across four industries.
+            My name is <strong>Mustafa Kivanc Demirsoy</strong>. I hack companies for a living — full red team engagements,
+            breaking in like a real attacker so the bad guys can't. I also build businesses. I build brands.
+            I build AI systems. And I do it all because I genuinely love it.
+        </p>
+
+        <p>
+            Right now I'm running multiple businesses — each one found a real problem, got researched, branded,
+            built, and shipped through the same AI-powered pipeline.
         </p>
 
         <div class="businesses-grid">
             <div class="biz-tag">WeHack</div>
-            <div class="biz-tag">MKD AI</div>
             <div class="biz-tag">LUA Jewellery</div>
             <div class="biz-tag">TSK</div>
-            <div class="biz-tag">InstaSheet</div>
             <div class="biz-tag">TrustLock</div>
-            <div class="biz-tag">ReRack</div>
             <div class="biz-tag">MarketMate</div>
         </div>
 
         <p>
-            I'm not telling you this to impress you. I'm telling you because <strong>every single one of those
-            businesses started with the same moment:</strong> saying Bismillah and shipping something ugly.
-        </p>
-
-        <p>
+            Every single one of them started the same way: saying Bismillah and shipping something ugly.
             WeHack started as a one-page website. LUA started as three rings on a Shopify store.
-            ReRack started as a Lovable.dev prototype built in a weekend. None of them were perfect.
-            All of them were <em>shipped</em>.
+            None of them were perfect. All of them were <em>shipped</em>.
         </p>
 
-        <h2>The gap I kept seeing</h2>
+        <h2>The system behind it all</h2>
 
         <p>
-            I'd go to Muslim events — conferences, meetups, MSA gatherings. Brilliant people everywhere.
-            CS students, designers, marketers, engineers. All of them had ideas. All of them were "working on something."
+            I built a <strong>24-agent AI operating system</strong> that runs the full business stack — marketing,
+            sales, SEO, content, brand intelligence, financial tracking, campaign automation, predictive analytics.
+            One founder, 24 agents, full studio output.
         </p>
 
         <p>
-            Six months later? Same conversations. Same "I'm almost ready to launch." Same Notes app full of ideas,
-            same portfolio empty of shipped products.
+            That system is what powers Badir. Every client project runs through the same pipeline.
+            Discovery, brand strategy, build, monitor. Proven, repeatable, AI-accelerated.
         </p>
 
         <div class="highlight-box">
             <p>
-                The gap isn't talent. It isn't funding. It isn't knowledge.
-                The gap is that nobody is building <strong>daily</strong>. Nobody has a community that pushes them to ship
-                — not once a year at a conference, but every single day.
+                I'm not building this to become a big company. I'm building this because I believe
+                the right tools in the right hands can change everything. <strong>And I want to find
+                the people who think the same way.</strong>
             </p>
         </div>
 
-        <h2>Why Badr?</h2>
+        <h2>Why I'm sharing this</h2>
 
         <p>
-            The name comes from the <strong>Battle of Badr</strong> — the first major battle in Islamic history.
-            313 Muslims faced over 1,000 Quraysh soldiers. They were outmanned, outfunded, outequipped.
+            Right now, I'm doing this solo. And honestly? I love the work. But I know there are other people
+            out there — hackers, builders, designers, engineers — who have the same fire.
+            People who don't just talk about building. People who actually ship.
         </p>
 
         <p>
-            Before the battle, some people left. They had their reasons. They had their doubts.
-            But the 313 who stayed? They trusted Allah, tied their camels, and went to battle.
-            <strong>They won.</strong>
+            I want to find those people. I want to <strong>collaborate</strong> with like-minded builders
+            who care about doing good work, solving real problems, and serving the Ummah while they're at it.
         </p>
 
         <p>
-            That's the spirit I wanted for this community. Not "let's talk about building."
-            Not "let's plan to maybe launch someday." But: <em>say Bismillah, pick an idea, ship it this weekend.</em>
+            Whether you're a developer who wants to build something meaningful,
+            a founder who needs help shipping their product,
+            or just someone who's tired of talking and ready to build —
+            <em>I want to hear from you.</em>
         </p>
 
         <div class="gold-box">
@@ -173,26 +224,23 @@
             <div class="translation">"Take the initiative. Be the first to act. Hasten to do good."</div>
         </div>
 
-        <h2>What I want Badir to be</h2>
+        <h2>What Badir is</h2>
 
         <p>
-            A community where Muslim youth build things. Every day. Not because someone's watching — because
-            the rhythm becomes who you are. You wake up, say Bismillah, and build.
+            An AI-powered product studio. Brand strategy, product sprints, AI automation — all powered by
+            the same 24-agent system I use to run my own businesses. If I can build it for myself,
+            I can build it for you.
         </p>
 
         <p>
-            I want the student with 47 ideas to ship one this weekend.
-            I want the side hustler who got inspired at Muslim Tech Fest to actually finish something.
-            I want the senior dev with 10 years of experience to mentor the next generation of Muslim builders.
+            But more than that — I want Badir to become a place where builders find each other.
+            Where the hacker in Christchurch connects with the designer in London and the marketer in KL.
+            <strong>Where we build together instead of alone.</strong>
         </p>
 
         <p>
-            <strong>I want 313 builders who ship.</strong> Not 10,000 followers who watch.
-        </p>
-
-        <p>
-            If that's you — if you're tired of talking and ready to build — come join us.
-            The 313 didn't wait for perfect conditions. Neither should you.
+            If that resonates — take the scorecard, reach out, or just say salam.
+            I'm one message away.
         </p>
 
         <div class="signature">
@@ -201,11 +249,161 @@
         </div>
     </div>
 
+    <!-- THE VISION: EWOR / ANTLER MODEL FOR THE UMMAH -->
+    <div class="story" style="margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.06);">
+        <h2>The Vision: Builder Fellowships for the Ummah</h2>
+
+        <p>
+            Venture studios and builder fellowships are minting founders worldwide.
+            <strong>EWOR</strong> gets 35,000 applicants a year.
+            <strong>Antler</strong> has 1,300+ portfolio companies.
+            <strong>Entrepreneur First</strong> created over $10 billion in value.
+            The model works — it just hasn't been built for Muslims yet.
+        </p>
+
+        <div class="highlight-box">
+            <p>
+                No Shariah-compliant deal structures. No understanding of the halal economy.
+                No community infrastructure for Muslim builders. <strong>That's the gap Badir fills.</strong>
+            </p>
+        </div>
+
+        <h2 style="font-size: 20px; margin-top: 40px;">How the proven models work</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin: 24px 0;">
+            <div style="background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px;">
+                <div style="font-family: var(--font-heading); font-size: 17px; font-weight: 600; margin-bottom: 8px;">EWOR</div>
+                <p style="font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 0;">
+                    Fellowship-first model. 35,000 applicants → 200 accepted. Fellows build a startup in 4-6 months with mentorship,
+                    tools, and capital. EWOR takes equity. Results: multiple unicorn-track companies.
+                </p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px;">
+                <div style="font-family: var(--font-heading); font-size: 17px; font-weight: 600; margin-bottom: 8px;">Antler</div>
+                <p style="font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 0;">
+                    Global venture builder. Finds talented individuals, helps them find co-founders, validates ideas,
+                    and funds the best ones. 30+ offices worldwide. 1,300+ companies funded.
+                </p>
+            </div>
+            <div style="background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px;">
+                <div style="font-family: var(--font-heading); font-size: 17px; font-weight: 600; margin-bottom: 8px;">Entrepreneur First</div>
+                <p style="font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 0;">
+                    Talent-first investing. Backs individuals before they have an idea.
+                    Cohort-based co-founder matching. $10B+ in portfolio value created.
+                </p>
+            </div>
+        </div>
+
+        <p>
+            <strong>The pattern is clear:</strong> curate talented builders, give them structure and resources,
+            and world-class companies emerge. Badir applies this pattern to the Muslim builder ecosystem —
+            with Shariah-compliant structures (mudarabah, musharakah), a daily shipping culture,
+            and an AI operating system that gives every fellow the tools of a full team.
+        </p>
+
+        <h2 style="font-size: 20px; margin-top: 40px;">Why nobody else has built this</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 12px; margin: 24px 0 40px;">
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">Muslim Tech Fest</span>
+                <span style="font-size: 14px; color: var(--gray);">Annual conference. Inspires for 2 weeks, then nothing until next year. No ongoing building.</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">MTC</span>
+                <span style="font-size: 14px; color: var(--gray);">University chapters. Academic focus — students don't ship products, they attend meetings.</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">Alif</span>
+                <span style="font-size: 14px; color: var(--gray);">VC/startup funding focused. Pivoted. Not a builder community.</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">LaunchGood</span>
+                <span style="font-size: 14px; color: var(--gray);">Crowdfunding platform. Funds projects, doesn't build builders.</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">Buildspace</span>
+                <span style="font-size: 14px; color: var(--gray);">Shut down. Was secular. Proved the model, but nobody rebuilt it for Muslims.</span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="color: var(--gray-dark); font-size: 14px; min-width: 120px; font-family: var(--font-mono); font-size: 12px;">MSAs</span>
+                <span style="font-size: 14px; color: var(--gray);">Islamic student associations. Social + academic focus, don't build products.</span>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p>
+                <strong>Badir's position:</strong> Studio + Community + AI + Muslim focus + Daily rhythm.
+                Nobody else combines all five. That's not a coincidence — it's a gap waiting to be filled.
+            </p>
+        </div>
+    </div>
+
+    <!-- BUILDER ECONOMICS -->
+    <div class="story" style="margin-top: 64px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.06);">
+        <h2>Builder Economics: Building businesses <span style="color: var(--emerald);">is</span> the Islamic approach</h2>
+
+        <p>
+            Some people say Muslim work should be free — fisabilillah.
+            We say building real businesses IS fisabilillah. Here's why.
+        </p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0;">
+            <div style="background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px;">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;">What some people say</div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="background: var(--surface-2); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--gray); line-height: 1.6; font-style: italic;">"Muslim work should be fisabilillah — free for the sake of Allah."</div>
+                    <div style="background: var(--surface-2); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--gray); line-height: 1.6; font-style: italic;">"You shouldn't charge Muslims for help."</div>
+                    <div style="background: var(--surface-2); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--gray); line-height: 1.6; font-style: italic;">"Making money from the community isn't Islamic."</div>
+                </div>
+            </div>
+            <div style="background: var(--surface); border: 1px solid rgba(16,185,129,0.15); border-radius: 8px; padding: 20px;">
+                <div style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px;">What's actually true</div>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="background: var(--emerald-dim); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--white); line-height: 1.6;"><strong>The Prophet (pbuh)</strong> was a trader. Khadijah (RA) was one of the most successful businesswomen in Makkah. Commerce IS the Sunnah.</div>
+                    <div style="background: var(--emerald-dim); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--white); line-height: 1.6;">When Abdur-Rahman ibn Awf (RA) arrived in Madinah, the Ansar offered him money. He said: <strong>"Show me the market."</strong> He built a business first.</div>
+                    <div style="background: var(--emerald-dim); border-radius: 8px; padding: 14px; font-size: 14px; color: var(--white); line-height: 1.6;">The wealthiest Sahaba <strong>funded the entire early Muslim community</strong> — masjids, armies, wells, orphanages. Wealth built for the sake of Allah IS fisabilillah.</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 24px; text-align: center; margin: 24px 0;">
+            <div style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 16px;">The Badir Model</div>
+            <p style="font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 560px; margin: 0 auto;">
+                The studio pays the bills. The growth builds the Ummah.
+                One funds the other. Both serve Allah. That's sustainable impact — not charity that dies when the donations stop.
+            </p>
+        </div>
+
+        <div class="gold-box">
+            <p style="font-size: 16px; color: var(--white); line-height: 1.7; font-style: italic; margin-bottom: 8px;">
+                "The honest, truthful merchant is with the Prophets, the truthful, and the martyrs."
+            </p>
+            <div class="translation">— Tirmidhi</div>
+        </div>
+    </div>
+
     <div class="cta-section">
-        <p>Ready to be one of the 313?</p>
-        <a href="badir.html#join" class="btn-primary">Join Badir &rarr;</a>
+        <p>Got something you want to build? Let's talk.</p>
+        <a href="/scorecard" class="btn-primary">Take the Scorecard &rarr;</a>
     </div>
 </div>
 
+<script>
+function toggleMenu() {
+    const btn = document.querySelector('.hamburger');
+    const overlay = document.getElementById('mobile-overlay');
+    btn.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = overlay.classList.contains('active') ? 'hidden' : '';
+}
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const overlay = document.getElementById('mobile-overlay');
+        if (overlay.classList.contains('active')) toggleMenu();
+    }
+});
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
 </body>
 </html>

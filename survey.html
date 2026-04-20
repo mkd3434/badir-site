@@ -8,7 +8,7 @@
     <meta property="og:title" content="Project Discovery Survey — Badir">
     <meta property="og:description" content="Tell us about your project. We'll research your market, define your brand, and design a strategy in days, not months.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://badir.studio/survey.html">
+    <meta property="og:url" content="https://badir.studio/survey">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Project Discovery Survey — Badir">
     <meta name="twitter:description" content="Tell us about your project. We'll research your market, define your brand, and design a strategy in days, not months.">
@@ -17,14 +17,14 @@
     <meta name="robots" content="index, follow">
     <meta name="author" content="Mustafa Kivanc Demirsoy">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="canonical" href="https://badir.studio/survey.html">
+    <link rel="canonical" href="https://badir.studio/survey">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ContactPoint",
       "contactType": "Sales",
       "name": "Badir Studio",
-      "url": "https://badir.studio/survey.html",
+      "url": "https://badir.studio/survey",
       "availableLanguage": ["en", "ar"]
     }
     </script>
@@ -55,7 +55,7 @@
             --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
         }
 
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
         body {
             background: var(--dark); color: var(--white);
             font-family: var(--font-body); line-height: 1.6;
@@ -228,6 +228,8 @@
             .container { padding: 0 16px; }
             .checkbox-group { grid-template-columns: 1fr; }
             .form-submit { flex-direction: column; align-items: stretch; }
+            input[type="text"], input[type="email"], input[type="url"], input[type="tel"], textarea, select { font-size: 16px; }
+            .checkbox-item { min-height: 44px; display: flex; align-items: center; }
         }
     </style>
 </head>
@@ -235,8 +237,8 @@
     <div class="grid-bg"></div>
 
     <nav>
-        <a href="index.html" class="nav-logo">Badir <span class="arabic">بادر</span></a>
-        <a href="index.html" class="nav-back">Back to Studio</a>
+        <a href="/" class="nav-logo">Badir <span class="arabic">بادر</span></a>
+        <a href="/" class="nav-back">Back to Studio</a>
     </nav>
 
     <div class="container" id="formContainer">
@@ -425,7 +427,7 @@
                         <option value="referral">Friend / referral</option>
                         <option value="search">Google / search</option>
                         <option value="community">Muslim tech community</option>
-                        <option value="discord">Discord</option>
+                        <option value="linkedin">LinkedIn</option>
                         <option value="scorecard">Brand Readiness Scorecard</option>
                         <option value="other">Other</option>
                     </select>
@@ -454,8 +456,8 @@
         </p>
         <p style="font-family: var(--font-arabic); font-size: 22px; color: var(--emerald); margin-bottom: 32px; direction: rtl;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
         <div class="success-links">
-            <a href="index.html" class="btn-primary">Back to Studio</a>
-            <a href="scorecard.html" class="btn-secondary">Take the Scorecard</a>
+            <a href="/" class="btn-primary">Back to Studio</a>
+            <a href="/scorecard" class="btn-secondary">Take the Scorecard</a>
         </div>
     </div>
 
@@ -473,9 +475,10 @@ function toggleCheck(el) {
     input.checked = !input.checked;
 }
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
     e.preventDefault();
     var form = document.getElementById('surveyForm');
+    var btn = document.getElementById('submitBtn');
     var formData = new FormData(form);
     var data = {};
     formData.forEach(function(value, key) {
@@ -487,18 +490,23 @@ function handleSubmit(e) {
         }
     });
 
-    // Save to localStorage
-    var submissions = [];
-    try { submissions = JSON.parse(localStorage.getItem('badir_surveys') || '[]'); } catch(err) { submissions = []; }
-    data.submitted_at = new Date().toISOString();
-    submissions.push(data);
-    try { localStorage.setItem('badir_surveys', JSON.stringify(submissions)); } catch(err) {}
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
 
-    // Show success
+    try {
+        await fetch('/api/survey', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+    } catch(err) { /* still show success */ }
+
     document.getElementById('formContainer').style.display = 'none';
     document.getElementById('successScreen').classList.add('active');
     window.scrollTo(0, 0);
 }
 </script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
 </body>
 </html>

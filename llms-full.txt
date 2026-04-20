@@ -1,0 +1,177 @@
+# Badir Studio — Community-Powered Product Studio for Muslim Builders
+
+> Note: Badir Studio (badir.studio) is a product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
+
+## About
+Badir Studio (بادر) is a community-powered product studio for Muslim builders (18-35 globally). We operate a dual model:
+- Studio side: Brand strategy, MVP development, AI automation for startups and SMBs
+- Community side: Daily builds, weekend design sprints, hands-on workshops
+
+## Founder
+Mustafa Kivanc Demirsoy (MKD) — Founder, Pentester, Product Builder, AI Engineer
+Track record: 10 businesses built solo, 24 AI agents in production, full-stack + AI development
+Location: Tauranga, New Zealand (global reach)
+
+## Brand Voice
+- Direct, energetic, zero lectures
+- Tone: Like the Muslim friend who already shipped and is pulling you along
+- Says "ship" not "launch", "builders" not "members"
+- Uses "Bismillah" naturally (not performatively)
+- Always action-oriented, never preachy
+
+## Name Origin
+Badir (بادر) means "Take the initiative" / "Be the first to act" / "Hasten to do good."
+Inspired by the Battle of Badr — starting when the odds are against you, victory through faith + action.
+Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
+
+## Tagline
+"Bismillah, ship it." — Take the initiative, be first to act, hasten to do good.
+
+## Services (4-Phase Pipeline)
+
+### Phase 1: Discovery
+Market research, competitor audit, audience intelligence, ICP profiling.
+We use AI-powered tools (24 agents) for social listening, competitor monitoring, and trend analysis.
+Deliverables: Market sizing report, competitor matrix, audience profiles, ICP documentation.
+
+### Phase 2: Brand
+CORE framework brand discovery (Jose Caballer method), positioning, voice, design system, messaging.
+Includes: 6 brand attributes, brand statement, 3 customer profiles, attribute clustering, differentiation venn, positioning statement.
+Deliverables: Brand Core Discovery doc, Master Strategy, Positioning Report, Competitive Analysis, Social Listening Report.
+
+### Phase 3: Build
+Websites, MVPs, marketing materials, content, creatives, AI automation.
+Tech stack: HTML/CSS/JS, React, Next.js, Python, Lovable.dev, Remotion (video), Vercel.
+Deliverables: Landing pages, web apps, mobile apps, branded creatives, video content, AI agent systems.
+
+### Phase 4: Monitor
+Performance tracking, SEO/GEO monitoring, brand mentions, optimization.
+Includes: 200+ point SEO audits, AI citation monitoring, rank tracking, decay detection.
+Deliverables: Monthly reports, performance dashboards, optimization recommendations.
+
+Without a strategy, there's no solution. We don't skip steps.
+
+## Pricing
+- Product Sprint (48hr): $2K-5K per sprint
+- MVP Development: $5K-20K project-based
+- Brand Strategy (full pipeline): $3K-10K
+- AI Automation Setup: $5K-15K
+- Monthly Monitoring: $500-2K/mo retainer
+- Equity/Revenue Share: 10-20% equity or 15% revenue share for selected projects
+
+## Community
+
+### Daily Builds
+Post what you're building today. Accountability through public progress. No lurking — building is the currency.
+
+### Weekend Design Sprints
+48-hour prototyping sprints following Google Ventures methodology:
+Day 1: Map the problem, Sketch solutions, Decide on approach
+Day 2: Prototype, Test with real users
+Output: Testable prototype in 48 hours.
+
+### Hands-On Workshops
+AI tools for builders, rapid prototyping, design sprints, landing page building, brand strategy.
+All practical, no theory-only sessions.
+
+### Demo Days
+Present what you shipped. 3-minute lightning talks. Feedback from builders, not spectators.
+
+## Community Profiles
+
+### Yusuf (19-24)
+The stuck student. 47 ideas in Notes app, none shipped. CS student or self-taught developer. Needs accountability and a structured path from idea to shipped product. Joins for: daily build rhythm, weekend sprints, peer pressure to ship.
+
+### Amira (24-32)
+The side hustle builder. Has skills, has ideas, has a day job. Needs structured rhythm, not "learn at your own pace." Already building but inconsistently. Joins for: weekend sprints, workshops, community of builders at her level.
+
+### Omar (28-40)
+The experienced builder. 5-10 years experience, wants to give back. Wants to mentor where mentees actually ship — not another mentorship program where nothing gets built. Joins for: mentoring builders who execute, community leadership, potential studio collaboration.
+
+## AI Operating System
+The studio runs on a 24-agent AI system built by the founder:
+- ContentEngine: Multi-platform content generation
+- SalesAgent: Full-cycle sales automation (prospect, qualify, outreach, proposals)
+- BrandIntelAgent: Real-time social listening, sentiment analysis, competitor monitoring
+- PredictiveAnalyticsAgent: Trend forecasting, audience scoring, campaign prediction
+- CampaignGeneratorAgent: Hyper-personalized email, ad, and social campaigns
+- SEOSaaSAgent: 200+ point audits, GEO optimization, rank tracking
+- VideoEngine: Programmatic branded video generation (Remotion)
+- RecruitingAgent: AI-powered candidate sourcing and scoring
+- CFOAgent: Financial tracking, tax planning, cashflow forecasting
+- PulseAgent: Zero-dashboard business intelligence with autonomous fixes
+- And 14 more specialized agents
+
+One founder doing the work of a full team.
+
+## Portfolio
+The founder has built and operates 10 businesses across cybersecurity, AI, ecommerce, food service, and SaaS:
+- WeHack: Cybersecurity penetration testing services
+- MKD AI: AI automation agency for ecommerce and marketing
+- LUA Jewellery: Handcrafted artisan jewelry (Shopify)
+- TSK: Turkish kebab restaurant in Christchurch, NZ
+- MarketMate: AI clothing listing tool for NZ/AU marketplaces
+- InstaSheet: Instagram order extraction for Indonesian market
+- TrustLock: Micro-escrow for P2P marketplace transactions
+- ReRack: P2P secondhand clothing marketplace
+- SortedAI: AI tradie booking platform for Tauranga/BOP
+- Badir Studio: This product studio and builder community
+
+## Builder Application
+Candidates who want to join the Badir team or contribute to sprints take a 10-question Builder Application Scorecard at badir.studio/apply. The scorecard evaluates:
+- Skills & Craft (design, code, marketing, AI tools, writing)
+- Availability (hours per week, commitment level)
+- Builder Mindset (shipping history, risk tolerance)
+- Community Fit (collaboration, feedback, mentorship)
+- Portfolio (shipped projects, public work)
+
+Tracks:
+- Studio Team (75+ score): Join the core studio team for client projects
+- Sprint Contributor (50-74): Contribute to weekend sprints and workshops
+- Community Builder (0-49): Join the community, build alongside others
+
+## Frequently Asked Questions
+
+### What makes Badir Studio different from other agencies?
+We're not an agency. We're a product studio that builds alongside you — and we run 10 of our own businesses. We eat our own cooking. Every tool, process, and strategy we recommend is something we use daily.
+
+### Do I need to be Muslim to work with Badir Studio?
+Our studio services are open to everyone. The community side is designed for Muslim builders specifically — the culture, references, and rhythm are built around that identity.
+
+### What is a product sprint?
+A 48-hour intensive where we go from problem to testable prototype. Based on Google Ventures Design Sprint methodology. We map the problem, sketch solutions, decide, prototype, and test — all in one weekend.
+
+### Where is Badir Studio based?
+Tauranga, New Zealand. We work with clients and community members globally. Most work is remote.
+
+### What is GEO (Generative Engine Optimization)?
+GEO is optimization for AI search engines (ChatGPT, Perplexity, Google AI Overviews). We ensure your brand is visible and accurately represented when people ask AI about your industry. This includes llms.txt files, schema markup, AI crawler access, and citation optimization.
+
+### How do you use AI in your work?
+We built a 24-agent AI system that handles content generation, sales automation, brand intelligence, predictive analytics, SEO auditing, video production, and more. This lets one founder deliver the output of a full team. We also build custom AI agent systems for clients.
+
+### What is the CORE framework?
+A brand discovery methodology by Jose Caballer (The Futur). It maps 6 brand attributes: Culture, Users, Voice, Feeling, Impact, X-Factor. We use it as the foundation for all brand strategy work.
+
+### Can I hire Badir Studio for equity instead of cash?
+Yes. For selected projects, we offer equity (10-20%) or revenue share (15%) arrangements. The project must have clear market potential and the founder must demonstrate commitment.
+
+## Key URLs
+- [Landing Page](https://badir.studio/): Main site with services, portfolio, and community info
+- [Brand Readiness Scorecard](https://badir.studio/scorecard): Free 8-question brand assessment tool
+- [Builder Application](https://badir.studio/apply): Team and contributor application scorecard
+- [Project Discovery Survey](https://badir.studio/survey): Project intake form for potential clients
+- [About the Founder](https://badir.studio/about): Mustafa's story and why Badir exists
+- [Community Dashboard](https://badir.studio/community): Community events, activities, and sprint schedule
+- [Privacy Policy](https://badir.studio/privacy): Data handling and NZ Privacy Act 2020 compliance
+
+## Contact
+- Email: hello@badir.studio
+- LinkedIn: linkedin.com/in/mustafa-demirsoy
+
+## Values
+- Build businesses. Build income. Then solve community problems.
+- Action over perfection
+- Community over isolation
+- Faith x hustle (tawakkul + execution)
+- The Ummah needs resources and budgets, not more lectures
