@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning Decision Jam — 45 Min Sprint Format | Badir</title>
+    <meta name="description" content="A 45-minute Lightning Decision Jam sprint format for Badir's weekend sessions. Problem → Solution → Action in one session.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A; --surface-3: #222222;
+            --emerald: #10B981; --emerald-dim: rgba(16, 185, 129, 0.15); --emerald-glow: rgba(16, 185, 129, 0.3);
+            --gold: #F59E0B; --gold-dim: rgba(245, 158, 11, 0.15);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280; --red: #EF4444;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        .grid-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-logo { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .nav-logo .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--emerald); font-weight: 700; }
+        .nav-links { display: flex; gap: 32px; align-items: center; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--white); }
+
+        .content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 120px 32px 80px; }
+
+        .sprint-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.3); border-radius: 100px; padding: 8px 16px; font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px; }
+        .sprint-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(36px, 5vw, 56px); font-weight: 700; line-height: 1.1; letter-spacing: -1px; margin-bottom: 24px; }
+        h1 .emerald { color: var(--emerald); }
+
+        .sprint-meta { display: flex; gap: 32px; margin-bottom: 48px; flex-wrap: wrap; }
+        .meta-item { display: flex; flex-direction: column; }
+        .meta-item .label { font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+        .meta-item .value { font-family: var(--font-heading); font-size: 16px; font-weight: 600; }
+
+        .sprint-intro { font-size: 18px; color: var(--gray); line-height: 1.8; margin-bottom: 48px; max-width: 640px; }
+        .sprint-intro strong { color: var(--white); font-weight: 600; }
+
+        h2 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 24px; margin-top: 64px; letter-spacing: -0.5px; }
+
+        .phase-card { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 32px; margin-bottom: 16px; position: relative; transition: border-color 0.3s; }
+        .phase-card:hover { border-color: var(--emerald-glow); }
+        .phase-time { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+        .phase-card h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+        .phase-card p { font-size: 15px; color: var(--gray); line-height: 1.7; }
+        .phase-card .reveals { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: var(--gold); font-style: italic; }
+
+        .scoring-section { margin-top: 64px; }
+        .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+        .score-item { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 20px; }
+        .score-item .number { font-family: var(--font-mono); font-size: 24px; color: var(--emerald); font-weight: 700; margin-bottom: 8px; }
+        .score-item h4 { font-family: var(--font-heading); font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .score-item p { font-size: 13px; color: var(--gray); line-height: 1.5; }
+
+        .filter-box { margin-top: 64px; padding: 32px; background: var(--surface); border: 1px solid rgba(245,158,11,0.2); border-radius: 16px; }
+        .filter-box h3 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 16px; color: var(--gold); }
+        .filter-box p { font-size: 15px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+        .filter-tiers { display: flex; flex-direction: column; gap: 12px; }
+        .tier { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 8px; background: var(--surface-2); }
+        .tier-badge { font-family: var(--font-mono); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; min-width: 32px; text-align: center; }
+        .tier-badge.a { background: var(--emerald-dim); color: var(--emerald); }
+        .tier-badge.b { background: var(--gold-dim); color: var(--gold); }
+        .tier-badge.c { background: rgba(156,163,175,0.15); color: var(--gray); }
+        .tier-text { font-size: 14px; color: var(--gray); }
+        .tier-text strong { color: var(--white); }
+
+        .cta-box { margin-top: 64px; padding: 48px; background: var(--surface); border: 1px solid rgba(16,185,129,0.2); border-radius: 16px; text-align: center; }
+        .cta-box h3 { font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+        .cta-box p { font-size: 16px; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 32px; border-radius: 8px; border: none; background: var(--emerald); color: var(--dark); font-family: var(--font-heading); font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+        .cta-btn:hover { box-shadow: 0 0 30px var(--emerald-glow); transform: translateY(-1px); }
+
+        .verse-footer { text-align: center; margin-top: 80px; padding-bottom: 40px; }
+        .verse-footer .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--gold); direction: rtl; }
+        .verse-footer .ref { font-size: 13px; color: var(--gray-dark); margin-top: 4px; }
+
+        @media (max-width: 768px) {
+            nav .nav-links { display: none; }
+            .content { padding: 100px 20px 60px; }
+            .score-grid { grid-template-columns: 1fr; }
+            .sprint-meta { gap: 20px; }
+            .cta-box { padding: 32px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<nav>
+    <a href="/" class="nav-logo">Badir <span class="arabic">بادر</span></a>
+    <div class="nav-links">
+        <a href="/community.html">Community</a>
+        <a href="/scorecard">Scorecard</a>
+        <a href="/offer">Free Trial</a>
+    </div>
+</nav>
+
+<div class="content">
+
+    <div class="sprint-badge"><span class="dot"></span> Sprint Format</div>
+
+    <h1>Lightning Decision Jam<br><span class="emerald">45 Minutes. Real Decisions.</span></h1>
+
+    <div class="sprint-meta">
+        <div class="meta-item">
+            <span class="label">Duration</span>
+            <span class="value">45 Minutes</span>
+        </div>
+        <div class="meta-item">
+            <span class="label">Format</span>
+            <span class="value">Remote (FigJam/Miro)</span>
+        </div>
+        <div class="meta-item">
+            <span class="label">Outcome</span>
+            <span class="value">Decisions + Commitments</span>
+        </div>
+    </div>
+
+    <!-- WHY THIS MATTERS -->
+    <h2>Why This Matters for Us</h2>
+
+    <p class="sprint-intro" style="margin-bottom: 24px;">
+        Most collaborations die in group chats. Ideas float, nobody decides, nothing ships. <strong>The Lightning Decision Jam fixes this.</strong>
+    </p>
+    <p class="sprint-intro">
+        In 45 minutes, we go from scattered problems to <strong>concrete commitments with deadlines.</strong> No lectures, no "let's circle back," no wasted time. Everyone participates equally — silent writing phases prevent loud voices from dominating, and voting keeps us honest about what actually matters.
+    </p>
+
+    <!-- BENEFITS -->
+    <h2>What You Get Out of It</h2>
+
+    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+        <h3>Real decisions, not discussions</h3>
+        <p>Every session ends with specific, ownable action items. You leave knowing exactly what to do next — not "we should probably think about..."</p>
+    </div>
+
+    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+        <h3>Equal voice for everyone</h3>
+        <p>Silent writing phases mean introverts contribute as much as extroverts. Voting is democratic. The best ideas win, not the loudest person.</p>
+    </div>
+
+    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+        <h3>Accountability that sticks</h3>
+        <p>Public commitments: "By [day], I will [specific action]." When you say it out loud to the group, you follow through. Bismillah.</p>
+    </div>
+
+    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+        <h3>Unblock each other fast</h3>
+        <p>Bring your biggest blocker. Get 5-10 solutions from the group in 8 minutes. The Effort/Impact matrix instantly shows you what to tackle first.</p>
+    </div>
+
+    <!-- WHAT WE DO -->
+    <h2>How It Works</h2>
+
+    <div class="phase-card">
+        <div class="phase-time">0:00 — 5:00 &bull; 5 min</div>
+        <h3>Write Problems</h3>
+        <p>Everyone writes blockers/problems on stickies. One per sticky. Silent. No discussion. Just dump everything that's stopping you from shipping.</p>
+        <div class="reveals">Reveals: Who identifies real blockers vs vague complaints</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">5:00 — 8:00 &bull; 3 min</div>
+        <h3>Vote on Problems</h3>
+        <p>3 dot votes each. Put them on the problems you think matter most. No campaigning. The group's collective intelligence picks the real issue.</p>
+        <div class="reveals">Reveals: Who has taste — surface-level thinkers vs root-cause finders</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">8:00 — 10:00 &bull; 2 min</div>
+        <h3>Reframe as "How Might We..."</h3>
+        <p>Top-voted problem gets reframed. "Revenue is flat" becomes "How might we increase MRR by 30% in 60 days?" Specificity is everything.</p>
+        <div class="reveals">Reveals: Framing ability — builders think in possibilities, complainers stay stuck</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">10:00 — 18:00 &bull; 8 min</div>
+        <h3>Silent Solutions</h3>
+        <p>Everyone writes solutions. Quantity over quality. Crazy ideas welcome. One per sticky. No talking — this prevents groupthink and lets introverts shine.</p>
+        <div class="reveals">Reveals: Speed of ideation, systems thinking vs band-aids</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">18:00 — 21:00 &bull; 3 min</div>
+        <h3>Vote on Solutions</h3>
+        <p>3 dot votes again. Best solutions bubble up democratically. No HiPPO (highest-paid person's opinion) problem here.</p>
+        <div class="reveals">Reveals: Strategic thinking — do they vote for quick wins or long-term plays?</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">21:00 — 30:00 &bull; 9 min</div>
+        <h3>Effort/Impact Matrix</h3>
+        <p>Plot top solutions on a 2x2 grid. X-axis = effort. Y-axis = impact. The magic quadrant: high impact, low effort. This is where real calibration shows.</p>
+        <div class="reveals">Reveals: This IS the IQ test — can they estimate complexity accurately?</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">30:00 — 40:00 &bull; 10 min</div>
+        <h3>Action Steps</h3>
+        <p>Top-right quadrant solutions get broken into concrete next steps. Who does what? By when? No vague "we should probably..." — specific, ownable actions.</p>
+        <div class="reveals">Reveals: Who volunteers? Who breaks tasks down well? Who watches?</div>
+    </div>
+
+    <div class="phase-card">
+        <div class="phase-time">40:00 — 45:00 &bull; 5 min</div>
+        <h3>Commit</h3>
+        <p>Each person states out loud: <strong>"By [day], I will [specific action]."</strong> Bismillah. This is the moment. Social accountability + spiritual grounding. No wiggle room.</p>
+        <div class="reveals">Reveals: The ultimate filter — talkers disappear here, builders lean in</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-box">
+        <h3>Bismillah, Let's Build Together</h3>
+        <p>45 minutes. Bring your biggest blocker.<br>Leave with a decision and a deadline.</p>
+        <a href="/community.html" class="cta-btn">Join Badir Community</a>
+    </div>
+
+    <!-- Footer verse -->
+    <div class="verse-footer">
+        <div class="arabic">وَشَاوِرْهُمْ فِي الْأَمْرِ</div>
+        <div class="ref">"And consult them in the matter" — Quran 3:159</div>
+    </div>
+
+</div>
+
+</body>
+</html>
