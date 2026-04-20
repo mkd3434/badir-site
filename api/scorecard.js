@@ -15,10 +15,10 @@ export default async function handler(req, res) {
   const email = data.email ? data.email.trim().toLowerCase() : null;
 
   // Log to Vercel function logs
-  console.log(`SCORECARD_RESULT | score:${score}/80 | grade:${grade} | ${email || "no-email"} | ${timestamp} | ${ip}`);
+  console.log(`SCORECARD_RESULT | score:${score}/120 | grade:${grade} | ${email || "no-email"} | ${timestamp} | ${ip}`);
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
-  const NOTIFY_EMAIL = process.env.NOTIFICATION_EMAIL || "mkd@mkdai.agency";
+  const NOTIFY_EMAIL = process.env.NOTIFICATION_EMAIL || "mustafa@badir.studio";
 
   if (RESEND_KEY) {
     try {
@@ -28,21 +28,21 @@ export default async function handler(req, res) {
             .join("\n")
         : "No dimension data";
 
-      const resendRes = await fetch("https://api.resend.com/emails", {
+      await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${RESEND_KEY}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Badir Scorecard <onboarding@resend.dev>",
+          from: "Badir Studio <notifications@badir.studio>",
           to: [NOTIFY_EMAIL],
-          subject: `Scorecard: ${score}/80 (${grade})${email ? ` — ${email}` : ""}`,
+          subject: `[Scorecard] ${score}/120 (${grade})${email ? ` — ${email}` : ""}`,
           text: [
-            "Brand Readiness Scorecard Result",
+            "MARKETING HEALTH SCORECARD RESULT",
             "=".repeat(35),
             "",
-            `Score: ${score}/80`,
+            `Score: ${score}/120`,
             `Grade: ${grade}`,
             email ? `Email: ${email}` : "Email: not provided",
             "",
@@ -56,18 +56,9 @@ export default async function handler(req, res) {
           ].join("\n"),
         }),
       });
-
-      const resendData = await resendRes.json();
-      if (!resendRes.ok) {
-        console.error("Resend API error:", JSON.stringify(resendData));
-      } else {
-        console.log("Resend email sent:", resendData.id);
-      }
     } catch (err) {
       console.error("Resend error:", err.message);
     }
-  } else {
-    console.warn("RESEND_API_KEY not set — skipping email");
   }
 
   return res.status(200).json({ success: true });

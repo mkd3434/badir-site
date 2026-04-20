@@ -1119,7 +1119,7 @@
         // Update CTA link with score data for offer page personalization
         var ctaLink = document.querySelector(".cta-banner .btn-start");
         if (ctaLink) {
-            var params = "?score=" + totalScore + "&max=120&grade=" + encodeURIComponent(grade.name);
+            var params = "?score=" + total + "&max=120&grade=" + encodeURIComponent(grade.title);
             for (var p = 0; p < dimensions.length; p++) {
                 params += "&d" + p + "=" + dimScores[p];
             }
