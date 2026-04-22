@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the builders — Badir</title>
+    <meta name="description" content="Create your Badir account. Join the global Muslim builder community. Daily builds, weekend sprints, real builders shipping real products. Bismillah, ship it.">
+    <meta property="og:title" content="Join the builders — Badir">
+    <meta property="og:description" content="Your account is the first ship. Daily builds. Weekend sprints. Real builders, real products, real accountability.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/signup">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Join the builders — Badir">
+    <meta name="twitter:description" content="Your account is the first ship. Bismillah.">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/signup">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #0C0C0C;
+            --surface: #111111;
+            --surface-2: #181818;
+            --surface-3: #222222;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(16,185,129,0.3);
+            --emerald: #10B981;
+            --emerald-dim: rgba(16,185,129,0.12);
+            --emerald-glow: rgba(16,185,129,0.25);
+            --gold: #F59E0B;
+            --gold-dim: rgba(245,158,11,0.12);
+            --red: #EF4444;
+            --red-dim: rgba(239,68,68,0.12);
+            --white: #FAFAFA;
+            --gray: #9CA3AF;
+            --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--dark); color: var(--white);
+            font-family: var(--font-body); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        .grid-bg {
+            position: fixed; inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 48px 48px; pointer-events: none; z-index: 0;
+        }
+        .hero-glow {
+            position: fixed; top: -120px; left: 50%; transform: translateX(-50%);
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--emerald-glow) 0%, transparent 60%);
+            pointer-events: none; z-index: 0; opacity: 0.35;
+        }
+
+        nav {
+            position: relative; z-index: 10;
+            padding: 20px 24px; display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border); background: rgba(12,12,12,0.6);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        }
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            font-family: var(--font-heading); font-weight: 700; font-size: 18px;
+            color: var(--white); text-decoration: none;
+        }
+        .logo-mark {
+            width: 28px; height: 28px; border-radius: 6px;
+            background: var(--emerald); color: var(--dark);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; font-size: 15px;
+        }
+        .nav-links { display: flex; align-items: center; gap: 24px; }
+        .nav-links a {
+            color: var(--gray); text-decoration: none; font-size: 14px; font-weight: 500;
+            transition: color 0.18s ease;
+        }
+        .nav-links a:hover { color: var(--white); }
+
+        main {
+            flex: 1; position: relative; z-index: 2;
+            display: flex; align-items: center; justify-content: center;
+            padding: 48px 24px;
+        }
+
+        .auth-card {
+            width: 100%; max-width: 460px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 36px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .kicker {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 12px; border-radius: 999px;
+            background: var(--emerald-dim); border: 1px solid var(--border-hover);
+            color: var(--emerald); font-family: var(--font-mono);
+            font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .kicker::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: var(--emerald);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+        h1 {
+            font-family: var(--font-heading); font-weight: 700;
+            font-size: 32px; line-height: 1.15; letter-spacing: -0.02em;
+            color: var(--white); margin-bottom: 10px;
+        }
+        h1 .accent { color: var(--emerald); }
+        .sub {
+            color: var(--gray); font-size: 15px; margin-bottom: 28px;
+        }
+        .sub .arabic {
+            font-family: var(--font-arabic); color: var(--emerald); font-weight: 700;
+        }
+
+        .tabs {
+            display: flex; gap: 4px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 10px; padding: 4px;
+            margin-bottom: 24px;
+        }
+        .tab {
+            flex: 1; padding: 10px 12px; border: none; background: transparent;
+            color: var(--gray); font-family: var(--font-body);
+            font-size: 14px; font-weight: 600; border-radius: 7px;
+            cursor: pointer; transition: all 0.18s ease;
+        }
+        .tab.active {
+            background: var(--surface-3); color: var(--white);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .social-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 22px; }
+        .social-btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 12px 16px;
+            background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--white);
+            font-family: var(--font-body); font-size: 14px; font-weight: 600;
+            cursor: pointer; transition: all 0.18s ease;
+        }
+        .social-btn:hover {
+            border-color: var(--border-hover); background: var(--surface-3);
+            transform: translateY(-1px);
+        }
+        .social-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+        .divider {
+            display: flex; align-items: center; gap: 14px;
+            color: var(--gray-dark); font-family: var(--font-mono);
+            font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+            margin: 22px 0;
+        }
+        .divider::before, .divider::after {
+            content: ''; flex: 1; height: 1px; background: var(--border);
+        }
+
+        form { display: flex; flex-direction: column; gap: 14px; }
+        .field { display: flex; flex-direction: column; gap: 6px; }
+        .field label {
+            font-size: 12px; font-weight: 600; color: var(--gray);
+            font-family: var(--font-mono); letter-spacing: 0.04em; text-transform: uppercase;
+        }
+        .field input {
+            width: 100%; padding: 12px 14px;
+            background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: 10px; color: var(--white);
+            font-family: var(--font-body); font-size: 15px;
+            transition: border-color 0.18s ease, background 0.18s ease;
+        }
+        .field input::placeholder { color: var(--gray-dark); }
+        .field input:focus {
+            outline: none; border-color: var(--emerald);
+            background: var(--surface-3);
+            box-shadow: 0 0 0 3px var(--emerald-dim);
+        }
+        .field.error input { border-color: var(--red); }
+        .field-error {
+            color: var(--red); font-size: 12px; font-family: var(--font-mono);
+            margin-top: 2px; display: none;
+        }
+        .field.error .field-error { display: block; }
+
+        .password-wrap { position: relative; }
+        .toggle-pw {
+            position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+            background: none; border: none; color: var(--gray); cursor: pointer;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .toggle-pw:hover { color: var(--white); }
+
+        .strength-bar { display: flex; gap: 4px; margin-top: 6px; }
+        .strength-bar span {
+            flex: 1; height: 3px; background: var(--surface-3); border-radius: 2px;
+            transition: background 0.2s ease;
+        }
+        .strength-bar[data-score="1"] span:nth-child(-n+1) { background: var(--red); }
+        .strength-bar[data-score="2"] span:nth-child(-n+2) { background: var(--gold); }
+        .strength-bar[data-score="3"] span:nth-child(-n+3) { background: var(--gold); }
+        .strength-bar[data-score="4"] span { background: var(--emerald); }
+
+        .checkbox-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-top: 4px;
+        }
+        .checkbox-row input[type="checkbox"] {
+            width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0;
+            accent-color: var(--emerald); cursor: pointer;
+        }
+        .checkbox-row label {
+            font-size: 13px; color: var(--gray); line-height: 1.5; cursor: pointer;
+        }
+        .checkbox-row a { color: var(--emerald); text-decoration: none; }
+        .checkbox-row a:hover { text-decoration: underline; }
+
+        .submit-btn {
+            width: 100%; padding: 14px 18px; margin-top: 8px;
+            background: var(--emerald); color: var(--dark);
+            border: none; border-radius: 10px;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 700;
+            letter-spacing: -0.01em; cursor: pointer;
+            transition: all 0.18s ease;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .submit-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--emerald-glow); }
+        .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+        .submit-btn .arabic { font-family: var(--font-arabic); font-weight: 700; }
+
+        .alt-link { text-align: center; color: var(--gray); font-size: 13px; margin-top: 18px; }
+        .alt-link a { color: var(--emerald); font-weight: 600; text-decoration: none; }
+        .alt-link a:hover { text-decoration: underline; }
+
+        .trust-row {
+            display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+            margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark);
+            letter-spacing: 0.04em; text-transform: uppercase;
+        }
+        .trust-row span { display: flex; align-items: center; gap: 6px; }
+        .trust-row span::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald);
+        }
+
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            background: var(--surface-2); border: 1px solid var(--emerald);
+            color: var(--white); padding: 12px 20px; border-radius: 10px;
+            font-size: 14px; font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            opacity: 0; pointer-events: none; transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 100;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(-8px); }
+        .toast.error { border-color: var(--red); }
+
+        footer {
+            position: relative; z-index: 2;
+            padding: 20px 24px; border-top: 1px solid var(--border);
+            text-align: center; color: var(--gray-dark); font-size: 12px;
+            font-family: var(--font-mono); letter-spacing: 0.04em;
+        }
+        footer a { color: var(--gray); text-decoration: none; }
+        footer a:hover { color: var(--emerald); }
+
+        @media (max-width: 540px) {
+            .auth-card { padding: 28px 22px; border-radius: 12px; }
+            h1 { font-size: 26px; }
+            nav { padding: 16px 18px; }
+            main { padding: 32px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="hero-glow"></div>
+
+    <nav>
+        <a href="/" class="logo">
+            <span class="logo-mark">ب</span>
+            <span>Badir</span>
+        </a>
+        <div class="nav-links">
+            <a href="/community.html">Community</a>
+            <a href="/services.html">Studio</a>
+            <a href="/feed.html">Feed</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="auth-card">
+            <span class="kicker">313 builders and counting</span>
+            <h1 id="heading">Join the <span class="accent">builders</span>.</h1>
+            <p class="sub" id="sub"><span class="arabic">بسم الله</span> &mdash; your account is the first ship. Daily builds, weekend sprints, real accountability.</p>
+
+            <div class="tabs" role="tablist">
+                <button type="button" class="tab active" data-mode="signup" role="tab" aria-selected="true">Create account</button>
+                <button type="button" class="tab" data-mode="signin" role="tab" aria-selected="false">Sign in</button>
+            </div>
+
+            <div class="social-group">
+                <button type="button" class="social-btn" data-provider="google">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.07 5.07 0 0 1-2.2 3.32v2.76h3.56c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.56-2.76c-.99.66-2.25 1.06-3.72 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.2 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/></svg>
+                    Continue with Google
+                </button>
+                <button type="button" class="social-btn" data-provider="apple">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    Continue with Apple
+                </button>
+                <button type="button" class="social-btn" data-provider="github">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A12 12 0 0 0 12 .3"/></svg>
+                    Continue with GitHub
+                </button>
+                <button type="button" class="social-btn" data-provider="x">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    Continue with X
+                </button>
+            </div>
+
+            <div class="divider">or with email</div>
+
+            <form id="auth-form" novalidate>
+                <div class="field" id="field-name">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Yusuf Ibrahim" required>
+                    <span class="field-error">Tell us what to call you.</span>
+                </div>
+
+                <div class="field" id="field-email">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" autocomplete="email" placeholder="you@builder.com" required>
+                    <span class="field-error">Enter a valid email.</span>
+                </div>
+
+                <div class="field" id="field-password">
+                    <label for="password">Password</label>
+                    <div class="password-wrap">
+                        <input type="password" id="password" name="password" autocomplete="new-password" placeholder="min 8 characters" required minlength="8">
+                        <button type="button" class="toggle-pw" aria-label="Show password">Show</button>
+                    </div>
+                    <div class="strength-bar" data-score="0" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                    <span class="field-error">At least 8 characters.</span>
+                </div>
+
+                <div class="checkbox-row" id="terms-row">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="/privacy.html">privacy notice</a> and the builders' code &mdash; ship, don't lecture.</label>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn">
+                    <span class="arabic">بسم الله</span>
+                    <span id="submit-text">Ship it &mdash; create my account</span>
+                </button>
+            </form>
+
+            <p class="alt-link" id="alt-link">Already have an account? <a href="#" id="alt-action">Sign in</a></p>
+
+            <div class="trust-row">
+                <span>No spam</span>
+                <span>Your ideas stay yours</span>
+                <span>Free forever</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Badir Studio. <a href="/privacy.html">Privacy</a> &middot; <a href="/">Home</a></p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+        (function () {
+            const form = document.getElementById('auth-form');
+            const tabs = document.querySelectorAll('.tab');
+            const heading = document.getElementById('heading');
+            const sub = document.getElementById('sub');
+            const nameField = document.getElementById('field-name');
+            const submitText = document.getElementById('submit-text');
+            const altLink = document.getElementById('alt-link');
+            const altAction = document.getElementById('alt-action');
+            const termsRow = document.getElementById('terms-row');
+            const toast = document.getElementById('toast');
+            let mode = 'signup';
+
+            function setMode(next) {
+                mode = next;
+                tabs.forEach(t => {
+                    const isActive = t.dataset.mode === mode;
+                    t.classList.toggle('active', isActive);
+                    t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                });
+                if (mode === 'signup') {
+                    heading.innerHTML = 'Join the <span class="accent">builders</span>.';
+                    sub.innerHTML = '<span class="arabic">بسم الله</span> &mdash; your account is the first ship. Daily builds, weekend sprints, real accountability.';
+                    nameField.style.display = '';
+                    termsRow.style.display = '';
+                    submitText.textContent = 'Ship it — create my account';
+                    altLink.innerHTML = 'Already have an account? <a href="#" id="alt-action">Sign in</a>';
+                } else {
+                    heading.innerHTML = 'Welcome <span class="accent">back</span>.';
+                    sub.innerHTML = 'Pick up where you left off. <span class="arabic">أهلاً</span>';
+                    nameField.style.display = 'none';
+                    termsRow.style.display = 'none';
+                    submitText.textContent = 'Sign in';
+                    altLink.innerHTML = 'New here? <a href="#" id="alt-action">Create an account</a>';
+                }
+                document.getElementById('alt-action').addEventListener('click', flipMode);
+            }
+            function flipMode(e) { e.preventDefault(); setMode(mode === 'signup' ? 'signin' : 'signup'); }
+            tabs.forEach(t => t.addEventListener('click', () => setMode(t.dataset.mode)));
+            altAction.addEventListener('click', flipMode);
+
+            // Show/hide password
+            const togglePw = document.querySelector('.toggle-pw');
+            const pwInput = document.getElementById('password');
+            togglePw.addEventListener('click', () => {
+                const show = pwInput.type === 'password';
+                pwInput.type = show ? 'text' : 'password';
+                togglePw.textContent = show ? 'Hide' : 'Show';
+                togglePw.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+            });
+
+            // Password strength
+            const bar = document.querySelector('.strength-bar');
+            pwInput.addEventListener('input', () => {
+                const v = pwInput.value;
+                let score = 0;
+                if (v.length >= 8) score++;
+                if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
+                if (/\d/.test(v)) score++;
+                if (/[^A-Za-z0-9]/.test(v)) score++;
+                bar.dataset.score = v.length === 0 ? 0 : score;
+            });
+
+            function showToast(msg, isError) {
+                toast.textContent = msg;
+                toast.classList.toggle('error', !!isError);
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 3200);
+            }
+
+            // Social auth buttons — stub: hand off to OAuth provider when backend is wired
+            document.querySelectorAll('.social-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const provider = btn.dataset.provider;
+                    showToast('Redirecting to ' + provider + '... (wire OAuth in /api/auth/' + provider + ')');
+                    // Real implementation:
+                    // window.location.href = '/api/auth/' + provider + '?return_to=/feed';
+                });
+            });
+
+            function validate() {
+                let ok = true;
+                const email = document.getElementById('email');
+                const password = document.getElementById('password');
+                const name = document.getElementById('name');
+                const terms = document.getElementById('terms');
+                document.querySelectorAll('.field').forEach(f => f.classList.remove('error'));
+
+                if (mode === 'signup' && !name.value.trim()) {
+                    nameField.classList.add('error'); ok = false;
+                }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                    document.getElementById('field-email').classList.add('error'); ok = false;
+                }
+                if (password.value.length < 8) {
+                    document.getElementById('field-password').classList.add('error'); ok = false;
+                }
+                if (mode === 'signup' && !terms.checked) {
+                    showToast('Tick the builders\' code box to continue.', true); ok = false;
+                }
+                return ok;
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                if (!validate()) return;
+                const btn = document.getElementById('submit-btn');
+                btn.disabled = true;
+                const originalText = submitText.textContent;
+                submitText.textContent = 'Shipping...';
+
+                const payload = {
+                    mode,
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    password: document.getElementById('password').value,
+                };
+
+                try {
+                    const endpoint = mode === 'signup' ? '/api/signup' : '/api/signin';
+                    const res = await fetch(endpoint, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok || !data.ok) {
+                        showToast(data.error || 'Something went wrong. Try again.', true);
+                        return;
+                    }
+                    showToast(mode === 'signup' ? 'Bismillah. Account shipped.' : 'Welcome back.');
+                    setTimeout(() => { window.location.href = data.redirect || '/feed.html'; }, 900);
+                } catch (err) {
+                    showToast('Connection error. Check your internet and try again.', true);
+                } finally {
+                    btn.disabled = false;
+                    submitText.textContent = originalText;
+                }
+            });
+
+            setMode('signup');
+        })();
+    </script>
+</body>
+</html>
