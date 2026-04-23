@@ -228,9 +228,12 @@
       ]
     }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1081,8 +1084,7 @@
             <a href="/blog/muslim-builder-ecosystem">Insights</a>
         </div>
         <div class="nav-right">
-            <a href="#apply" class="nav-btn nav-btn-ghost" humblytics="nav-join-community">Join Community</a>
-            <a href="/offer" class="nav-btn nav-btn-primary" humblytics="nav-free-trial">Free Trial</a>
+            <a href="/scorecard" class="nav-btn nav-btn-primary" humblytics="nav-score-marketing">Score Your Marketing</a>
         </div>
         <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -1095,8 +1097,7 @@
         <a href="#community" onclick="toggleMenu()">Community</a>
         <a href="/about" onclick="toggleMenu()">About</a>
         <a href="/blog/muslim-builder-ecosystem" onclick="toggleMenu()">Insights</a>
-        <a href="#apply" onclick="toggleMenu()">Join Community</a>
-        <a href="/offer" onclick="toggleMenu()" style="color: var(--emerald);">Free Trial</a>
+        <a href="/scorecard" onclick="toggleMenu()" style="color: var(--emerald);">Score Your Marketing</a>
     </div>
 
     <main id="main-content">
@@ -1104,21 +1105,20 @@
     <section class="hero">
         <div class="hero-mesh"></div>
         <div class="container">
-            <div class="badge badge-emerald badge-dot">Community-Powered Product Studio</div>
-            <h1>Build businesses.<br>Build income.<br><span class="gradient">Serve the Ummah.</span></h1>
+            <div class="badge badge-emerald badge-dot">For Muslim Builders Who Ship</div>
+            <h1>Conferences inspire.<br>Accelerators take equity.<br><span class="gradient">We just build.</span></h1>
             <p class="hero-sub">
-                <strong>Badir</strong> (بادر) — "take the initiative."
-                A product studio + builder community for Muslims who ship.
-                Problem-solving sprints. Hands-on workshops. AI-powered execution.
+                <strong>540 million Muslim youth.</strong> A <strong>$7.7 trillion</strong> halal economy.
+                <strong>67% underrepresented</strong> in tech.
+                Badir is the product studio that turns your idea into a shipped product — in a weekend sprint, not a 6-month program.
             </p>
             <div class="hero-ctas">
-                <a href="/offer" class="btn btn-primary" humblytics="hero-free-trial">Start Free Trial <span aria-hidden="true">→</span></a>
-                <a href="/scorecard" class="btn btn-outline" humblytics="hero-score-marketing">Score Your Marketing</a>
+                <a href="/scorecard" class="btn btn-primary" humblytics="hero-score-marketing">Score Your Marketing Free <span aria-hidden="true">→</span></a>
             </div>
             <div class="stats-bar reveal">
-                <div class="stat"><div class="stat-val"><span class="accent">24</span></div><div class="stat-label">AI Agents</div></div>
-                <div class="stat"><div class="stat-val">48<span style="font-size:18px">hr</span></div><div class="stat-label">Sprint Delivery</div></div>
-                <div class="stat"><div class="stat-val">4</div><div class="stat-label">Phase Pipeline</div></div>
+                <div class="stat"><div class="stat-val"><span class="accent">10</span></div><div class="stat-label">Businesses Built</div></div>
+                <div class="stat"><div class="stat-val">48<span style="font-size:18px">hr</span></div><div class="stat-label">Sprint to Ship</div></div>
+                <div class="stat"><div class="stat-val"><span class="accent">1</span></div><div class="stat-label">Founder + AI</div></div>
                 <div class="stat"><div class="stat-val">$7.7<span style="font-size:18px">T</span></div><div class="stat-label">Halal Economy</div></div>
             </div>
         </div>
@@ -1131,11 +1131,10 @@
                 <div class="arabic-verse">فَاسْتَبِقُوا الْخَيْرَاتِ</div>
                 <div class="verse-ref">"Race to all that is good" — Al-Baqarah 2:148</div>
                 <p class="mission-text">
-                    <strong>540 million Muslim youth</strong> under 30.
-                    A <strong>$7.7 trillion</strong> halal economy.
-                    <strong>67% underrepresented</strong> in tech startups.
-                    Conferences inspire for two weeks. Accelerators take equity. MSAs don't build products.
-                    <span class="em">Badir runs sprints to solve real problems — and ships the solution.</span>
+                    بادر — <strong>"take the initiative."</strong>
+                    Named after the Battle of Badr: 313 against an army three times their size.
+                    Starting when the odds are against you. Victory through faith and action, not numbers.
+                    <span class="em">One founder. 24 AI agents. Real products shipped — not slide decks.</span>
                 </p>
             </div>
         </div>
@@ -1200,7 +1199,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <a href="#apply" class="btn btn-primary" humblytics="process-start-building">Start Building <span aria-hidden="true">→</span></a>
+                <a href="/scorecard" class="btn btn-primary" humblytics="process-score-marketing">Score Your Marketing <span aria-hidden="true">→</span></a>
                 <a href="#portfolio" class="btn btn-outline" style="margin-left: 12px;" humblytics="process-see-portfolio">See what we've shipped</a>
             </div>
         </div>
@@ -1291,7 +1290,6 @@
             <div style="text-align: center; margin-top: 40px;">
                 <p style="font-size: 15px; color: var(--gray-500); margin-bottom: 16px;">Want us to build something like this for you?</p>
                 <a href="/survey" class="btn btn-primary" humblytics="portfolio-start-project">Start a Project <span aria-hidden="true">→</span></a>
-                <a href="#apply" class="btn btn-outline" style="margin-left: 12px;" humblytics="portfolio-join-community">Join the Community</a>
             </div>
         </div>
     </section>
@@ -1358,7 +1356,7 @@
                     <h3 style="font-family:var(--font-heading);font-size:clamp(20px,3vw,26px);font-weight:700;margin-bottom:8px;">See what's really happening with your marketing</h3>
                     <p style="color:var(--gray-400);font-size:15px;max-width:460px;">14 intelligence layers. Live dashboard. Weekly reports. Zero cost for 14 days.</p>
                 </div>
-                <a href="/offer" class="btn btn-primary" humblytics="banner-free-trial">Start Free Trial <span aria-hidden="true">→</span></a>
+                <a href="/scorecard" class="btn btn-primary" humblytics="banner-score-marketing">Score Your Marketing Free <span aria-hidden="true">→</span></a>
             </div>
         </div>
     </section>
@@ -1544,7 +1542,6 @@
 
             <div style="text-align: center; margin-top: 40px;">
                 <a href="/community" class="btn btn-primary" humblytics="community-join">Join the Community <span aria-hidden="true">→</span></a>
-                <a href="#join" class="btn btn-outline" style="margin-left: 12px;" humblytics="community-get-updates">Get Updates</a>
             </div>
         </div>
     </section>
@@ -1715,9 +1712,8 @@
                 <h2>Ready to build?</h2>
                 <p>Whether you need a product built or want to become a builder — there's a path for you.</p>
                 <div class="cta-buttons">
-                    <a href="/offer" class="btn btn-primary" humblytics="cta-free-trial">Start Free Trial <span aria-hidden="true">→</span></a>
+                    <a href="/scorecard" class="btn btn-primary" humblytics="cta-score-marketing">Score Your Marketing Free <span aria-hidden="true">→</span></a>
                     <a href="/survey" class="btn btn-outline" humblytics="cta-start-project">Start a Project</a>
-                    <a href="#apply" class="btn btn-outline" humblytics="cta-apply-builder">Apply as a Builder</a>
                 </div>
                 <div class="cta-divider">
                     <p>Not ready yet? Get builder insights — free.</p>
