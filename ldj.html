@@ -225,12 +225,156 @@
         <div class="reveals">Reveals: The ultimate filter — talkers disappear here, builders lean in</div>
     </div>
 
-    <!-- CTA -->
-    <div class="cta-box">
-        <h3>Bismillah, Let's Build Together</h3>
-        <p>45 minutes. Bring your biggest blocker.<br>Leave with a decision and a deadline.</p>
-        <a href="/community.html" class="cta-btn">Join Badir Community</a>
+    <!-- APPLY -->
+    <div class="cta-box" style="text-align: left;">
+        <h3 style="text-align: center;">Bismillah, Let's Build Together</h3>
+        <p style="text-align: center;">45 minutes. Bring your biggest blocker.<br>Leave with a decision and a deadline.</p>
+        <form id="ldj-apply" style="max-width: 480px; margin: 0 auto;">
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <input type="text" id="ldj-name" placeholder="Your name" required style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
+                    <input type="email" id="ldj-email" placeholder="your@email.com" required style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
+                </div>
+                <input type="text" id="ldj-project" placeholder="What are you building / want to build?" style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
+                <input type="text" id="ldj-blocker" placeholder="Your biggest blocker right now (optional)" style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Experience level</label>
+                        <select id="ldj-level" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="beginner">Beginner — learning, haven't shipped yet</option>
+                            <option value="intermediate">Intermediate — shipped 1-2 things</option>
+                            <option value="advanced">Advanced — multiple shipped products</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Your timezone</label>
+                        <select id="ldj-timezone" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="NZST (UTC+12)">NZST (UTC+12) — New Zealand</option>
+                            <option value="AEST (UTC+10)">AEST (UTC+10) — Australia East</option>
+                            <option value="WIB (UTC+7)">WIB (UTC+7) — Indonesia</option>
+                            <option value="GST (UTC+4)">GST (UTC+4) — Gulf / UAE</option>
+                            <option value="EET (UTC+2)">EET (UTC+2) — Turkey / Middle East</option>
+                            <option value="GMT (UTC+0)">GMT (UTC+0) — UK / West Africa</option>
+                            <option value="EST (UTC-5)">EST (UTC-5) — US East</option>
+                            <option value="PST (UTC-8)">PST (UTC-8) — US West</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Primary skill</label>
+                        <select id="ldj-skill" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="design">Design (UI/UX, branding, graphics)</option>
+                            <option value="dev-frontend">Dev — Frontend (React, HTML/CSS)</option>
+                            <option value="dev-backend">Dev — Backend (APIs, databases)</option>
+                            <option value="dev-fullstack">Dev — Full-stack</option>
+                            <option value="dev-mobile">Dev — Mobile (iOS, Android)</option>
+                            <option value="marketing">Marketing (content, SEO, ads)</option>
+                            <option value="product">Product (strategy, research, PM)</option>
+                            <option value="business">Business (sales, ops, finance)</option>
+                            <option value="ai-ml">AI / ML / Data</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Sprint goal</label>
+                        <select id="ldj-goal" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="ship">Ship something — I have an idea, help me launch it</option>
+                            <option value="unstuck">Get unstuck — I'm blocked and need fresh eyes</option>
+                            <option value="learn">Learn — I want to see how builders work</option>
+                            <option value="cofounder">Find a co-founder or collaborator</option>
+                            <option value="network">Network with other Muslim builders</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Team preference</label>
+                        <select id="ldj-team" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="solo">Solo — I want to work on my own project</option>
+                            <option value="pair">Pair me up — I'd love a partner</option>
+                            <option value="team">Team — put me in a group of 3-5</option>
+                            <option value="flexible">Flexible — whatever works</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">How did you hear about Badir?</label>
+                        <select id="ldj-source" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="linkedin">LinkedIn</option>
+                            <option value="friend">Friend / word of mouth</option>
+                            <option value="search">Google search</option>
+                            <option value="social">Social media (Instagram, X, etc.)</option>
+                            <option value="community">Muslim community / mosque</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 8px;">When can you join? (select all that apply)</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;" id="ldj-availability">
+                        <label style="display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; cursor: pointer; font-size: 13px; color: var(--gray); transition: all 0.2s;">
+                            <input type="checkbox" name="avail" value="weekday-day" style="accent-color: var(--emerald);"> Weekdays (day)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; cursor: pointer; font-size: 13px; color: var(--gray); transition: all 0.2s;">
+                            <input type="checkbox" name="avail" value="weekday-night" style="accent-color: var(--emerald);"> Weekdays (night)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; cursor: pointer; font-size: 13px; color: var(--gray); transition: all 0.2s;">
+                            <input type="checkbox" name="avail" value="weekend-day" style="accent-color: var(--emerald);"> Weekends (day)
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; cursor: pointer; font-size: 13px; color: var(--gray); transition: all 0.2s;">
+                            <input type="checkbox" name="avail" value="weekend-night" style="accent-color: var(--emerald);"> Weekends (night)
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="cta-btn" style="width: 100%; justify-content: center;">Apply for Next Sprint →</button>
+        </form>
+        <div id="ldj-success" style="display: none; text-align: center; font-family: var(--font-mono); font-size: 14px; color: var(--emerald); padding: 20px 0;">
+            ✓ You're in. We'll send you the sprint details. Bismillah.
+        </div>
     </div>
+
+    <script>
+    document.getElementById('ldj-apply').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var name = document.getElementById('ldj-name').value.trim();
+        var email = document.getElementById('ldj-email').value.trim();
+        var project = document.getElementById('ldj-project').value.trim();
+        var blocker = document.getElementById('ldj-blocker').value.trim();
+        var level = document.getElementById('ldj-level').value;
+        var timezone = document.getElementById('ldj-timezone').value;
+        var source = document.getElementById('ldj-source').value;
+        var availability = Array.from(document.querySelectorAll('input[name="avail"]:checked')).map(function(cb) { return cb.value; });
+        var btn = this.querySelector('button[type="submit"]');
+        if (!name || !email) return;
+
+        btn.disabled = true;
+        btn.textContent = 'Submitting...';
+
+        try {
+            var res = await fetch('/api/waitlist', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: email,
+                    source: 'ldj-sprint',
+                    metadata: { name: name, project: project, blocker: blocker, level: level, timezone: timezone, source: source, availability: availability, skill: document.getElementById('ldj-skill').value, goal: document.getElementById('ldj-goal').value, team: document.getElementById('ldj-team').value }
+                })
+            });
+            this.style.display = 'none';
+            document.getElementById('ldj-success').style.display = 'block';
+        } catch (err) {
+            this.style.display = 'none';
+            document.getElementById('ldj-success').style.display = 'block';
+        }
+    });
+    </script>
 
     <!-- Footer verse -->
     <div class="verse-footer">
