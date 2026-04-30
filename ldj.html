@@ -90,6 +90,56 @@
         .verse-footer .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--gold); direction: rtl; }
         .verse-footer .ref { font-size: 13px; color: var(--gray-dark); margin-top: 4px; }
 
+        /* === ANIMATIONS === */
+
+        /* Hero entrance */
+        .hero-anim { opacity: 0; transform: translateY(24px); animation: heroIn 0.8s ease-out forwards; }
+        .hero-anim:nth-child(1) { animation-delay: 0.1s; }
+        .hero-anim:nth-child(2) { animation-delay: 0.25s; }
+        .hero-anim:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes heroIn { to { opacity: 1; transform: translateY(0); } }
+
+        /* Scroll reveal */
+        .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* Staggered children */
+        .stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+        .stagger > .reveal:nth-child(2) { transition-delay: 0.1s; }
+        .stagger > .reveal:nth-child(3) { transition-delay: 0.2s; }
+        .stagger > .reveal:nth-child(4) { transition-delay: 0.3s; }
+        .stagger > .reveal:nth-child(5) { transition-delay: 0.4s; }
+        .stagger > .reveal:nth-child(6) { transition-delay: 0.5s; }
+        .stagger > .reveal:nth-child(7) { transition-delay: 0.6s; }
+        .stagger > .reveal:nth-child(8) { transition-delay: 0.7s; }
+
+        /* Score item scale pop */
+        .score-item.reveal { transform: translateY(24px) scale(0.95); }
+        .score-item.reveal.visible { transform: translateY(0) scale(1); }
+
+        /* Phase card slide-in from left */
+        .phase-card.reveal { transform: translateX(-24px); opacity: 0; }
+        .phase-card.reveal.visible { transform: translateX(0); opacity: 1; }
+
+        /* CTA box glow */
+        .cta-box.reveal.visible { animation: ctaGlow 3s ease-in-out 1s infinite alternate; }
+        @keyframes ctaGlow { 0% { border-color: rgba(16,185,129,0.2); box-shadow: none; } 100% { border-color: rgba(16,185,129,0.4); box-shadow: 0 0 40px rgba(16,185,129,0.08); } }
+
+        /* Session card subtle float */
+        .session-grid .phase-card.visible { animation: cardFloat 4s ease-in-out infinite alternate; }
+        .session-grid .phase-card:nth-child(2).visible { animation-delay: 1s; }
+        @keyframes cardFloat { 0% { transform: translateY(0); } 100% { transform: translateY(-4px); } }
+
+        /* Verse fade */
+        .verse-footer.reveal { transform: none; opacity: 0; transition: opacity 1.2s ease-out; }
+        .verse-footer.reveal.visible { opacity: 1; }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            .hero-anim, .reveal, .reveal.visible, .score-item.reveal, .score-item.reveal.visible,
+            .phase-card.reveal, .phase-card.reveal.visible { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+        }
+
         .session-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .session-picker { display: flex; gap: 12px; }
@@ -134,11 +184,11 @@
 
 <div class="content">
 
-    <div class="sprint-badge"><span class="dot"></span> Sprint Format</div>
+    <div class="sprint-badge hero-anim"><span class="dot"></span> Sprint Format</div>
 
-    <h1>Lightning Decision Jam<br><span class="emerald">45 Minutes. Real Decisions.</span></h1>
+    <h1 class="hero-anim">Lightning Decision Jam<br><span class="emerald">45 Minutes. Real Decisions.</span></h1>
 
-    <div class="sprint-meta">
+    <div class="sprint-meta hero-anim">
         <div class="meta-item">
             <span class="label">Duration</span>
             <span class="value">45 Minutes</span>
@@ -154,141 +204,145 @@
     </div>
 
     <!-- USED BY TOP COMPANIES -->
-    <h2>How the Best Teams Solve Problems</h2>
+    <h2 class="reveal">How the Best Teams Solve Problems</h2>
 
-    <p class="sprint-intro" style="margin-bottom: 24px;">
+    <p class="sprint-intro reveal" style="margin-bottom: 24px;">
         The Lightning Decision Jam isn't something we invented — it's the same structured sprint methodology used by <strong>Google, Spotify, LEGO, Slack, and hundreds of top tech companies</strong> to make fast, high-quality decisions.
     </p>
-    <p class="sprint-intro" style="margin-bottom: 32px;">
+    <p class="sprint-intro reveal" style="margin-bottom: 32px;">
         Developed by <strong>AJ&Smart</strong> (the team behind Google's Design Sprint), the LDJ is built on decades of research in collaborative problem-solving. The data is clear:
     </p>
 
-    <div class="score-grid" style="margin-bottom: 48px;">
-        <div class="score-item">
-            <div class="number">3.5x</div>
+    <div class="score-grid stagger" style="margin-bottom: 48px;">
+        <div class="score-item reveal">
+            <div class="number" data-count="3.5" data-suffix="x">0</div>
             <h4>Faster Decisions</h4>
             <p>Structured sprints produce decisions 3.5x faster than traditional meetings (McKinsey, 2024)</p>
         </div>
-        <div class="score-item">
-            <div class="number">75%</div>
+        <div class="score-item reveal">
+            <div class="number" data-count="75" data-suffix="%">0</div>
             <h4>Ideas from Quiet Voices</h4>
             <p>Silent writing phases surface 75% more ideas from introverts who stay quiet in open discussion</p>
         </div>
-        <div class="score-item">
-            <div class="number">92%</div>
+        <div class="score-item reveal">
+            <div class="number" data-count="92" data-suffix="%">0</div>
             <h4>Follow-Through Rate</h4>
             <p>Public commitments with deadlines have a 92% follow-through rate vs 30% for "let's circle back"</p>
         </div>
-        <div class="score-item">
-            <div class="number">0</div>
+        <div class="score-item reveal">
+            <div class="number" data-count="0" data-suffix="">0</div>
             <h4>Wasted Hours</h4>
             <p>No open-ended debate. No "can I just add one more thing." Time-boxed phases keep everyone honest</p>
         </div>
     </div>
 
     <!-- WHY THIS MATTERS -->
-    <h2>Why This Matters for Us</h2>
+    <h2 class="reveal">Why This Matters for Us</h2>
 
-    <p class="sprint-intro" style="margin-bottom: 24px;">
+    <p class="sprint-intro reveal" style="margin-bottom: 24px;">
         Most collaborations die in group chats. Ideas float, nobody decides, nothing ships. <strong>The Lightning Decision Jam fixes this.</strong>
     </p>
-    <p class="sprint-intro">
+    <p class="sprint-intro reveal">
         In 45 minutes, we go from scattered problems to <strong>concrete commitments with deadlines.</strong> No lectures, no "let's circle back," no wasted time. Everyone participates equally — silent writing phases prevent loud voices from dominating, and voting keeps us honest about what actually matters.
     </p>
 
     <!-- BENEFITS -->
-    <h2>What You Get Out of It</h2>
+    <h2 class="reveal">What You Get Out of It</h2>
 
-    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+    <div class="stagger">
+    <div class="phase-card reveal" style="border-left: 3px solid var(--emerald);">
         <h3>Real decisions, not discussions</h3>
         <p>Every session ends with specific, ownable action items. You leave knowing exactly what to do next — not "we should probably think about..."</p>
     </div>
 
-    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+    <div class="phase-card reveal" style="border-left: 3px solid var(--emerald);">
         <h3>Equal voice for everyone</h3>
         <p>Silent writing phases mean introverts contribute as much as extroverts. Voting is democratic. The best ideas win, not the loudest person.</p>
     </div>
 
-    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+    <div class="phase-card reveal" style="border-left: 3px solid var(--emerald);">
         <h3>Accountability that sticks</h3>
         <p>Public commitments: "By [day], I will [specific action]." When you say it out loud to the group, you follow through. Bismillah.</p>
     </div>
 
-    <div class="phase-card" style="border-left: 3px solid var(--emerald);">
+    <div class="phase-card reveal" style="border-left: 3px solid var(--emerald);">
         <h3>Unblock each other fast</h3>
         <p>Bring your biggest blocker. Get 5-10 solutions from the group in 8 minutes. The Effort/Impact matrix instantly shows you what to tackle first.</p>
     </div>
+    </div>
 
     <!-- WHAT WE DO -->
-    <h2>How It Works</h2>
+    <h2 class="reveal">How It Works</h2>
 
-    <div class="phase-card">
+    <div class="stagger">
+    <div class="phase-card reveal">
         <div class="phase-time">0:00 — 5:00 &bull; 5 min</div>
         <h3>Write Problems</h3>
         <p>Everyone writes blockers/problems on stickies. One per sticky. Silent. No discussion. Just dump everything that's stopping you from shipping.</p>
         <div class="reveals">Reveals: Who identifies real blockers vs vague complaints</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">5:00 — 8:00 &bull; 3 min</div>
         <h3>Vote on Problems</h3>
         <p>3 dot votes each. Put them on the problems you think matter most. No campaigning. The group's collective intelligence picks the real issue.</p>
         <div class="reveals">Reveals: Who has taste — surface-level thinkers vs root-cause finders</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">8:00 — 10:00 &bull; 2 min</div>
         <h3>Reframe as "How Might We..."</h3>
         <p>Top-voted problem gets reframed. "Revenue is flat" becomes "How might we increase MRR by 30% in 60 days?" Specificity is everything.</p>
         <div class="reveals">Reveals: Framing ability — builders think in possibilities, complainers stay stuck</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">10:00 — 18:00 &bull; 8 min</div>
         <h3>Silent Solutions</h3>
         <p>Everyone writes solutions. Quantity over quality. Crazy ideas welcome. One per sticky. No talking — this prevents groupthink and lets introverts shine.</p>
         <div class="reveals">Reveals: Speed of ideation, systems thinking vs band-aids</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">18:00 — 21:00 &bull; 3 min</div>
         <h3>Vote on Solutions</h3>
         <p>3 dot votes again. Best solutions bubble up democratically. No HiPPO (highest-paid person's opinion) problem here.</p>
         <div class="reveals">Reveals: Strategic thinking — do they vote for quick wins or long-term plays?</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">21:00 — 30:00 &bull; 9 min</div>
         <h3>Effort/Impact Matrix</h3>
         <p>Plot top solutions on a 2x2 grid. X-axis = effort. Y-axis = impact. The magic quadrant: high impact, low effort. This is where real calibration shows.</p>
         <div class="reveals">Reveals: This IS the IQ test — can they estimate complexity accurately?</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">30:00 — 40:00 &bull; 10 min</div>
         <h3>Action Steps</h3>
         <p>Top-right quadrant solutions get broken into concrete next steps. Who does what? By when? No vague "we should probably..." — specific, ownable actions.</p>
         <div class="reveals">Reveals: Who volunteers? Who breaks tasks down well? Who watches?</div>
     </div>
 
-    <div class="phase-card">
+    <div class="phase-card reveal">
         <div class="phase-time">40:00 — 45:00 &bull; 5 min</div>
         <h3>Commit</h3>
         <p>Each person states out loud: <strong>"By [day], I will [specific action]."</strong> Bismillah. This is the moment. Social accountability + spiritual grounding. No wiggle room.</p>
         <div class="reveals">Reveals: The ultimate filter — talkers disappear here, builders lean in</div>
     </div>
+    </div>
 
     <!-- UPCOMING SESSIONS -->
-    <h2>Upcoming Sessions</h2>
+    <h2 class="reveal">Upcoming Sessions</h2>
 
-    <div class="session-grid">
-        <div class="phase-card" style="border-left: 3px solid var(--emerald); text-align: center;">
+    <div class="session-grid stagger">
+        <div class="phase-card reveal" style="border-left: 3px solid var(--emerald); text-align: center;">
             <div class="phase-time">Session 1</div>
             <h3 style="margin-bottom: 4px;">Saturday, May 2</h3>
             <p style="font-family: var(--font-mono); font-size: 20px; color: var(--emerald); margin-bottom: 8px;">2:00 PM NZT</p>
             <p style="font-size: 13px; color: var(--gray-dark);">12:00 PM AEST &bull; 7:00 AM WIB &bull; 2:00 AM GMT</p>
         </div>
-        <div class="phase-card" style="border-left: 3px solid var(--gold); text-align: center;">
+        <div class="phase-card reveal" style="border-left: 3px solid var(--gold); text-align: center;">
             <div class="phase-time" style="color: var(--gold);">Session 2</div>
             <h3 style="margin-bottom: 4px;">Sunday, May 3</h3>
             <p style="font-family: var(--font-mono); font-size: 20px; color: var(--gold); margin-bottom: 8px;">2:00 PM NZT</p>
@@ -297,7 +351,7 @@
     </div>
 
     <!-- SIGNUP -->
-    <div class="cta-box" style="text-align: left;">
+    <div class="cta-box reveal" style="text-align: left;">
         <h3 style="text-align: center;">Bismillah, Let's Build Together</h3>
         <p style="text-align: center;">Pick a session, drop your details.<br>We'll send you the Zoom link before the session.</p>
         <form id="ldj-apply" style="max-width: 480px; margin: 0 auto;">
@@ -429,12 +483,54 @@
     </script>
 
     <!-- Footer verse -->
-    <div class="verse-footer">
+    <div class="verse-footer reveal">
         <div class="arabic">وَشَاوِرْهُمْ فِي الْأَمْرِ</div>
         <div class="ref">"And consult them in the matter" — Quran 3:159</div>
     </div>
 
 </div>
+
+<!-- Scroll reveal + counter animations -->
+<script>
+(function() {
+    // IntersectionObserver for scroll reveals
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                // Trigger counters inside this element
+                var counters = entry.target.querySelectorAll('[data-count]');
+                counters.forEach(function(el) { animateCounter(el); });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+    });
+
+    // Number counter animation
+    function animateCounter(el) {
+        if (el.dataset.animated) return;
+        el.dataset.animated = '1';
+        var target = parseFloat(el.dataset.count);
+        var suffix = el.dataset.suffix || '';
+        if (target === 0) { el.textContent = '0' + suffix; return; }
+        var isDecimal = target % 1 !== 0;
+        var duration = 1200;
+        var start = performance.now();
+        function step(now) {
+            var progress = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+            var current = target * eased;
+            el.textContent = (isDecimal ? current.toFixed(1) : Math.round(current)) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+})();
+</script>
 
 <!-- Start Humblytics Tracking Code -->
 <script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
