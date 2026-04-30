@@ -90,6 +90,13 @@
         .verse-footer .arabic { font-family: var(--font-arabic); font-size: 20px; color: var(--gold); direction: rtl; }
         .verse-footer .ref { font-size: 13px; color: var(--gray-dark); margin-top: 4px; }
 
+        .session-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .session-picker { display: flex; gap: 12px; }
+        .session-option { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 16px; border-radius: 8px; cursor: pointer; font-size: 14px; color: var(--white); transition: all 0.2s; }
+        .session-option-emerald { border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.05); }
+        .session-option-gold { border: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.05); }
+
         @media (max-width: 768px) {
             nav .nav-links { display: none; }
             .content { padding: 100px 16px 60px; }
@@ -100,18 +107,15 @@
             .phase-card { padding: 20px; }
             .phase-card h3 { font-size: 17px; }
         }
-        /* Mobile overrides for inline grid styles */
         @media (max-width: 520px) {
-            div[style*="grid-template-columns: 1fr 1fr"] {
-                grid-template-columns: 1fr !important;
-            }
+            .session-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+            .session-picker { flex-direction: column; }
             .sprint-intro { font-size: 16px; }
             h2 { font-size: 22px; margin-top: 48px; }
             .filter-box { padding: 20px; }
             .filter-box h3 { font-size: 18px; }
-            div[style*="display: flex; gap: 12px;"] {
-                flex-direction: column !important;
-            }
+            .cta-box h3 { font-size: 22px; }
         }
     </style>
 </head>
@@ -244,7 +248,7 @@
     <!-- UPCOMING SESSIONS -->
     <h2>Upcoming Sessions</h2>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 48px;">
+    <div class="session-grid">
         <div class="phase-card" style="border-left: 3px solid var(--emerald); text-align: center;">
             <div class="phase-time">Session 1</div>
             <h3 style="margin-bottom: 4px;">Saturday, May 2</h3>
@@ -265,23 +269,23 @@
         <p style="text-align: center;">Pick a session, drop your details.<br>We'll send you the Zoom link before the session.</p>
         <form id="ldj-apply" style="max-width: 480px; margin: 0 auto;">
             <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 16px;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-row">
                     <input type="text" id="ldj-name" placeholder="Your name" required style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
                     <input type="email" id="ldj-email" placeholder="your@email.com" required style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
                 </div>
                 <div>
                     <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 8px;">Which session? (select all that work)</label>
-                    <div style="display: flex; gap: 12px;" id="ldj-sessions">
-                        <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.05); cursor: pointer; font-size: 14px; color: var(--white); transition: all 0.2s;">
+                    <div class="session-picker" id="ldj-sessions">
+                        <label class="session-option session-option-emerald">
                             <input type="checkbox" name="session" value="sat-may-2" style="accent-color: var(--emerald);"> Sat May 2
                         </label>
-                        <label style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 16px; border-radius: 8px; border: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.05); cursor: pointer; font-size: 14px; color: var(--white); transition: all 0.2s;">
+                        <label class="session-option session-option-gold">
                             <input type="checkbox" name="session" value="sun-may-3" style="accent-color: var(--gold);"> Sun May 3
                         </label>
                     </div>
                 </div>
                 <input type="text" id="ldj-blocker" placeholder="Your biggest blocker right now (so we can prep)" style="padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none;">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-row">
                     <div>
                         <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Your timezone</label>
                         <select id="ldj-timezone" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
