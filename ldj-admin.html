@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>LDJ Registrations — Admin</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+      background: #0a0a0a; color: #e5e5e5;
+      min-height: 100vh; padding: 24px;
+    }
+    h1 { font-size: 1.5rem; color: #C9A96E; margin-bottom: 8px; }
+    .subtitle { color: #888; font-size: 0.9rem; margin-bottom: 24px; }
+    .count { color: #C9A96E; font-weight: 700; }
+
+    /* Auth gate */
+    .auth-gate {
+      max-width: 400px; margin: 80px auto; text-align: center;
+    }
+    .auth-gate h2 { color: #C9A96E; margin-bottom: 16px; font-size: 1.2rem; }
+    .auth-gate input {
+      width: 100%; padding: 12px 16px; background: #1a1a1a; border: 1px solid #333;
+      border-radius: 8px; color: #e5e5e5; font-size: 1rem; margin-bottom: 12px;
+    }
+    .auth-gate button {
+      width: 100%; padding: 12px; background: #C9A96E; color: #0a0a0a;
+      border: none; border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer;
+    }
+    .auth-gate button:hover { background: #b8944f; }
+    .auth-error { color: #ff4444; font-size: 0.85rem; margin-top: 8px; }
+
+    /* Dashboard */
+    .dashboard { display: none; }
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px; margin-bottom: 24px;
+    }
+    .stat-card {
+      background: #1a1a1a; border: 1px solid #222; border-radius: 10px;
+      padding: 16px; text-align: center;
+    }
+    .stat-card .num { font-size: 1.8rem; font-weight: 700; color: #C9A96E; }
+    .stat-card .label { font-size: 0.75rem; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Table */
+    .table-wrap {
+      overflow-x: auto; background: #111; border-radius: 12px;
+      border: 1px solid #222;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th {
+      background: #1a1a1a; color: #C9A96E; text-align: left;
+      padding: 12px 16px; font-weight: 600; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      position: sticky; top: 0; white-space: nowrap;
+    }
+    td { padding: 10px 16px; border-top: 1px solid #1a1a1a; vertical-align: top; }
+    tr:hover td { background: #1a1a1a; }
+    .cell-name { font-weight: 600; color: #fff; }
+    .cell-email { color: #C9A96E; }
+    .cell-session { display: inline-block; background: #1a2a1a; color: #4ade80; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; margin: 1px 2px; }
+    .cell-blocker { max-width: 200px; color: #ccc; font-size: 0.8rem; line-height: 1.4; }
+    .cell-pref { color: #888; font-size: 0.8rem; }
+    .cell-time { color: #666; font-size: 0.78rem; white-space: nowrap; }
+
+    .loading { text-align: center; padding: 40px; color: #888; }
+    .empty { text-align: center; padding: 60px; color: #666; }
+    .empty .icon { font-size: 2rem; margin-bottom: 12px; }
+
+    .refresh-btn {
+      background: #222; border: 1px solid #333; color: #e5e5e5;
+      padding: 8px 16px; border-radius: 6px; cursor: pointer;
+      font-size: 0.85rem; float: right;
+    }
+    .refresh-btn:hover { background: #333; }
+
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      th, td { padding: 8px 10px; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Auth gate -->
+  <div class="auth-gate" id="auth-gate">
+    <h2>LDJ Admin</h2>
+    <p style="color:#888; margin-bottom:16px; font-size:0.85rem;">Enter admin key to view registrations</p>
+    <input type="password" id="auth-key" placeholder="Admin key" autocomplete="off" />
+    <button onclick="authenticate()">View Registrations</button>
+    <div class="auth-error" id="auth-error"></div>
+  </div>
+
+  <!-- Dashboard (hidden until auth) -->
+  <div class="dashboard" id="dashboard">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+      <div>
+        <h1>LDJ Registrations</h1>
+        <p class="subtitle">Lightning Decision Jam — Badir Studio</p>
+      </div>
+      <button class="refresh-btn" onclick="loadData()">Refresh</button>
+    </div>
+
+    <div class="stats-row" id="stats-row">
+      <div class="stat-card"><div class="num" id="stat-total">-</div><div class="label">Total</div></div>
+      <div class="stat-card"><div class="num" id="stat-sat">-</div><div class="label">Saturday</div></div>
+      <div class="stat-card"><div class="num" id="stat-sun">-</div><div class="label">Sunday</div></div>
+      <div class="stat-card"><div class="num" id="stat-both">-</div><div class="label">Both Days</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="loading" id="loading">Loading registrations...</div>
+      <table id="reg-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Sessions</th>
+            <th>Blocker</th>
+            <th>Timezone</th>
+            <th>Pref Day</th>
+            <th>Pref Time</th>
+            <th>Duration</th>
+            <th>Source</th>
+            <th>Registered</th>
+          </tr>
+        </thead>
+        <tbody id="reg-body"></tbody>
+      </table>
+      <div class="empty" id="empty-state" style="display:none;">
+        <div class="icon">&#128203;</div>
+        <p>No registrations yet</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+var adminKey = "";
+
+function authenticate() {
+  var key = document.getElementById("auth-key").value.trim();
+  if (!key) { document.getElementById("auth-error").textContent = "Enter a key"; return; }
+  adminKey = key;
+  document.getElementById("auth-error").textContent = "";
+  document.getElementById("auth-gate").style.display = "none";
+  document.getElementById("dashboard").style.display = "block";
+  loadData();
+}
+
+document.getElementById("auth-key").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") authenticate();
+});
+
+function loadData() {
+  var loading = document.getElementById("loading");
+  var table = document.getElementById("reg-table");
+  var empty = document.getElementById("empty-state");
+  loading.style.display = "block";
+  table.style.display = "none";
+  empty.style.display = "none";
+
+  fetch("/api/registrations?source=ldj&key=" + encodeURIComponent(adminKey))
+    .then(function(r) {
+      if (r.status === 401) {
+        document.getElementById("dashboard").style.display = "none";
+        document.getElementById("auth-gate").style.display = "block";
+        document.getElementById("auth-error").textContent = "Invalid key";
+        throw new Error("Unauthorized");
+      }
+      return r.json();
+    })
+    .then(function(data) {
+      loading.style.display = "none";
+      var regs = data.registrations || [];
+      if (regs.length === 0) {
+        empty.style.display = "block";
+        updateStats(regs);
+        return;
+      }
+      table.style.display = "table";
+      updateStats(regs);
+      renderTable(regs);
+    })
+    .catch(function(err) {
+      loading.style.display = "none";
+      if (err.message !== "Unauthorized") {
+        loading.textContent = "Failed to load. Check KV config.";
+        loading.style.display = "block";
+      }
+    });
+}
+
+function updateStats(regs) {
+  document.getElementById("stat-total").textContent = regs.length;
+  var sat = 0, sun = 0, both = 0;
+  regs.forEach(function(r) {
+    var s = (r.sessions || "").toLowerCase();
+    var hasSat = s.indexOf("sat") !== -1 || s.indexOf("may 3") !== -1;
+    var hasSun = s.indexOf("sun") !== -1 || s.indexOf("may 4") !== -1;
+    if (hasSat && hasSun) both++;
+    else if (hasSat) sat++;
+    else if (hasSun) sun++;
+  });
+  document.getElementById("stat-sat").textContent = sat;
+  document.getElementById("stat-sun").textContent = sun;
+  document.getElementById("stat-both").textContent = both;
+}
+
+function renderTable(regs) {
+  var body = document.getElementById("reg-body");
+  body.innerHTML = "";
+  regs.forEach(function(r) {
+    var tr = document.createElement("tr");
+
+    var sessions = (r.sessions || "").split(",").map(function(s) {
+      return '<span class="cell-session">' + escHtml(s.trim()) + '</span>';
+    }).join(" ");
+
+    var regDate = r.registeredAt ? new Date(r.registeredAt) : null;
+    var dateStr = regDate ? regDate.toLocaleDateString("en-NZ", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "-";
+
+    tr.innerHTML =
+      '<td class="cell-name">' + escHtml(r.name || "-") + '</td>' +
+      '<td class="cell-email">' + escHtml(r.email || "-") + '</td>' +
+      '<td>' + sessions + '</td>' +
+      '<td class="cell-blocker">' + escHtml(r.blocker || "-") + '</td>' +
+      '<td class="cell-pref">' + escHtml(r.timezone || "-") + '</td>' +
+      '<td class="cell-pref">' + escHtml(r.preferred_day || "-") + '</td>' +
+      '<td class="cell-pref">' + escHtml(r.preferred_time || "-") + '</td>' +
+      '<td class="cell-pref">' + escHtml(r.duration || "-") + '</td>' +
+      '<td class="cell-pref">' + escHtml(r.referral_source || "-") + '</td>' +
+      '<td class="cell-time">' + dateStr + '</td>';
+    body.appendChild(tr);
+  });
+}
+
+function escHtml(str) {
+  var d = document.createElement("div");
+  d.textContent = str;
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-import { set, sadd, isConfigured } from "./lib/kv.js";
+import { set, sadd, smembers, isConfigured } from "./lib/kv.js";
 
 export default async function handler(req, res) {
   // Only allow POST
@@ -129,6 +129,95 @@ export default async function handler(req, res) {
             text: welcomeLines.join("\n"),
           }),
         });
+      } else if (source === "ldj-sprint" && metadata) {
+        // LDJ Workshop registration — rich notification with all details
+        const m = metadata;
+        const notifyLines = [
+          `NEW LDJ REGISTRATION`,
+          "",
+          `Name: ${m.name || "Not provided"}`,
+          `Email: ${sanitized}`,
+          `Sessions: ${m.sessions || "Not selected"}`,
+          `Blocker: ${m.blocker || "Not provided"}`,
+          `Timezone: ${m.timezone || "Not provided"}`,
+          `Referral: ${m.referral_source || "Not provided"}`,
+          "",
+          "FUTURE EVENT PREFERENCES:",
+          `  Preferred Day: ${m.preferred_day || "Not set"}`,
+          `  Preferred Time: ${m.preferred_time || "Not set"}`,
+          `  Session Length: ${m.duration || "Not set"}`,
+          "",
+          `Time: ${timestamp}`,
+          `IP: ${ip}`,
+          "",
+          "— Badir LDJ Bot",
+        ];
+
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Badir LDJ <waitlist@badir.studio>",
+            to: [NOTIFY_EMAIL],
+            subject: `[LDJ] ${m.name || sanitized} — ${m.sessions || "registered"}`,
+            text: notifyLines.join("\n"),
+          }),
+        });
+
+        // LDJ-specific welcome email — relatable, workshop-focused
+        const firstName = m.name ? m.name.split(" ")[0] : "";
+        const welcomeLines = [
+          `Assalamu Alaikum${firstName ? " " + firstName : ""},`,
+          "",
+          "You're registered for the Lightning Decision Jam. Let's go.",
+          "",
+          "Here's what you need to know:",
+          "",
+          "BEFORE THE SESSION:",
+          "- Have a laptop or tablet ready (phone works too but laptop is better)",
+          "- Stable internet — we'll be on a live Miro board together",
+          "- Think about your biggest blocker right now. The one thing slowing you down.",
+          "  That's what we're solving.",
+          "",
+          "YOU DON'T NEED:",
+          "- Any technical skills",
+          "- A business plan",
+          "- Design experience",
+          "- Slides or prep work",
+          "",
+          "The whole point of LDJ is that we solve real problems in 60 minutes flat.",
+          "No lectures. No theory. Just structured problem-solving with other builders.",
+          "",
+          "Google, Spotify, and LEGO use this exact methodology.",
+          "We're bringing it to the Muslim builder community.",
+          "",
+          "I'll send session details (Zoom + Miro link) closer to the date.",
+          "",
+          "If you have questions, just reply to this email.",
+          "",
+          "Bismillah,",
+          "Mustafa Kivanc Demirsoy",
+          "Founder, Badir",
+          "",
+          "badir.studio",
+        ];
+
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Mustafa from Badir <mustafa@badir.studio>",
+            to: [sanitized],
+            subject: "You're in for LDJ. Here's what to know.",
+            text: welcomeLines.join("\n"),
+          }),
+        });
       } else {
         // Regular waitlist signup
         await fetch("https://api.resend.com/emails", {
@@ -193,10 +282,10 @@ export default async function handler(req, res) {
     }
   }
 
-  // Store in KV for drip sequence
+  // Store in KV for drip sequence + registration data
   if (isConfigured()) {
     try {
-      const subSource = isApplication ? "builder-application" : "waitlist";
+      const subSource = isApplication ? "builder-application" : (source || "waitlist");
       await set(`seq:${sanitized}`, {
         email: sanitized,
         name: (metadata && metadata.name) || null,
@@ -207,6 +296,24 @@ export default async function handler(req, res) {
         meta: isApplication ? { track: metadata.track, skills: metadata.skills } : {},
       });
       await sadd("seq:active", sanitized);
+
+      // Store full registration data for admin view
+      if (source === "ldj-sprint" && metadata) {
+        await set(`ldj:${sanitized}`, {
+          email: sanitized,
+          name: metadata.name || null,
+          sessions: metadata.sessions || null,
+          blocker: metadata.blocker || null,
+          timezone: metadata.timezone || null,
+          referral_source: metadata.referral_source || null,
+          preferred_day: metadata.preferred_day || null,
+          preferred_time: metadata.preferred_time || null,
+          duration: metadata.duration || null,
+          registeredAt: timestamp,
+          ip: ip,
+        });
+        await sadd("ldj:all", sanitized);
+      }
     } catch (err) {
       console.error("KV error:", err.message);
     }
