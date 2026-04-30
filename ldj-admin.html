@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
   <title>LDJ Registrations — Admin</title>
+  <script defer src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -109,6 +110,27 @@
       <div class="stat-card"><div class="num" id="stat-sat">-</div><div class="label">Saturday</div></div>
       <div class="stat-card"><div class="num" id="stat-sun">-</div><div class="label">Sunday</div></div>
       <div class="stat-card"><div class="num" id="stat-both">-</div><div class="label">Both Days</div></div>
+      <div class="stat-card"><div class="num" id="stat-today">-</div><div class="label">Today</div></div>
+    </div>
+
+    <!-- Referral + Timezone + Preference breakdowns -->
+    <div class="stats-row" id="breakdown-row">
+      <div class="stat-card" style="text-align:left;">
+        <div class="label" style="margin-bottom:8px;">Referral Sources</div>
+        <div id="breakdown-source" style="font-size:0.8rem; color:#ccc; line-height:1.8;"></div>
+      </div>
+      <div class="stat-card" style="text-align:left;">
+        <div class="label" style="margin-bottom:8px;">Timezones</div>
+        <div id="breakdown-tz" style="font-size:0.8rem; color:#ccc; line-height:1.8;"></div>
+      </div>
+      <div class="stat-card" style="text-align:left;">
+        <div class="label" style="margin-bottom:8px;">Preferred Day (Future)</div>
+        <div id="breakdown-day" style="font-size:0.8rem; color:#ccc; line-height:1.8;"></div>
+      </div>
+      <div class="stat-card" style="text-align:left;">
+        <div class="label" style="margin-bottom:8px;">Preferred Time (Future)</div>
+        <div id="breakdown-time" style="font-size:0.8rem; color:#ccc; line-height:1.8;"></div>
+      </div>
     </div>
 
     <div class="table-wrap">
@@ -193,20 +215,53 @@ function loadData() {
     });
 }
 
+function sessionsToString(s) {
+  if (Array.isArray(s)) return s.join(", ");
+  return s || "";
+}
+
 function updateStats(regs) {
   document.getElementById("stat-total").textContent = regs.length;
-  var sat = 0, sun = 0, both = 0;
+  var sat = 0, sun = 0, both = 0, today = 0;
+  var sources = {}, tzs = {}, prefDays = {}, prefTimes = {};
+  var todayStr = new Date().toISOString().slice(0, 10);
+
   regs.forEach(function(r) {
-    var s = (r.sessions || "").toLowerCase();
-    var hasSat = s.indexOf("sat") !== -1 || s.indexOf("may 3") !== -1;
-    var hasSun = s.indexOf("sun") !== -1 || s.indexOf("may 4") !== -1;
+    var s = sessionsToString(r.sessions).toLowerCase();
+    var hasSat = s.indexOf("sat") !== -1;
+    var hasSun = s.indexOf("sun") !== -1;
     if (hasSat && hasSun) both++;
     else if (hasSat) sat++;
     else if (hasSun) sun++;
+
+    if (r.registeredAt && r.registeredAt.slice(0, 10) === todayStr) today++;
+
+    var src = r.referral_source || "direct";
+    sources[src] = (sources[src] || 0) + 1;
+    var tz = r.timezone || "unknown";
+    tzs[tz] = (tzs[tz] || 0) + 1;
+    if (r.preferred_day) { prefDays[r.preferred_day] = (prefDays[r.preferred_day] || 0) + 1; }
+    if (r.preferred_time) { prefTimes[r.preferred_time] = (prefTimes[r.preferred_time] || 0) + 1; }
   });
+
   document.getElementById("stat-sat").textContent = sat;
   document.getElementById("stat-sun").textContent = sun;
   document.getElementById("stat-both").textContent = both;
+  document.getElementById("stat-today").textContent = today;
+
+  renderBreakdown("breakdown-source", sources);
+  renderBreakdown("breakdown-tz", tzs);
+  renderBreakdown("breakdown-day", prefDays);
+  renderBreakdown("breakdown-time", prefTimes);
+}
+
+function renderBreakdown(elId, obj) {
+  var el = document.getElementById(elId);
+  var sorted = Object.entries(obj).sort(function(a, b) { return b[1] - a[1]; });
+  if (sorted.length === 0) { el.textContent = "—"; return; }
+  el.innerHTML = sorted.map(function(pair) {
+    return '<div style="display:flex; justify-content:space-between;"><span>' + escHtml(pair[0]) + '</span><span style="color:#C9A96E; font-weight:600;">' + pair[1] + '</span></div>';
+  }).join("");
 }
 
 function renderTable(regs) {
@@ -215,8 +270,10 @@ function renderTable(regs) {
   regs.forEach(function(r) {
     var tr = document.createElement("tr");
 
-    var sessions = (r.sessions || "").split(",").map(function(s) {
-      return '<span class="cell-session">' + escHtml(s.trim()) + '</span>';
+    var sessArr = Array.isArray(r.sessions) ? r.sessions : (r.sessions || "").split(",");
+    var sessions = sessArr.map(function(s) {
+      var label = String(s).trim().replace("sat-may-", "Sat May ").replace("sun-may-", "Sun May ");
+      return '<span class="cell-session">' + escHtml(label) + '</span>';
     }).join(" ");
 
     var regDate = r.registeredAt ? new Date(r.registeredAt) : null;
