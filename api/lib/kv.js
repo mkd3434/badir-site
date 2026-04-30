@@ -1,13 +1,13 @@
 // Vercel KV (Upstash Redis) REST API wrapper — no SDK needed
-const URL = process.env.KV_REST_API_URL;
-const TOKEN = process.env.KV_REST_API_TOKEN;
+const KV_URL = process.env.KV_REST_API_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN;
 
 async function cmd(...args) {
-  if (!URL || !TOKEN) return null;
-  const res = await fetch(`${URL}`, {
+  if (!KV_URL || !KV_TOKEN) return null;
+  const res = await fetch(KV_URL, {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${TOKEN}`,
+      Authorization: `Bearer ${KV_TOKEN}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify(args),
@@ -40,5 +40,5 @@ export async function smembers(key) {
 }
 
 export function isConfigured() {
-  return Boolean(URL && TOKEN);
+  return Boolean(KV_URL && KV_TOKEN);
 }

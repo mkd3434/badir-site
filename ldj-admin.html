@@ -184,7 +184,9 @@ function loadData() {
   table.style.display = "none";
   empty.style.display = "none";
 
-  fetch("/api/registrations?source=ldj&key=" + encodeURIComponent(adminKey))
+  fetch("/api/registrations?source=ldj", {
+      headers: { "Authorization": "Bearer " + adminKey }
+    })
     .then(function(r) {
       if (r.status === 401) {
         document.getElementById("dashboard").style.display = "none";

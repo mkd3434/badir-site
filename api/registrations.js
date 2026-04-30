@@ -1,14 +1,19 @@
 import { get, smembers, isConfigured } from "./lib/kv.js";
+import { timingSafeEqual } from "./lib/auth.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  // Simple auth via query param — not a full auth system, just a gate
-  const key = req.query.key;
-  const ADMIN_KEY = process.env.ADMIN_KEY || "badir2026";
-  if (key !== ADMIN_KEY) {
+  // Auth via Authorization header (Bearer token)
+  const ADMIN_KEY = process.env.ADMIN_KEY;
+  if (!ADMIN_KEY) {
+    return res.status(503).json({ error: "Admin access not configured" });
+  }
+  const authHeader = req.headers.authorization || "";
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+  if (!token || !timingSafeEqual(token, ADMIN_KEY)) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
