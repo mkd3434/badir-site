@@ -92,10 +92,26 @@
 
         @media (max-width: 768px) {
             nav .nav-links { display: none; }
-            .content { padding: 100px 20px 60px; }
+            .content { padding: 100px 16px 60px; }
+            h1 { font-size: 28px; }
             .score-grid { grid-template-columns: 1fr; }
-            .sprint-meta { gap: 20px; }
-            .cta-box { padding: 32px 20px; }
+            .sprint-meta { gap: 16px; flex-direction: column; }
+            .cta-box { padding: 24px 16px; }
+            .phase-card { padding: 20px; }
+            .phase-card h3 { font-size: 17px; }
+        }
+        /* Mobile overrides for inline grid styles */
+        @media (max-width: 520px) {
+            div[style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            .sprint-intro { font-size: 16px; }
+            h2 { font-size: 22px; margin-top: 48px; }
+            .filter-box { padding: 20px; }
+            .filter-box h3 { font-size: 18px; }
+            div[style*="display: flex; gap: 12px;"] {
+                flex-direction: column !important;
+            }
         }
     </style>
 </head>
