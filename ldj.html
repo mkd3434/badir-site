@@ -314,6 +314,44 @@
                         </select>
                     </div>
                 </div>
+                <div style="margin-top: 8px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);">
+                    <label style="display: block; font-size: 13px; color: var(--emerald); margin-bottom: 10px; font-weight: 600;">For future events — help us plan around you</label>
+                    <div class="form-row" style="margin-bottom: 12px;">
+                        <div>
+                            <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Preferred day</label>
+                            <select id="ldj-preferred-day" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                                <option value="">Select...</option>
+                                <option value="saturday">Saturdays</option>
+                                <option value="sunday">Sundays</option>
+                                <option value="both-weekend">Both Sat + Sun</option>
+                                <option value="weekday-evening">Weekday evenings</option>
+                                <option value="flexible">Flexible — any day works</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">Preferred time</label>
+                            <select id="ldj-preferred-time" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                                <option value="">Select...</option>
+                                <option value="morning">Morning (9 AM – 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 – 3 PM)</option>
+                                <option value="late-afternoon">Late Afternoon (3 – 6 PM)</option>
+                                <option value="evening">Evening (6 – 9 PM)</option>
+                                <option value="flexible">Flexible — any time works</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 13px; color: var(--gray); margin-bottom: 6px;">How long can you commit?</label>
+                        <select id="ldj-duration" style="width: 100%; padding: 14px 18px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.06); background: #1A1A1A; color: #FAFAFA; font-family: var(--font-body); font-size: 14px; outline: none; appearance: auto;">
+                            <option value="">Select...</option>
+                            <option value="45min">45 min (LDJ only)</option>
+                            <option value="2hr">2 hours (half session)</option>
+                            <option value="half-day">Half day (4-5 hours)</option>
+                            <option value="full-day">Full day (8+ hours)</option>
+                            <option value="weekend">Full weekend (48hr sprint)</option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <button type="submit" class="cta-btn" style="width: 100%; justify-content: center;">Register — Send Me the Zoom Link</button>
         </form>
@@ -324,74 +362,6 @@
         </div>
     </div>
 
-    <!-- UPCOMING SCHEDULE -->
-    <h2>Coming Up</h2>
-    <p style="font-size: 15px; color: var(--gray); margin-bottom: 24px;">We run LDJ sessions every weekend. Register above and we'll send you the details for whichever session you pick.</p>
-
-    <div style="overflow-x: auto;">
-        <table style="width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px;">
-            <thead>
-                <tr>
-                    <th style="text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06);">Date</th>
-                    <th style="text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06);">Time</th>
-                    <th style="text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06);">Format</th>
-                    <th style="text-align: left; padding: 12px 16px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.06);">Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr style="background: rgba(16,185,129,0.03);">
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sat, May 2</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--emerald);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">Intro LDJ — Community Issue</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: var(--emerald-dim); color: var(--emerald); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">OPEN</span></td>
-                </tr>
-                <tr style="background: rgba(245,158,11,0.03);">
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sun, May 3</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gold);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">Intro LDJ — Community Issue</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: var(--emerald-dim); color: var(--emerald); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">OPEN</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sat, May 9</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">LDJ — Bring Your Blocker</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sun, May 10</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">LDJ — Bring Your Blocker</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sat, May 16</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">48hr Product Sprint Kickoff</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sun, May 17</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">48hr Product Sprint Ship Day</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-weight: 600;">Sat, May 23</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--gray);">LDJ — Bring Your Blocker</td>
-                    <td style="padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04);"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-                <tr>
-                    <td style="padding: 14px 16px; font-weight: 600;">Sat, May 30</td>
-                    <td style="padding: 14px 16px; font-family: var(--font-mono); color: var(--gray);">2:00 PM NZT</td>
-                    <td style="padding: 14px 16px; color: var(--gray);">48hr Product Sprint Kickoff</td>
-                    <td style="padding: 14px 16px;"><span style="background: rgba(156,163,175,0.15); color: var(--gray); font-family: var(--font-mono); font-size: 11px; padding: 3px 8px; border-radius: 4px;">SOON</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <p style="font-size: 13px; color: var(--gray-dark); margin-top: 16px; font-style: italic;">Sessions repeat every weekend. LDJ = Lightning Decision Jam (45 min). Product Sprints = 48hr build weekends. All times 2:00 PM NZT.</p>
 
     <script>
     document.getElementById('ldj-apply').addEventListener('submit', async function(e) {
@@ -416,7 +386,7 @@
                 body: JSON.stringify({
                     email: email,
                     source: 'ldj-sprint',
-                    metadata: { name: name, blocker: blocker, timezone: timezone, referral_source: source, sessions: sessions }
+                    metadata: { name: name, blocker: blocker, timezone: timezone, referral_source: source, sessions: sessions, preferred_day: document.getElementById('ldj-preferred-day').value, preferred_time: document.getElementById('ldj-preferred-time').value, duration: document.getElementById('ldj-duration').value }
                 })
             });
             this.style.display = 'none';
