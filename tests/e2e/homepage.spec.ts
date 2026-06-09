@@ -33,7 +33,7 @@ test.describe('Badir Homepage', () => {
     const mission = page.locator('.mission-strip')
     await expect(mission).toBeVisible()
     await expect(mission).toContainText('فَاسْتَبِقُوا الْخَيْرَاتِ')
-    await expect(mission).toContainText('540 million')
+    await expect(mission).toContainText('313')
   })
 
   test('should display 4-phase process', async ({ page }) => {
@@ -56,8 +56,8 @@ test.describe('Badir Homepage', () => {
     await expect(whySection).toBeVisible()
 
     // Gap and solution cards
-    await expect(page.locator('.why-problem')).toContainText('1.8 billion Muslims')
-    await expect(page.locator('.why-problem')).toContainText('67% underrepresented')
+    await expect(page.locator('.why-problem')).toContainText('Nearly 2 billion Muslims')
+    await expect(page.locator('.why-problem')).toContainText('underrepresented')
     await expect(page.locator('.why-solution')).toContainText("We don't inspire. We build.")
 
     // 4 pillars

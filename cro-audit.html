@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRO Audit Scorecard — Badir Studio</title>
+    <meta name="description" content="Free CRO audit. 12 questions across 6 dimensions: page speed, landing pages, trust signals, mobile UX, forms, and testing. Get your conversion score and fix list.">
+    <meta property="og:title" content="CRO Audit Scorecard — Badir Studio">
+    <meta property="og:description" content="Score your website's conversion health in 3 minutes. 12 questions covering page speed, landing pages, trust, mobile UX, forms, and optimization.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/cro-audit">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CRO Audit Scorecard — Badir Studio">
+    <meta name="twitter:description" content="Score your website's conversion health in 3 minutes. 12 questions, 6 dimensions. Free audit with actionable fixes.">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Mustafa Kivanc Demirsoy">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/cro-audit">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CRO Audit Scorecard",
+      "description": "Interactive conversion rate optimization audit across 6 dimensions: Page Speed & Performance, Landing Page Quality, Trust & Social Proof, Mobile Experience, Forms & Checkout, and Testing & Optimization.",
+      "url": "https://badir.studio/cro-audit",
+      "applicationCategory": "BusinessApplication",
+      "publisher": { "@type": "Organization", "name": "Badir Studio", "url": "https://badir.studio" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" }
+    }
+    </script>
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #0C0C0C;
+            --surface: #111111;
+            --surface-2: #181818;
+            --surface-3: #222222;
+            --border: rgba(255,255,255,0.06);
+            --emerald: #10B981;
+            --emerald-dim: rgba(16,185,129,0.12);
+            --emerald-glow: rgba(16,185,129,0.25);
+            --gold: #F59E0B;
+            --gold-dim: rgba(245,158,11,0.12);
+            --blue: #60A5FA;
+            --blue-dim: rgba(96,165,250,0.12);
+            --purple: #A78BFA;
+            --purple-dim: rgba(167,139,250,0.12);
+            --red: #EF4444;
+            --red-dim: rgba(239,68,68,0.12);
+            --cyan: #22D3EE;
+            --cyan-dim: rgba(34,211,238,0.12);
+            --orange: #F97316;
+            --orange-dim: rgba(249,115,22,0.12);
+            --white: #FAFAFA;
+            --gray: #9CA3AF;
+            --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+        body {
+            background: var(--dark); color: var(--white);
+            font-family: var(--font-body); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        ::selection { background: var(--orange); color: var(--dark); }
+
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 48px 48px; pointer-events: none; z-index: 0;
+        }
+
+        .scorecard {
+            width: 100%; max-width: 760px; margin: 0 auto;
+            padding: 40px 24px; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; z-index: 1;
+        }
+
+        .screen { display: none; animation: fadeIn 0.4s ease; }
+        .screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* NAV BAR */
+        .sc-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 32px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(12,12,12,0.88); backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .sc-nav a {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px;
+        }
+        .sc-nav a .ar { font-family: var(--font-arabic); font-size: 15px; color: var(--emerald); }
+        .sc-nav-right { display: flex; gap: 8px; }
+        .sc-nav-btn {
+            font-family: var(--font-mono); font-size: 12px; padding: 6px 14px;
+            border-radius: 8px; text-decoration: none; transition: all 0.2s;
+        }
+        .sc-nav-ghost { color: var(--gray); background: transparent; border: 1px solid var(--border); }
+        .sc-nav-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.15); }
+
+        /* PROGRESS */
+        .progress-wrap {
+            position: fixed; top: 56px; left: 0; right: 0; height: 3px;
+            background: var(--surface-2); z-index: 99;
+        }
+        .progress-bar {
+            height: 100%; width: 0; background: var(--orange);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* INTRO SCREEN */
+        .intro { text-align: center; padding-top: 40px; }
+        .intro-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+            background: var(--orange-dim); color: var(--orange);
+            border: 1px solid rgba(249,115,22,0.15); margin-bottom: 28px;
+        }
+        .intro-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+        .intro h1 {
+            font-family: var(--font-heading); font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800; line-height: 1.1; letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+        .intro h1 .gradient {
+            background: linear-gradient(135deg, var(--orange), #FB923C, var(--red));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .intro-sub {
+            font-size: 16px; color: var(--gray); max-width: 480px;
+            margin: 0 auto 36px; line-height: 1.7;
+        }
+        .intro-dims {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+            max-width: 520px; margin: 0 auto 36px;
+        }
+        .intro-dim {
+            font-family: var(--font-mono); font-size: 11px; padding: 8px 12px;
+            border-radius: 8px; background: var(--surface); border: 1px solid var(--border);
+            text-align: center; color: var(--gray);
+        }
+        .intro-dim span { display: block; font-size: 16px; margin-bottom: 4px; }
+        .btn-start {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            padding: 14px 32px; border-radius: 10px; border: none; cursor: pointer;
+            background: var(--orange); color: var(--dark);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-start:hover {
+            background: #FB923C;
+            box-shadow: 0 0 40px rgba(249,115,22,0.2), 0 4px 16px rgba(249,115,22,0.15);
+            transform: translateY(-1px);
+        }
+        .intro-note {
+            font-size: 13px; color: var(--gray-dark); margin-top: 16px;
+        }
+        @media (max-width: 600px) {
+            .intro-dims { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* QUESTION SCREEN */
+        .q-count {
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            letter-spacing: 1.5px; margin-bottom: 8px;
+        }
+        .q-dim {
+            font-family: var(--font-mono); font-size: 12px; color: var(--orange);
+            margin-bottom: 20px;
+        }
+        .q-title {
+            font-family: var(--font-heading); font-size: clamp(22px, 3.5vw, 30px);
+            font-weight: 700; line-height: 1.25; letter-spacing: -0.5px;
+            margin-bottom: 32px;
+        }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option {
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 20px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--surface);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .option:hover { border-color: rgba(255,255,255,0.15); background: var(--surface-2); }
+        .option.selected { border-color: var(--orange); background: var(--orange-dim); }
+        .option-key {
+            width: 28px; height: 28px; border-radius: 6px;
+            border: 1px solid var(--border); display: flex;
+            align-items: center; justify-content: center;
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            flex-shrink: 0; transition: all 0.2s;
+        }
+        .option.selected .option-key {
+            border-color: var(--orange); color: var(--orange); background: var(--orange-dim);
+        }
+        .option-text { font-size: 15px; color: var(--gray); transition: color 0.2s; }
+        .option.selected .option-text { color: var(--white); }
+        .q-hint {
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark);
+            margin-top: 20px; text-align: center;
+        }
+
+        /* EMAIL GATE */
+        .email-gate { text-align: center; padding-top: 60px; }
+        .email-gate h2 {
+            font-family: var(--font-heading); font-size: 28px; font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .email-gate p { font-size: 15px; color: var(--gray); margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; }
+        .email-form { max-width: 400px; margin: 0 auto; }
+        .email-input {
+            width: 100%; padding: 14px 16px; border-radius: 10px;
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--white); font-family: var(--font-body); font-size: 15px;
+            margin-bottom: 12px; outline: none; transition: border-color 0.2s;
+        }
+        .email-input:focus { border-color: var(--orange); }
+        .email-input::placeholder { color: var(--gray-dark); }
+        .btn-submit {
+            width: 100%; padding: 14px; border-radius: 10px; border: none;
+            background: var(--orange); color: var(--dark); cursor: pointer;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-submit:hover { background: #FB923C; }
+        .email-note { font-size: 12px; color: var(--gray-dark); margin-top: 12px; }
+
+        /* RESULTS SCREEN */
+        .results { padding-top: 40px; }
+        .results-header { text-align: center; margin-bottom: 40px; }
+        .results-header h2 {
+            font-family: var(--font-heading); font-size: 24px; font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .score-ring { text-align: center; margin-bottom: 32px; }
+        .score-ring svg { width: 160px; height: 160px; }
+        .score-ring circle {
+            fill: none; stroke-width: 6; stroke-linecap: round;
+            transform: rotate(-90deg); transform-origin: center;
+        }
+        .score-ring .bg { stroke: var(--surface-2); }
+        .score-ring .fill { transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .score-num {
+            font-family: var(--font-heading); font-size: 42px; font-weight: 800;
+            letter-spacing: -2px;
+        }
+        .score-max { font-family: var(--font-mono); font-size: 14px; color: var(--gray-dark); }
+
+        .grade-box {
+            text-align: center; padding: 20px 24px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; margin-bottom: 32px;
+        }
+        .grade-title {
+            font-family: var(--font-heading); font-size: 20px; font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .grade-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+        /* DIMENSION BARS */
+        .dim-section { margin-bottom: 36px; }
+        .dim-section-title {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            margin-bottom: 16px; color: var(--gray);
+        }
+        .dim-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px 0; border-bottom: 1px solid var(--border);
+        }
+        .dim-row:last-child { border-bottom: none; }
+        .dim-label {
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray);
+            width: 140px; flex-shrink: 0;
+        }
+        .dim-bar {
+            flex: 1; height: 8px; background: var(--surface-2);
+            border-radius: 4px; overflow: hidden;
+        }
+        .dim-fill {
+            height: 100%; width: 0; border-radius: 4px;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dim-val {
+            font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+            width: 50px; text-align: right; flex-shrink: 0;
+        }
+        @media (max-width: 500px) { .dim-label { width: 100px; font-size: 11px; } }
+
+        /* QUICK WINS */
+        .quick-wins {
+            margin-bottom: 32px; background: var(--surface);
+            border: 1px solid rgba(249,115,22,0.15); border-radius: 12px; padding: 24px;
+        }
+        .quick-wins-title {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 700;
+            color: var(--orange); margin-bottom: 4px;
+        }
+        .quick-wins-sub { font-size: 13px; color: var(--gray-dark); margin-bottom: 16px; }
+        .quick-win-item {
+            display: flex; gap: 12px; padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .quick-win-item:last-child { border-bottom: none; }
+        .quick-win-num {
+            width: 24px; height: 24px; border-radius: 6px;
+            background: var(--orange-dim); color: var(--orange);
+            font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; margin-top: 2px;
+        }
+        .quick-win-dim {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+            letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 4px;
+        }
+        .quick-win-text { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+        /* DIMENSION DEEP-DIVE CARDS */
+        .dim-cards { display: flex; flex-direction: column; gap: 16px; margin-bottom: 36px; }
+        .dim-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 24px; border-left: 3px solid var(--orange);
+        }
+        .dim-card-header {
+            display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;
+        }
+        .dim-card-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .dim-card-icon { font-size: 20px; }
+        .dim-card-name { font-family: var(--font-heading); font-size: 16px; font-weight: 700; }
+        .dim-card-score { font-family: var(--font-mono); font-size: 14px; font-weight: 600; }
+        .dim-card-bar {
+            height: 6px; background: var(--surface-2);
+            border-radius: 3px; overflow: hidden; margin-bottom: 16px;
+        }
+        .dim-card-fill {
+            height: 100%; border-radius: 3px;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1); width: 0;
+        }
+        .fix-badge {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            letter-spacing: 0.5px; padding: 3px 8px; border-radius: 4px;
+            background: rgba(239,68,68,0.12); color: var(--red);
+        }
+        .dim-card-insight {
+            font-size: 14px; color: var(--gray); line-height: 1.7;
+            margin-bottom: 16px; padding-left: 12px; border-left: 2px solid var(--border);
+        }
+        .dim-card-tips { margin-bottom: 16px; }
+        .dim-card-tips-title {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            color: var(--orange); letter-spacing: 0.5px; text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .dim-tip {
+            display: flex; gap: 8px; padding: 8px 0;
+            font-size: 13px; color: var(--gray); line-height: 1.6;
+        }
+        .dim-tip-bullet { color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+        .dim-card-fix {
+            font-size: 13px; color: var(--gray-dark); line-height: 1.6;
+            padding: 12px 16px; background: var(--surface-2); border-radius: 8px;
+        }
+        .dim-card-fix strong {
+            color: var(--orange); font-family: var(--font-mono); font-size: 11px;
+            font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;
+        }
+        @media (max-width: 600px) { .dim-card { padding: 18px; } }
+
+        /* RECOMMENDATIONS */
+        .rec-section { margin-bottom: 36px; }
+        .rec-section-title {
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            margin-bottom: 16px; color: var(--gray);
+        }
+        .rec-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .rec-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 20px; border-top: 3px solid var(--orange);
+        }
+        .rec-phase {
+            font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+            color: var(--orange); letter-spacing: 1px; text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .rec-title {
+            font-family: var(--font-heading); font-size: 15px; font-weight: 700;
+            color: var(--white); margin-bottom: 6px;
+        }
+        .rec-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+        @media (max-width: 600px) { .rec-grid { grid-template-columns: 1fr; } }
+
+        /* CTA BANNER */
+        .cta-banner {
+            display: flex; align-items: center; justify-content: center;
+            padding: 24px 28px; background: var(--surface);
+            border: 1px solid var(--border); border-radius: 12px;
+            margin-bottom: 24px; text-align: center;
+        }
+
+        /* RESTART */
+        .restart-row { text-align: center; margin-top: 8px; }
+        .restart-btn {
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            background: none; border: none; cursor: pointer; padding: 8px 16px;
+            transition: color 0.2s;
+        }
+        .restart-btn:hover { color: var(--white); }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <div class="sc-nav">
+        <a href="/">Badir <span class="ar">بادر</span></a>
+        <div class="sc-nav-right">
+            <a href="/assessments" class="sc-nav-btn sc-nav-ghost">All Assessments</a>
+        </div>
+    </div>
+
+    <div class="progress-wrap"><div class="progress-bar" id="progress"></div></div>
+
+    <div class="scorecard">
+
+        <!-- INTRO -->
+        <div class="screen active" id="screen-intro">
+            <div class="intro">
+                <div class="intro-badge">3-MINUTE AUDIT</div>
+                <h1>Your <span class="gradient">CRO Audit</span> Score</h1>
+                <p class="intro-sub">
+                    Your website gets traffic. But how much of it converts?
+                    Most sites lose 96% of visitors. Find out where yours is leaking revenue.
+                </p>
+                <div class="intro-dims">
+                    <div class="intro-dim"><span>&#x26A1;</span> Page Speed</div>
+                    <div class="intro-dim"><span>&#x1F3AF;</span> Landing Pages</div>
+                    <div class="intro-dim"><span>&#x1F91D;</span> Trust Signals</div>
+                    <div class="intro-dim"><span>&#x1F4F1;</span> Mobile UX</div>
+                    <div class="intro-dim"><span>&#x1F4DD;</span> Forms &amp; Checkout</div>
+                    <div class="intro-dim"><span>&#x1F9EA;</span> Testing &amp; CRO</div>
+                </div>
+                <button class="btn-start" onclick="startAssessment()" humblytics="cro_audit_start">
+                    Start Audit <span aria-hidden="true">&rarr;</span>
+                </button>
+                <p class="intro-note">Free. No signup required to start. Results in 3 minutes.</p>
+            </div>
+        </div>
+
+        <!-- QUESTION -->
+        <div class="screen" id="screen-question">
+            <div class="q-count" id="qCount">QUESTION 1 OF 12</div>
+            <div class="q-dim" id="qDim">Page Speed &amp; Performance</div>
+            <div class="q-title" id="qTitle"></div>
+            <div class="options" id="qOptions"></div>
+            <div class="q-hint">Press 1-4 to select</div>
+        </div>
+
+        <!-- EMAIL GATE -->
+        <div class="screen" id="screen-email">
+            <div class="email-gate">
+                <h2>Your audit is ready</h2>
+                <p>Enter your email to see your CRO score, dimension breakdown, and prioritized fixes.</p>
+                <form class="email-form" id="email-gate-form">
+                    <input class="email-input" type="email" id="gate-email" placeholder="you@company.com" required>
+                    <button class="btn-submit" type="submit" humblytics="cro_audit_email_submit">See My Results</button>
+                </form>
+                <p class="email-note">We'll send your full audit report to this email. No spam.</p>
+            </div>
+        </div>
+
+        <!-- RESULTS -->
+        <div class="screen" id="screen-results">
+            <div class="results">
+                <div class="results-header">
+                    <h2>Your CRO Audit Score</h2>
+                </div>
+
+                <div class="score-ring">
+                    <svg viewBox="0 0 140 140">
+                        <circle class="bg" cx="70" cy="70" r="60" />
+                        <circle class="fill" id="scoreCircle" cx="70" cy="70" r="60" />
+                    </svg>
+                    <div>
+                        <span class="score-num" id="scoreNum">0</span>
+                        <span class="score-max"> / 120</span>
+                    </div>
+                </div>
+
+                <div class="grade-box">
+                    <div class="grade-title" id="gradeTitle"></div>
+                    <div class="grade-desc" id="gradeDesc"></div>
+                </div>
+
+                <div id="quickWins"></div>
+
+                <div class="dim-section">
+                    <div class="dim-section-title">Your scores by dimension</div>
+                    <div class="dim-cards" id="dimCards"></div>
+                </div>
+
+                <div class="rec-section">
+                    <div class="rec-section-title">What to fix next</div>
+                    <div class="rec-grid" id="recGrid"></div>
+                </div>
+
+                <div class="cta-banner">
+                    <p style="color:var(--gray);font-size:15px;">Your results have been saved. Use this scorecard to track your progress over time.</p>
+                </div>
+
+                <div class="restart-row">
+                    <button class="restart-btn" onclick="restartAssessment()">&#x21BB; Take it again</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+(function() {
+    "use strict";
+
+    var questions = [
+        // PAGE SPEED & PERFORMANCE (2 questions)
+        {
+            title: "How fast does your website load on mobile?",
+            dimension: "Page Speed",
+            dimIndex: 0,
+            options: [
+                { text: "I've never tested it \u2014 no idea how fast or slow it is", score: 2 },
+                { text: "It feels a bit slow but I haven't measured or optimized it", score: 4 },
+                { text: "I've tested it \u2014 loads in 3-5 seconds, some issues flagged in PageSpeed Insights", score: 7 },
+                { text: "Under 2.5s LCP, optimized images, deferred JS, green Core Web Vitals across all pages", score: 10 }
+            ]
+        },
+        {
+            title: "Do you know your Core Web Vitals scores (LCP, CLS, INP)?",
+            dimension: "Page Speed",
+            dimIndex: 0,
+            options: [
+                { text: "I don't know what Core Web Vitals are", score: 2 },
+                { text: "I've heard of them but never checked my scores", score: 4 },
+                { text: "I've checked in Search Console \u2014 some pages pass, some fail", score: 7 },
+                { text: "All pages pass CWV, I monitor them regularly and fix regressions immediately", score: 10 }
+            ]
+        },
+        // LANDING PAGE QUALITY (2 questions)
+        {
+            title: "How clear and compelling is your hero section (above the fold)?",
+            dimension: "Landing Pages",
+            dimIndex: 1,
+            options: [
+                { text: "Generic headline, no clear value proposition, multiple competing elements", score: 2 },
+                { text: "Has a headline and CTA, but it's not very specific or compelling", score: 4 },
+                { text: "Clear value prop, single primary CTA, decent visual hierarchy", score: 7 },
+                { text: "Tested headline, one unmissable CTA, social proof visible, no distractions above the fold", score: 10 }
+            ]
+        },
+        {
+            title: "How many calls-to-action compete for attention on your key landing pages?",
+            dimension: "Landing Pages",
+            dimIndex: 1,
+            options: [
+                { text: "Several \u2014 nav links, multiple buttons, sidebar offers, pop-ups all fighting for clicks", score: 2 },
+                { text: "A few competing CTAs, but there's one primary action I want people to take", score: 4 },
+                { text: "Clear primary CTA with one secondary option \u2014 page has a focused flow", score: 7 },
+                { text: "One primary CTA per page, everything else supports it. Tested and optimized for click-through", score: 10 }
+            ]
+        },
+        // TRUST & SOCIAL PROOF (2 questions)
+        {
+            title: "What trust signals does a first-time visitor see on your site?",
+            dimension: "Trust & Proof",
+            dimIndex: 2,
+            options: [
+                { text: "None really \u2014 no reviews, testimonials, or trust badges", score: 2 },
+                { text: "A few testimonials buried on a separate page", score: 4 },
+                { text: "Reviews or testimonials visible on key pages, some trust badges or logos", score: 7 },
+                { text: "Social proof on every landing page: specific numbers, named testimonials, trust badges, press logos, and live customer counts", score: 10 }
+            ]
+        },
+        {
+            title: "Do you actively collect and display customer reviews?",
+            dimension: "Trust & Proof",
+            dimIndex: 2,
+            options: [
+                { text: "We don't have a system for collecting reviews", score: 2 },
+                { text: "We have some reviews on Google or Facebook but don't use them on our site", score: 4 },
+                { text: "We collect reviews and display them, but it's not systematic", score: 7 },
+                { text: "Automated review collection, displayed with schema markup, integrated across landing pages and Google", score: 10 }
+            ]
+        },
+        // MOBILE EXPERIENCE (2 questions)
+        {
+            title: "How does your site perform on mobile devices?",
+            dimension: "Mobile UX",
+            dimIndex: 3,
+            options: [
+                { text: "It's not really designed for mobile \u2014 desktop experience shrunk to fit", score: 2 },
+                { text: "Responsive layout but some elements are hard to tap or read on mobile", score: 4 },
+                { text: "Good mobile experience \u2014 readable text, tappable buttons, content reflows properly", score: 7 },
+                { text: "Mobile-first design with optimized touch targets, sticky CTAs, fast loading, and mobile-specific UX patterns", score: 10 }
+            ]
+        },
+        {
+            title: "What percentage of your traffic comes from mobile, and do you optimize differently for it?",
+            dimension: "Mobile UX",
+            dimIndex: 3,
+            options: [
+                { text: "I don't know my mobile traffic split and don't treat mobile differently", score: 2 },
+                { text: "I know most traffic is mobile but haven't optimized the experience specifically", score: 4 },
+                { text: "I track mobile vs desktop metrics and have made some mobile-specific improvements", score: 7 },
+                { text: "Mobile-specific analytics, dedicated mobile UX testing, different CTAs or layouts for mobile vs desktop", score: 10 }
+            ]
+        },
+        // FORMS & CHECKOUT (2 questions)
+        {
+            title: "How much friction is in your signup, contact, or checkout forms?",
+            dimension: "Forms & Checkout",
+            dimIndex: 4,
+            options: [
+                { text: "Long forms with many required fields \u2014 I haven't thought about reducing friction", score: 2 },
+                { text: "Standard forms \u2014 name, email, phone, message \u2014 nothing special to reduce drop-off", score: 4 },
+                { text: "Streamlined forms with only essential fields, inline validation, and clear progress", score: 7 },
+                { text: "Minimal friction: auto-fill enabled, multi-step with progress bars, tested and optimized for completion rate", score: 10 }
+            ]
+        },
+        {
+            title: "Do you know your form completion rate and where people abandon?",
+            dimension: "Forms & Checkout",
+            dimIndex: 4,
+            options: [
+                { text: "No \u2014 I just know some people fill them out and some don't", score: 2 },
+                { text: "I know the overall conversion rate but not where specifically people drop off", score: 4 },
+                { text: "I track completion rates and know which fields cause the most abandonment", score: 7 },
+                { text: "Field-level analytics, A/B tested form variations, error tracking, and continuous optimization of completion rates", score: 10 }
+            ]
+        },
+        // TESTING & OPTIMIZATION (2 questions)
+        {
+            title: "How often do you run A/B tests or experiments on your website?",
+            dimension: "Testing & CRO",
+            dimIndex: 5,
+            options: [
+                { text: "Never \u2014 I make changes based on what feels right", score: 2 },
+                { text: "I've run a few tests in the past but it's not a regular practice", score: 4 },
+                { text: "We run tests monthly \u2014 headlines, CTAs, layouts \u2014 with a clear hypothesis each time", score: 7 },
+                { text: "Continuous experimentation program: prioritized test backlog, statistical rigor, learnings documented, automated reporting", score: 10 }
+            ]
+        },
+        {
+            title: "Do you use heatmaps, session recordings, or analytics to identify conversion problems?",
+            dimension: "Testing & CRO",
+            dimIndex: 5,
+            options: [
+                { text: "No \u2014 I rely on gut feeling and page views", score: 2 },
+                { text: "Google Analytics is set up but I don't use heatmaps or recordings", score: 4 },
+                { text: "I use Hotjar or similar to watch sessions occasionally and check heatmaps", score: 7 },
+                { text: "Regular qualitative + quantitative analysis: heatmaps, session recordings, funnel analysis, user surveys, and prioritized fix queue", score: 10 }
+            ]
+        }
+    ];
+
+    var dimensions = ["Page Speed", "Landing Pages", "Trust & Proof", "Mobile UX", "Forms & Checkout", "Testing & CRO"];
+    var dimColors = ["var(--orange)", "var(--blue)", "var(--gold)", "var(--purple)", "var(--cyan)", "var(--emerald)"];
+
+    var grades = {
+        machine: {
+            min: 96,
+            title: "Conversion Machine",
+            desc: "Your website is a finely tuned conversion engine. You're testing, iterating, and optimizing systematically. The opportunity now is scaling what works \u2014 automated monitoring, predictive experiments, and anomaly detection to protect your gains.",
+            recs: [
+                { phase: "PREDICT", title: "Predictive CRO", desc: "Use AI to predict which page variants will win before running full tests. Score experiments by expected revenue impact." },
+                { phase: "AUTOMATE", title: "Automated Monitoring", desc: "Set up daily conversion monitoring with anomaly detection and regression alerts. Catch conversion drops within hours, not weeks." },
+                { phase: "SCALE", title: "Multi-Page Optimization", desc: "Roll out winning patterns across all landing pages simultaneously. Systematic template-level improvements." },
+                { phase: "ADVANCED", title: "Personalization Engine", desc: "Dynamic content, segment-specific CTAs, and behavior-triggered experiences. Different visitors see different pages." }
+            ]
+        },
+        solid: {
+            min: 72,
+            title: "Solid Converter",
+            desc: "Good foundations. Your site converts, but there's meaningful revenue being left on the table. You're probably losing 15-30% of potential conversions to friction, speed issues, or trust gaps. These are all fixable.",
+            recs: [
+                { phase: "SPEED", title: "Performance Sprint", desc: "Compress images, defer JS, optimize fonts, fix CLS. Every 1-second improvement lifts conversions ~7%." },
+                { phase: "TRUST", title: "Social Proof Overhaul", desc: "Add testimonials, review widgets, and trust badges to every landing page. Show real numbers and real customer names." },
+                { phase: "MOBILE", title: "Mobile-First Redesign", desc: "Sticky CTAs, thumb-friendly touch targets, mobile-specific layouts. Most of your traffic is mobile \u2014 treat it like the primary experience." },
+                { phase: "TEST", title: "Testing Program", desc: "Set up a monthly testing cadence: 1 headline test, 1 CTA test, 1 layout test. Document everything and compound the wins." }
+            ]
+        },
+        leaking: {
+            min: 48,
+            title: "Leaking Revenue",
+            desc: "Your website is actively losing you money. Slow pages, unclear CTAs, missing trust signals, and friction-heavy forms are turning away visitors who came ready to buy. The good news: CRO fixes deliver the fastest ROI of any marketing investment.",
+            recs: [
+                { phase: "AUDIT", title: "Full CRO Audit", desc: "Page-by-page conversion audit: hero clarity, CTA placement, trust signals, mobile UX, form friction. Prioritized fix list ranked by revenue impact." },
+                { phase: "HERO", title: "Hero Section Overhaul", desc: "Rewrite every key landing page hero: clear value prop, single CTA, social proof visible. This one change can double conversion rates." },
+                { phase: "SPEED", title: "Speed Optimization", desc: "Get every page under 3 seconds on mobile. Compress images, defer scripts, optimize fonts. Speed is the foundation of CRO." },
+                { phase: "FORMS", title: "Form Friction Reduction", desc: "Cut form fields to the minimum, add progress indicators, enable auto-fill. Track abandonment at each step." }
+            ]
+        },
+        desert: {
+            min: 0,
+            title: "Conversion Desert",
+            desc: "Your website is getting traffic but almost none of it converts. There's no optimization, no testing, no measurement \u2014 you're essentially hoping visitors figure it out themselves. Every day without CRO is money walking out the door.",
+            recs: [
+                { phase: "MEASURE", title: "Analytics Foundation", desc: "Install conversion tracking, set up goals, add heatmaps. You can't fix what you can't measure." },
+                { phase: "REBUILD", title: "Landing Page Rebuild", desc: "Rebuild your main landing page with one clear CTA, a compelling headline, trust signals, and mobile-first design. Simplicity converts." },
+                { phase: "TRUST", title: "Trust Signal Setup", desc: "Collect reviews, add testimonials, display trust badges. New visitors need proof before they'll take action." },
+                { phase: "SPEED", title: "Performance Baseline", desc: "Get pages loading under 3 seconds. Remove unused scripts, compress images, use a CDN. Speed is conversion fuel." }
+            ]
+        }
+    };
+
+    var dimInsights = {
+        0: {
+            low: {
+                insight: "Your site is slow and you don\u2019t know it. Every second of load time costs you ~7% of conversions. If your pages take 5+ seconds on mobile, you\u2019re losing nearly half your visitors before they see anything.",
+                tips: [
+                    "Run PageSpeed Insights on your homepage right now \u2014 check the mobile score. Anything below 50 needs immediate attention",
+                    "Compress all images using a free tool like Squoosh or TinyPNG \u2014 most sites can cut image size by 60-80% with no visible quality loss"
+                ],
+                fix: "Start with the biggest bottleneck: images. Compress everything, lazy-load below-the-fold content, and defer non-critical scripts. Then set up a monthly Core Web Vitals check so regressions don\u2019t sneak in."
+            },
+            mid: {
+                insight: "Your site loads, but it\u2019s not fast enough to compete. Pages in the 3-5 second range on mobile lose 25-35% of visitors. You\u2019re leaving money on the table with every slow page.",
+                tips: [
+                    "Defer all non-critical JavaScript and CSS \u2014 only load what\u2019s needed for the above-fold content first",
+                    "Preload your hero image and primary font to eliminate the biggest LCP bottleneck"
+                ],
+                fix: "Focus on LCP optimization: preload hero images, inline critical CSS, and defer everything else. Set up automated PageSpeed alerts (e.g., via a cron job or free monitoring tool) so you catch regressions the day they happen, not weeks later."
+            },
+            high: {
+                insight: "Fast site. Your pages load quickly and CWV are mostly green. The next level is making speed a competitive advantage \u2014 sub-1.5s loads that feel instant.",
+                tips: [
+                    "Implement edge caching and CDN for all static assets \u2014 serve content from the closest server to each visitor",
+                    "Set up automated alerts for any CWV regression \u2014 catch speed issues before they affect conversion rates"
+                ],
+                fix: "Push for sub-1.5s loads by implementing edge caching, resource hints (preconnect, prefetch), and server-side rendering for critical paths. Set up real-time performance dashboards with automated regression alerts tied to deploy events."
+            }
+        },
+        1: {
+            low: {
+                insight: "Your landing pages aren\u2019t landing. Visitors arrive, see competing messages and unclear CTAs, and leave without taking any action. A confusing hero section is the #1 conversion killer.",
+                tips: [
+                    "Rewrite your homepage hero: \u2018We help [audience] [achieve outcome]\u2019 + one single CTA button. Remove everything else above the fold",
+                    "Remove navigation links from your highest-traffic landing page \u2014 give visitors only one path: your primary CTA"
+                ],
+                fix: "Your hero section is the single most important thing to fix. Strip it back to one clear value statement and one CTA button. Remove competing navigation on your highest-traffic pages. Clarity converts \u2014 cleverness confuses."
+            },
+            mid: {
+                insight: "Your landing pages have the basics but aren\u2019t optimized for conversion. Clear headline, visible CTA \u2014 but not tested or refined. You\u2019re likely converting 1-2% when you could be at 3-5%.",
+                tips: [
+                    "Test your headline against one alternative for 2 weeks \u2014 even small wording changes can lift conversions 10-30%",
+                    "Add urgency or specificity to your CTA: \u2018Start Free Trial\u2019 beats \u2018Learn More\u2019 by 2-3x in most tests"
+                ],
+                fix: "Set up a simple A/B test on your primary headline this week. Even changing one word can move conversion rates 10-30%. Build a cadence: test one element per page per month (headline, then CTA text, then layout). Compound the wins."
+            },
+            high: {
+                insight: "Strong landing pages. Clear value props, focused CTAs, good visual hierarchy. Your edge is systematic testing and personalization.",
+                tips: [
+                    "Implement dynamic CTAs based on traffic source \u2014 visitors from Google get different messaging than visitors from social",
+                    "Build a landing page template system so every new page starts with your highest-converting patterns baked in"
+                ],
+                fix: "Start personalizing by traffic source \u2014 show different headlines to Google visitors vs social visitors. Build a landing page template system based on your highest-converting patterns so every new page starts strong by default."
+            }
+        },
+        2: {
+            low: {
+                insight: "No trust signals means no conversions. First-time visitors have zero reason to trust your business. Without reviews, testimonials, or proof, your site is asking strangers to take a leap of faith \u2014 and they won\u2019t.",
+                tips: [
+                    "Email your 5 happiest customers today and ask for a short testimonial. Add their name, photo, and company to your homepage this week",
+                    "Add a \u2018trusted by\u2019 logo strip below your hero with any client logos, press mentions, or partner badges you have"
+                ],
+                fix: "This week: email your 5 best customers and ask for a testimonial with their name and photo. Add a logo strip and at least one named testimonial to your homepage. Then set up a simple post-purchase email asking for reviews. Trust compounds \u2014 start collecting now."
+            },
+            mid: {
+                insight: "You have some trust signals but they\u2019re not working hard enough. Testimonials on a separate page don\u2019t convert \u2014 they need to be visible on the same page as your CTAs.",
+                tips: [
+                    "Move your best testimonial directly next to your primary CTA on each landing page \u2014 proof and action in the same viewport",
+                    "Add specific numbers: \u2018500+ businesses\u2019, \u20184.8/5 average rating\u2019, \u2018$2M saved\u2019 \u2014 specificity builds trust faster than generic claims"
+                ],
+                fix: "Move your best testimonials to sit directly next to your CTAs \u2014 proof and action in the same viewport. Add specific numbers (\u2018500+ customers\u2019, \u20184.8 stars\u2019). Implement review schema markup for rich snippets in Google search results."
+            },
+            high: {
+                insight: "Strong social proof game. Reviews, testimonials, and trust badges are visible where they matter. The next level is real-time proof and user-generated content.",
+                tips: [
+                    "Add live proof notifications (\u2018John from Auckland just signed up\u2019) \u2014 social proof that updates in real-time lifts conversions 10-15%",
+                    "Create video testimonials from your best customers \u2014 video proof converts 2-3x better than text testimonials"
+                ],
+                fix: "Add real-time proof notifications (\u2018Someone just signed up\u2019), collect video testimonials from your strongest advocates, and implement dynamic proof matching \u2014 show industry-relevant reviews to visitors from that industry. Make trust feel alive, not static."
+            }
+        },
+        3: {
+            low: {
+                insight: "Your mobile experience is broken. More than half your traffic is on mobile, and they\u2019re getting a desktop experience crammed into a small screen. Buttons too small, text too tiny, scroll too long.",
+                tips: [
+                    "Open your site on your own phone right now. Try to complete your primary action (buy, sign up, contact). If it\u2019s frustrating, it\u2019s frustrating for everyone",
+                    "Make every button at least 44x44 pixels and add a sticky CTA bar at the bottom of mobile pages \u2014 always visible, always tappable"
+                ],
+                fix: "Open your site on your phone and try to complete your main action. Fix the first 3 frustrations you notice. Then: make all buttons at least 44x44px, add a sticky bottom CTA bar, and ensure text is readable without zooming. Mobile-first means designing for mobile FIRST, not adapting desktop after."
+            },
+            mid: {
+                insight: "Your mobile site works but isn\u2019t optimized. Responsive layout adapts, but the experience isn\u2019t designed for mobile-first interaction patterns. You\u2019re losing mobile conversions to friction.",
+                tips: [
+                    "Add a sticky bottom CTA bar on mobile \u2014 visitors who scroll past the hero still need a conversion path without scrolling back up",
+                    "Check your mobile form experience \u2014 use the right input types (tel for phone, email for email) to trigger mobile-friendly keyboards"
+                ],
+                fix: "Add a sticky bottom CTA on mobile so the conversion path is always one tap away. Use correct input types (tel, email) to trigger mobile-friendly keyboards. Run separate mobile analytics to spot mobile-specific drop-off points that desktop data hides."
+            },
+            high: {
+                insight: "Strong mobile experience. Mobile-first design, good touch targets, fast loading. Your edge is advanced mobile patterns \u2014 gesture navigation, progressive disclosure, and device-specific optimization.",
+                tips: [
+                    "Implement progressive disclosure on mobile \u2014 show less content initially, let users expand sections they care about. Reduces cognitive load",
+                    "Test mobile-specific conversion paths \u2014 click-to-call, SMS signup, Apple Pay / Google Pay for mobile checkout"
+                ],
+                fix: "Implement progressive disclosure on mobile \u2014 show less, let users expand what they need. Add mobile-exclusive conversion paths: click-to-call, SMS signup, Apple Pay / Google Pay. Test device-specific CTAs and gesture-based navigation for a truly native-feeling experience."
+            }
+        },
+        4: {
+            low: {
+                insight: "Your forms are conversion killers. Too many fields, no validation feedback, no indication of progress. Every unnecessary field reduces completion by ~10%. If you\u2019re asking for 8+ fields, you\u2019re losing most people.",
+                tips: [
+                    "Cut your form to 3-4 essential fields maximum. Name, email, and one qualifying question. You can ask for more later",
+                    "Add inline validation (green checkmarks as fields are filled) and helpful error messages that appear immediately, not after submission"
+                ],
+                fix: "Cut every form to 3-4 fields maximum. Ask only what you truly need at this stage \u2014 you can collect more later. Add inline validation (green checkmarks as fields complete) and clear, helpful error messages that appear instantly, not after submission."
+            },
+            mid: {
+                insight: "Your forms are functional but not optimized. Standard fields, basic validation. You know some people abandon but don\u2019t know exactly where or why.",
+                tips: [
+                    "Enable browser auto-fill on all form fields (use correct \u2018autocomplete\u2019 attributes) \u2014 auto-fill increases completion rates by 25-30%",
+                    "For forms with 4+ fields, switch to a multi-step format with a progress bar. Multi-step forms convert 86% better than single-step"
+                ],
+                fix: "Switch to multi-step forms with a progress bar \u2014 they convert 86% better than single long forms. Enable browser auto-fill (use correct autocomplete attributes). Install field-level analytics to identify exactly which fields cause drop-off, then eliminate or restructure them."
+            },
+            high: {
+                insight: "Low-friction forms with good UX. You\u2019re tracking completion and optimizing. The next level is predictive forms and behavioral triggers.",
+                tips: [
+                    "Implement conditional logic \u2014 show/hide fields based on previous answers. Shorter perceived length, higher completion",
+                    "Add save-and-return for longer forms so users can resume where they left off. Reduces abandonment on multi-page flows"
+                ],
+                fix: "Add conditional logic to show/hide fields based on previous answers \u2014 shorter perceived length, higher completion. Implement save-and-return for longer flows. Trigger forms at high-intent moments (scroll depth, exit intent) and follow up automatically on abandoned submissions."
+            }
+        },
+        5: {
+            low: {
+                insight: "No testing means no learning. You\u2019re making changes based on opinions, not evidence. Every untested change is a coin flip \u2014 as likely to hurt conversions as help them.",
+                tips: [
+                    "Install a free heatmap tool (Microsoft Clarity is free forever) on your top 3 pages. Watch 10 session recordings this week \u2014 you\u2019ll find problems immediately",
+                    "Run one simple A/B test: change your CTA button color or text on your highest-traffic page. Use Google Optimize or a free tool. Just start testing"
+                ],
+                fix: "Install Microsoft Clarity (free, forever) on your top pages this week. Watch 10 session recordings \u2014 you will find obvious problems immediately. Then run one simple A/B test on your highest-traffic page. The goal is to start learning, not to be perfect."
+            },
+            mid: {
+                insight: "You test occasionally but it\u2019s not systematic. Tests run when someone has an idea, not as part of a structured optimization program. Inconsistent testing means inconsistent results.",
+                tips: [
+                    "Create a test backlog spreadsheet: hypothesis, page, metric, estimated impact, effort. Score each by ICE (Impact x Confidence x Ease) and run the top 3",
+                    "Set a monthly testing cadence: 1st week = analyze data, 2nd week = design test, 3rd-4th week = run test. Repeat every month without exception"
+                ],
+                fix: "Build a test backlog spreadsheet: hypothesis, page, metric, estimated impact, effort. Score each by ICE (Impact x Confidence x Ease). Run the top-scoring test every month. Document results \u2014 wins AND losses. A structured cadence beats random experimentation."
+            },
+            high: {
+                insight: "Strong testing culture. Regular experiments, data-driven decisions, documented learnings. Your edge is scaling the program and adding AI-powered test prioritization.",
+                tips: [
+                    "Build a learnings library \u2014 document every test result (wins AND losses) so the whole team can reference what works and avoid repeating failed ideas",
+                    "Implement server-side testing to eliminate layout shift and improve test accuracy \u2014 client-side tools introduce CLS that can skew results"
+                ],
+                fix: "Move to server-side testing to eliminate layout shift and improve accuracy. Build a learnings library so every test makes the next one smarter. Consider AI-assisted test prioritization to predict which experiments will have the highest revenue impact before running them."
+            }
+        }
+    };
+
+    var dimIcons = ["&#x26A1;", "&#x1F3AF;", "&#x1F91D;", "&#x1F4F1;", "&#x1F4DD;", "&#x1F9EA;"];
+
+    var currentQ = 0;
+    var answers = [];
+
+    function showScreen(id) {
+        var screens = document.querySelectorAll(".screen");
+        for (var i = 0; i < screens.length; i++) screens[i].classList.remove("active");
+        document.getElementById(id).classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuestion() {
+        var q = questions[currentQ];
+        document.getElementById("progress").style.width = ((currentQ + 1) / questions.length * 100) + "%";
+        document.getElementById("qCount").textContent = "QUESTION " + (currentQ + 1) + " OF " + questions.length;
+        document.getElementById("qDim").textContent = q.dimension;
+        document.getElementById("qTitle").textContent = q.title;
+
+        var container = document.getElementById("qOptions");
+        container.innerHTML = "";
+
+        for (var i = 0; i < q.options.length; i++) {
+            (function(idx) {
+                var opt = q.options[idx];
+                var div = document.createElement("div");
+                div.className = "option";
+                div.innerHTML = '<div class="option-key">' + (idx + 1) + '</div><div class="option-text">' + opt.text + '</div>';
+                div.addEventListener("click", function() { selectOption(idx); });
+                container.appendChild(div);
+            })(i);
+        }
+    }
+
+    function selectOption(idx) {
+        var options = document.querySelectorAll(".option");
+        for (var i = 0; i < options.length; i++) options[i].classList.remove("selected");
+        options[idx].classList.add("selected");
+
+        answers[currentQ] = { score: questions[currentQ].options[idx].score, dimIndex: questions[currentQ].dimIndex };
+
+        setTimeout(function() {
+            if (currentQ < questions.length - 1) {
+                currentQ++;
+                renderQuestion();
+            } else {
+                showScreen("screen-email");
+            }
+        }, 400);
+    }
+
+    var capturedEmail = null;
+
+    document.getElementById("email-gate-form").addEventListener("submit", function(e) {
+        e.preventDefault();
+        capturedEmail = document.getElementById("gate-email").value.trim().toLowerCase();
+        if (window.hmbl) window.hmbl("event", "cro_audit_email_captured");
+        showResults();
+    });
+
+    function showResults() {
+        showScreen("screen-results");
+
+        var total = 0;
+        var dimScores = [0, 0, 0, 0, 0, 0];
+        var dimCounts = [0, 0, 0, 0, 0, 0];
+
+        for (var i = 0; i < answers.length; i++) {
+            total += answers[i].score;
+            dimScores[answers[i].dimIndex] += answers[i].score;
+            dimCounts[answers[i].dimIndex]++;
+        }
+
+        // Grade
+        var grade;
+        if (total >= grades.machine.min) grade = grades.machine;
+        else if (total >= grades.solid.min) grade = grades.solid;
+        else if (total >= grades.leaking.min) grade = grades.leaking;
+        else grade = grades.desert;
+
+        if (window.hmbl) window.hmbl("event", "cro_audit_completed", { score: total, grade: grade.title });
+
+        // Send results to API
+        var dimData = {};
+        for (var di = 0; di < dimensions.length; di++) {
+            dimData[dimensions[di]] = { score: dimScores[di], max: dimCounts[di] * 10 };
+        }
+        var payload = { score: total, max: 120, grade: grade.title, dimensions: dimData, type: "cro-audit" };
+        if (capturedEmail) payload.email = capturedEmail;
+        fetch("/api/scorecard", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+        }).catch(function() {});
+
+        // Animate score ring
+        var scoreEl = document.getElementById("scoreNum");
+        var circle = document.getElementById("scoreCircle");
+        var circumference = 2 * Math.PI * 60;
+        circle.style.strokeDasharray = String(circumference);
+        circle.style.strokeDashoffset = String(circumference);
+
+        var gradeColor = total >= 96 ? "var(--emerald)" : total >= 72 ? "var(--blue)" : total >= 48 ? "var(--orange)" : "var(--red)";
+        circle.style.stroke = gradeColor;
+
+        setTimeout(function() {
+            circle.style.strokeDashoffset = String(circumference - (total / 120) * circumference);
+        }, 100);
+
+        var counter = 0;
+        var interval = setInterval(function() {
+            counter++;
+            scoreEl.textContent = String(counter);
+            if (counter >= total) clearInterval(interval);
+        }, 20);
+
+        document.getElementById("gradeTitle").textContent = grade.title;
+        document.getElementById("gradeTitle").style.color = gradeColor;
+        document.getElementById("gradeDesc").textContent = grade.desc;
+
+        // Sort dimensions by score (weakest first)
+        var dimIndices = [];
+        for (var d = 0; d < dimensions.length; d++) dimIndices.push(d);
+        dimIndices.sort(function(a, b) { return dimScores[a] - dimScores[b]; });
+
+        // Quick wins from 3 weakest dimensions
+        var qwContainer = document.getElementById("quickWins");
+        var qwHtml = '<div class="quick-wins">' +
+            '<div class="quick-wins-title">3 fixes you can make this week</div>' +
+            '<div class="quick-wins-sub">Based on your weakest areas \u2014 highest-impact, lowest-effort improvements.</div>';
+        for (var w = 0; w < 3 && w < dimIndices.length; w++) {
+            var wi = dimIndices[w];
+            var wMax = dimCounts[wi] * 10;
+            var wTier = dimScores[wi] <= 8 ? "low" : dimScores[wi] <= 14 ? "mid" : "high";
+            var wData = dimInsights[wi][wTier];
+            qwHtml += '<div class="quick-win-item">' +
+                '<div class="quick-win-num">' + (w + 1) + '</div>' +
+                '<div><div class="quick-win-dim" style="color:' + dimColors[wi] + '">' + dimensions[wi] + ' (' + dimScores[wi] + '/' + wMax + ')</div>' +
+                '<div class="quick-win-text">' + wData.tips[0] + '</div></div></div>';
+        }
+        qwHtml += '</div>';
+        qwContainer.innerHTML = qwHtml;
+
+        // Dimension deep-dive cards (sorted weakest first)
+        var cardsContainer = document.getElementById("dimCards");
+        cardsContainer.innerHTML = "";
+
+        for (var c = 0; c < dimIndices.length; c++) {
+            var di = dimIndices[c];
+            var dMax = dimCounts[di] * 10;
+            var dPct = dMax > 0 ? (dimScores[di] / dMax * 100) : 0;
+            var dTier = dimScores[di] <= 8 ? "low" : dimScores[di] <= 14 ? "mid" : "high";
+            var dData = dimInsights[di][dTier];
+            var isWeakest = (c === 0);
+
+            var card = document.createElement("div");
+            card.className = "dim-card";
+            card.style.borderLeftColor = dimColors[di];
+
+            card.innerHTML = '<div class="dim-card-header">' +
+                '<div class="dim-card-left">' +
+                '<span class="dim-card-icon">' + dimIcons[di] + '</span>' +
+                '<span class="dim-card-name">' + dimensions[di] + '</span>' +
+                (isWeakest ? '<span class="fix-badge">FIX FIRST</span>' : '') +
+                '</div>' +
+                '<span class="dim-card-score" style="color:' + dimColors[di] + '">' + dimScores[di] + '/' + dMax + '</span>' +
+                '</div>' +
+                '<div class="dim-card-bar"><div class="dim-card-fill" id="dimCardFill' + di + '" style="background:' + dimColors[di] + '"></div></div>' +
+                '<div class="dim-card-insight">' + dData.insight + '</div>' +
+                '<div class="dim-card-tips">' +
+                '<div class="dim-card-tips-title">Do this now</div>' +
+                '<div class="dim-tip"><span class="dim-tip-bullet">\u2192</span><span>' + dData.tips[0] + '</span></div>' +
+                '<div class="dim-tip"><span class="dim-tip-bullet">\u2192</span><span>' + dData.tips[1] + '</span></div>' +
+                '</div>' +
+                '<div class="dim-card-fix"><strong>What to focus on: </strong>' + dData.fix + '</div>';
+
+            cardsContainer.appendChild(card);
+
+            (function(dimIdx, percent, delay) {
+                setTimeout(function() {
+                    var el = document.getElementById("dimCardFill" + dimIdx);
+                    if (el) el.style.width = percent + "%";
+                }, delay);
+            })(di, dPct, 300 + c * 200);
+        }
+
+        // Recommendations
+        var recGrid = document.getElementById("recGrid");
+        recGrid.innerHTML = "";
+        for (var r = 0; r < grade.recs.length; r++) {
+            var rec = grade.recs[r];
+            var card = document.createElement("div");
+            card.className = "rec-card";
+            card.style.borderTopColor = gradeColor;
+            card.innerHTML = '<div class="rec-phase" style="color:' + gradeColor + '">' + rec.phase + '</div>' +
+                '<div class="rec-title">' + rec.title + '</div>' +
+                '<div class="rec-desc">' + rec.desc + '</div>';
+            recGrid.appendChild(card);
+        }
+
+        // Score data available for future use
+        // (CTA removed — scorecard is a listening tool, not a sales funnel)
+    }
+
+    document.addEventListener("keydown", function(e) {
+        var key = parseInt(e.key);
+        if (key >= 1 && key <= 4 && document.getElementById("screen-question").classList.contains("active")) {
+            selectOption(key - 1);
+        }
+    });
+
+    window.startAssessment = function() {
+        currentQ = 0;
+        answers = [];
+        showScreen("screen-question");
+        renderQuestion();
+        if (window.hmbl) window.hmbl("event", "cro_audit_start");
+    };
+
+    window.restartAssessment = function() {
+        currentQ = 0;
+        answers = [];
+        capturedEmail = null;
+        document.getElementById("progress").style.width = "0%";
+        document.getElementById("gate-email").value = "";
+        showScreen("screen-intro");
+    };
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
+</body>
+</html>

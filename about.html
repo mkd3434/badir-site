@@ -91,6 +91,31 @@
         .biz-tag { background: var(--surface); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 16px; text-align: center; font-family: var(--font-mono); font-size: 13px; color: var(--gray); transition: border-color 0.3s; }
         .biz-tag:hover { border-color: var(--emerald-glow); color: var(--white); }
 
+        .shipped-gallery { display: flex; flex-direction: column; gap: 8px; margin: 28px 0 40px; }
+        .shipped-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            background: var(--surface); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 8px; transition: border-color 0.3s;
+        }
+        .shipped-item:hover { border-color: rgba(16, 185, 129, 0.3); }
+        .shipped-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+        .shipped-live { background: var(--emerald); box-shadow: 0 0 6px rgba(16, 185, 129, 0.4); }
+        .shipped-building { background: #F59E0B; box-shadow: 0 0 6px rgba(245, 158, 11, 0.4); }
+        .shipped-name { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--white); min-width: 110px; }
+        .shipped-desc { flex: 1; font-size: 14px; color: var(--gray); }
+        .shipped-status {
+            font-family: var(--font-mono); font-size: 11px; text-transform: uppercase;
+            letter-spacing: 1px; padding: 3px 10px; border-radius: 4px; flex-shrink: 0;
+        }
+        .shipped-live + .shipped-name ~ .shipped-status,
+        .shipped-item:has(.shipped-live) .shipped-status { background: rgba(16, 185, 129, 0.15); color: var(--emerald); }
+        .shipped-item:has(.shipped-building) .shipped-status { background: rgba(245, 158, 11, 0.15); color: #F59E0B; }
+
+        @media (max-width: 600px) {
+            .shipped-name { min-width: 90px; font-size: 13px; }
+            .shipped-desc { font-size: 12px; }
+        }
+
         .gold-box { margin: 40px 0; padding: 28px 32px; background: var(--surface); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
         .gold-box .arabic-text { font-family: var(--font-arabic); font-size: 22px; color: var(--gold); direction: rtl; margin-bottom: 8px; }
         .gold-box .translation { font-size: 16px; color: var(--gray); font-style: italic; }
@@ -163,16 +188,71 @@
         </p>
 
         <p>
-            Right now I'm running multiple businesses — each one found a real problem, got researched, branded,
+            Right now I'm running 10 businesses — each one found a real problem, got researched, branded,
             built, and shipped through the same AI-powered pipeline.
         </p>
 
-        <div class="businesses-grid">
-            <div class="biz-tag">WeHack</div>
-            <div class="biz-tag">LUA Jewellery</div>
-            <div class="biz-tag">TSK</div>
-            <div class="biz-tag">TrustLock</div>
-            <div class="biz-tag">MarketMate</div>
+        <div class="shipped-gallery">
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">WeHack</span>
+                <span class="shipped-desc">Pentesting clients across NZ</span>
+                <span class="shipped-status">Live</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">LUA Jewellery</span>
+                <span class="shipped-desc">Handcrafted jewelry, Shopify store</span>
+                <span class="shipped-status">Live</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">MarketMate</span>
+                <span class="shipped-desc">AI clothing listings for NZ/AU women</span>
+                <span class="shipped-status">Live</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">TSK</span>
+                <span class="shipped-desc">Turkish kebab restaurant, Christchurch</span>
+                <span class="shipped-status">Live</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-building"></span>
+                <span class="shipped-name">TrustLock</span>
+                <span class="shipped-desc">P2P marketplace escrow</span>
+                <span class="shipped-status">Building</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-building"></span>
+                <span class="shipped-name">SortedAI</span>
+                <span class="shipped-desc">AI tradie booking, Tauranga</span>
+                <span class="shipped-status">Building</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-building"></span>
+                <span class="shipped-name">ReRack</span>
+                <span class="shipped-desc">Secondhand clothing marketplace</span>
+                <span class="shipped-status">Building</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">InstaSheet</span>
+                <span class="shipped-desc">IG order extraction, Indonesia</span>
+                <span class="shipped-status">Live</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-building"></span>
+                <span class="shipped-name">MKD AI</span>
+                <span class="shipped-desc">AI automation agency</span>
+                <span class="shipped-status">Building</span>
+            </div>
+            <div class="shipped-item">
+                <span class="shipped-dot shipped-live"></span>
+                <span class="shipped-name">Badir</span>
+                <span class="shipped-desc">Product studio + builder community</span>
+                <span class="shipped-status">Live</span>
+            </div>
         </div>
 
         <p>

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muslim Growth Assessment — Badir Daily</title>
+    <meta name="description" content="Find out where you stand in your daily Islamic practice. 10 questions, 5 dimensions. Get a personalized growth plan in 3 minutes.">
+    <meta property="og:title" content="Muslim Growth Assessment — Badir Daily">
+    <meta property="og:description" content="Find out where you stand in your daily Islamic practice. Personalized AI-powered growth plan based on your answers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/daily-survey">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Muslim Growth Assessment — Badir Daily">
+    <meta name="twitter:description" content="10 questions. 5 dimensions. Your personalized Islamic growth plan.">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Mustafa Kivanc Demirsoy">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/daily-survey">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Muslim Growth Assessment",
+      "description": "Interactive Islamic self-improvement assessment across 5 dimensions: Salah, Quran, Dhikr, Character, and Community.",
+      "url": "https://badir.studio/daily-survey",
+      "applicationCategory": "LifestyleApplication",
+      "publisher": { "@type": "Organization", "name": "Badir Studio", "url": "https://badir.studio" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "NZD" }
+    }
+    </script>
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 500 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 700; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #0C0C0C;
+            --surface: #111111;
+            --surface-2: #181818;
+            --surface-3: #222222;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(16,185,129,0.3);
+            --emerald: #10B981;
+            --emerald-dim: rgba(16,185,129,0.12);
+            --emerald-glow: rgba(16,185,129,0.25);
+            --gold: #F59E0B;
+            --gold-dim: rgba(245,158,11,0.12);
+            --indigo: #818CF8;
+            --indigo-dim: rgba(129,140,248,0.12);
+            --red: #EF4444;
+            --red-dim: rgba(239,68,68,0.12);
+            --pink: #EC4899;
+            --white: #FAFAFA;
+            --gray: #9CA3AF;
+            --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--dark); color: var(--white);
+            font-family: var(--font-body); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+        }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 48px 48px; pointer-events: none; z-index: 0;
+        }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 32px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(12,12,12,0.88); backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px;
+        }
+        .nav-logo .arabic { font-family: var(--font-arabic); font-size: 15px; color: var(--emerald); }
+        .nav-badge {
+            font-family: var(--font-mono); font-size: 10px; padding: 3px 8px;
+            background: var(--gold-dim); color: var(--gold); border-radius: 4px;
+            letter-spacing: 0.5px;
+        }
+        .nav-back {
+            font-size: 13px; color: var(--gray); text-decoration: none; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--white); }
+
+        /* PROGRESS */
+        .progress-wrap {
+            position: fixed; top: 56px; left: 0; right: 0; height: 3px;
+            background: var(--surface-2); z-index: 99;
+        }
+        .progress-bar {
+            height: 100%; width: 0; background: var(--emerald);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* CONTAINER */
+        .survey {
+            width: 100%; max-width: 760px; margin: 0 auto;
+            padding: 40px 24px; min-height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; z-index: 1;
+        }
+
+        .screen { display: none; animation: fadeIn 0.4s ease; }
+        .screen.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* INTRO */
+        .intro { text-align: center; padding-top: 40px; }
+        .intro-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+            background: var(--emerald-dim); color: var(--emerald);
+            border: 1px solid rgba(16,185,129,0.15); margin-bottom: 28px;
+        }
+        .intro-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+        .intro h1 {
+            font-family: var(--font-heading); font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800; line-height: 1.1; letter-spacing: -2px; margin-bottom: 16px;
+        }
+        .intro h1 .gradient {
+            background: linear-gradient(135deg, var(--emerald), #34D399, var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .intro-sub {
+            font-size: 16px; color: var(--gray); max-width: 480px;
+            margin: 0 auto 36px; line-height: 1.7;
+        }
+        .intro-dims {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+            max-width: 560px; margin: 0 auto 36px;
+        }
+        .intro-dim {
+            font-family: var(--font-mono); font-size: 11px; padding: 10px 8px;
+            border-radius: 8px; background: var(--surface); border: 1px solid var(--border);
+            text-align: center; color: var(--gray);
+        }
+        .intro-dim span { display: block; font-size: 18px; margin-bottom: 4px; }
+        @media (max-width: 600px) { .intro-dims { grid-template-columns: repeat(3, 1fr); } }
+
+        .btn-start {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            padding: 14px 32px; border-radius: 10px; border: none; cursor: pointer;
+            background: var(--emerald); color: var(--dark);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-start:hover {
+            background: #34D399;
+            box-shadow: 0 0 40px rgba(16,185,129,0.2), 0 4px 16px rgba(16,185,129,0.15);
+            transform: translateY(-1px);
+        }
+        .intro-note { font-size: 13px; color: var(--gray-dark); margin-top: 16px; }
+
+        /* QUESTIONS */
+        .q-count {
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            letter-spacing: 1.5px; margin-bottom: 8px;
+        }
+        .q-dim {
+            font-family: var(--font-mono); font-size: 12px; color: var(--emerald);
+            margin-bottom: 20px; display: flex; align-items: center; gap: 6px;
+        }
+        .q-dim::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+        .q-title {
+            font-family: var(--font-heading); font-size: clamp(22px, 3.5vw, 30px);
+            font-weight: 700; line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 32px;
+        }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option {
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 20px; border-radius: 12px;
+            border: 1px solid var(--border); background: var(--surface);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .option:hover { border-color: rgba(255,255,255,0.15); background: var(--surface-2); }
+        .option.selected { border-color: var(--emerald); background: var(--emerald-dim); }
+        .option-key {
+            width: 28px; height: 28px; border-radius: 6px;
+            border: 1px solid var(--border); display: flex;
+            align-items: center; justify-content: center;
+            font-family: var(--font-mono); font-size: 12px; color: var(--gray-dark);
+            flex-shrink: 0; transition: all 0.2s;
+        }
+        .option.selected .option-key { border-color: var(--emerald); color: var(--emerald); background: var(--emerald-dim); }
+        .option-text { font-size: 15px; color: var(--gray); transition: color 0.2s; }
+        .option.selected .option-text { color: var(--white); }
+        .q-hint { font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); margin-top: 20px; text-align: center; }
+
+        /* EMAIL GATE */
+        .email-gate { text-align: center; padding-top: 60px; }
+        .email-gate h2 {
+            font-family: var(--font-heading); font-size: 28px; font-weight: 700; margin-bottom: 10px;
+        }
+        .email-gate p { font-size: 15px; color: var(--gray); margin-bottom: 28px; max-width: 420px; margin-left: auto; margin-right: auto; }
+        .email-form { max-width: 400px; margin: 0 auto; }
+        .email-input {
+            width: 100%; padding: 14px 16px; border-radius: 10px;
+            background: var(--surface); border: 1px solid var(--border);
+            color: var(--white); font-family: var(--font-body); font-size: 15px;
+            margin-bottom: 12px; outline: none; transition: border-color 0.2s;
+        }
+        .email-input:focus { border-color: var(--emerald); }
+        .email-input::placeholder { color: var(--gray-dark); }
+        .btn-submit {
+            width: 100%; padding: 14px; border-radius: 10px; border: none;
+            background: var(--emerald); color: var(--dark); cursor: pointer;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .btn-submit:hover { background: #34D399; }
+        .email-note { font-size: 12px; color: var(--gray-dark); margin-top: 12px; }
+
+        /* RESULTS */
+        .results { padding-top: 40px; }
+        .results-header { text-align: center; margin-bottom: 32px; }
+        .results-header h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+
+        .score-ring { text-align: center; margin-bottom: 28px; }
+        .score-ring svg { width: 160px; height: 160px; }
+        .score-ring circle { fill: none; stroke-width: 6; stroke-linecap: round; transform: rotate(-90deg); transform-origin: center; }
+        .score-ring .bg { stroke: var(--surface-2); }
+        .score-ring .fill { transition: stroke-dashoffset 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        .grade-box {
+            text-align: center; padding: 20px 24px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; margin-bottom: 32px;
+        }
+        .grade-title { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .grade-desc { font-size: 14px; color: var(--gray); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+        .dim-row {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 0; border-bottom: 1px solid var(--border);
+        }
+        .dim-row:last-child { border-bottom: none; }
+        .dim-icon { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; }
+        .dim-label { font-family: var(--font-mono); font-size: 12px; color: var(--gray); width: 100px; flex-shrink: 0; }
+        .dim-bar { flex: 1; height: 8px; background: var(--surface-2); border-radius: 4px; overflow: hidden; }
+        .dim-fill { height: 100%; border-radius: 4px; transition: width 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .dim-val { font-family: var(--font-mono); font-size: 13px; width: 40px; text-align: right; flex-shrink: 0; }
+
+        .insight-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+            padding: 20px; margin-top: 16px;
+        }
+        .insight-label {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.5px; margin-bottom: 8px;
+        }
+        .insight-text { font-size: 14px; color: var(--gray); line-height: 1.7; }
+
+        .cta-section { text-align: center; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .cta-section h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+        .cta-section p { font-size: 14px; color: var(--gray); margin-bottom: 20px; }
+        .btn-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 16px; font-weight: 600;
+            padding: 14px 32px; border-radius: 10px; border: none; cursor: pointer;
+            background: var(--emerald); color: var(--dark); transition: all 0.25s;
+        }
+        .btn-cta:hover { background: #34D399; box-shadow: 0 0 40px rgba(16,185,129,0.2); transform: translateY(-1px); }
+
+        .arabic-quote {
+            font-family: var(--font-arabic); font-size: 18px; color: var(--emerald);
+            text-align: center; margin-bottom: 8px; direction: rtl;
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<div class="nav">
+    <a href="/" class="nav-logo">Badir <span class="arabic">بادر</span> <span class="nav-badge">DAILY</span></a>
+    <a href="/" class="nav-back">← badir.studio</a>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+
+<div class="survey">
+
+    <!-- INTRO SCREEN -->
+    <div class="screen active" id="intro">
+        <div class="intro">
+            <div class="intro-badge">FREE ASSESSMENT · 3 MINUTES</div>
+            <div class="arabic-quote">فَاسْتَبِقُوا الْخَيْرَاتِ</div>
+            <h1>How strong is your <span class="gradient">daily practice?</span></h1>
+            <p class="intro-sub">10 honest questions about your Islamic daily habits. No judgment — just a clear picture of where you are and a personalized plan to grow.</p>
+
+            <div class="intro-dims">
+                <div class="intro-dim"><span>🕌</span>Salah</div>
+                <div class="intro-dim"><span>📖</span>Quran</div>
+                <div class="intro-dim"><span>🤲</span>Dhikr</div>
+                <div class="intro-dim"><span>💎</span>Character</div>
+                <div class="intro-dim"><span>👥</span>Community</div>
+            </div>
+
+            <button class="btn-start" onclick="startSurvey()">Start Assessment →</button>
+            <p class="intro-note">No signup required. Results are instant.</p>
+        </div>
+    </div>
+
+    <!-- QUESTION SCREENS (generated by JS) -->
+    <div class="screen" id="questionScreen">
+        <div class="q-count" id="qCount"></div>
+        <div class="q-dim" id="qDim"></div>
+        <h2 class="q-title" id="qTitle"></h2>
+        <div class="options" id="qOptions"></div>
+        <p class="q-hint">Click an option to continue</p>
+    </div>
+
+    <!-- EMAIL GATE -->
+    <div class="screen" id="emailGate">
+        <div class="email-gate">
+            <div style="font-size: 48px; margin-bottom: 16px;">📊</div>
+            <h2>Your results are ready</h2>
+            <p>Enter your email to see your personalized growth score and get a custom improvement plan from our AI coach.</p>
+            <div class="email-form">
+                <input type="text" class="email-input" id="nameInput" placeholder="Your name" required>
+                <input type="email" class="email-input" id="emailInput" placeholder="your@email.com" required>
+                <button class="btn-submit" onclick="submitEmail()">See My Results →</button>
+                <p class="email-note">We'll send your growth plan here. No spam. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div class="screen" id="resultsScreen">
+        <div class="results">
+            <div class="results-header">
+                <p style="color: var(--gray); font-size: 13px; margin-bottom: 4px;">Your Islamic Growth Score</p>
+                <h2 id="userName">Your Results</h2>
+            </div>
+
+            <div class="score-ring">
+                <svg viewBox="0 0 160 160">
+                    <circle class="bg" cx="80" cy="80" r="68"/>
+                    <circle class="fill" id="scoreRing" cx="80" cy="80" r="68"
+                        stroke-dasharray="427" stroke-dashoffset="427"/>
+                </svg>
+                <div style="margin-top: -100px; margin-bottom: 60px;">
+                    <div style="font-family: var(--font-heading); font-size: 42px; font-weight: 800; letter-spacing: -2px;" id="scoreNum">0</div>
+                    <div style="font-family: var(--font-mono); font-size: 14px; color: var(--gray-dark);">out of 50</div>
+                </div>
+            </div>
+
+            <div class="grade-box">
+                <div class="grade-title" id="gradeTitle"></div>
+                <div class="grade-desc" id="gradeDesc"></div>
+            </div>
+
+            <!-- Dimension breakdown -->
+            <div style="margin-bottom: 32px;">
+                <h3 style="font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--gray); margin-bottom: 16px;">Your 5 Dimensions</h3>
+                <div id="dimBreakdown"></div>
+            </div>
+
+            <!-- Insights -->
+            <div id="insightsSection"></div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h3>Ready to grow every day?</h3>
+                <p>Badir Daily is your AI-powered Islamic growth companion. Personalized to YOUR life, YOUR goals, YOUR struggles.</p>
+                <button class="btn-cta" onclick="window.open('https://badir.studio','_blank')">Join Badir Daily — It's Free →</button>
+                <p style="font-size: 12px; color: var(--gray-dark); margin-top: 12px;">Coming soon. You're on the early access list.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+const questions = [
+    {
+        dim: 'Salah', icon: '🕌',
+        q: 'How consistent are you with your 5 daily prayers?',
+        opts: [
+            { text: 'I pray all 5 consistently, on time', score: 5 },
+            { text: 'I pray most — miss 1 or 2 sometimes', score: 4 },
+            { text: 'I pray some days, miss others', score: 3 },
+            { text: 'I pray occasionally (Jumu\'ah, Eid)', score: 2 },
+            { text: 'I\'m just starting or want to start', score: 1 },
+        ]
+    },
+    {
+        dim: 'Salah', icon: '🕌',
+        q: 'When you pray, how present and focused (khushu) are you?',
+        opts: [
+            { text: 'Very focused — I take my time and feel connected', score: 5 },
+            { text: 'Mostly focused, mind wanders sometimes', score: 4 },
+            { text: 'I rush through it honestly', score: 3 },
+            { text: 'It feels mechanical, I want to improve', score: 2 },
+            { text: 'I\'m not sure what khushu means', score: 1 },
+        ]
+    },
+    {
+        dim: 'Quran', icon: '📖',
+        q: 'How often do you read or listen to the Quran?',
+        opts: [
+            { text: 'Daily — it\'s part of my routine', score: 5 },
+            { text: 'A few times a week', score: 4 },
+            { text: 'Weekly, usually on Fridays', score: 3 },
+            { text: 'Ramadan mainly, then it drops off', score: 2 },
+            { text: 'Rarely or never — I want to start', score: 1 },
+        ]
+    },
+    {
+        dim: 'Quran', icon: '📖',
+        q: 'Do you understand what you\'re reading in the Quran?',
+        opts: [
+            { text: 'Yes — I read with tafsir and reflect on meaning', score: 5 },
+            { text: 'Somewhat — I know common surahs\' meanings', score: 4 },
+            { text: 'I read Arabic but don\'t understand most', score: 3 },
+            { text: 'I read transliteration or translation only', score: 2 },
+            { text: 'I can\'t read Arabic yet', score: 1 },
+        ]
+    },
+    {
+        dim: 'Dhikr', icon: '🤲',
+        q: 'Do you practice morning and evening adhkar (remembrance)?',
+        opts: [
+            { text: 'Yes, both morning and evening daily', score: 5 },
+            { text: 'Usually one — morning or evening', score: 4 },
+            { text: 'Sometimes, when I remember', score: 3 },
+            { text: 'Rarely — I know I should', score: 2 },
+            { text: 'I don\'t know the adhkar', score: 1 },
+        ]
+    },
+    {
+        dim: 'Dhikr', icon: '🤲',
+        q: 'How often do you make dua (supplication) outside of salah?',
+        opts: [
+            { text: 'Multiple times daily — it\'s natural to me', score: 5 },
+            { text: 'Daily, usually after prayers', score: 4 },
+            { text: 'When I need something or feel stressed', score: 3 },
+            { text: 'Rarely — I forget or feel disconnected', score: 2 },
+            { text: 'Almost never', score: 1 },
+        ]
+    },
+    {
+        dim: 'Character', icon: '💎',
+        q: 'How do you handle anger, frustration, or conflict?',
+        opts: [
+            { text: 'I actively practice patience (sabr) — I pause and seek refuge in Allah', score: 5 },
+            { text: 'I try to stay calm, mostly succeed', score: 4 },
+            { text: 'I react but feel bad about it after', score: 3 },
+            { text: 'I struggle — I often say things I regret', score: 2 },
+            { text: 'It\'s a big struggle for me', score: 1 },
+        ]
+    },
+    {
+        dim: 'Character', icon: '💎',
+        q: 'Do you actively try to improve your character (akhlaq)?',
+        opts: [
+            { text: 'Yes — I reflect daily and work on specific traits', score: 5 },
+            { text: 'I think about it often and try to be better', score: 4 },
+            { text: 'I want to but don\'t have a system', score: 3 },
+            { text: 'Not actively — I just try to be a decent person', score: 2 },
+            { text: 'I haven\'t thought about it much', score: 1 },
+        ]
+    },
+    {
+        dim: 'Community', icon: '👥',
+        q: 'Do you have Muslims around you who push you to be better?',
+        opts: [
+            { text: 'Yes — I\'m part of a strong community', score: 5 },
+            { text: 'A few close friends who remind me', score: 4 },
+            { text: 'I have Muslim friends but we don\'t talk about deen', score: 3 },
+            { text: 'Not really — I\'m mostly on my own', score: 2 },
+            { text: 'I feel isolated in my practice', score: 1 },
+        ]
+    },
+    {
+        dim: 'Community', icon: '👥',
+        q: 'How often do you attend the masjid or Islamic events?',
+        opts: [
+            { text: 'Multiple times a week (daily prayers, halaqas)', score: 5 },
+            { text: 'Weekly — Jumu\'ah plus occasional events', score: 4 },
+            { text: 'Jumu\'ah most weeks', score: 3 },
+            { text: 'Eid and Ramadan mainly', score: 2 },
+            { text: 'Rarely or never', score: 1 },
+        ]
+    },
+];
+
+let currentQ = 0;
+let answers = [];
+const dimColors = {
+    'Salah': 'var(--emerald)', 'Quran': 'var(--gold)',
+    'Dhikr': 'var(--indigo)', 'Character': 'var(--pink)', 'Community': '#60A5FA'
+};
+
+function startSurvey() {
+    document.getElementById('intro').classList.remove('active');
+    document.getElementById('questionScreen').classList.add('active');
+    showQuestion();
+}
+
+function showQuestion() {
+    const q = questions[currentQ];
+    document.getElementById('qCount').textContent = `QUESTION ${currentQ + 1} OF ${questions.length}`;
+    document.getElementById('qDim').textContent = `${q.dim}`;
+    document.getElementById('qTitle').textContent = q.q;
+    document.getElementById('progressBar').style.width = ((currentQ + 1) / questions.length * 100) + '%';
+
+    const optsEl = document.getElementById('qOptions');
+    optsEl.innerHTML = '';
+    const keys = ['A', 'B', 'C', 'D', 'E'];
+    q.opts.forEach((opt, i) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerHTML = `<div class="option-key">${keys[i]}</div><div class="option-text">${opt.text}</div>`;
+        div.addEventListener('click', () => selectOption(i, opt.score));
+        optsEl.appendChild(div);
+    });
+}
+
+function selectOption(idx, score) {
+    const opts = document.querySelectorAll('.option');
+    opts.forEach(o => o.classList.remove('selected'));
+    opts[idx].classList.add('selected');
+    answers.push({ dim: questions[currentQ].dim, score });
+
+    setTimeout(() => {
+        currentQ++;
+        if (currentQ < questions.length) {
+            document.getElementById('questionScreen').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('questionScreen').classList.add('active');
+                showQuestion();
+            }, 50);
+        } else {
+            document.getElementById('questionScreen').classList.remove('active');
+            document.getElementById('emailGate').classList.add('active');
+            document.getElementById('progressBar').style.width = '100%';
+        }
+    }, 400);
+}
+
+function submitEmail() {
+    const name = document.getElementById('nameInput').value.trim();
+    const email = document.getElementById('emailInput').value.trim();
+    if (!email || !email.includes('@')) {
+        document.getElementById('emailInput').style.borderColor = 'var(--red)';
+        return;
+    }
+
+    // Store for later API call
+    const surveyData = { name, email, answers, timestamp: new Date().toISOString() };
+    console.log('Survey submission:', surveyData);
+
+    document.getElementById('emailGate').classList.remove('active');
+    document.getElementById('resultsScreen').classList.add('active');
+
+    if (name) document.getElementById('userName').textContent = `${name}'s Growth Score`;
+    showResults();
+}
+
+function showResults() {
+    // Calculate scores
+    const dims = {};
+    answers.forEach(a => {
+        if (!dims[a.dim]) dims[a.dim] = [];
+        dims[a.dim].push(a.score);
+    });
+
+    const dimScores = {};
+    let total = 0;
+    Object.keys(dims).forEach(d => {
+        const avg = dims[d].reduce((a, b) => a + b, 0) / dims[d].length;
+        dimScores[d] = Math.round(avg * 10) / 10;
+        total += dims[d].reduce((a, b) => a + b, 0);
+    });
+
+    // Animate score ring
+    const maxScore = questions.length * 5;
+    const pct = total / maxScore;
+    const circumference = 2 * Math.PI * 68;
+    const offset = circumference * (1 - pct);
+
+    setTimeout(() => {
+        const ring = document.getElementById('scoreRing');
+        let color = pct >= 0.7 ? 'var(--emerald)' : pct >= 0.4 ? 'var(--gold)' : 'var(--red)';
+        ring.setAttribute('stroke', color);
+        ring.style.strokeDashoffset = offset;
+        document.getElementById('scoreNum').textContent = total;
+        document.getElementById('scoreNum').style.color = color;
+    }, 300);
+
+    // Grade
+    const grades = [
+        { min: 0.8, title: 'Muhsin — المحسن', desc: 'MashaAllah. Your practice is strong and consistent. The next level is deepening your connection — more khushu, more reflection, more giving back to the community.' },
+        { min: 0.6, title: 'Mujtahid — المجتهد', desc: 'You have solid foundations and genuine effort. There are clear areas to strengthen — and with the right system and accountability, you can level up quickly.' },
+        { min: 0.4, title: 'Salik — السالك', desc: 'You\'re on the path. Some habits are forming, others need attention. This is exactly the right time to build a daily system — small, consistent steps compound fast.' },
+        { min: 0, title: 'Mubtadi — المبتدئ', desc: 'Every journey starts with a single step. The fact that you took this assessment shows you want to grow. That intention itself is powerful. Let\'s build from here, together.' },
+    ];
+    const grade = grades.find(g => pct >= g.min);
+    document.getElementById('gradeTitle').textContent = grade.title;
+    document.getElementById('gradeDesc').textContent = grade.desc;
+
+    // Dimension bars
+    const dimEl = document.getElementById('dimBreakdown');
+    const dimOrder = ['Salah', 'Quran', 'Dhikr', 'Character', 'Community'];
+    const dimIcons = { Salah: '🕌', Quran: '📖', Dhikr: '🤲', Character: '💎', Community: '👥' };
+    dimOrder.forEach(d => {
+        const score = dimScores[d] || 0;
+        const barPct = (score / 5) * 100;
+        const color = dimColors[d];
+        const row = document.createElement('div');
+        row.className = 'dim-row';
+        row.innerHTML = `
+            <div class="dim-icon">${dimIcons[d]}</div>
+            <div class="dim-label">${d}</div>
+            <div class="dim-bar"><div class="dim-fill" style="width: 0; background: ${color};"></div></div>
+            <div class="dim-val" style="color: ${color};">${score}/5</div>
+        `;
+        dimEl.appendChild(row);
+        setTimeout(() => {
+            row.querySelector('.dim-fill').style.width = barPct + '%';
+        }, 500);
+    });
+
+    // Insights
+    const insightsEl = document.getElementById('insightsSection');
+    const strongest = Object.entries(dimScores).sort((a, b) => b[1] - a[1])[0];
+    const weakest = Object.entries(dimScores).sort((a, b) => a[1] - b[1])[0];
+
+    insightsEl.innerHTML = `
+        <div class="insight-card">
+            <div class="insight-label" style="color: var(--emerald);">💪 YOUR STRENGTH</div>
+            <div class="insight-text"><strong style="color: var(--white);">${strongest[0]}</strong> is where you're most consistent (${strongest[1]}/5). Keep building on this foundation — it's the anchor of your practice.</div>
+        </div>
+        <div class="insight-card">
+            <div class="insight-label" style="color: var(--gold);">🎯 YOUR GROWTH AREA</div>
+            <div class="insight-text"><strong style="color: var(--white);">${weakest[0]}</strong> scored ${weakest[1]}/5. This is where small daily improvements will have the biggest impact. Badir Daily creates a personalized plan for exactly this.</div>
+        </div>
+    `;
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    const screen = document.querySelector('.screen.active');
+    if (screen.id === 'questionScreen') {
+        const keyMap = { 'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, '1': 0, '2': 1, '3': 2, '4': 3, '5': 4 };
+        const idx = keyMap[e.key.toLowerCase()];
+        if (idx !== undefined) {
+            const opts = document.querySelectorAll('.option');
+            if (opts[idx]) {
+                const q = questions[currentQ];
+                selectOption(idx, q.opts[idx].score);
+            }
+        }
+    }
+    if (e.key === 'Enter') {
+        if (screen.id === 'intro') startSurvey();
+        if (screen.id === 'emailGate') submitEmail();
+    }
+});
+</script>
+
+</body>
+</html>

@@ -7,6 +7,7 @@ export default async function handler(req, res) {
 
   const data = req.body || {};
   const { score, grade, dimensions } = data;
+  const type = data.type || "marketing-health";
 
   if (typeof score !== "number" || !grade) {
     return res.status(400).json({ error: "Score and grade required" });
@@ -18,7 +19,7 @@ export default async function handler(req, res) {
   const name = data.name ? data.name.trim() : null;
 
   // Log to Vercel function logs
-  console.log(`SCORECARD_RESULT | score:${score}/120 | grade:${grade} | ${email || "no-email"} | ${timestamp} | ${ip}`);
+  console.log(`SCORECARD_RESULT | type:${type} | score:${score}/120 | grade:${grade} | ${email || "no-email"} | ${timestamp} | ${ip}`);
 
   const RESEND_KEY = process.env.RESEND_API_KEY;
   const NOTIFY_EMAIL = process.env.NOTIFICATION_EMAIL || "mustafa@badir.studio";
@@ -41,7 +42,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: "Badir Studio <notifications@badir.studio>",
           to: [NOTIFY_EMAIL],
-          subject: `[Scorecard] ${score}/120 (${grade})${email ? ` — ${email}` : ""}`,
+          subject: `[Scorecard: ${type}] ${score}/120 (${grade})${email ? ` — ${email}` : ""}`,
           text: [
             "MARKETING HEALTH SCORECARD RESULT",
             "=".repeat(35),
@@ -72,11 +73,11 @@ export default async function handler(req, res) {
       await set(`seq:${email}`, {
         email,
         name,
-        source: "scorecard",
+        source: `scorecard-${type}`,
         step: 0,
         startedAt: timestamp,
         lastSentAt: null,
-        meta: { score, grade, dimensions },
+        meta: { score, grade, dimensions, type },
       });
       await sadd("seq:active", email);
     } catch (err) {

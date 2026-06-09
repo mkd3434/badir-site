@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Assessments — Badir Studio</title>
+    <meta name="description" content="Free assessments: Marketing Health, AI Readiness, CRO Audit, and Revert Journey Check-In. 12 questions, 3 minutes, actionable recommendations.">
+    <meta property="og:title" content="Free Assessments — Badir Studio">
+    <meta property="og:description" content="Score your marketing health, AI readiness, conversion optimization, or your revert journey in 3 minutes each. Free assessments with actionable next steps.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/assessments">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Assessments — Badir Studio">
+    <meta name="twitter:description" content="Free business and community assessments. 3 minutes each. Marketing, AI, CRO, and revert support.">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Mustafa Kivanc Demirsoy">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/assessments">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Free Assessments",
+      "description": "Interactive business and community assessments covering Marketing Health, AI Readiness, CRO Audit, and Revert Journey Check-In. Each takes 3 minutes and provides personalized recommendations.",
+      "url": "https://badir.studio/assessments",
+      "publisher": { "@type": "Organization", "name": "Badir Studio", "url": "https://badir.studio" },
+      "hasPart": [
+        { "@type": "WebApplication", "name": "Marketing Health Scorecard", "url": "https://badir.studio/scorecard" },
+        { "@type": "WebApplication", "name": "AI Readiness for Small Business", "url": "https://badir.studio/ai-readiness" },
+        { "@type": "WebApplication", "name": "AI Readiness for Youth", "url": "https://badir.studio/ai-readiness-youth" },
+        { "@type": "WebApplication", "name": "CRO Audit Scorecard", "url": "https://badir.studio/cro-audit" },
+        { "@type": "WebApplication", "name": "Revert Journey Check-In", "url": "https://badir.studio/revert-survey" }
+      ]
+    }
+    </script>
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --dark: #0C0C0C;
+            --surface: #111111;
+            --surface-2: #181818;
+            --surface-3: #222222;
+            --border: rgba(255,255,255,0.06);
+            --emerald: #10B981;
+            --emerald-dim: rgba(16,185,129,0.12);
+            --gold: #F59E0B;
+            --blue: #60A5FA;
+            --blue-dim: rgba(96,165,250,0.12);
+            --purple: #A78BFA;
+            --cyan: #22D3EE;
+            --cyan-dim: rgba(34,211,238,0.12);
+            --orange: #F97316;
+            --orange-dim: rgba(249,115,22,0.12);
+            --amber: #EAB308;
+            --amber-dim: rgba(234,179,8,0.12);
+            --purple: #A78BFA;
+            --purple-dim: rgba(167,139,250,0.12);
+            --white: #FAFAFA;
+            --gray: #9CA3AF;
+            --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--dark); color: var(--white);
+            font-family: var(--font-body); line-height: 1.6;
+            -webkit-font-smoothing: antialiased; min-height: 100vh;
+        }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        .grid-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+            background-size: 48px 48px; pointer-events: none; z-index: 0;
+        }
+
+        /* NAV BAR */
+        .sc-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 14px 32px; display: flex; justify-content: space-between; align-items: center;
+            background: rgba(12,12,12,0.88); backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+        }
+        .sc-nav a {
+            font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+            color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px;
+        }
+        .sc-nav a .ar { font-family: var(--font-arabic); font-size: 15px; color: var(--emerald); }
+        .sc-nav-right { display: flex; gap: 8px; }
+        .sc-nav-btn {
+            font-family: var(--font-mono); font-size: 12px; padding: 6px 14px;
+            border-radius: 8px; text-decoration: none; transition: all 0.2s;
+        }
+        .sc-nav-ghost { color: var(--gray); background: transparent; border: 1px solid var(--border); }
+        .sc-nav-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.15); }
+
+        /* HERO */
+        .hero {
+            text-align: center; padding: 120px 24px 60px;
+            max-width: 700px; margin: 0 auto;
+            position: relative; z-index: 1;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            padding: 5px 14px; border-radius: 100px; letter-spacing: 0.5px;
+            background: var(--emerald-dim); color: var(--emerald);
+            border: 1px solid rgba(16,185,129,0.15); margin-bottom: 28px;
+        }
+        .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+        .hero h1 {
+            font-family: var(--font-heading); font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800; line-height: 1.1; letter-spacing: -2px;
+            margin-bottom: 16px;
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--emerald), #34D399, var(--cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .hero-sub {
+            font-size: 16px; color: var(--gray); max-width: 520px;
+            margin: 0 auto; line-height: 1.7;
+        }
+
+        /* ASSESSMENT CARDS */
+        .cards-section {
+            max-width: 900px; margin: 0 auto; padding: 0 24px 80px;
+            position: relative; z-index: 1;
+        }
+        .cards-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+        }
+        @media (max-width: 700px) { .cards-grid { grid-template-columns: 1fr; } }
+
+        .assess-card {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; transition: all 0.3s;
+            display: flex; flex-direction: column;
+        }
+        .assess-card:hover {
+            border-color: rgba(255,255,255,0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+        }
+        .assess-card-icon {
+            font-size: 32px; margin-bottom: 16px;
+        }
+        .assess-card-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+            padding: 3px 10px; border-radius: 100px; letter-spacing: 0.5px;
+            margin-bottom: 12px; width: fit-content;
+        }
+        .assess-card h2 {
+            font-family: var(--font-heading); font-size: 22px; font-weight: 700;
+            letter-spacing: -0.5px; margin-bottom: 8px;
+        }
+        .assess-card-desc {
+            font-size: 14px; color: var(--gray); line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        .assess-card-dims {
+            display: flex; flex-direction: column; gap: 6px;
+            margin-bottom: 24px; flex: 1;
+        }
+        .assess-dim-row {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark);
+        }
+        .assess-dim-dot {
+            width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+        }
+        .assess-card-meta {
+            display: flex; align-items: center; gap: 12px;
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark);
+            margin-bottom: 20px; padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .assess-card-cta {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            padding: 12px 24px; border-radius: 10px; border: none;
+            text-decoration: none; cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .assess-card-cta:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Card variants */
+        .card-marketing { border-top: 3px solid var(--emerald); }
+        .card-marketing .assess-card-badge { background: var(--emerald-dim); color: var(--emerald); }
+        .card-marketing .assess-dim-dot { background: var(--emerald); }
+        .card-marketing .assess-card-cta {
+            background: var(--emerald); color: var(--dark);
+        }
+        .card-marketing .assess-card-cta:hover {
+            background: #34D399;
+            box-shadow: 0 0 30px rgba(16,185,129,0.2);
+        }
+
+        .card-ai { border-top: 3px solid var(--cyan); }
+        .card-ai .assess-card-badge { background: var(--cyan-dim); color: var(--cyan); }
+        .card-ai .assess-dim-dot { background: var(--cyan); }
+        .card-ai .assess-card-cta {
+            background: var(--cyan); color: var(--dark);
+        }
+        .card-ai .assess-card-cta:hover {
+            background: #67E8F9;
+            box-shadow: 0 0 30px rgba(34,211,238,0.2);
+        }
+
+        .card-cro { border-top: 3px solid var(--orange); }
+        .card-cro .assess-card-badge { background: var(--orange-dim); color: var(--orange); }
+        .card-cro .assess-dim-dot { background: var(--orange); }
+        .card-cro .assess-card-cta {
+            background: var(--orange); color: var(--dark);
+        }
+        .card-cro .assess-card-cta:hover {
+            background: #FB923C;
+            box-shadow: 0 0 30px rgba(249,115,22,0.2);
+        }
+
+        .card-revert { border-top: 3px solid var(--amber); }
+        .card-revert .assess-card-badge { background: var(--amber-dim); color: var(--amber); }
+        .card-revert .assess-dim-dot { background: var(--amber); }
+        .card-revert .assess-card-cta {
+            background: var(--amber); color: var(--dark);
+        }
+        .card-revert .assess-card-cta:hover {
+            background: #FACC15;
+            box-shadow: 0 0 30px rgba(234,179,8,0.2);
+        }
+
+        .card-ai-youth { border-top: 3px solid var(--purple); }
+        .card-ai-youth .assess-card-badge { background: var(--purple-dim); color: var(--purple); }
+        .card-ai-youth .assess-dim-dot { background: var(--purple); }
+        .card-ai-youth .assess-card-cta {
+            background: var(--purple); color: var(--dark);
+        }
+        .card-ai-youth .assess-card-cta:hover {
+            background: #C4B5FD;
+            box-shadow: 0 0 30px rgba(167,139,250,0.2);
+        }
+
+        .card-builder { border-top: 3px solid var(--gold); }
+        .card-builder .assess-card-badge { background: rgba(245,158,11,0.12); color: var(--gold); }
+        .card-builder .assess-dim-dot { background: var(--gold); }
+        .card-builder .assess-card-cta {
+            background: var(--gold); color: var(--dark);
+        }
+        .card-builder .assess-card-cta:hover {
+            background: #FBBF24;
+            box-shadow: 0 0 30px rgba(245,158,11,0.2);
+        }
+
+        /* BOTTOM CTA */
+        /* SECTION HEADERS */
+        .section-label {
+            display: flex; align-items: center; gap: 12px;
+            margin-bottom: 24px;
+        }
+        .section-label-text {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-dark);
+            white-space: nowrap;
+        }
+        .section-label-line {
+            flex: 1; height: 1px; background: var(--border);
+        }
+        .section-gap { margin-top: 48px; }
+
+        .bottom-cta {
+            max-width: 700px; margin: 0 auto; padding: 0 24px 80px;
+            text-align: center; position: relative; z-index: 1;
+        }
+        .bottom-cta-box {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 40px 32px;
+        }
+        .bottom-cta-box h3 {
+            font-family: var(--font-heading); font-size: 24px; font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .bottom-cta-box p {
+            font-size: 14px; color: var(--gray); margin-bottom: 24px;
+            max-width: 440px; margin-left: auto; margin-right: auto; line-height: 1.7;
+        }
+        .bottom-cta-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600;
+            padding: 12px 28px; border-radius: 10px; border: none; cursor: pointer;
+            background: var(--emerald); color: var(--dark); text-decoration: none;
+            transition: all 0.25s;
+        }
+        .bottom-cta-btn:hover {
+            background: #34D399; transform: translateY(-1px);
+            box-shadow: 0 0 30px rgba(16,185,129,0.2);
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center; padding: 24px;
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark);
+            border-top: 1px solid var(--border);
+            position: relative; z-index: 1;
+        }
+        .footer a { color: var(--gray); text-decoration: none; }
+        .footer a:hover { color: var(--white); }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+
+    <div class="sc-nav">
+        <a href="/">Badir <span class="ar">بادر</span></a>
+        <div class="sc-nav-right">
+            <a href="/" class="sc-nav-btn sc-nav-ghost">Home</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-badge">FREE ASSESSMENTS</div>
+        <h1>Know exactly <span class="gradient">where to focus</span></h1>
+        <p class="hero-sub">
+            12 questions, 6 dimensions, actionable recommendations.
+            Business scorecards and community check-ins — 3 minutes each.
+        </p>
+    </div>
+
+    <div class="cards-section">
+        <div class="section-label">
+            <span class="section-label-text">Business</span>
+            <div class="section-label-line"></div>
+        </div>
+        <div class="cards-grid">
+
+            <!-- Marketing Health -->
+            <div class="assess-card card-marketing">
+                <div class="assess-card-icon">&#x1F4CA;</div>
+                <div class="assess-card-badge">MOST POPULAR</div>
+                <h2>Marketing Health</h2>
+                <p class="assess-card-desc">
+                    How strong is your marketing foundation?
+                    Covers everything from website conversions to AI search visibility.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Website &amp; CRO</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>SEO &amp; Search</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Search (GEO)</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Competitor Intel</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Analytics &amp; Data</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Brand &amp; Positioning</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/scorecard" class="assess-card-cta">Take Assessment &rarr;</a>
+            </div>
+
+            <!-- AI Readiness — Small Business -->
+            <div class="assess-card card-ai">
+                <div class="assess-card-icon">&#x1F916;</div>
+                <div class="assess-card-badge">SMALL BUSINESS</div>
+                <h2>AI Readiness</h2>
+                <p class="assess-card-desc">
+                    Is your small business using AI like a calculator or a co-pilot?
+                    Find out where you stand and what to automate next.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Strategy &amp; Vision</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Tools &amp; Automation</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Content &amp; Marketing</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Customer Experience</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Data &amp; Analytics</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Team &amp; Skills</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/ai-readiness" class="assess-card-cta">Take Assessment &rarr;</a>
+            </div>
+
+            <!-- AI Readiness — Youth -->
+            <div class="assess-card card-ai-youth">
+                <div class="assess-card-icon">&#x1F680;</div>
+                <div class="assess-card-badge">YOUTH</div>
+                <h2>AI Readiness</h2>
+                <p class="assess-card-desc">
+                    AI is reshaping every career and opportunity.
+                    Find out how ready you are — and what to build next.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Awareness &amp; Curiosity</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Skills &amp; Tools</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI for Learning</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI for Career &amp; Creating</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI Ethics &amp; Critical Thinking</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>AI for Impact</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/ai-readiness-youth" class="assess-card-cta">Take Assessment &rarr;</a>
+            </div>
+
+            <!-- CRO Audit -->
+            <div class="assess-card card-cro">
+                <div class="assess-card-icon">&#x26A1;</div>
+                <div class="assess-card-badge">NEW</div>
+                <h2>CRO Audit</h2>
+                <p class="assess-card-desc">
+                    Your website gets traffic. But how much converts?
+                    Diagnose exactly where you're leaking revenue.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Page Speed &amp; Performance</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Landing Page Quality</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Trust &amp; Social Proof</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Mobile Experience</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Forms &amp; Checkout</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Testing &amp; Optimization</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/cro-audit" class="assess-card-cta">Take Assessment &rarr;</a>
+            </div>
+
+            <!-- AI Reality Check — Small Business (pain-point) -->
+            <div class="assess-card card-ai">
+                <div class="assess-card-icon">&#x1F50D;</div>
+                <div class="assess-card-badge">HONEST CHECK</div>
+                <h2>AI Reality Check</h2>
+                <p class="assess-card-desc">
+                    How is your small business really using AI &mdash; and where are you stuck?
+                    An honest check that shows where AI could save you hours every week.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Strategy &amp; Mindset</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Tools &amp; Adoption</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Automation &amp; Workflows</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Data &amp; Customers</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Team &amp; Skills</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Results &amp; ROI</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/ai-smb-survey" class="assess-card-cta">Take Check &rarr;</a>
+            </div>
+
+            <!-- You & AI — Youth (pain-point) -->
+            <div class="assess-card card-ai-youth">
+                <div class="assess-card-icon">&#x1F9E0;</div>
+                <div class="assess-card-badge">YOUTH &middot; HONEST</div>
+                <h2>You &amp; AI</h2>
+                <p class="assess-card-desc">
+                    Is AI making you sharper or lazier? An honest look at how you really use AI
+                    &mdash; study, building, focus, and faith.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Study &amp; Learning</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Creating &amp; Building</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Focus &amp; Dependence</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Critical Thinking</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Faith &amp; Ethics</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Future &amp; Confidence</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/youth-ai-survey" class="assess-card-cta">Take Check &rarr;</a>
+            </div>
+
+        </div>
+
+        <div class="section-label section-gap">
+            <span class="section-label-text">Community</span>
+            <div class="section-label-line"></div>
+        </div>
+        <div class="cards-grid">
+
+            <!-- Revert Journey Check-In -->
+            <div class="assess-card card-revert">
+                <div class="assess-card-icon">&#x1F64C;</div>
+                <div class="assess-card-badge">COMMUNITY</div>
+                <h2>Revert Journey</h2>
+                <p class="assess-card-desc">
+                    Embraced Islam and navigating what comes next?
+                    Find out where you're thriving and where you need support.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Community &amp; Belonging</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Knowledge &amp; Practice</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Family &amp; Relationships</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Identity &amp; Culture</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Daily Life</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Spiritual Growth</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/revert-survey" class="assess-card-cta">Take Check-In &rarr;</a>
+            </div>
+
+            <!-- Builder Readiness Check -->
+            <div class="assess-card card-builder">
+                <div class="assess-card-icon">&#x1F6E0;</div>
+                <div class="assess-card-badge">BUILDERS</div>
+                <h2>Builder Readiness</h2>
+                <p class="assess-card-desc">
+                    Idea-haver or shipper? Find out why you&rsquo;re not shipping &mdash;
+                    and the one thing that would unlock you. Builder to builder, no lectures.
+                </p>
+                <div class="assess-card-dims">
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Direction &amp; Ideas</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Skills &amp; Tools</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Momentum &amp; Finishing</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Accountability &amp; Community</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Mindset &amp; Faith</div>
+                    <div class="assess-dim-row"><div class="assess-dim-dot"></div>Shipping Track Record</div>
+                </div>
+                <div class="assess-card-meta">
+                    <span>12 questions</span>
+                    <span>&middot;</span>
+                    <span>3 minutes</span>
+                    <span>&middot;</span>
+                    <span>Free</span>
+                </div>
+                <a href="/builder-readiness" class="assess-card-cta">Take Check &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bottom-cta">
+        <div class="bottom-cta-box">
+            <h3>Not sure which to take first?</h3>
+            <p>Start with the Marketing Health Scorecard. It gives you the broadest picture of your digital presence and shows you where to dig deeper.</p>
+            <a href="/scorecard" class="bottom-cta-btn">Start with Marketing Health &rarr;</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="/">Badir Studio</a> &middot; Built for builders who ship
+    </div>
+
+<script defer src="/_vercel/insights/script.js"></script>
+<script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
+</body>
+</html>

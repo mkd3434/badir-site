@@ -218,6 +218,74 @@ export default async function handler(req, res) {
             text: welcomeLines.join("\n"),
           }),
         });
+      } else if (source === "hamilton-workshop" && metadata) {
+        // Hamilton in-person workshop signup — preferred-time voting
+        const m = metadata;
+        const notifyLines = [
+          `NEW HAMILTON LDJ SIGNUP`,
+          "",
+          `Name: ${m.name || "Not provided"}`,
+          `Email: ${sanitized}`,
+          `Time: after Isha`,
+          `Their blocker: ${m.blocker || "Not provided"}`,
+          "",
+          `Time: ${timestamp}`,
+          `IP: ${ip}`,
+          "",
+          "— Badir Hamilton LDJ Bot",
+        ];
+
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Badir Hamilton <waitlist@badir.studio>",
+            to: [NOTIFY_EMAIL],
+            subject: `[Hamilton LDJ] ${m.name || sanitized} — ${m.preferred_time || "either"}`,
+            text: notifyLines.join("\n"),
+          }),
+        });
+
+        // In-person welcome email — Hamilton LDJ at the masjid
+        const firstName = m.name ? m.name.split(" ")[0] : "";
+        const welcomeLines = [
+          `Assalamu Alaikum${firstName ? " " + firstName : ""},`,
+          "",
+          "You're on the list for the Badir Lightning Decision Jam in Hamilton this Sunday, 14 June. Bismillah.",
+          "",
+          "We'll meet at the masjid after Isha.",
+          "I'll email you the exact time and the masjid details shortly.",
+          "",
+          "What it is: a Lightning Decision Jam — bring the one thing you're stuck on, and in ~45 minutes,",
+          "together, we turn it into clear next steps. The method Google, Spotify and LEGO use. No fluff, no lectures.",
+          "",
+          "Come with your biggest blocker in mind. Bring a laptop if you've got one (a phone is fine too).",
+          "",
+          "Questions? Just reply to this email.",
+          "",
+          "Bismillah, ship it.",
+          "Mustafa Kivanc Demirsoy",
+          "Founder, Badir",
+          "",
+          "badir.studio",
+        ];
+
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Mustafa from Badir <mustafa@badir.studio>",
+            to: [sanitized],
+            subject: "You're in for the Hamilton Lightning Decision Jam. Bismillah.",
+            text: welcomeLines.join("\n"),
+          }),
+        });
       } else {
         // Regular waitlist signup
         await fetch("https://api.resend.com/emails", {
@@ -313,6 +381,21 @@ export default async function handler(req, res) {
           ip: ip,
         });
         await sadd("ldj:all", sanitized);
+      }
+
+      // Store Hamilton workshop registration for the attendee list
+      if (source === "hamilton-workshop" && metadata) {
+        await set(`workshop:${sanitized}`, {
+          email: sanitized,
+          name: metadata.name || null,
+          preferred_time: metadata.preferred_time || null,
+          blocker: metadata.blocker || null,
+          event: "Hamilton LDJ",
+          location: "Hamilton masjid",
+          registeredAt: timestamp,
+          ip: ip,
+        });
+        await sadd("workshop:hamilton", sanitized);
       }
     } catch (err) {
       console.error("KV error:", err.message);

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightning Decision Jam — Hamilton, Sun 14 June | Badir</title>
+    <meta name="description" content="A Lightning Decision Jam for Muslim builders in Hamilton this Sunday (14 June), at the masjid after Isha. Bring your biggest blocker, leave with a clear plan in ~45 min. Free.">
+    <meta property="og:title" content="Lightning Decision Jam — Hamilton, Sun 14 June | Badir">
+    <meta property="og:description" content="Bring your biggest blocker, leave with a plan. A 45-min Lightning Decision Jam for Muslim builders — Hamilton masjid, after Isha. Free.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/hamilton-workshop">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Lightning Decision Jam — Hamilton, Sun 14 June | Badir">
+    <meta name="twitter:description" content="Bring your biggest blocker, leave with a plan. A 45-min Lightning Decision Jam for Muslim builders — Hamilton masjid, after Isha. Free.">
+    <meta property="og:image" content="https://badir.studio/og-image.png">
+    <meta name="twitter:image" content="https://badir.studio/og-image.png">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Mustafa Kivanc Demirsoy">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/hamilton-workshop">
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A;
+            --border: rgba(255,255,255,0.07);
+            --emerald: #10B981; --emerald-dim: rgba(16,185,129,0.12);
+            --gold: #F59E0B; --gold-dim: rgba(245,158,11,0.12);
+            --red: #EF4444;
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.7; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+        .grid-bg { position: fixed; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 28px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        nav .logo { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        nav .logo .ar { font-family: var(--font-arabic); font-size: 15px; color: var(--emerald); }
+        nav .back { color: var(--gray); text-decoration: none; font-size: 13px; font-family: var(--font-mono); }
+        nav .back:hover { color: var(--white); }
+
+        .wrap { max-width: 620px; margin: 0 auto; padding: 110px 22px 70px; position: relative; z-index: 1; }
+
+        .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.5px; padding: 6px 14px; border-radius: 100px; background: var(--emerald-dim); color: var(--emerald); border: 1px solid rgba(16,185,129,0.18); margin-bottom: 22px; }
+        .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+
+        h1 { font-family: var(--font-heading); font-size: clamp(30px, 6vw, 44px); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; margin-bottom: 16px; }
+        h1 .grad { background: linear-gradient(135deg, var(--emerald), #34D399); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .lead { font-size: 17px; color: var(--gray); margin-bottom: 28px; }
+
+        .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+        .fact { flex: 1 1 0; min-width: 130px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+        .fact .k { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray-dark); margin-bottom: 5px; }
+        .fact .v { font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--white); }
+
+        .section-title { font-family: var(--font-heading); font-size: 14px; font-weight: 600; color: var(--gray); margin: 0 0 14px; }
+        .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+        .step { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; display: flex; gap: 14px; align-items: flex-start; }
+        .step .min { font-family: var(--font-mono); font-size: 12px; color: var(--emerald); flex-shrink: 0; padding-top: 2px; min-width: 52px; }
+        .step .txt { font-size: 14px; color: var(--gray); }
+        .step .txt b { color: var(--white); font-weight: 600; }
+
+        /* FORM */
+        .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 22px; }
+        .form-card h2 { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+        .form-card .sub { font-size: 14px; color: var(--gray); margin-bottom: 22px; }
+        label { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--gray-dark); margin: 0 0 8px; }
+        .field { margin-bottom: 18px; }
+        input[type=text], input[type=email], textarea { width: 100%; background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; color: var(--white); font-family: var(--font-body); font-size: 15px; transition: border-color 0.2s; }
+        input:focus, textarea:focus { outline: none; border-color: var(--emerald); }
+        textarea { resize: vertical; min-height: 70px; }
+
+        .times { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .time-opt { position: relative; }
+        .time-opt input { position: absolute; opacity: 0; pointer-events: none; }
+        .time-opt label { display: block; text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 14px; color: var(--white); background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 13px; margin: 0; cursor: pointer; transition: all 0.18s; }
+        .time-opt input:checked + label { border-color: var(--emerald); background: var(--emerald-dim); color: var(--emerald); }
+        .time-opt label .t { font-weight: 600; }
+        .time-opt label .d { display: block; font-size: 11px; color: var(--gray-dark); margin-top: 2px; }
+        .time-opt input:checked + label .d { color: var(--emerald); }
+
+        .btn { width: 100%; font-family: var(--font-heading); font-size: 16px; font-weight: 600; padding: 15px; border-radius: 11px; border: none; cursor: pointer; background: var(--emerald); color: var(--dark); transition: all 0.2s; margin-top: 6px; }
+        .btn:hover { background: #34D399; transform: translateY(-1px); box-shadow: 0 0 30px rgba(16,185,129,0.25); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+        .note { font-size: 12px; color: var(--gray-dark); text-align: center; margin-top: 14px; line-height: 1.6; }
+        .err { color: var(--red); font-size: 13px; margin-top: 10px; text-align: center; display: none; }
+
+        /* SUCCESS */
+        .success { display: none; text-align: center; padding: 16px 4px; }
+        .success .check { font-size: 48px; margin-bottom: 14px; }
+        .success h2 { font-family: var(--font-heading); font-size: 24px; font-weight: 700; margin-bottom: 10px; }
+        .success p { font-size: 15px; color: var(--gray); margin-bottom: 8px; }
+        .success .ar { font-family: var(--font-arabic); color: var(--emerald); font-size: 18px; margin-top: 12px; }
+
+        .foot { text-align: center; margin-top: 30px; font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); }
+        @media (max-width: 480px) { .times { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <nav>
+        <a href="/" class="logo">Badir <span class="ar">بادر</span></a>
+        <a href="/" class="back">badir.studio</a>
+    </nav>
+
+    <div class="wrap">
+        <div class="badge">HAMILTON · LIGHTNING DECISION JAM</div>
+        <h1>Bring your blocker.<br><span class="grad">Leave with a plan.</span></h1>
+        <p class="lead">I'm running a <b style="color:var(--white)">Lightning Decision Jam</b> in Hamilton this Sunday — at the masjid, <b style="color:var(--white)">after Isha</b>. If you're a Muslim who builds (or wants to), bring the one thing you're stuck on. In ~45 minutes, together, we turn it into clear next steps. The method Google, Spotify and LEGO use — no fluff, no endless discussion.</p>
+
+        <div class="facts">
+            <div class="fact"><div class="k">When</div><div class="v">Sun 14 June</div></div>
+            <div class="fact"><div class="k">Where</div><div class="v">Masjid, Hamilton</div></div>
+            <div class="fact"><div class="k">Time</div><div class="v">After Isha</div></div>
+            <div class="fact"><div class="k">Cost</div><div class="v">Free</div></div>
+        </div>
+
+        <div class="section-title">How the Jam works (~45 min)</div>
+        <div class="steps">
+            <div class="step"><div class="min">Step 1</div><div class="txt"><b>Surface it.</b> Everyone writes down the real blocker slowing them down right now — no rambling.</div></div>
+            <div class="step"><div class="min">Step 2</div><div class="txt"><b>Jam it.</b> We run the Lightning Decision Jam: prioritise, reframe as solvable, and decide — structured, fast, together.</div></div>
+            <div class="step"><div class="min">Step 3</div><div class="txt"><b>Leave with actions.</b> You walk out with concrete next steps you can ship this week — plus how Badir works (daily builds, weekend sprints, the community).</div></div>
+        </div>
+
+        <div class="form-card" id="card">
+            <div id="form-view">
+                <h2>Grab your spot</h2>
+                <p class="sub">At the masjid, <b style="color:var(--white)">after Isha</b>, this Sunday (14 June). Limited seats — it's small and hands-on. I'll email you the exact time and the masjid details.</p>
+                <form id="reg-form">
+                    <div class="field">
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" placeholder="First name" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="field">
+                        <label for="blocker">What's your biggest blocker right now? <span style="text-transform:none;color:var(--gray-dark)">(optional)</span></label>
+                        <textarea id="blocker" name="blocker" placeholder="The one thing slowing you down — that's what we'll jam on."></textarea>
+                    </div>
+                    <button type="submit" class="btn" id="submit-btn">Save my spot →</button>
+                    <div class="err" id="err">Something went wrong. Try again or email hello@badir.studio.</div>
+                    <p class="note">Free. I'll email you the final time + the masjid details. No spam.</p>
+                </form>
+            </div>
+            <div class="success" id="success-view">
+                <div class="check">🟢</div>
+                <h2>You're in.</h2>
+                <p>I'll email you the exact time (after Isha) and the masjid details soon.</p>
+                <p>Bring your blocker — and a laptop if you've got one (a phone's fine too).</p>
+                <div class="ar">Bismillah, ship it.</div>
+            </div>
+        </div>
+
+        <div class="foot">Badir — built for builders who ship.</div>
+    </div>
+
+    <script>
+    (function () {
+        "use strict";
+        var form = document.getElementById("reg-form");
+        var btn = document.getElementById("submit-btn");
+        var err = document.getElementById("err");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            err.style.display = "none";
+            var email = document.getElementById("email").value.trim().toLowerCase();
+            var name = document.getElementById("name").value.trim();
+            var blocker = document.getElementById("blocker").value.trim();
+            if (!email || !email.includes("@")) { err.textContent = "Enter a valid email."; err.style.display = "block"; return; }
+
+            btn.disabled = true;
+            btn.textContent = "Saving…";
+            if (window.hmbl) window.hmbl("event", "hamilton_workshop_signup");
+
+            fetch("/api/waitlist", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    source: "hamilton-workshop",
+                    metadata: {
+                        name: name || null,
+                        preferred_time: "After Isha",
+                        blocker: blocker || null
+                    }
+                })
+            }).then(function (r) {
+                if (!r.ok) throw new Error("bad response");
+                document.getElementById("form-view").style.display = "none";
+                document.getElementById("success-view").style.display = "block";
+            }).catch(function () {
+                btn.disabled = false;
+                btn.textContent = "Save my spot →";
+                err.style.display = "block";
+            });
+        });
+    })();
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
+</body>
+</html>

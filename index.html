@@ -438,6 +438,78 @@
             text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500;
         }
 
+        /* ─── PROOF STRIP ─── */
+        .proof-strip {
+            max-width: 680px; margin: 24px auto 0; text-align: center;
+            padding: 20px 24px; background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+        }
+        .proof-label {
+            font-family: var(--font-mono); font-size: 10px; color: var(--emerald);
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500;
+        }
+        .proof-items {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px;
+        }
+        .proof-items span {
+            font-family: var(--font-heading); font-size: 13px; font-weight: 600;
+            color: var(--white); white-space: nowrap;
+        }
+        .proof-items span em {
+            font-style: normal; font-weight: 400; color: var(--gray-500); font-size: 12px;
+            margin-left: 4px;
+        }
+        .proof-tagline {
+            margin-top: 10px; font-size: 12px; color: var(--gray-500); font-style: italic;
+        }
+
+        /* ─── AUTHORITY STRIP ─── */
+        .authority-strip {
+            text-align: center; padding: 28px 24px; margin: 0 auto;
+            font-size: 15px; color: var(--gray-400); max-width: 640px;
+        }
+        .authority-strip strong { color: var(--white); font-weight: 600; }
+        .authority-strip a {
+            color: var(--emerald); text-decoration: none; font-weight: 500;
+            margin-left: 4px; font-size: 14px;
+        }
+        .authority-strip a:hover { text-decoration: underline; }
+
+        /* ─── COMPARISON TABLE ─── */
+        .comparison-section { padding: 64px 0; }
+        .comparison-section h2 {
+            font-family: var(--font-heading); font-size: clamp(26px, 3.5vw, 38px);
+            font-weight: 700; color: var(--white); text-align: center; margin-bottom: 12px;
+        }
+        .comparison-section > .container > p {
+            text-align: center; font-size: 16px; color: var(--gray-400);
+            max-width: 560px; margin: 0 auto 40px;
+        }
+        .comparison-table {
+            width: 100%; border-collapse: collapse; font-size: 14px;
+            background: var(--surface); border-radius: var(--radius-md); overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .comparison-table thead th {
+            font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+            color: var(--gray-400); padding: 16px 14px; text-align: center;
+            border-bottom: 1px solid var(--border); text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .comparison-table thead th:first-child { text-align: left; color: var(--gray-500); font-weight: 500; }
+        .comparison-table thead th:last-child { color: var(--emerald); }
+        .comparison-table tbody td {
+            padding: 14px; text-align: center; color: var(--gray-400);
+            border-bottom: 1px solid var(--border);
+        }
+        .comparison-table tbody td:first-child {
+            text-align: left; font-weight: 500; color: var(--gray-300);
+            font-family: var(--font-heading); font-size: 13px;
+        }
+        .comparison-table tbody td:last-child { color: var(--emerald); font-weight: 600; }
+        .comparison-table tbody tr:last-child td { border-bottom: none; }
+        .comparison-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+
         /* ─── SECTION HEADERS ─── */
         .section-header { text-align: center; margin-bottom: 48px; }
         .section-header .badge { margin-bottom: 20px; }
@@ -1034,6 +1106,11 @@
             .form-input, .form-select, .form-textarea { font-size: 16px; }
             .track-grid { grid-template-columns: 1fr; }
             .agent-list { grid-template-columns: 1fr; }
+            .comparison-table { font-size: 12px; }
+            .comparison-table thead th { padding: 12px 8px; font-size: 11px; }
+            .comparison-table tbody td { padding: 10px 8px; }
+            .proof-items { gap: 4px 12px; }
+            .proof-items span { font-size: 12px; }
         }
 
         /* ─── ANIMATIONS ─── */
@@ -1084,7 +1161,7 @@
             <a href="/blog/muslim-builder-ecosystem">Insights</a>
         </div>
         <div class="nav-right">
-            <a href="/scorecard" class="nav-btn nav-btn-primary" humblytics="nav-score-marketing">Score Your Marketing</a>
+            <a href="/assessments" class="nav-btn nav-btn-primary" humblytics="nav-assessments">Free Assessments</a>
         </div>
         <button class="hamburger" aria-label="Toggle menu" onclick="toggleMenu()">
             <span></span><span></span><span></span>
@@ -1097,7 +1174,7 @@
         <a href="#community" onclick="toggleMenu()">Community</a>
         <a href="/about" onclick="toggleMenu()">About</a>
         <a href="/blog/muslim-builder-ecosystem" onclick="toggleMenu()">Insights</a>
-        <a href="/scorecard" onclick="toggleMenu()" style="color: var(--emerald);">Score Your Marketing</a>
+        <a href="/assessments" onclick="toggleMenu()" style="color: var(--emerald);">Free Assessments</a>
     </div>
 
     <main id="main-content">
@@ -1108,9 +1185,10 @@
             <div class="badge badge-emerald badge-dot">For Muslim Builders Who Ship</div>
             <h1>Conferences inspire.<br>Accelerators take equity.<br><span class="gradient">We just build.</span></h1>
             <p class="hero-sub">
-                <strong>540 million Muslim youth.</strong> A <strong>$7.7 trillion</strong> halal economy.
-                <strong>67% underrepresented</strong> in tech.
-                Badir is the product studio that turns your idea into a shipped product — in a weekend sprint, not a 6-month program.
+                <strong>Nearly 2 billion Muslims</strong> — the youngest demographic of any major faith. A <strong>$2.43 trillion</strong> halal economy.
+                Still <strong>underrepresented</strong> in tech.
+                Every week you wait, someone else ships the product you're still planning.
+                Badir turns your idea into a live product — in a weekend sprint, not a 6-month program.
             </p>
             <div class="hero-ctas">
                 <a href="/scorecard" class="btn btn-primary" humblytics="hero-score-marketing">Score Your Marketing Free <span aria-hidden="true">→</span></a>
@@ -1119,7 +1197,19 @@
                 <div class="stat"><div class="stat-val"><span class="accent">1</span></div><div class="stat-label">Founder</div></div>
                 <div class="stat"><div class="stat-val"><span class="accent">24</span></div><div class="stat-label">AI Agents</div></div>
                 <div class="stat"><div class="stat-val">48<span style="font-size:18px">hr</span></div><div class="stat-label">Sprint to Ship</div></div>
-                <div class="stat"><div class="stat-val">$7.7<span style="font-size:18px">T</span></div><div class="stat-label">Halal Economy</div></div>
+                <div class="stat"><div class="stat-val">$2.43<span style="font-size:18px">T</span></div><div class="stat-label">Halal Economy</div></div>
+            </div>
+            <div class="proof-strip reveal">
+                <div class="proof-label">Shipped with this system</div>
+                <div class="proof-items">
+                    <span>WeHack <em>cybersecurity</em></span>
+                    <span>LUA Jewellery <em>Shopify</em></span>
+                    <span>MarketMate <em>AI listings</em></span>
+                    <span>TrustLock <em>P2P escrow</em></span>
+                    <span>SortedAI <em>tradie booking</em></span>
+                    <span>TSK <em>restaurant</em></span>
+                </div>
+                <div class="proof-tagline">Same pipeline. Same AI agents. Real products, live and earning.</div>
             </div>
         </div>
     </section>
@@ -1204,6 +1294,12 @@
             </div>
         </div>
     </section>
+
+    <!-- AUTHORITY STRIP -->
+    <div class="authority-strip reveal">
+        Built by <strong>Mustafa Demirsoy</strong> — pentester, AI engineer, founder of 10 businesses. Same system. Same pipeline. Every project.
+        <a href="/about">Read the story →</a>
+    </div>
 
     <!-- PORTFOLIO -->
     <section id="portfolio">
@@ -1300,7 +1396,7 @@
                         <div class="project-label label-built">What we're building</div>
                         <p class="project-text">Character-first, verified, family-integrated Muslim matchmaking. Built on deen and values, not selfies. Currently in research — <a href="https://findfitrah.com/waitlist" target="_blank" rel="noopener" style="color: var(--emerald); text-decoration: underline;">join the waitlist</a>.</p>
                         <div class="project-tags">
-                            <span class="tag">Marriage</span><span class="tag">Character-First</span><span class="tag">$7.7T Halal Economy</span>
+                            <span class="tag">Marriage</span><span class="tag">Character-First</span><span class="tag">$2.43T Halal Economy</span>
                         </div>
                     </div>
                 </div>
@@ -1324,7 +1420,7 @@
                 <div class="why-card why-problem">
                     <div class="why-label">The gap</div>
                     <h3>Muslim youth are the largest untapped builder generation on earth.</h3>
-                    <p><strong>1.8 billion Muslims</strong> — 60% under 30. A <strong>$7.7 trillion</strong> halal economy growing faster than global GDP. Yet <strong>67% underrepresented</strong> in tech startups. The talent is there. The drive is there. The faith is there. What's missing is a place that turns inspiration into products — not another conference, not another accelerator that takes equity, not another MSA that talks but never ships.</p>
+                    <p><strong>Nearly 2 billion Muslims</strong> — with a median age of 24, the youngest demographic of any major faith. A <strong>$2.43 trillion</strong> halal economy growing to $3.36 trillion by 2028. Yet Muslim founders are deeply <strong>underrepresented</strong> in tech — just 3% of UK VC-backed startups have a Muslim founder. The talent is there. The drive is there. The faith is there. What's missing is a place that turns inspiration into products — not another conference, not another accelerator that takes equity, not another MSA that talks but never ships.</p>
                 </div>
 
                 <div class="why-card why-solution">
@@ -1564,6 +1660,65 @@
         </div>
     </section>
 
+    <!-- WHY BADIR — COMPARISON -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="badge badge-emerald">Why Badir</div>
+                <h2>You have options.<br>Here's how they compare.</h2>
+                <p>Conferences, accelerators, and agencies all serve a purpose. Badir fills the gap none of them cover.</p>
+            </div>
+            <table class="comparison-table reveal">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Conference</th>
+                        <th>Accelerator</th>
+                        <th>Agency</th>
+                        <th>Badir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ships products</td>
+                        <td>Inspires only</td>
+                        <td>After 6 months</td>
+                        <td>At agency rates</td>
+                        <td>48hr sprints</td>
+                    </tr>
+                    <tr>
+                        <td>Takes equity</td>
+                        <td>No</td>
+                        <td>8-15%</td>
+                        <td>No</td>
+                        <td>No (project-based)</td>
+                    </tr>
+                    <tr>
+                        <td>Muslim-focused</td>
+                        <td>Rarely</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>AI-powered</td>
+                        <td>No</td>
+                        <td>No</td>
+                        <td>Sometimes</td>
+                        <td>24 agents</td>
+                    </tr>
+                    <tr>
+                        <td>Ongoing support</td>
+                        <td>Annual event</td>
+                        <td>Program-length</td>
+                        <td>Retainer</td>
+                        <td>Community + monitoring</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
     <!-- FOUNDER / TEAM -->
     <section>
         <div class="container">
@@ -1589,7 +1744,7 @@
                     </p>
                     <div class="track-grid">
                         <div class="track-label">Track Record</div>
-                        <div class="track-item"><svg viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6.5 11.1 2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Multiple businesses built</div>
+                        <div class="track-item"><svg viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6.5 11.1 2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 10 businesses built and operating</div>
                         <div class="track-item"><svg viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6.5 11.1 2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> 24-agent AI operating system</div>
                         <div class="track-item"><svg viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6.5 11.1 2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Cybersecurity & pentesting</div>
                         <div class="track-item"><svg viewBox="0 0 16 16" fill="none"><path d="M13.3 4.3L6.5 11.1 2.7 7.3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Brand strategy (CORE framework)</div>
@@ -1769,7 +1924,7 @@
                         <a href="/ldj">Lightning Decision Jam</a>
                         <a href="#apply">Apply</a>
                         <a href="/offer">Free Trial</a>
-                        <a href="/scorecard">Scorecard</a>
+                        <a href="/assessments">Assessments</a>
                         <a href="/survey">Survey</a>
                         <a href="/about">About</a>
                     </div>
