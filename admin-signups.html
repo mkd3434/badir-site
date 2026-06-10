@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signups — Badir Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <style>
+        :root { --dark:#0C0C0C; --surface:#141414; --surface-2:#1A1A1A; --border:rgba(255,255,255,0.08);
+                --emerald:#10B981; --gold:#F59E0B; --blue:#60A5FA; --white:#FAFAFA; --gray:#9CA3AF; --gray-dark:#6B7280;
+                --mono:'JetBrains Mono',ui-monospace,monospace; --sans:'Inter',system-ui,sans-serif; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { background:var(--dark); color:var(--white); font-family:var(--sans); padding:24px; max-width:1000px; margin:0 auto; }
+        h1 { font-size:22px; font-weight:700; margin-bottom:4px; }
+        .sub { color:var(--gray-dark); font-size:13px; font-family:var(--mono); margin-bottom:24px; }
+        .gate { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:24px; max-width:380px; }
+        .gate input { width:100%; background:var(--surface-2); border:1px solid var(--border); border-radius:8px; padding:12px; color:var(--white); font-size:15px; margin-bottom:12px; }
+        .gate button, .refresh { background:var(--emerald); color:var(--dark); border:none; border-radius:8px; padding:12px 20px; font-weight:600; cursor:pointer; font-size:14px; }
+        .err { color:#EF4444; font-size:13px; margin-top:10px; }
+        .cards { display:flex; gap:12px; flex-wrap:wrap; margin:0 0 28px; }
+        .card { flex:1 1 0; min-width:150px; background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+        .card .n { font-family:var(--mono); font-size:34px; font-weight:700; }
+        .card .l { font-size:12px; color:var(--gray); margin-top:2px; }
+        .card.c-hamilton .n { color:var(--gold); } .card.c-build .n { color:var(--emerald); }
+        .card.c-subs .n { color:var(--blue); } .card.c-ldj .n { color:var(--gray); }
+        section { margin-bottom:32px; }
+        section h2 { font-size:16px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+        .pill { font-family:var(--mono); font-size:11px; background:var(--surface-2); border:1px solid var(--border); border-radius:100px; padding:2px 10px; color:var(--gray); }
+        table { width:100%; border-collapse:collapse; font-size:13px; }
+        th { text-align:left; font-family:var(--mono); font-size:10px; letter-spacing:1px; text-transform:uppercase; color:var(--gray-dark); padding:8px 10px; border-bottom:1px solid var(--border); }
+        td { padding:9px 10px; border-bottom:1px solid rgba(255,255,255,0.04); color:var(--gray); vertical-align:top; }
+        td.em { color:var(--white); }
+        .empty { color:var(--gray-dark); font-size:13px; padding:14px 10px; font-style:italic; }
+        .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+        .hidden { display:none; }
+    </style>
+</head>
+<body>
+    <h1>Badir — Signups</h1>
+    <div class="sub">Hamilton LDJ · Build With Us · Surveys · LDJ online</div>
+
+    <div id="gate" class="gate">
+        <input type="password" id="key" placeholder="Admin key" autocomplete="off">
+        <button onclick="load()">View signups</button>
+        <div class="err" id="err"></div>
+    </div>
+
+    <div id="dash" class="hidden">
+        <div class="topbar">
+            <div class="sub" id="updated"></div>
+            <button class="refresh" onclick="load()">↻ Refresh</button>
+        </div>
+        <div class="cards">
+            <div class="card c-hamilton"><div class="n" id="n-hamilton">–</div><div class="l">Hamilton LDJ</div></div>
+            <div class="card c-build"><div class="n" id="n-build">–</div><div class="l">Build With Us</div></div>
+            <div class="card c-subs"><div class="n" id="n-subs">–</div><div class="l">Survey / waitlist</div></div>
+            <div class="card c-ldj"><div class="n" id="n-ldj">–</div><div class="l">LDJ online</div></div>
+        </div>
+
+        <section>
+            <h2>🕌 Hamilton LDJ <span class="pill">workshop:hamilton</span></h2>
+            <div id="t-hamilton"></div>
+        </section>
+        <section>
+            <h2>🟢 Build With Us <span class="pill">build:all</span></h2>
+            <div id="t-build"></div>
+        </section>
+        <section>
+            <h2>🔵 Surveys &amp; waitlist <span class="pill">seq:active</span></h2>
+            <div id="t-subs"></div>
+        </section>
+        <section>
+            <h2>⚡ LDJ online <span class="pill">ldj:all</span></h2>
+            <div id="t-ldj"></div>
+        </section>
+    </div>
+
+<script>
+var KEY = "";
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];}); }
+function fmt(d){ if(!d) return ""; try{ return new Date(d).toLocaleString("en-NZ",{day:"2-digit",month:"short",hour:"2-digit",minute:"2-digit"}); }catch(e){ return d; } }
+
+async function fetchSrc(source){
+    var url = "/api/registrations" + (source ? "?source="+source : "");
+    var r = await fetch(url, { headers: { "Authorization": "Bearer " + KEY } });
+    if (r.status === 401) throw new Error("Wrong admin key");
+    if (r.status === 503) throw new Error("Admin/KV not configured on the server");
+    if (!r.ok) throw new Error("Error " + r.status);
+    return r.json();
+}
+
+function table(rows, cols){
+    if (!rows || rows.length === 0) return '<div class="empty">No signups yet.</div>';
+    var head = "<tr>" + cols.map(function(c){return "<th>"+c.h+"</th>";}).join("") + "</tr>";
+    var body = rows.map(function(row){
+        return "<tr>" + cols.map(function(c){
+            var v = c.fn ? c.fn(row) : row[c.k];
+            return "<td"+(c.em?' class="em"':"")+">"+esc(v)+"</td>";
+        }).join("") + "</tr>";
+    }).join("");
+    return "<table>"+head+body+"</table>";
+}
+
+async function load(){
+    var input = document.getElementById("key");
+    if (input.value) KEY = input.value.trim();
+    if (!KEY) return;
+    var err = document.getElementById("err"); err.textContent = "";
+    try {
+        var ham = await fetchSrc("hamilton");
+        var bld = await fetchSrc("build");
+        var subs = await fetchSrc("");        // seq:active
+        var ldj = await fetchSrc("ldj");
+
+        document.getElementById("gate").classList.add("hidden");
+        document.getElementById("dash").classList.remove("hidden");
+
+        document.getElementById("n-hamilton").textContent = ham.count || 0;
+        document.getElementById("n-build").textContent = bld.count || 0;
+        document.getElementById("n-subs").textContent = subs.count || 0;
+        document.getElementById("n-ldj").textContent = ldj.count || 0;
+        document.getElementById("updated").textContent = "Updated " + fmt(new Date().toISOString());
+
+        document.getElementById("t-hamilton").innerHTML = table(ham.registrations, [
+            {h:"Name",k:"name",em:1},{h:"Email",k:"email"},{h:"Time",k:"preferred_time"},
+            {h:"Blocker",k:"blocker"},{h:"When",fn:function(r){return fmt(r.registeredAt);}}
+        ]);
+        document.getElementById("t-build").innerHTML = table(bld.registrations, [
+            {h:"Name",k:"name",em:1},{h:"Email",k:"email"},{h:"Build",k:"build"},
+            {h:"What they bring",k:"offer"},{h:"When",fn:function(r){return fmt(r.joinedAt);}}
+        ]);
+        document.getElementById("t-subs").innerHTML = table(subs.subscribers, [
+            {h:"Email",k:"email",em:1},{h:"Name",k:"name"},{h:"Source",k:"source"},
+            {h:"When",fn:function(r){return fmt(r.startedAt);}}
+        ]);
+        document.getElementById("t-ldj").innerHTML = table(ldj.registrations, [
+            {h:"Name",k:"name",em:1},{h:"Email",k:"email"},{h:"Sessions",k:"sessions"},
+            {h:"When",fn:function(r){return fmt(r.registeredAt);}}
+        ]);
+    } catch(e) {
+        err.textContent = e.message;
+    }
+}
+document.getElementById("key").addEventListener("keydown", function(e){ if(e.key==="Enter") load(); });
+</script>
+</body>
+</html>

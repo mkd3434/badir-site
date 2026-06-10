@@ -47,6 +47,28 @@ export default async function handler(req, res) {
       });
     }
 
+    if (source === "hamilton") {
+      const emails = await smembers("workshop:hamilton");
+      const registrations = [];
+      for (const email of emails || []) {
+        const data = await get(`workshop:${email}`);
+        if (data) registrations.push(data);
+      }
+      registrations.sort((a, b) => (b.registeredAt || "").localeCompare(a.registeredAt || ""));
+      return res.status(200).json({ registrations, count: registrations.length });
+    }
+
+    if (source === "build") {
+      const emails = await smembers("build:all");
+      const registrations = [];
+      for (const email of emails || []) {
+        const data = await get(`build:${email}`);
+        if (data) registrations.push(data);
+      }
+      registrations.sort((a, b) => (b.joinedAt || "").localeCompare(a.joinedAt || ""));
+      return res.status(200).json({ registrations, count: registrations.length });
+    }
+
     // Generic: list all active subscribers
     const emails = await smembers("seq:active");
     if (!emails || emails.length === 0) {
