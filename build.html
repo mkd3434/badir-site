@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build With Us — Badir</title>
+    <meta name="description" content="Real problems facing the ummah, solved together. Bring a problem or join one — we jam it at a session, ship it as a team, and credit every builder. New Muslim kit, digital da'wah, and more.">
+    <meta property="og:title" content="Build With Us — Badir">
+    <meta property="og:description" content="We don't build for the ummah. We build with it. Real problems, solved together. Join a build.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://badir.studio/build">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://badir.studio/build">
+    <style>
+        @font-face { font-family: 'Space Grotesk'; src: url('/fonts/SpaceGrotesk-Variable.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
+        @font-face { font-family: 'Inter'; src: url('/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 400 600; font-display: swap; }
+        @font-face { font-family: 'JetBrains Mono'; src: url('/fonts/JetBrainsMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'IBM Plex Sans Arabic'; src: url('/fonts/IBMPlexSansArabic-Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+    </style>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --dark: #0C0C0C; --surface: #141414; --surface-2: #1A1A1A;
+            --border: rgba(255,255,255,0.07);
+            --emerald: #10B981; --emerald-dim: rgba(16,185,129,0.12);
+            --gold: #F59E0B; --gold-dim: rgba(245,158,11,0.12);
+            --blue: #60A5FA; --blue-dim: rgba(96,165,250,0.12);
+            --white: #FAFAFA; --gray: #9CA3AF; --gray-dark: #6B7280;
+            --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace; --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+        }
+        html { scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--white); font-family: var(--font-body); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+        .grid-bg { position: fixed; inset: 0; background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0); background-size: 48px 48px; pointer-events: none; z-index: 0; }
+        ::selection { background: var(--emerald); color: var(--dark); }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 14px 28px; display: flex; justify-content: space-between; align-items: center; background: rgba(12,12,12,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+        nav .logo { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--white); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        nav .logo .ar { font-family: var(--font-arabic); font-size: 15px; color: var(--emerald); }
+        nav .back { color: var(--gray); text-decoration: none; font-size: 13px; font-family: var(--font-mono); }
+        .wrap { max-width: 760px; margin: 0 auto; padding: 110px 22px 70px; position: relative; z-index: 1; }
+
+        /* HERO */
+        .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.5px; padding: 6px 14px; border-radius: 100px; background: var(--emerald-dim); color: var(--emerald); border: 1px solid rgba(16,185,129,0.18); margin-bottom: 22px; }
+        .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--emerald); }
+        h1 { font-family: var(--font-heading); font-size: clamp(32px, 6vw, 50px); font-weight: 800; line-height: 1.06; letter-spacing: -2px; margin-bottom: 16px; }
+        h1 .grad { background: linear-gradient(135deg, var(--emerald), #34D399); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .lead { font-size: 18px; color: var(--gray); margin-bottom: 30px; max-width: 620px; }
+
+        /* THE LOOP */
+        .loop { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+        .loop-step { flex: 1 1 0; min-width: 150px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+        .loop-step .n { font-family: var(--font-mono); font-size: 11px; color: var(--emerald); }
+        .loop-step .t { font-family: var(--font-heading); font-size: 15px; font-weight: 700; margin: 4px 0 4px; }
+        .loop-step .d { font-size: 12.5px; color: var(--gray); }
+        .loop-note { font-size: 13px; color: var(--gray-dark); margin-bottom: 6px; }
+
+        /* NEXT SESSION */
+        .next { margin: 36px 0; padding: 18px 20px; background: var(--gold-dim); border: 1px solid rgba(245,158,11,0.22); border-radius: 12px; display: flex; gap: 14px; align-items: center; }
+        .next .ic { font-size: 22px; }
+        .next .txt { font-size: 14px; color: var(--gray); }
+        .next .txt b { color: var(--white); }
+        .next a { color: var(--gold); font-weight: 700; text-decoration: none; white-space: nowrap; margin-left: auto; }
+
+        /* PROJECTS */
+        .section-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gray-dark); margin: 46px 0 6px; }
+        .section-h { font-family: var(--font-heading); font-size: 26px; font-weight: 700; margin-bottom: 22px; }
+        .proj { border: 1px solid var(--border); border-radius: 14px; padding: 22px; margin-bottom: 14px; background: var(--surface); border-left: 3px solid var(--emerald); }
+        .proj.p2 { border-left-color: var(--blue); }
+        .proj.p3 { border-left-color: var(--gray-dark); border-style: dashed; background: transparent; }
+        .proj-top { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+        .proj-status { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 5px; }
+        .st-building { background: var(--emerald-dim); color: var(--emerald); }
+        .st-open { background: var(--blue-dim); color: var(--blue); }
+        .st-idea { background: rgba(255,255,255,0.05); color: var(--gray); }
+        .proj h3 { font-family: var(--font-heading); font-size: 19px; font-weight: 700; }
+        .proj .problem { font-size: 14.5px; color: var(--gray); margin: 8px 0 16px; }
+        .proj .problem b { color: var(--white); }
+        .proj-foot { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+        .builders { display: flex; align-items: center; }
+        .av { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--surface); margin-left: -8px; font-family: var(--font-mono); font-size: 10px; display: flex; align-items: center; justify-content: center; color: var(--dark); font-weight: 700; }
+        .av:first-child { margin-left: 0; }
+        .builders .label { font-size: 12.5px; color: var(--gray); margin-left: 10px; }
+        .btn-join { margin-left: auto; font-family: var(--font-heading); font-size: 13.5px; font-weight: 600; padding: 9px 18px; border-radius: 9px; background: var(--emerald); color: var(--dark); text-decoration: none; transition: all .2s; }
+        .btn-join:hover { background: #34D399; }
+        .btn-join.ghost { background: transparent; color: var(--white); border: 1px solid var(--border); }
+        .proj.p3 h3 { color: var(--gray); }
+
+        .foot { text-align: center; margin-top: 44px; font-family: var(--font-arabic); font-size: 18px; color: var(--emerald); }
+        .foot .sub { font-family: var(--font-mono); font-size: 11px; color: var(--gray-dark); margin-top: 6px; }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <nav>
+        <a href="/" class="logo">Badir <span class="ar">بادر</span></a>
+        <a href="/" class="back">badir.studio</a>
+    </nav>
+
+    <div class="wrap">
+        <!-- HERO -->
+        <div class="badge">BUILD WITH US</div>
+        <h1>We don't build for the ummah.<br><span class="grad">We build with it.</span></h1>
+        <p class="lead">Real problems facing our community — solved <b style="color:var(--white)">together</b>. Bring a problem or join one. We jam it at a session, ship it as a team, and put your name on it.</p>
+
+        <p class="loop-note">How it works:</p>
+        <div class="loop">
+            <div class="loop-step"><div class="n">01 · LISTEN</div><div class="t">Bring the problem</div><div class="d">Yours, or pick one that's open. We start from real pain, not ideas.</div></div>
+            <div class="loop-step"><div class="n">02 · CREATE</div><div class="t">Jam it together</div><div class="d">A 45-min session — surface, decide, split the work. No lectures.</div></div>
+            <div class="loop-step"><div class="n">03 · SHIP</div><div class="t">Build it as a team</div><div class="d">Each person owns a piece. We ship it — and credit every builder.</div></div>
+        </div>
+
+        <!-- NEXT SESSION -->
+        <div class="next">
+            <div class="ic">🕌</div>
+            <div class="txt"><b>Next session:</b> Hamilton — this Sunday, after Isha. Bring your blocker, leave with a plan.</div>
+            <a href="/hamilton-workshop">Join →</a>
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="section-label">What we're building right now</div>
+        <div class="section-h">Pick a problem. Join the build.</div>
+
+        <!-- Project 1 -->
+        <div class="proj p1">
+            <div class="proj-top"><span class="proj-status st-building">● Building · team forming</span></div>
+            <h3>The New Muslim Starter Pack</h3>
+            <p class="problem"><b>The problem:</b> new Muslims are overwhelmed — they don't know what to read, where to start, or what the essentials even are. <b>We're building</b> one clear path: their first 90 days, step by step. Built by reverts who lived it, checked by a scholar.</p>
+            <div class="proj-foot">
+                <span class="label" style="font-size:12.5px;color:var(--gray)">Just starting — be one of the first. Needs: reverts, mentors, designers.</span>
+                <a href="#join" class="btn-join" data-build="New Muslim Starter Pack">Join this build →</a>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="proj p2">
+            <div class="proj-top"><span class="proj-status st-open">○ Open · seeking builders</span></div>
+            <h3>Da'wah in the Digital Age</h3>
+            <p class="problem"><b>The problem:</b> most people will meet Islam through a screen first — and we're barely showing up. <b>We're building</b> a digital da'wah campaign: how we actually reach people online, with honesty and beauty, not cringe.</p>
+            <div class="proj-foot">
+                <span class="label" style="font-size:12.5px;color:var(--gray)">Open — seeking the first builders. Needs: creators, writers, video.</span>
+                <a href="#join" class="btn-join ghost" data-build="Da'wah in the Digital Age">Join this build →</a>
+            </div>
+        </div>
+
+        <!-- Project 3 — propose -->
+        <div class="proj p3">
+            <div class="proj-top"><span class="proj-status st-idea">+ Your problem</span></div>
+            <h3>Got a problem worth solving?</h3>
+            <p class="problem">If something in our community is broken and you can't stop thinking about it — bring it. We'll find the others who care and build the fix together.</p>
+            <div class="proj-foot">
+                <a href="#join" class="btn-join ghost" style="margin-left:0;" data-build="I have my own problem">Propose a problem →</a>
+            </div>
+        </div>
+
+        <!-- JOIN FORM -->
+        <div id="join" style="margin:46px 0 0;border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:26px 22px;">
+            <div id="join-form">
+                <h3 style="font-family:var(--font-heading);font-size:22px;font-weight:700;margin-bottom:6px;">Get in the build</h3>
+                <p style="font-size:14px;color:var(--gray);margin-bottom:20px;">Tell me which one pulls you and what you can bring. I'll add you to the team and send you the next step.</p>
+                <form id="reg-form">
+                    <div style="margin-bottom:16px;">
+                        <label for="bname" style="display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--gray-dark);margin-bottom:8px;">Your name</label>
+                        <input type="text" id="bname" placeholder="First name" required style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--white);font-family:var(--font-body);font-size:15px;">
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="bemail" style="display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--gray-dark);margin-bottom:8px;">Email</label>
+                        <input type="email" id="bemail" placeholder="you@email.com" required style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--white);font-family:var(--font-body);font-size:15px;">
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label for="bwhich" style="display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--gray-dark);margin-bottom:8px;">Which build?</label>
+                        <select id="bwhich" style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--white);font-family:var(--font-body);font-size:15px;">
+                            <option>New Muslim Starter Pack</option>
+                            <option>Da'wah in the Digital Age</option>
+                            <option>I have my own problem</option>
+                            <option>Wherever I'm needed</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:18px;">
+                        <label for="boffer" style="display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--gray-dark);margin-bottom:8px;">What can you bring? <span style="text-transform:none;color:var(--gray-dark)">(optional)</span></label>
+                        <textarea id="boffer" placeholder="Your story, a skill (writing, design, video), time, or a problem you can't stop thinking about." style="width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:13px 14px;color:var(--white);font-family:var(--font-body);font-size:15px;min-height:70px;resize:vertical;"></textarea>
+                    </div>
+                    <button type="submit" id="bsubmit" class="btn-join" style="width:100%;text-align:center;padding:15px;font-size:16px;">I'm in →</button>
+                    <div id="berr" style="display:none;color:#EF4444;font-size:13px;margin-top:10px;text-align:center;">Something went wrong. Try again or email hello@badir.studio.</div>
+                    <p style="font-size:12px;color:var(--gray-dark);text-align:center;margin-top:14px;">Free. I'll personally reply with the next step. No spam.</p>
+                </form>
+            </div>
+            <div id="join-success" style="display:none;text-align:center;padding:14px 4px;">
+                <div style="font-size:44px;margin-bottom:12px;">🟢</div>
+                <h3 style="font-family:var(--font-heading);font-size:22px;font-weight:700;margin-bottom:8px;">You're in.</h3>
+                <p style="font-size:15px;color:var(--gray);">I'll reply personally with your next step — and where the team meets. Bismillah.</p>
+            </div>
+        </div>
+
+        <div class="foot">
+            بِسْمِ اللَّٰه
+            <div class="sub">Process &gt; passion. We ship, together.</div>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        "use strict";
+        // Preselect the build when a card's "Join" is clicked
+        var sel = document.getElementById("bwhich");
+        document.querySelectorAll('.btn-join[data-build]').forEach(function (el) {
+            el.addEventListener("click", function () {
+                var v = el.getAttribute("data-build");
+                for (var i = 0; i < sel.options.length; i++) {
+                    if (sel.options[i].value === v || sel.options[i].text === v) { sel.selectedIndex = i; break; }
+                }
+            });
+        });
+
+        var form = document.getElementById("reg-form");
+        var btn = document.getElementById("bsubmit");
+        var err = document.getElementById("berr");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            err.style.display = "none";
+            var email = document.getElementById("bemail").value.trim().toLowerCase();
+            var name = document.getElementById("bname").value.trim();
+            var which = sel.value;
+            var offer = document.getElementById("boffer").value.trim();
+            if (!email || !email.includes("@")) { err.textContent = "Enter a valid email."; err.style.display = "block"; return; }
+            btn.disabled = true; btn.textContent = "Saving…";
+            if (window.hmbl) window.hmbl("event", "build_with_us_join");
+            fetch("/api/waitlist", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    source: "build-with-us",
+                    metadata: { name: name || null, build: which, offer: offer || null }
+                })
+            }).then(function (r) {
+                if (!r.ok) throw new Error("bad");
+                document.getElementById("join-form").style.display = "none";
+                document.getElementById("join-success").style.display = "block";
+            }).catch(function () {
+                btn.disabled = false; btn.textContent = "I'm in →"; err.style.display = "block";
+            });
+        });
+    })();
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script async src="https://app.humblytics.com/hmbl.min.js?id=37ddc91"></script>
+</body>
+</html>

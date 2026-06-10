@@ -286,6 +286,62 @@ export default async function handler(req, res) {
             text: welcomeLines.join("\n"),
           }),
         });
+      } else if (source === "build-with-us" && metadata) {
+        // Build With Us — someone joining a co-creation build
+        const m = metadata;
+        const notifyLines = [
+          `NEW BUILD-WITH-US JOIN`,
+          "",
+          `Name: ${m.name || "Not provided"}`,
+          `Email: ${sanitized}`,
+          `Build: ${m.build || "Wherever needed"}`,
+          `What they bring: ${m.offer || "Not provided"}`,
+          "",
+          `Time: ${timestamp}`,
+          `IP: ${ip}`,
+          "",
+          "— Badir Build Bot",
+        ];
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: "Badir Build <waitlist@badir.studio>",
+            to: [NOTIFY_EMAIL],
+            subject: `[Build] ${m.name || sanitized} — ${m.build || "wherever needed"}`,
+            text: notifyLines.join("\n"),
+          }),
+        });
+
+        const firstName = m.name ? m.name.split(" ")[0] : "";
+        const welcomeLines = [
+          `Assalamu Alaikum${firstName ? " " + firstName : ""},`,
+          "",
+          `You're in. You said you'd help build: ${m.build || "wherever you're needed"}. Bismillah.`,
+          "",
+          "Here's how Badir builds: we don't make things FOR the community — we make them WITH it.",
+          "Bring the problem, jam it together, ship it as a team, and everyone gets credited.",
+          "",
+          "I'll reply to you personally with your next step and where the team meets (our next session + the group).",
+          "",
+          "If you've got a story, a skill, or a problem you can't stop thinking about — that's exactly what we need.",
+          "",
+          "Bismillah, ship it.",
+          "Mustafa Kivanc Demirsoy",
+          "Founder, Badir",
+          "",
+          "badir.studio",
+        ];
+        await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${RESEND_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: "Mustafa from Badir <mustafa@badir.studio>",
+            to: [sanitized],
+            subject: "You're in the build. Bismillah.",
+            text: welcomeLines.join("\n"),
+          }),
+        });
       } else {
         // Regular waitlist signup
         await fetch("https://api.resend.com/emails", {
@@ -396,6 +452,19 @@ export default async function handler(req, res) {
           ip: ip,
         });
         await sadd("workshop:hamilton", sanitized);
+      }
+
+      // Store Build With Us joiners (the co-creation team)
+      if (source === "build-with-us" && metadata) {
+        await set(`build:${sanitized}`, {
+          email: sanitized,
+          name: metadata.name || null,
+          build: metadata.build || null,
+          offer: metadata.offer || null,
+          joinedAt: timestamp,
+          ip: ip,
+        });
+        await sadd("build:all", sanitized);
       }
     } catch (err) {
       console.error("KV error:", err.message);
