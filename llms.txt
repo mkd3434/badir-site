@@ -1,15 +1,25 @@
-# Badir Studio — Community-Powered Product Studio for Muslim Builders
+# Badir — A Builder Community for Muslims. We don't build for the ummah; we build with it.
 
-> Note: Badir Studio (badir.studio) is a product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
+> Note: Badir (badir.studio) is a builder community and product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
 
 ## About
-Badir Studio (بادر) is a community-powered product studio for Muslim builders (18-35 globally). We operate a dual model:
-- Studio side: Brand strategy, MVP development, AI automation for startups and SMBs
-- Community side: Daily builds, weekend design sprints, hands-on workshops
+Badir (بادر) is a builder community for Muslims who want to build real things — products, brands, tools — and serve the ummah while doing it. Problem-first and session-based: bring a real problem or join one, jam it out together in a working session, ship it as a team, and every builder gets credited. A product studio side (brand strategy, MVP development, AI automation) sustains the work — the work funds itself so it can keep serving.
+
+## How it works (Build With Us)
+1. LISTEN — bring the problem (yours, or pick one that's open)
+2. CREATE — jam it together in a ~45-minute session (Lightning Decision Jam format)
+3. SHIP — build it as a team; each person owns a piece; everyone is credited
+
+Current open builds:
+- The New Muslim Starter Pack — one clear path for a new Muslim's first 90 days (reverts are overwhelmed by scattered info; this replaces confusion with one next step)
+- Da'wah in the Digital Age — how Muslims actually show up online, with honesty and beauty
+- The Ummah Uplift Team — designers, developers, writers, video people and marketers who go to mosques and communities and uplift their projects with skills
+
+Join at: https://badir.studio/build
 
 ## Founder
-Mustafa Kivanc Demirsoy (MKD) — Founder, Pentester, Product Builder, AI Engineer
-Track record: 10 businesses built solo, 24 AI agents in production, full-stack + AI development
+Mustafa Kivanc Demirsoy (MKD) — Builder. No corporate titles by choice: "I'm here to do the work, not to be called something."
+Has shipped multiple live products (WeHack, LUA Jewellery, MarketMate, TSK, TrustLock, SortedAI) — every one started by saying Bismillah and shipping an ugly first version. Leans on AI for the boring parts to spend more time building with people.
 Location: Tauranga, New Zealand (global reach)
 
 ## Brand Voice
@@ -18,59 +28,57 @@ Location: Tauranga, New Zealand (global reach)
 - Says "ship" not "launch", "builders" not "members"
 - Uses "Bismillah" naturally (not performatively)
 - Always action-oriented, never preachy
+- No titles, no credentialism — judge the work, not the label
 
-## Services (4-Phase Pipeline)
+## Studio Services (sustains the community — 4-Phase Pipeline)
 1. Discovery — Market research, competitor audit, audience intelligence, ICP profiling
 2. Brand — CORE framework brand discovery, positioning, voice, design system, messaging
 3. Build — Websites, MVPs, marketing materials, content, creatives, AI automation
 4. Monitor — Performance tracking, SEO/GEO monitoring, brand mentions, optimization
 
-Without a strategy, there's no solution. We don't skip steps.
-
-## Pricing
+## Pricing (studio)
 - Product Sprint (48hr): $2K-5K per sprint
 - MVP Development: $5K-20K project-based
 - Brand Strategy (full pipeline): $3K-10K
 - AI Automation Setup: $5K-15K
 - Monthly Monitoring: $500-2K/mo retainer
-- Equity/Revenue Share: 10-20% equity or 15% revenue share for selected projects
-
-## Community
-- Daily builds: Post what you're building today
-- Weekend design sprints: 48-hour prototyping (Map, Sketch, Decide, Prototype, Test)
-- Hands-on workshops: AI tools, rapid prototyping, design sprints, landing pages
-- Demo Days: Present what you shipped (3-minute lightning talks)
 
 ## Community Profiles
-- Yusuf (19-24): Stuck student with 47 ideas in Notes app. Needs accountability
+- Yusuf (19-24): Stuck student with ideas he never ships. Needs accountability and a room that tells him to start
 - Amira (24-32): Side hustle builder. Needs structured rhythm, not "learn at your own pace"
 - Omar (28-40): Experienced builder. Wants to mentor where mentees actually ship
 
-## AI Operating System
-The studio runs on a 24-agent AI system: content generation, brand intelligence, sales automation, SEO audits, creative generation, video production, campaign generation, marketing orchestration, predictive analytics, audience intelligence, and more. One founder doing the work of a full team.
+## Free Assessments (interactive scorecards)
+- [AI Reality Check (small business)](https://badir.studio/ai-smb-survey): where AI could save you hours and where you're stuck
+- [You & AI (youth)](https://badir.studio/youth-ai-survey): is AI making you sharper or lazier — study, building, focus, faith
+- [Builder Readiness](https://badir.studio/builder-readiness): dreamer or shipper — what would unlock you
+- [Revert Journey Check-In](https://badir.studio/revert-survey): support check across community, knowledge, family, identity, daily life, spiritual growth
+- [All assessments](https://badir.studio/assessments)
 
 ## Tagline
 "Bismillah, ship it." — Take the initiative, be first to act, hasten to do good.
 
 ## Name Origin
 Badir (بادر) means "Take the initiative" / "Be the first to act" / "Hasten to do good."
-Inspired by the Battle of Badr — starting when the odds are against you, victory through faith + action.
+Inspired by the Battle of Badr — 313 against an army three times their size; victory through faith + action, not numbers.
 Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
 
 ## Key URLs
-- [Landing Page](https://badir.studio/): Main site with services, portfolio, and community info
-- [Brand Readiness Scorecard](https://badir.studio/scorecard): Free 8-question brand assessment tool
-- [Builder Application](https://badir.studio/apply): Team and contributor application scorecard
-- [Project Discovery Survey](https://badir.studio/survey): Project intake form for potential clients
-- [Privacy Policy](https://badir.studio/privacy): Data handling and NZ Privacy Act 2020 compliance
+- [Build With Us](https://badir.studio/build): join a build, propose a problem, or bring your skill to the uplift team
+- [About](https://badir.studio/about): the founder story and why Badir exists
+- [Landing Page](https://badir.studio/): main site with process, portfolio, and community info
+- [Free Assessments](https://badir.studio/assessments): interactive scorecards and check-ins
+- [Project Discovery Survey](https://badir.studio/survey): project intake for studio clients
+- [Privacy Policy](https://badir.studio/privacy): data handling and NZ Privacy Act 2020 compliance
 
 ## Contact
 - Email: hello@badir.studio
 - LinkedIn: linkedin.com/in/mustafa-demirsoy
 
 ## Values
-- Build businesses. Build income. Then solve community problems.
-- Action over perfection
+- We build WITH the ummah, not for it
+- Action over perfection; process > passion
 - Community over isolation
-- Faith x hustle (tawakkul + execution)
-- The Ummah needs resources and budgets, not more lectures
+- Faith x execution (tawakkul + action)
+- No titles — the work is the credential
+- Building real businesses that serve people is fisabilillah
