@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Sales Audit — Done-For-You AI Marketing Agent for Muslim Online Brands | Badir Studio</title>
-    <meta name="description" content="Badir Studio builds Muslim-owned online brands a done-for-you AI marketing agent + automations that find where your store is leaking sales, fix it, and run your growth — CRO, ads, email/SMS, SEO, content. Start with a free sales audit.">
-    <meta property="og:title" content="Your store is leaking sales. We build the AI agent that plugs the leaks. — Badir Studio">
-    <meta property="og:description" content="A done-for-you AI marketing agent + automations for Muslim online brands — CRO, ads, email/SMS, SEO, content and reporting, built and run for you. Get your free sales audit.">
+    <title>Founding Cohort Now Open — Done-For-You AI Marketing Agent for Muslim Brands | Badir Studio</title>
+    <meta name="description" content="Badir Studio is onboarding a founding cohort of 20 Muslim online brands. Founding members get their free sales audit first — plus a done-for-you AI marketing agent that finds where your store is leaking sales, fixes it, and runs your growth. Claim one of the first spots.">
+    <meta property="og:title" content="Founding cohort now open — first 20 Muslim brands get in first | Badir Studio">
+    <meta property="og:description" content="The offer's live, first cohort only. Founding members get their free sales audit first and lock in founding terms — a done-for-you AI marketing agent that plugs the leaks and runs your growth. Claim your founding spot.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://badir.studio/offer">
     <meta property="og:image" content="https://badir.studio/og-image.png">
     <meta property="og:locale" content="en_NZ">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Your store is leaking sales. We build the AI agent that plugs the leaks. — Badir Studio">
-    <meta name="twitter:description" content="Done-for-you AI marketing agent + automations for Muslim online brands. We find where you're leaking sales, fix it, and run your growth. Get your free sales audit.">
+    <meta name="twitter:title" content="Founding cohort now open — first 20 Muslim brands get in first | Badir Studio">
+    <meta name="twitter:description" content="Founding cohort now open — 20 Muslim online brands get in first. Free sales audit first, then a done-for-you AI marketing agent that runs your growth. Claim your founding spot.">
     <meta name="twitter:image" content="https://badir.studio/og-image.png">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -23,8 +23,8 @@
     {
       "@context": "https://schema.org",
       "@type": "Offer",
-      "name": "Free Sales Audit",
-      "description": "A free sales audit for Muslim-owned online brands. We connect to your store and funnel data, find exactly where you're leaking sales, and hand you a ranked plan to grow — the first rung of a done-for-you AI marketing agent (Audit → Build → Run).",
+      "name": "Founding Cohort — Free Sales Audit First",
+      "description": "Badir Studio is onboarding a founding cohort of 20 Muslim-owned online brands. Founding members get their free sales audit first — we connect to your store and funnel data, find exactly where you're leaking sales, and hand you a ranked plan to grow — the first rung of a done-for-you AI marketing agent (Audit → Build → Run).",
       "price": "0",
       "priceCurrency": "NZD",
       "isAccessibleForFree": true,
@@ -187,7 +187,7 @@
 
         /* ─── STATS ─── */
         .stats-bar {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
             background: var(--border); border-radius: var(--radius-lg); overflow: hidden;
             max-width: 720px; margin: 0 auto;
         }
@@ -453,6 +453,29 @@
             background: var(--emerald-dim); letter-spacing: 0.3px;
         }
 
+        /* ─── VALUE CARD LIVE-DATA TAG + BENEFIT LIST (added) ─── */
+        .value-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: var(--font-mono); font-size: 10px; font-weight: 600;
+            color: var(--emerald); padding: 4px 10px; border-radius: 100px;
+            background: var(--emerald-dim); border: 1px solid rgba(16,185,129,0.15);
+            letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 14px;
+        }
+        .value-tag::before {
+            content: ''; width: 5px; height: 5px; border-radius: 50%;
+            background: currentColor; flex-shrink: 0;
+        }
+        .value-list { list-style: none; margin-top: 14px; }
+        .value-list li {
+            font-size: 13px; color: var(--gray-400); padding: 5px 0 5px 18px;
+            position: relative; line-height: 1.5;
+        }
+        .value-list li::before {
+            content: ''; position: absolute; left: 0; top: 11px;
+            width: 5px; height: 5px; border-radius: 50%;
+            background: var(--emerald); opacity: 0.65;
+        }
+
         /* ─── DEEP DIVE BENEFITS ─── */
         .deep-section { padding: 80px 0; }
         .deep-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
@@ -514,6 +537,54 @@
 
         /* ─── SECTION CTA (added) ─── */
         .section-cta { text-align: center; margin-top: 44px; }
+
+        /* ─── HERO LAUNCH LINE (added) ─── */
+        .hero-launch {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 14px; color: var(--gray-300); font-weight: 500;
+            margin: 0 auto 24px; line-height: 1.5;
+        }
+        .hero-launch strong { color: var(--emerald-light); font-weight: 600; }
+        .hero-launch-dot {
+            width: 7px; height: 7px; border-radius: 50%; background: var(--emerald);
+            box-shadow: 0 0 0 4px var(--emerald-glow); flex-shrink: 0;
+        }
+
+        /* ─── HERO VALUE CALLOUT (added) ─── */
+        .hero-value {
+            max-width: 600px; margin: 0 auto 40px;
+            background: var(--surface); border: 1px solid var(--border-2);
+            border-left: 3px solid var(--emerald);
+            border-radius: var(--radius-md); padding: 16px 22px;
+            font-size: 15px; color: var(--gray-300); line-height: 1.6; text-align: left;
+        }
+        .hero-value strong { color: var(--white); font-weight: 600; }
+
+        /* ─── FOUNDING COHORT COUNTER (added) ─── */
+        .founding-counter {
+            max-width: 440px; margin: 0 auto 44px;
+            background: var(--surface); border: 1px solid var(--border-2);
+            border-radius: var(--radius-lg); padding: 20px 24px; text-align: left;
+        }
+        .founding-counter.compact { margin: 24px 0 0; max-width: none; }
+        .founding-counter-top {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: 12px; margin-bottom: 12px;
+        }
+        .founding-counter-left {
+            font-family: var(--font-heading); font-size: 15px; font-weight: 600; color: var(--white);
+        }
+        .founding-counter-left b { color: var(--emerald); }
+        .founding-counter-tag {
+            font-family: var(--font-mono); font-size: 11px; color: var(--gray-500);
+            text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+        }
+        .founding-bar { height: 8px; background: var(--surface-3); border-radius: 4px; overflow: hidden; }
+        .founding-bar-fill {
+            height: 100%; border-radius: 4px; width: 0;
+            background: linear-gradient(90deg, var(--emerald), var(--emerald-light));
+            transition: width 1s var(--ease-out);
+        }
 
         /* ─── PRICING TIERS (added) ─── */
         .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
@@ -873,7 +944,7 @@
         <a href="/" class="nav-logo">Badir <span class="ar">بادر</span></a>
         <div class="nav-right">
             <a href="/services" class="nav-btn nav-btn-ghost">Services</a>
-            <a href="#signup" class="nav-btn nav-btn-primary">Get your free audit</a>
+            <a href="#signup" class="nav-btn nav-btn-primary">Claim your founding spot</a>
         </div>
     </nav>
 
@@ -882,23 +953,37 @@
         <div class="hero-mesh"></div>
         <div class="container">
             <div class="hero-badges">
-                <span class="badge badge-emerald badge-dot">FOR MUSLIM ONLINE BRANDS</span>
-                <span class="badge badge-gold">FREE SALES AUDIT</span>
+                <span class="badge badge-emerald badge-dot">NOW ONBOARDING · FOUNDING COHORT</span>
+                <span class="badge badge-gold">FOR MUSLIM ONLINE BRANDS</span>
             </div>
             <h1>Your store is leaking sales.<br><span class="gradient">We build the AI agent that plugs the leaks — and grows the rest.</span></h1>
+            <p class="hero-launch"><span class="hero-launch-dot"></span> We're opening our founding cohort — the first <strong>20 Muslim brands</strong> get in first.</p>
             <p class="hero-sub">
-                Badir Studio builds you a done-for-you <strong>AI marketing agent — plus the automations behind it</strong> —
-                that audits your store, fixes what's costing you sales, and runs your growth (CRO, ads, email/SMS, SEO, content, reporting) on autopilot.
-                You stay hands-off. It starts with a free sales audit: we find the leaks, then build and run the fix.
+                Badir Studio builds you a done-for-you <strong>AI marketing agent that automates your entire marketing operation</strong> — content, ads, email/SMS, CRO and SEO — and runs it <strong>24/7 on autopilot</strong>. You approve the direction, it executes the work, and Badir keeps it on track. Not software you operate, not an agency you chase &mdash; you stay hands-off while your growth keeps running, with Badir steering.
+                Claim a founding spot to get your <strong>free sales audit first</strong> and lock in founding terms before it opens to everyone.
+            </p>
+            <p class="hero-value">
+                The work of a full marketing team &mdash; <strong>content, ads, email, SEO, CRO</strong> &mdash; automated and running around the clock. You approve the direction; the agent does the work and Badir keeps it on track. No tool to operate, no hire to make.
             </p>
             <div class="hero-ctas">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-hero-free-audit">Get your free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-hero-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
                 <a href="#how" class="btn btn-outline" humblytics="offer-hero-how-it-works">How it works</a>
+            </div>
+            <!-- FOUNDING COHORT COUNTER — single source of truth for spots-left -->
+            <div class="founding-counter reveal" data-founding-total="20">
+                <div class="founding-counter-top">
+                    <span class="founding-counter-left">
+                        <!-- Founding cohort remaining — update this number manually; static, not live -->
+                        <b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left
+                    </span>
+                    <span class="founding-counter-tag">Founding cohort</span>
+                </div>
+                <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
             </div>
             <div class="stats-bar reveal">
                 <div class="stat">
                     <div class="stat-val">9</div>
-                    <div class="stat-label">Businesses run on it</div>
+                    <div class="stat-label">Our own live businesses</div>
                 </div>
                 <div class="stat">
                     <div class="stat-val">100%</div>
@@ -923,86 +1008,140 @@
     <section class="what-section">
         <div class="container">
             <div class="section-header reveal">
-                <span class="badge badge-gold">WHAT YOUR AGENT RUNS</span>
-                <h2>Your entire marketing department,<br>run by one AI agent we build &amp; manage</h2>
-                <p>This is the growth team your store never hired — CRO, ads, email, SEO, content and reporting, run for you and wired into automations that keep working when you don't.</p>
+                <span class="badge badge-gold">WHAT YOUR AGENT DOES</span>
+                <h2>Twelve jobs your agent already<br>knows how to do</h2>
+                <p>The work of a full marketing team &mdash; content, ads, email, SEO, conversion and more &mdash; run for you. Five of them plug straight into your live store data; all of it runs automatically, with Badir steering and you approving the direction.</p>
+                <div style="margin-top:16px;"><span class="value-outcome">Automated &amp; continuous &mdash; the agent executes, Badir oversees</span></div>
             </div>
             <div class="value-grid">
                 <div class="value-card reveal">
                     <div class="value-icon">&#x1F4CA;</div>
-                    <h3>Conversion &amp; CRO</h3>
-                    <p>The agent finds where visitors drop off &mdash; checkout, product pages, forms &mdash; and fixes it, so more of the traffic you already have turns into sales.</p>
-                    <span class="value-outcome">Turn more visitors into buyers</span>
+                    <span class="value-tag">Live store data</span>
+                    <h3>Conversion optimization</h3>
+                    <p>Finds exactly where your store loses buyers, and fixes it.</p>
+                    <ul class="value-list">
+                        <li>Live funnel analysis from your own store data</li>
+                        <li>The highest-impact fixes, ranked by payoff</li>
+                        <li>Every drop-off point found, with the reason why</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-icon">&#x1F9EA;</div>
-                    <h3>A/B Testing</h3>
-                    <p>Continuous split tests on headlines, offers, layouts and checkout &mdash; keeping the winners, killing the losers, automatically. No more guessing.</p>
-                    <span class="value-outcome">Every change earns its place</span>
+                    <span class="value-tag">Live store data</span>
+                    <h3>A/B testing</h3>
+                    <p>Runs experiments so more visitors become buyers.</p>
+                    <ul class="value-list">
+                        <li>Test ideas generated from your real data</li>
+                        <li>Launched, monitored, and auto-stopped at a winner</li>
+                        <li>Targets the exact page elements that move the needle</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F3AF;</div>
-                    <h3>Ad Creative &amp; Spend</h3>
-                    <p>It writes and tests ad creative, then shifts budget toward what converts and cuts what doesn't &mdash; so your ad spend stops leaking.</p>
-                    <span class="value-outcome">Stop burning ad budget</span>
+                    <div class="value-icon">&#x1F525;</div>
+                    <span class="value-tag">Live store data</span>
+                    <h3>Heatmap analysis</h3>
+                    <p>Sees where people click, scroll, and get stuck.</p>
+                    <ul class="value-list">
+                        <li>Where attention goes &mdash; and what gets ignored</li>
+                        <li>How far down the page people actually scroll</li>
+                        <li>Rage-clicks and dead-ends caught automatically</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4E9;</div>
-                    <h3>Email &amp; SMS Flows</h3>
-                    <p>Abandoned-cart, welcome, win-back and post-purchase flows built and tuned to recover the sales your follow-up is currently missing.</p>
-                    <span class="value-outcome">Recover sales on autopilot</span>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">&#x1F50E;</div>
-                    <h3>SEO &amp; Content</h3>
-                    <p>Product and blog content built around what your buyers actually search &mdash; so you pull in traffic you don't have to pay for.</p>
-                    <span class="value-outcome">Free traffic that compounds</span>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">&#x1F440;</div>
-                    <h3>Competitor Watch</h3>
-                    <p>Real-time alerts when competitors change pricing, launch campaigns or shift positioning &mdash; so you react first, not months later.</p>
-                    <span class="value-outcome">Never get blindsided</span>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4B8;</div>
-                    <h3>Revenue Attribution</h3>
-                    <p>Finally see which channels, campaigns and pages actually make you money &mdash; so you double down on what works and cut what doesn't.</p>
-                    <span class="value-outcome">Know what's really driving sales</span>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4E2;</div>
-                    <h3>Social &amp; Brand Listening</h3>
-                    <p>The agent listens across social, forums and reviews for buying intent, complaints and trends &mdash; and turns them into moves you can make.</p>
-                    <span class="value-outcome">Hear your market in real time</span>
-                </div>
-                <div class="value-card reveal">
-                    <div class="value-icon">&#x2B50;</div>
-                    <h3>Review &amp; Reputation</h3>
-                    <p>Monitors reviews and mentions, flags problems fast, and helps you turn happy customers into proof that sells the next one.</p>
-                    <span class="value-outcome">Protect the trust that converts</span>
+                    <div class="value-icon">&#x1F4B0;</div>
+                    <span class="value-tag">Live store data</span>
+                    <h3>Revenue attribution</h3>
+                    <p>Shows which marketing actually makes you money.</p>
+                    <ul class="value-list">
+                        <li>Every sale traced back to what drove it</li>
+                        <li>Channels ranked by return, with budget moves</li>
+                        <li>Wasted ad spend flagged before it adds up</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-icon">&#x1F4C8;</div>
-                    <h3>Weekly Reporting</h3>
-                    <p>A plain-English weekly report: what changed, what the agent did, and what's next. No dashboards to babysit &mdash; just the picture.</p>
-                    <span class="value-outcome">Clarity every week, zero effort</span>
+                    <span class="value-tag">Live store data</span>
+                    <h3>Funnel reporting</h3>
+                    <p>Plain-English numbers, from traffic to sales.</p>
+                    <ul class="value-list">
+                        <li>Automatic weekly and monthly snapshots</li>
+                        <li>Visitors &rarr; cart &rarr; checkout &rarr; paid, tracked</li>
+                        <li>Benchmarked against what "good" looks like</li>
+                    </ul>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F50D;</div>
+                    <h3>Page audits</h3>
+                    <p>Audits any page for what's costing you sales.</p>
+                    <ul class="value-list">
+                        <li>A 10-point conversion check on any page</li>
+                        <li>First impression, above-the-fold, and CTAs</li>
+                        <li>Trust signals and mobile experience reviewed</li>
+                    </ul>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F4E9;</div>
+                    <h3>Email &amp; SMS flows</h3>
+                    <p>Automated messages that recover and grow sales.</p>
+                    <ul class="value-list">
+                        <li>Welcome, nurture, win-back, and abandoned-cart flows</li>
+                        <li>Subject lines built to actually get opened</li>
+                        <li>Messages that branch on what each person does</li>
+                    </ul>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F50E;</div>
+                    <h3>SEO &amp; search</h3>
+                    <p>Gets you found on Google, for free.</p>
+                    <ul class="value-list">
+                        <li>Keyword research around real buyer intent</li>
+                        <li>The gaps competitors rank for and you don't</li>
+                        <li>On-page and technical fixes, prioritised</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-icon">&#x1F9E0;</div>
-                    <h3>Audience Intelligence</h3>
-                    <p>It learns who actually buys &mdash; where they come from, what they want, the words they use &mdash; and sharpens your messaging to match.</p>
-                    <span class="value-outcome">Speak your buyer's language</span>
+                    <h3>Growth strategy</h3>
+                    <p>Your whole go-to-market, mapped and run.</p>
+                    <ul class="value-list">
+                        <li>Funnel and go-to-market planning</li>
+                        <li>Offers and pricing built to convert</li>
+                        <li>Growth loops and retention designed in</li>
+                    </ul>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x26A1;</div>
-                    <h3>Automations That Run Without You</h3>
-                    <p>Behind every play is an automation that keeps running while you focus on product &mdash; your growth ops don't wait on you to hit go.</p>
-                    <span class="value-outcome">Growth that runs hands-off</span>
+                    <div class="value-icon">&#x270D;&#xFE0F;</div>
+                    <h3>Conversion copywriting</h3>
+                    <p>Words that turn browsers into buyers.</p>
+                    <ul class="value-list">
+                        <li>Landing-page and hero copy</li>
+                        <li>Email subject lines and full sequences</li>
+                        <li>Ad headlines and buttons that get clicks</li>
+                    </ul>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F680;</div>
+                    <h3>Paid ads</h3>
+                    <p>Ads across Meta, Google, TikTok, LinkedIn and YouTube.</p>
+                    <ul class="value-list">
+                        <li>Creative, copy, and targeting for every platform</li>
+                        <li>Budget spread across channels for best return</li>
+                        <li>Underperformers paused &mdash; you approve before anything goes live</li>
+                    </ul>
+                </div>
+                <div class="value-card reveal">
+                    <div class="value-icon">&#x1F5D3;&#xFE0F;</div>
+                    <h3>Content strategy</h3>
+                    <p>Content that compounds into traffic.</p>
+                    <ul class="value-list">
+                        <li>SEO-driven content calendars</li>
+                        <li>Blog, social, and video from one idea</li>
+                        <li>Performance tracked and tuned over time</li>
+                    </ul>
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-what-free-audit">Get your free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-what-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1090,7 +1229,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-leaks-free-audit">Find where you're leaking &mdash; free audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-leaks-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1131,8 +1270,8 @@
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-day">AGENT LIVE</div>
-                    <div class="timeline-title">Growth runs on autopilot</div>
-                    <div class="timeline-desc">CRO, A/B tests, ads, email/SMS, SEO and content run for you &mdash; automations keep them going without you lifting a finger.</div>
+                    <div class="timeline-title">Your growth runs continuously</div>
+                    <div class="timeline-desc">CRO, A/B tests, ads, email/SMS, SEO and content run continuously &mdash; the automations keep them going, Badir steers, and you approve the direction.</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -1142,7 +1281,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-timeline-free-audit">Start with your free audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-timeline-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1182,7 +1321,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-who-free-audit">Get your free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-who-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1216,7 +1355,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-how-free-audit">Get your free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-how-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1227,7 +1366,7 @@
             <div class="section-header reveal">
                 <span class="badge badge-emerald badge-dot">WHAT YOUR AGENT IS DOING</span>
                 <h2>See everything your agent is doing for you</h2>
-                <p>A live view of the growth work running on your store. You don't have to touch it &mdash; but you can always see it.</p>
+                <p>A sample of the dashboard you'll get &mdash; the growth work your agent runs. You never have to touch it, but you can always see what it's doing.</p>
             </div>
             <div class="preview-box reveal" id="demo-dashboard">
                 <div class="preview-header">
@@ -1385,7 +1524,7 @@
                             <span class="comp-type comp-type-price">PRICING</span>
                             <div class="comp-info">
                                 <div class="comp-name">Competitor A</div>
-                                <div class="comp-detail">Dropped their Pro plan from $49/mo to $39/mo. Consider a value-add bundle rather than matching &mdash; your feature set is stronger.</div>
+                                <div class="comp-detail">Dropped their free-shipping threshold from $80 to $50. Consider an Eid bundle rather than matching &mdash; your margins hold up better.</div>
                             </div>
                             <span class="comp-time">2h ago</span>
                         </li>
@@ -1417,7 +1556,7 @@
                             <span class="comp-type comp-type-hiring">HIRING</span>
                             <div class="comp-info">
                                 <div class="comp-name">Competitor B</div>
-                                <div class="comp-detail">Hiring 3 new sales reps &mdash; likely expanding into your territory. Signal: aggressive growth phase.</div>
+                                <div class="comp-detail">Launched a new Eid gift-bundle range &mdash; a seasonal push. Signal: counter with your own bundle before the rush.</div>
                             </div>
                             <span class="comp-time">3d ago</span>
                         </li>
@@ -1490,7 +1629,7 @@
                                 <div style="font-size: 12px; color: var(--gray-500);">Your Business Name</div>
                             </div>
                             <div style="text-align: right;">
-                                <div class="report-date">Week of Apr 14-20, 2026</div>
+                                <div class="report-date">This week</div>
                                 <span class="report-pdf-badge">&#x1F4C4; PDF</span>
                             </div>
                         </div>
@@ -1536,54 +1675,65 @@
         </div>
     </section>
 
-    <!-- VALUE STACK -->
+    <!-- THE FOUNDING COHORT -->
     <section class="stack-section">
         <div class="container">
             <div class="section-header reveal">
-                <span class="badge badge-gold">PRICING</span>
-                <h2>The ladder: Audit &rarr; Build &rarr; Run</h2>
-                <p>Only the audit has a price &mdash; because it's free. Build and Run are priced to your store and revealed on your audit call, so you only ever pay for what fits.</p>
+                <span class="badge badge-gold">THE FOUNDING COHORT</span>
+                <h2>What you get for being first</h2>
+                <p>The offer's live &mdash; but we're onboarding a founding cohort of 20 Muslim brands before it opens publicly. Founding members get in first, on founding terms: your free audit first, a founding rate on build &amp; run, priority onboarding, and no lock-in.</p>
             </div>
             <div class="pricing-grid reveal">
                 <div class="pricing-tier featured">
-                    <span class="pricing-tag">START HERE</span>
+                    <span class="pricing-tag">YOUR FREE AUDIT — FIRST</span>
                     <div class="pricing-name">Free Sales Audit</div>
                     <div class="pricing-price">$0</div>
-                    <div class="pricing-sub">Yours to keep, no obligation</div>
+                    <div class="pricing-sub">Founding members run first, before public</div>
                     <ul class="pricing-features">
-                        <li>The agent connects to your store &amp; data</li>
+                        <li>Your audit runs ahead of the public queue</li>
                         <li>We find exactly where you're leaking sales</li>
                         <li>A ranked plan to grow your sales</li>
-                        <li>Walked through with you on a call</li>
+                        <li>Walked through on a call &mdash; yours to keep</li>
                     </ul>
-                    <a href="#signup" class="btn btn-primary" humblytics="offer-pricing-free-audit">Get your free audit <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#signup" class="btn btn-primary" humblytics="offer-pricing-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
                 </div>
                 <div class="pricing-tier">
-                    <span class="pricing-tag pricing-tag-gold">ONE-TIME</span>
+                    <span class="pricing-tag pricing-tag-gold">ONE-TIME · FOUNDING RATE</span>
                     <div class="pricing-name">Build</div>
-                    <div class="pricing-price revealed">Revealed on your call</div>
-                    <div class="pricing-sub">Done-for-you setup</div>
+                    <div class="pricing-price revealed">Founding rate &mdash; revealed on your call</div>
+                    <div class="pricing-sub">Done-for-you setup, priority onboarding</div>
                     <ul class="pricing-features">
                         <li>We build &amp; train your AI marketing agent</li>
                         <li>Trained on your brand, products &amp; customers</li>
                         <li>Tracking wired in, channels connected</li>
-                        <li>Flows &amp; campaigns stood up</li>
+                        <li>Founding cohort = priority onboarding</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-build">Starts with the free audit</a>
+                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-build">Reserve your founding spot</a>
                 </div>
                 <div class="pricing-tier">
-                    <span class="pricing-tag pricing-tag-gold">MONTHLY &middot; MANAGED</span>
+                    <span class="pricing-tag pricing-tag-gold">MONTHLY · FOUNDING RATE</span>
                     <div class="pricing-name">Run</div>
-                    <div class="pricing-price revealed">Revealed on your call</div>
+                    <div class="pricing-price revealed">Founding rate &mdash; revealed on your call</div>
                     <div class="pricing-sub">Badir-managed, no lock-in</div>
                     <ul class="pricing-features">
                         <li>The agent runs your whole marketing dept</li>
                         <li>CRO, ads, email/SMS, SEO, content, reporting</li>
                         <li>Plain-English weekly report</li>
-                        <li>No lock-in &mdash; cancel anytime</li>
+                        <li>Founding rate locked &mdash; cancel anytime</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-run">Starts with the free audit</a>
+                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-run">Reserve your founding spot</a>
                 </div>
+            </div>
+            <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
+            <div class="founding-counter reveal" style="margin-top:40px;">
+                <div class="founding-counter-top">
+                    <span class="founding-counter-left"><b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left</span>
+                    <span class="founding-counter-tag">Founding cohort</span>
+                </div>
+                <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
+            </div>
+            <div class="section-cta reveal">
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-founding-claim">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1594,11 +1744,11 @@
         <div class="container">
             <div class="guarantee-box reveal">
                 <div class="guarantee-shield">&#x1F6E1;&#xFE0F;</div>
-                <div class="guarantee-title">5 ways to grow your sales &mdash; guaranteed</div>
+                <div class="guarantee-title">5 ranked ways to grow &mdash; guaranteed in your free audit</div>
                 <div class="guarantee-text">
-                    You'll leave the free audit with at least 5 specific, ranked ways to grow your sales &mdash; yours to keep, whether or not you work with us. Worst case, you walk away with a clearer plan than you came in with.
+                    Founding members get the audit first. You'll leave your free sales audit with at least 5 specific, ranked ways to grow your sales &mdash; yours to keep, whether or not you work with us. Worst case, you walk away with a clearer plan than you came in with.
                 </div>
-                <div class="guarantee-fine">Free. No obligation. No catch.</div>
+                <div class="guarantee-fine">Free. Founding cohort first. No obligation.</div>
             </div>
         </div>
     </section>
@@ -1626,12 +1776,28 @@
             </div>
             <div class="faq-list reveal">
                 <div class="faq-item">
+                    <div class="faq-q">Is this really live?</div>
+                    <div class="faq-a">Yes. The offer is live right now &mdash; we're just onboarding a founding cohort of 20 Muslim brands before it opens publicly. Founding members get their free sales audit run first.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What does "founding" mean &mdash; what do I get for being first?</div>
+                    <div class="faq-a">Founding members get their free sales audit ahead of the public queue, founding terms locked in on build and run, and priority onboarding. You get in first, and on the best terms we'll offer.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">How many founding spots are there?</div>
+                    <div class="faq-a">The founding cohort is capped at 20 Muslim brands so we can onboard each one properly. The counter on this page shows how many are left; once they're claimed, the rest join the public waitlist.</div>
+                </div>
+                <div class="faq-item">
                     <div class="faq-q">Is my store data safe?</div>
                     <div class="faq-a">Yes. We only connect to the data we need to find and fix what's costing you sales, it's stored securely, never sold, and you can ask us to delete it at any time. Your accounts stay yours.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">Do I need any tech skills?</div>
-                    <div class="faq-a">None. It's fully done-for-you. We build it, wire it in and run it. You get a plain-English weekly report &mdash; no dashboards to manage, no code to touch.</div>
+                    <div class="faq-a">None. It's fully done-for-you. We build it, wire it in and run it. You get a plain-English weekly report &mdash; a dashboard you can check but never have to manage, and no code to touch.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">How much do I actually have to do?</div>
+                    <div class="faq-a">Almost nothing. The AI agent automates the execution across every channel and Badir manages and steers it. You approve the direction and review the results &mdash; that's it. No tool to run, no team to hire, no agency to chase.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">I already run ads / have an agency &mdash; how is this different?</div>
@@ -1655,7 +1821,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-faq-free-audit">Get your free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-faq-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1686,19 +1852,27 @@
         <div class="container">
             <div class="signup-layout">
                 <div class="signup-info reveal">
-                    <span class="badge badge-emerald badge-dot">GET YOUR FREE AUDIT</span>
-                    <h3>Get your free sales audit</h3>
-                    <p>Drop your store URL and email. We'll run the audit, then reach out to schedule a call to walk you through exactly where you're leaking sales &mdash; and how to grow. No sales pitch, no obligation.</p>
+                    <span class="badge badge-emerald badge-dot">CLAIM YOUR FOUNDING SPOT</span>
+                    <h3>Claim your founding spot</h3>
+                    <p>Drop your store URL and email to join the founding cohort. We reserve your spot and reach out to run your <strong>free sales audit first</strong> &mdash; before it opens publicly. No sales pitch, no obligation.</p>
                     <ul class="signup-perks">
-                        <li><strong>Free sales audit</strong> of your store &mdash; no cost, no obligation</li>
-                        <li><strong>At least 5 ranked ways</strong> to grow your sales, yours to keep</li>
-                        <li><strong>Done-for-you</strong> &mdash; we build and run it if you want us to</li>
+                        <li><strong>Founding spot reserved</strong> in the first cohort of 20 brands</li>
+                        <li><strong>Free sales audit first</strong> &mdash; at least 5 ranked ways to grow, yours to keep</li>
+                        <li><strong>Founding terms</strong> locked in on build &amp; run</li>
                         <li><strong>No lock-in</strong> &mdash; walk away anytime</li>
                     </ul>
+                    <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
+                    <div class="founding-counter compact">
+                        <div class="founding-counter-top">
+                            <span class="founding-counter-left"><b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left</span>
+                            <span class="founding-counter-tag">Founding cohort</span>
+                        </div>
+                        <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
+                    </div>
                 </div>
                 <div class="form-card reveal">
-                    <div class="form-card-title">Start your free audit</div>
-                    <div class="form-card-sub">Takes 30 seconds. We'll reach out to book your audit call.</div>
+                    <div class="form-card-title">Claim your founding spot</div>
+                    <div class="form-card-sub">Takes 30 seconds. We'll reserve your spot and reach out to run your free audit first.</div>
                     <form id="trial-form" onsubmit="return handleTrialSignup(event)">
                         <div class="form-row">
                             <label class="form-label" for="trial-website">Store URL</label>
@@ -1715,9 +1889,9 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="trial-btn" humblytics="offer-form-submit">
-                            Get my free audit <span aria-hidden="true">&rarr;</span>
+                            Claim your founding spot <span aria-hidden="true">&rarr;</span>
                         </button>
-                        <p class="form-note">No cost. No obligation. We'll reach out to schedule your free audit call.</p>
+                        <p class="form-note">No cost. No obligation. We'll reserve your founding spot and be in touch to run your free audit first.</p>
                         <div id="signup-msg"></div>
                         <!-- TODO: optional Calendly/booking link can go here later -->
                     </form>
@@ -1728,8 +1902,8 @@
 
     <!-- STICKY CTA -->
     <div class="sticky-cta" id="sticky-cta">
-        <span class="sticky-cta-text"><strong>Free sales audit.</strong> Find where your store is leaking sales.</span>
-        <a href="#signup" class="btn btn-primary" humblytics="offer-sticky-free-audit">Get your free audit &rarr;</a>
+        <span class="sticky-cta-text"><strong>Founding cohort now open</strong> &mdash; claim one of the first spots.</span>
+        <a href="#signup" class="btn btn-primary" humblytics="offer-sticky-free-audit">Claim your founding spot &rarr;</a>
     </div>
 
     <!-- FOOTER -->
@@ -1924,6 +2098,42 @@
     }, { threshold: 0.3 });
     document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
 
+    // ─── FOUNDING COHORT COUNTER (static, not live — single source of truth) ───
+    (function() {
+        const hero = document.querySelector('.founding-counter[data-founding-total]');
+        if (!hero) return;
+        const total = parseInt(hero.getAttribute('data-founding-total')) || 20;
+        // canonical remaining value = the hero counter's data-spots-left span (see its HTML comment)
+        const canonical = hero.querySelector('[data-spots-left]');
+        const left = parseInt(canonical ? canonical.textContent : '') || 0;
+        const claimed = Math.max(0, Math.min(total, total - left));
+        const pctFilled = total ? Math.round((claimed / total) * 100) : 0;
+
+        // Mirror the single source-of-truth value into every counter on the page
+        document.querySelectorAll('[data-spots-left]').forEach(el => { el.textContent = left; });
+        document.querySelectorAll('[data-founding-total-text]').forEach(el => { el.textContent = total; });
+        document.querySelectorAll('[data-spots-bar]').forEach(el => { el.style.width = pctFilled + '%'; });
+
+        // One-time count-up of the static value when it scrolls into view (never auto-decrements)
+        if (canonical && left > 0) {
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    io.unobserve(e.target);
+                    const dur = 1400, t0 = performance.now();
+                    function step(now) {
+                        const p = Math.min((now - t0) / dur, 1);
+                        const eased = 1 - Math.pow(1 - p, 3);
+                        canonical.textContent = Math.round(left * eased);
+                        if (p < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+            }, { threshold: 0.5 });
+            io.observe(hero);
+        }
+    })();
+
     // ─── FORM SUBMIT ───
     async function handleTrialSignup(e) {
         e.preventDefault();
@@ -1935,10 +2145,10 @@
         btn.textContent = 'Sending...';
 
         const data = {
-            name: form.name ? form.name.value.trim() : '',
+            name: (document.getElementById('trial-name')?.value || '').trim(),
             email: form.email.value.trim(),
             website_url: form.website_url.value.trim(),
-            source: 'offer-page-audit',
+            source: 'offer-page-founding',
             scorecard_score: form.scorecard_score ? form.scorecard_score.value : null,
             scorecard_grade: form.scorecard_grade ? form.scorecard_grade.value : null
         };
@@ -1953,11 +2163,11 @@
             const result = await res.json();
 
             if (res.ok) {
-                msg.textContent = 'Got it. We\'ll reach out shortly to schedule your free sales audit call.';
+                msg.textContent = 'Your founding spot is reserved — we\'ll be in touch to run your free sales audit first.';
                 msg.style.display = 'block';
                 msg.style.color = 'var(--emerald)';
                 form.reset();
-                btn.textContent = 'Audit requested!';
+                btn.textContent = 'Spot reserved!';
                 if (window.hmbl) window.hmbl('event', 'audit_signup', data);
             } else {
                 throw new Error(result.error || 'Something went wrong');
@@ -1967,7 +2177,7 @@
             msg.style.display = 'block';
             msg.style.color = '#EF4444';
             btn.disabled = false;
-            btn.innerHTML = 'Get my free audit <span aria-hidden="true">&rarr;</span>';
+            btn.innerHTML = 'Claim your founding spot <span aria-hidden="true">&rarr;</span>';
         }
 
         return false;

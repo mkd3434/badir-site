@@ -11,16 +11,14 @@ export default async function handler(req, res) {
   if (!email || typeof email !== "string" || !email.includes("@") || email.length > 320) {
     return res.status(400).json({ error: "Valid email required" });
   }
-  if (!name || typeof name !== "string" || name.trim().length < 2) {
-    return res.status(400).json({ error: "Name required" });
-  }
+  // Name is optional on the founding-waitlist form.
 
   const sanitizedEmail = email.trim().toLowerCase();
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sanitizedEmail)) {
     return res.status(400).json({ error: "Invalid email format" });
   }
 
-  const sanitizedName = name.trim();
+  const sanitizedName = (name || "").trim();
   const sanitizedUrl = (website_url || "").trim();
   const sanitizedType = (business_type || "not specified").trim();
   const timestamp = new Date().toISOString();
@@ -36,7 +34,7 @@ export default async function handler(req, res) {
     try {
       // Notification to MKD
       const notifyLines = [
-        "NEW AUDIT REQUEST — BADIR STUDIO",
+        "NEW FOUNDING WAITLIST — BADIR STUDIO",
         "",
         `Name: ${sanitizedName}`,
         `Email: ${sanitizedEmail}`,
@@ -48,7 +46,7 @@ export default async function handler(req, res) {
         notifyLines.push("", `Scorecard Score: ${scorecard_score}`, `Scorecard Grade: ${scorecard_grade || "N/A"}`);
       }
 
-      notifyLines.push("", `Time: ${timestamp}`, `IP: ${ip}`, "", "— Badir Trial Signup Bot");
+      notifyLines.push("", `Time: ${timestamp}`, `IP: ${ip}`, "", "— Badir Founding Waitlist Bot");
 
       await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -59,23 +57,24 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: "Badir Studio <notifications@badir.studio>",
           to: [NOTIFY_EMAIL],
-          subject: `[Audit] ${sanitizedName} — ${sanitizedUrl || sanitizedEmail}`,
+          subject: `[Founding] ${sanitizedName} — ${sanitizedUrl || sanitizedEmail}`,
           text: notifyLines.join("\n"),
         }),
       });
 
       // Welcome email to the prospect
       const welcomeLines = [
-        `Hi ${sanitizedName},`,
+        `Hi ${sanitizedName || "there"},`,
         "",
-        "Thanks for requesting your free sales audit from Badir Studio.",
+        "Your founding spot in the Badir Studio cohort is reserved — thank you for being one of the first.",
         "",
-        "I'll personally review your store, then reach out to book a short call to walk you through exactly where you're leaking sales — and the highest-impact ways to grow.",
+        "We're onboarding a limited founding cohort of Muslim brands, and founding members go first. Here's what that means for you:",
         "",
-        "What happens next:",
-        "1. I run the audit on your store",
-        "2. We book a quick call to go through the findings together",
-        "3. You leave with at least 5 specific, ranked ways to grow your sales — yours to keep, whether or not we work together",
+        "1. Your free sales audit runs first — ahead of the public queue. I'll personally review your store, then reach out to book a short call to walk you through exactly where you're leaking sales.",
+        "2. You've locked in founding terms — a founding rate on the build and the ongoing run, if you decide to go ahead.",
+        "3. You leave the audit with at least 5 specific, ranked growth opportunities — yours to keep, whether or not we work together.",
+        "",
+        "Nothing else to do right now. I'll be in touch to schedule your audit call.",
         "",
         "No pressure, no obligation.",
         "",
@@ -95,7 +94,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: "Mustafa from Badir Studio <mustafa@badir.studio>",
           to: [sanitizedEmail],
-          subject: "Your free sales audit — next steps",
+          subject: "Your founding spot is reserved — next steps",
           text: welcomeLines.join("\n"),
         }),
       });
@@ -110,7 +109,7 @@ export default async function handler(req, res) {
       await set(`seq:${sanitizedEmail}`, {
         email: sanitizedEmail,
         name: sanitizedName,
-        source: "audit",
+        source: "founding-waitlist",
         step: 0,
         startedAt: timestamp,
         lastSentAt: timestamp,
@@ -124,6 +123,6 @@ export default async function handler(req, res) {
 
   return res.status(200).json({
     success: true,
-    message: "Audit request received.",
+    message: "Founding waitlist request received.",
   });
 }

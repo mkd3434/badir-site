@@ -684,9 +684,74 @@ const audit = [
 ];
 
 // ─────────────────────────────────────────────
+// Sequence: Founding-cohort waitlist (offer page) — added 2026-07-29
+// step 0 = existing welcome in trial-signup.js
+// ─────────────────────────────────────────────
+const foundingWaitlist = [
+  {
+    day: 1,
+    subject: "Your founding spot is reserved",
+    text: (sub) => body(sub.name, [
+      "Quick note to confirm your founding spot in the Badir Studio cohort is reserved.",
+      "",
+      "We're onboarding a limited founding cohort of Muslim brands before this opens publicly — and founding members go first. Your free sales audit runs ahead of the public queue.",
+      "",
+      "I'll go through your store the way your AI marketing agent would — where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing — then reach out to book a short call to walk you through it.",
+      "",
+      "If there's a problem you already feel — traffic that won't convert, carts that get abandoned, ads that don't pay back — just reply and tell me. I'll dig into it first.",
+    ]),
+  },
+  {
+    day: 3,
+    subject: "What you get as a founding member",
+    text: (sub) => body(sub.name, [
+      "Since you're in the founding cohort, here's exactly what being first gets you:",
+      "",
+      "- Your free sales audit first — ahead of everyone who joins after launch.",
+      "- Founding terms locked in — a founding rate on the build and the ongoing run, if you decide to go ahead.",
+      "- Priority onboarding — we set your agent up ahead of the queue.",
+      "- No lock-in — the run is month-to-month, and everything we build stays yours.",
+      "",
+      "The audit itself is yours to keep either way: at least 5 specific, ranked ways to grow your sales, whether or not we work together.",
+      "",
+      "Reply anytime — happy to talk through what we're seeing.",
+    ]),
+  },
+  {
+    day: 5,
+    subject: "The leaks we'll fix first",
+    text: (sub) => body(sub.name, [
+      "Most online stores lose more sales than the owner realizes — not in big obvious ways, but in small leaks that add up. These are the ones your audit hunts down first:",
+      "",
+      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Most stores have no recovery flow catching them.",
+      "- The average ad account wastes about a third of its budget on clicks that never convert (WordStream, ~$1,127/mo).",
+      "- A store converting 2.5% instead of 5% is leaving half its potential revenue on the table — on the same traffic.",
+      "",
+      "Your audit finds which of these are costing YOU the most, ranked by impact. Then, if you're in, the agent fixes them and keeps optimizing.",
+      "",
+      "Your founding spot is still held — reply whenever you're ready and we'll lock in your audit time.",
+    ]),
+  },
+  {
+    day: 8,
+    subject: "The founding cohort is filling up",
+    text: (sub) => body(sub.name, [
+      "I won't chase you — so this is the last nudge.",
+      "",
+      "The founding cohort is capped, and spots are being claimed. Yours is still reserved, but I can't hold it open forever once the cohort fills.",
+      "",
+      "To lock it in, just reply and we'll book your free sales audit — no cost, no obligation, and you walk away with at least 5 specific, ranked ways to grow your sales either way.",
+      "",
+      "If now's not the time, no worries at all — reply whenever you're ready and I'll do my best to keep you in.",
+    ]),
+  },
+];
+
+// ─────────────────────────────────────────────
 // Exports
 // ─────────────────────────────────────────────
 export const SEQUENCES = {
+  "founding-waitlist": foundingWaitlist,
   audit,
   trial,
   scorecard: scorecardMarketing,
@@ -703,6 +768,7 @@ export const SEQUENCES = {
 };
 
 export function getSequence(source) {
+  if (source === "founding-waitlist") return foundingWaitlist;
   if (source === "audit") return audit;
   if (source === "trial") return trial;
   if (source === "scorecard") return scorecardMarketing;
