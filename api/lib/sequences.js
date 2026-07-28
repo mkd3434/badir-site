@@ -623,9 +623,71 @@ const waitlist = [
 ];
 
 // ─────────────────────────────────────────────
+// Sequence: Free sales audit (offer page) — added 2026-07-28
+// step 0 = existing welcome in trial-signup.js
+// ─────────────────────────────────────────────
+const audit = [
+  {
+    day: 1,
+    subject: "I'm reviewing your store now",
+    text: (sub) => body(sub.name, [
+      "Quick note to say your free sales audit is underway.",
+      "",
+      "I'm going through your store the way your AI marketing agent would — looking at where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing.",
+      "",
+      "When it's ready, I'll reach out to book a short call and walk you through the findings: at least 5 specific, ranked ways to grow your sales. Yours to keep either way.",
+      "",
+      "If there's a problem you already feel — traffic that won't convert, carts that get abandoned, ads that don't pay back — just reply and tell me. I'll dig into it first.",
+    ]),
+  },
+  {
+    day: 3,
+    subject: "Where most stores quietly leak sales",
+    text: (sub) => body(sub.name, [
+      "Most online stores lose more sales than the owner realizes — not in big obvious ways, but in small leaks that add up.",
+      "",
+      "A few we see constantly:",
+      "",
+      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Most stores have no recovery flow catching them.",
+      "- The average ad account wastes about a third of its budget on clicks that never convert (WordStream).",
+      "- A store converting 2.5% instead of 5% is leaving half its potential revenue on the table — on the same traffic.",
+      "",
+      "Your audit finds which of these are costing YOU the most, ranked by impact. Then the agent fixes them and keeps optimizing.",
+      "",
+      "Reply anytime — happy to talk through what we're seeing.",
+    ]),
+  },
+  {
+    day: 5,
+    subject: "Why an AI agent, not another agency",
+    text: (sub) => body(sub.name, [
+      "Most brands your size can't justify a $2,000–10,000/month agency — and plenty get burned by one anyway.",
+      "",
+      "The difference here: we build you an AI marketing agent that runs the whole growth stack — conversion, ads, email and SMS, SEO, content, reporting — and we manage it for you. Agency-grade output, without the agency price or the hand-holding.",
+      "",
+      "You stay hands-off. The agent does the work. You get the sales.",
+      "",
+      "Still keen on your free audit? Just reply and we'll lock in a time.",
+    ]),
+  },
+  {
+    day: 8,
+    subject: "Still want your sales audit?",
+    text: (sub) => body(sub.name, [
+      "I won't chase you — so this is the last nudge.",
+      "",
+      "Your free sales audit is still open. It costs nothing, there's no obligation, and you walk away with at least 5 specific, ranked ways to grow your sales, whether or not we work together.",
+      "",
+      "If now's not the time, no worries at all — reply whenever you're ready and we'll pick it up.",
+    ]),
+  },
+];
+
+// ─────────────────────────────────────────────
 // Exports
 // ─────────────────────────────────────────────
 export const SEQUENCES = {
+  audit,
   trial,
   scorecard: scorecardMarketing,
   waitlist,
@@ -641,6 +703,7 @@ export const SEQUENCES = {
 };
 
 export function getSequence(source) {
+  if (source === "audit") return audit;
   if (source === "trial") return trial;
   if (source === "scorecard") return scorecardMarketing;
   if (source === "scorecard-marketing-health") return scorecardMarketing;

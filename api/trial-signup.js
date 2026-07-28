@@ -36,12 +36,11 @@ export default async function handler(req, res) {
     try {
       // Notification to MKD
       const notifyLines = [
-        "NEW TRIAL SIGNUP — BADIR STUDIO",
+        "NEW AUDIT REQUEST — BADIR STUDIO",
         "",
         `Name: ${sanitizedName}`,
         `Email: ${sanitizedEmail}`,
-        `Website: ${sanitizedUrl || "Not provided"}`,
-        `Business Type: ${sanitizedType}`,
+        `Store URL: ${sanitizedUrl || "Not provided"}`,
         `Source: ${source || "offer-page"}`,
       ];
 
@@ -60,7 +59,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: "Badir Studio <notifications@badir.studio>",
           to: [NOTIFY_EMAIL],
-          subject: `[Trial] ${sanitizedName} — ${sanitizedUrl || sanitizedEmail}`,
+          subject: `[Audit] ${sanitizedName} — ${sanitizedUrl || sanitizedEmail}`,
           text: notifyLines.join("\n"),
         }),
       });
@@ -69,16 +68,16 @@ export default async function handler(req, res) {
       const welcomeLines = [
         `Hi ${sanitizedName},`,
         "",
-        "Thanks for your interest in Badir Studio.",
+        "Thanks for requesting your free sales audit from Badir Studio.",
         "",
-        "I'll be in touch shortly to walk you through the setup and get your marketing dashboard live.",
+        "I'll personally review your store, then reach out to book a short call to walk you through exactly where you're leaking sales — and the highest-impact ways to grow.",
         "",
         "What happens next:",
-        "1. We'll schedule a quick setup call (15 min)",
-        "2. We add a lightweight tracking snippet to your site",
-        "3. Your dashboard goes live within 24 hours",
+        "1. I run the audit on your store",
+        "2. We book a quick call to go through the findings together",
+        "3. You leave with at least 5 specific, ranked ways to grow your sales — yours to keep, whether or not we work together",
         "",
-        "14 intelligence layers running on your website — SEO audit, competitor monitoring, AI search visibility, brand tracking, and more. All free for 14 days.",
+        "No pressure, no obligation.",
         "",
         "Talk soon,",
         "Mustafa Kivanc Demirsoy",
@@ -96,7 +95,7 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           from: "Mustafa from Badir Studio <mustafa@badir.studio>",
           to: [sanitizedEmail],
-          subject: "Your free trial request — next steps",
+          subject: "Your free sales audit — next steps",
           text: welcomeLines.join("\n"),
         }),
       });
@@ -111,11 +110,11 @@ export default async function handler(req, res) {
       await set(`seq:${sanitizedEmail}`, {
         email: sanitizedEmail,
         name: sanitizedName,
-        source: "trial",
+        source: "audit",
         step: 0,
         startedAt: timestamp,
         lastSentAt: timestamp,
-        meta: { website: sanitizedUrl, businessType: sanitizedType },
+        meta: { website: sanitizedUrl },
       });
       await sadd("seq:active", sanitizedEmail);
     } catch (err) {
@@ -125,6 +124,6 @@ export default async function handler(req, res) {
 
   return res.status(200).json({
     success: true,
-    message: "Trial signup received.",
+    message: "Audit request received.",
   });
 }
