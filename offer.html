@@ -775,6 +775,12 @@
         .founder-bio { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
         .founder-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--emerald); text-decoration: none; }
         .founder-link:hover { text-decoration: underline; }
+        .principles-section { padding: 60px 0; }
+        .principles-list { list-style: none; max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 28px; }
+        .principles-list li { position: relative; padding-left: 26px; font-size: 14px; color: var(--gray-400); line-height: 1.6; }
+        .principles-list li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--emerald); font-weight: 700; }
+        .principles-list li strong { color: var(--gray-100); font-weight: 600; }
+        @media (max-width: 700px) { .principles-list { grid-template-columns: 1fr; } }
         @media (max-width: 900px) {
             .founder-box { flex-direction: column; text-align: center; }
         }
@@ -1096,7 +1102,7 @@
                 <div class="how-step">
                     <div class="step-num">03 // RUN</div>
                     <div class="step-title">The agent runs your growth</div>
-                    <div class="step-desc">Badir-managed. Your agent runs CRO, ads, email/SMS, SEO and content every month &mdash; hands-off, no lock-in.</div>
+                    <div class="step-desc">Badir-managed. Your agent ships finished, ready-to-publish work &mdash; CRO, ads, email/SMS, SEO, content &mdash; every month. You approve, it goes live. Hands-off, no lock-in.</div>
                     <div class="step-time">Monthly</div>
                 </div>
             </div>
@@ -1159,7 +1165,7 @@
                 <div class="value-card reveal">
                     <div class="value-icon" aria-hidden="true">&#x1F50E;</div>
                     <h3>SEO &amp; search</h3>
-                    <p>Gets you found on Google, for free.</p>
+                    <p>Gets you found on Google &mdash; and when shoppers ask ChatGPT, Gemini or Perplexity for a brand like yours.</p>
                 </div>
                 <div class="value-card reveal">
                     <div class="value-icon" aria-hidden="true">&#x1F9E0;</div>
@@ -1671,6 +1677,22 @@
     </section>
 
     <!-- YOU KEEP EVERYTHING -->
+    <!-- HOW WE WORK — HONEST PRINCIPLES (niche trust asset) -->
+    <section class="principles-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">HOW WE WORK</span>
+                <h2>Marketing, the honest way</h2>
+            </div>
+            <ul class="principles-list reveal">
+                <li><strong>No fake scarcity.</strong> The founding cap is real, and the counter never fake-counts down.</li>
+                <li><strong>No fake reviews or borrowed testimonials.</strong> Ever. When we have results, they'll be real.</li>
+                <li><strong>A human reviews everything</strong> before it goes live &mdash; nothing off-brand, nothing off-values.</li>
+                <li><strong>Built around your world</strong> &mdash; modest visuals, your calendar (Ramadan, Eid), your voice.</li>
+            </ul>
+        </div>
+    </section>
+
     <section class="keep-section">
         <div class="container">
             <div class="keep-box reveal">
