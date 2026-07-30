@@ -154,7 +154,7 @@
         .hero .badge { margin-bottom: 28px; }
         .hero h1 {
             font-family: var(--font-heading); font-size: clamp(36px, 5vw, 58px);
-            font-weight: 800; line-height: 1.08; letter-spacing: -2.5px;
+            font-weight: 800; line-height: 1.08; letter-spacing: -0.03em;
             color: var(--white); margin-bottom: 24px;
         }
         .hero h1 .gradient {
@@ -166,7 +166,11 @@
             margin: 0 auto 40px; line-height: 1.7;
         }
         .hero-sub strong { color: var(--gray-100); font-weight: 500; }
-        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+        .hero-cta-sub {
+            font-size: 13px; color: var(--gray-400); text-align: center;
+            margin: 0 auto 48px; letter-spacing: 0.2px;
+        }
 
         /* ─── BUTTONS ─── */
         .btn {
@@ -184,6 +188,12 @@
         .btn-outline { background: transparent; color: var(--gray-300); border: 1px solid var(--border-2); }
         .btn-outline:hover { border-color: var(--border-hover); color: var(--white); background: rgba(255,255,255,0.02); }
         .btn-large { padding: 16px 36px; font-size: 16px; }
+
+        /* ─── FOCUS VISIBLE (a11y) ─── */
+        .btn:focus-visible, .nav-btn:focus-visible, .faq-q:focus-visible,
+        .demo-tab:focus-visible, a:focus-visible, input:focus-visible, button:focus-visible {
+            outline: 2px solid var(--emerald); outline-offset: 2px;
+        }
 
         /* ─── STATS ─── */
         .stats-bar {
@@ -311,7 +321,7 @@
         }
         .rec-priority {
             font-family: var(--font-mono); font-size: 10px; font-weight: 700;
-            padding: 3px 8px; border-radius: 4px; flex-shrink: 0;
+            padding: 3px 8px; border-radius: 4px; flex-shrink: 0; white-space: nowrap;
         }
         .rec-p0 { background: rgba(239,68,68,0.15); color: #EF4444; }
         .rec-p1 { background: rgba(245,158,11,0.15); color: #F59E0B; }
@@ -361,6 +371,7 @@
             font-family: var(--font-heading); font-size: 16px; font-weight: 600;
             color: var(--white); cursor: pointer; display: flex; justify-content: space-between;
             align-items: center; gap: 16px;
+            width: 100%; text-align: left; background: none; border: none; padding: 0;
         }
         .faq-q::after {
             content: '+'; font-size: 20px; color: var(--gray-500); flex-shrink: 0;
@@ -372,7 +383,7 @@
             max-height: 0; overflow: hidden; transition: max-height 0.3s, padding 0.3s;
             padding-top: 0;
         }
-        .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+        .faq-item.open .faq-a { max-height: 600px; padding-top: 12px; }
 
         /* ─── SIGNUP FORM ─── */
         .signup-section {
@@ -404,7 +415,7 @@
             font-family: var(--font-heading); font-size: 18px; font-weight: 700;
             color: var(--white); margin-bottom: 4px;
         }
-        .form-card-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 24px; }
+        .form-card-sub { font-size: 13px; color: var(--gray-400); margin-bottom: 24px; }
         .form-row { margin-bottom: 16px; }
         .form-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
         .form-label {
@@ -425,7 +436,7 @@
             background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
         }
         .form-select option { background: var(--surface); color: var(--white); }
-        .form-note { font-size: 12px; color: var(--gray-600); margin-top: 8px; }
+        .form-note { font-size: 12px; color: var(--gray-400); margin-top: 8px; }
         #signup-msg {
             font-family: var(--font-mono); font-size: 12px; color: var(--emerald);
             margin-top: 12px; display: none;
@@ -445,15 +456,7 @@
         footer a { color: var(--gray-400); text-decoration: none; }
         footer a:hover { color: var(--emerald); }
 
-        /* ─── VALUE CARD OUTCOME TAG ─── */
-        .value-outcome {
-            display: inline-block; margin-top: 12px;
-            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
-            color: var(--emerald); padding: 4px 10px; border-radius: 6px;
-            background: var(--emerald-dim); letter-spacing: 0.3px;
-        }
-
-        /* ─── VALUE CARD LIVE-DATA TAG + BENEFIT LIST (added) ─── */
+        /* ─── VALUE CARD LIVE-DATA TAG (added) ─── */
         .value-tag {
             display: inline-flex; align-items: center; gap: 6px;
             font-family: var(--font-mono); font-size: 10px; font-weight: 600;
@@ -464,16 +467,6 @@
         .value-tag::before {
             content: ''; width: 5px; height: 5px; border-radius: 50%;
             background: currentColor; flex-shrink: 0;
-        }
-        .value-list { list-style: none; margin-top: 14px; }
-        .value-list li {
-            font-size: 13px; color: var(--gray-400); padding: 5px 0 5px 18px;
-            position: relative; line-height: 1.5;
-        }
-        .value-list li::before {
-            content: ''; position: absolute; left: 0; top: 11px;
-            width: 5px; height: 5px; border-radius: 50%;
-            background: var(--emerald); opacity: 0.65;
         }
 
         /* ─── DEEP DIVE BENEFITS ─── */
@@ -496,16 +489,6 @@
             font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white);
         }
         .deep-card p { font-size: 14px; color: var(--gray-400); line-height: 1.7; margin-bottom: 16px; }
-        .deep-examples { list-style: none; }
-        .deep-examples li {
-            font-size: 13px; color: var(--gray-300); padding: 6px 0 6px 20px;
-            position: relative; line-height: 1.5;
-        }
-        .deep-examples li::before {
-            content: ''; position: absolute; left: 0; top: 12px;
-            width: 6px; height: 6px; border-radius: 50%;
-            background: var(--emerald); opacity: 0.6;
-        }
         .deep-card-full { grid-column: 1 / -1; }
 
         /* ─── TIMELINE ─── */
@@ -549,16 +532,6 @@
             width: 7px; height: 7px; border-radius: 50%; background: var(--emerald);
             box-shadow: 0 0 0 4px var(--emerald-glow); flex-shrink: 0;
         }
-
-        /* ─── HERO VALUE CALLOUT (added) ─── */
-        .hero-value {
-            max-width: 600px; margin: 0 auto 40px;
-            background: var(--surface); border: 1px solid var(--border-2);
-            border-left: 3px solid var(--emerald);
-            border-radius: var(--radius-md); padding: 16px 22px;
-            font-size: 15px; color: var(--gray-300); line-height: 1.6; text-align: left;
-        }
-        .hero-value strong { color: var(--white); font-weight: 600; }
 
         /* ─── FOUNDING COHORT COUNTER (added) ─── */
         .founding-counter {
@@ -610,8 +583,8 @@
             color: var(--white); letter-spacing: -1.5px; line-height: 1.1;
         }
         .pricing-price.revealed { font-size: 20px; color: var(--gray-300); letter-spacing: -0.5px; }
-        .pricing-sub { font-size: 13px; color: var(--gray-500); margin-bottom: 20px; }
-        .pricing-note { text-align: center; max-width: 640px; margin: 24px auto 0; font-size: 13px; color: var(--gray-500); line-height: 1.6; }
+        .pricing-sub { font-size: 13px; color: var(--gray-400); margin-bottom: 20px; }
+        .pricing-note { text-align: center; max-width: 640px; margin: 24px auto 0; font-size: 13px; color: var(--gray-400); line-height: 1.6; }
         .pricing-features { list-style: none; margin-bottom: 24px; flex: 1; }
         .pricing-features li {
             font-size: 13px; color: var(--gray-300); padding: 8px 0 8px 24px;
@@ -723,7 +696,7 @@
             border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: 40px;
             display: none;
         }
-        .score-bridge.visible { display: block; }
+        .score-bridge.visible { display: block; margin-top: 40px; }
         .score-bridge-header {
             display: flex; align-items: center; gap: 16px; margin-bottom: 16px;
         }
@@ -935,6 +908,46 @@
             .form-card { padding: 24px 16px; }
             .preview-box { padding: 20px 16px; }
         }
+
+        /* ─── COMPARISON TABLE (added) ─── */
+        .compare-section { padding: 80px 0; }
+        .compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .compare-table {
+            width: 100%; border-collapse: collapse; min-width: 680px;
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); overflow: hidden;
+        }
+        .compare-table th, .compare-table td {
+            padding: 16px 18px; text-align: left; font-size: 13px; line-height: 1.5;
+            border-bottom: 1px solid var(--border); vertical-align: top;
+        }
+        .compare-table thead th {
+            font-family: var(--font-heading); font-size: 13px; font-weight: 700;
+            color: var(--gray-300); background: var(--surface-2);
+        }
+        .compare-table tbody th {
+            font-family: var(--font-heading); font-weight: 600; color: var(--white);
+            width: 180px;
+        }
+        .compare-table td { color: var(--gray-400); }
+        .compare-table tr:last-child th, .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table .compare-badir {
+            color: var(--white); background: var(--emerald-dim);
+            border-left: 1px solid rgba(16,185,129,0.2); border-right: 1px solid rgba(16,185,129,0.2);
+        }
+        .compare-table thead th.compare-badir { color: var(--emerald); background: rgba(16,185,129,0.14); }
+
+        /* ─── REDUCED MOTION (a11y) ─── */
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important; animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+            }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            .demo-panel { animation: none !important; }
+            .demo-auto-dot { animation: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -944,8 +957,7 @@
     <nav>
         <a href="/" class="nav-logo">Badir <span class="ar">بادر</span></a>
         <div class="nav-right">
-            <a href="/services" class="nav-btn nav-btn-ghost">Services</a>
-            <a href="#signup" class="nav-btn nav-btn-primary">Claim your founding spot</a>
+            <a href="#signup" class="nav-btn nav-btn-primary">Get my free sales audit</a>
         </div>
     </nav>
 
@@ -960,13 +972,14 @@
             <h1>Your store is leaking sales.<br><span class="gradient">We build the AI agent that plugs the leaks — and grows the rest.</span></h1>
             <p class="hero-launch"><span class="hero-launch-dot"></span> We're opening our founding cohort — the first <strong>20 Muslim brands</strong> get in first.</p>
             <p class="hero-sub">
-                Badir Studio builds you a done-for-you <strong>AI agent system that knows your business and your website</strong> and runs your whole marketing operation &mdash; content, ads, email, SEO, CRO. You stay hands-off; the agent does the work and Badir keeps it on track.
-                Claim a founding spot to get your <strong>free sales audit first</strong> &mdash; we find where you're leaking, then run it yourself or have us build and run it on founding terms.
+                A done-for-you <strong>AI marketing agent that knows your business and your website</strong> &mdash; content, ads, email, SEO, CRO, run for you.
+                You stay hands-off and <strong>approve the direction</strong>; a real person at Badir keeps it on track.
             </p>
             <div class="hero-ctas">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-hero-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
-                <a href="#how" class="btn btn-outline" humblytics="offer-hero-how-it-works">How it works</a>
+                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-hero-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
+                <a href="#how" class="btn btn-outline" data-cta="offer-hero-how-it-works">How it works</a>
             </div>
+            <p class="hero-cta-sub">One of 20 founding spots &middot; no cost, no obligation.</p>
             <!-- FOUNDING COHORT COUNTER — single source of truth for spots-left -->
             <div class="founding-counter reveal" data-founding-total="20">
                 <div class="founding-counter-top">
@@ -996,7 +1009,7 @@
     </section>
 
     <!-- SCORECARD BRIDGE (visible only when arriving from scorecard) -->
-    <section style="padding: 40px 0 0;" id="score-bridge-section">
+    <section style="padding: 0;" id="score-bridge-section">
         <div class="container">
             <div class="score-bridge" id="score-bridge"></div>
         </div>
@@ -1012,73 +1025,70 @@
             </div>
             <div class="value-grid">
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4CA;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F4CA;</div>
                     <span class="value-tag">Live store data</span>
                     <h3>Conversion optimization</h3>
                     <p>Finds exactly where your store loses buyers, and fixes it.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F9EA;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F9EA;</div>
                     <span class="value-tag">Live store data</span>
                     <h3>A/B testing</h3>
                     <p>Runs experiments so more visitors become buyers.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F525;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F525;</div>
                     <span class="value-tag">Live store data</span>
                     <h3>Heatmap analysis</h3>
                     <p>Sees where people click, scroll, and get stuck.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4B0;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F4B0;</div>
                     <span class="value-tag">Live store data</span>
                     <h3>Revenue attribution</h3>
                     <p>Shows which marketing actually makes you money.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4C8;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F4C8;</div>
                     <span class="value-tag">Live store data</span>
                     <h3>Funnel reporting</h3>
                     <p>Plain-English numbers, from traffic to sales.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F50D;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F50D;</div>
                     <h3>Page audits</h3>
                     <p>Audits any page for what's costing you sales.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F4E9;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F4E9;</div>
                     <h3>Email &amp; SMS flows</h3>
                     <p>Automated messages that recover and grow sales.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F50E;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F50E;</div>
                     <h3>SEO &amp; search</h3>
                     <p>Gets you found on Google, for free.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F9E0;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F9E0;</div>
                     <h3>Growth strategy</h3>
                     <p>Your whole go-to-market, mapped and run.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x270D;&#xFE0F;</div>
+                    <div class="value-icon" aria-hidden="true">&#x270D;&#xFE0F;</div>
                     <h3>Conversion copywriting</h3>
                     <p>Words that turn browsers into buyers.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F680;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F680;</div>
                     <h3>Paid ads</h3>
                     <p>Ads across Meta, Google, TikTok, LinkedIn and YouTube.</p>
                 </div>
                 <div class="value-card reveal">
-                    <div class="value-icon">&#x1F5D3;&#xFE0F;</div>
+                    <div class="value-icon" aria-hidden="true">&#x1F5D3;&#xFE0F;</div>
                     <h3>Content strategy</h3>
                     <p>Content that compounds into traffic.</p>
                 </div>
-            </div>
-            <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-what-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1094,49 +1104,46 @@
             <div class="deep-grid">
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F6D2;</div>
+                        <div class="deep-card-icon deep-card-icon-emerald" aria-hidden="true">&#x1F6D2;</div>
                         <h3>Abandoned carts</h3>
                     </div>
                     <p>About 70% of carts get abandoned (Baymard) &mdash; and much of it is recoverable with better checkout and the follow-up flows most stores don't have.</p>
                 </div>
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-gold">&#x26A1;</div>
+                        <div class="deep-card-icon deep-card-icon-gold" aria-hidden="true">&#x26A1;</div>
                         <h3>Slow or weak product pages</h3>
                     </div>
                     <p>Every 0.1s faster mobile load lifted conversions 8.4% (Google/Deloitte) &mdash; and 53% of visitors leave a page that takes over 3 seconds.</p>
                 </div>
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-gold">&#x1F3AF;</div>
+                        <div class="deep-card-icon deep-card-icon-gold" aria-hidden="true">&#x1F3AF;</div>
                         <h3>Wasted ad spend</h3>
                     </div>
                     <p>The average Google Ads account wastes about a third of its budget (WordStream) &mdash; without attribution, you can't tell which spend is actually working.</p>
                 </div>
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F4E9;</div>
+                        <div class="deep-card-icon deep-card-icon-emerald" aria-hidden="true">&#x1F4E9;</div>
                         <h3>Weak email &amp; SMS follow-up</h3>
                     </div>
                     <p>Automated flows drive around 41% of email revenue from a fraction of sends &mdash; skip them and you're ignoring your cheapest sales channel.</p>
                 </div>
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-emerald">&#x1F4B8;</div>
+                        <div class="deep-card-icon deep-card-icon-emerald" aria-hidden="true">&#x1F4B8;</div>
                         <h3>No revenue attribution</h3>
                     </div>
                     <p>If you can't see which channel or page made the sale, you're scaling losers and starving winners. The audit maps where your revenue actually comes from.</p>
                 </div>
                 <div class="deep-card reveal">
                     <div class="deep-card-header">
-                        <div class="deep-card-icon deep-card-icon-gold">&#x1F4C8;</div>
+                        <div class="deep-card-icon deep-card-icon-gold" aria-hidden="true">&#x1F4C8;</div>
                         <h3>The conversion gap</h3>
                     </div>
                     <p>The average store converts ~2.5% of visitors; top performers ~5.5% &mdash; double the sales on the same traffic. It's the biggest lever most owners never pull.</p>
                 </div>
-            </div>
-            <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-leaks-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1187,9 +1194,6 @@
                     <div class="timeline-desc">Badir manages the agent month to month and sends a plain-English weekly report. No lock-in.</div>
                 </div>
             </div>
-            <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-timeline-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
-            </div>
         </div>
     </section>
 
@@ -1200,36 +1204,33 @@
                 <span class="badge badge-emerald badge-dot">WHO IT'S FOR</span>
                 <h2>Built for Muslim online brands<br>doing real revenue</h2>
                 <p>Doing real numbers, can't justify a $20K agency, don't want to build a marketing team &mdash; you just want it handled properly.</p>
-                <p style="margin: 14px auto 0; max-width: 620px; color: var(--gray-500); font-size: 14px;">Straight up: not for everyone. Pre-revenue, chasing overnight magic, or not ready to let an AI agent run your marketing? We'll say so on the audit.</p>
+                <p style="margin: 14px auto 0; max-width: 620px; color: var(--gray-400); font-size: 14px;">Straight up: not for everyone. Pre-revenue, chasing overnight magic, or not ready to let an AI agent run your marketing? We'll say so on the audit.</p>
             </div>
             <div class="qualifier-grid reveal">
                 <div class="qualifier-card">
-                    <div class="qualifier-icon">&#x1F9D5;</div>
+                    <div class="qualifier-icon" aria-hidden="true">&#x1F9D5;</div>
                     <div class="qualifier-type">Modest fashion</div>
                     <div class="qualifier-desc">Modestwear, abayas, hijabs, activewear.</div>
                     <span class="qualifier-example">Product-page CRO + email flows</span>
                 </div>
                 <div class="qualifier-card">
-                    <div class="qualifier-icon">&#x1F9C6;</div>
+                    <div class="qualifier-icon" aria-hidden="true">&#x1F9C6;</div>
                     <div class="qualifier-type">Halal food &amp; beverage</div>
                     <div class="qualifier-desc">Snacks, pantry, supplements, drinks.</div>
                     <span class="qualifier-example">Retention + subscription flows</span>
                 </div>
                 <div class="qualifier-card">
-                    <div class="qualifier-icon">&#x1F381;</div>
+                    <div class="qualifier-icon" aria-hidden="true">&#x1F381;</div>
                     <div class="qualifier-type">Islamic products &amp; gifting</div>
                     <div class="qualifier-desc">Gifts, decor, books, prayer essentials.</div>
                     <span class="qualifier-example">Seasonal campaigns + SEO</span>
                 </div>
                 <div class="qualifier-card">
-                    <div class="qualifier-icon">&#x1F484;</div>
+                    <div class="qualifier-icon" aria-hidden="true">&#x1F484;</div>
                     <div class="qualifier-type">Muslim lifestyle &amp; beauty</div>
                     <div class="qualifier-desc">Halal beauty, skincare, lifestyle brands.</div>
                     <span class="qualifier-example">Brand + paid growth</span>
                 </div>
-            </div>
-            <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-who-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1241,7 +1242,7 @@
             <div class="section-header reveal">
                 <span class="badge badge-emerald badge-dot">HOW IT WORKS</span>
                 <h2>Audit &rarr; Build &rarr; Run</h2>
-                <p>The free audit finds the problem and hands you the plan. Building the fix is up to you &mdash; run it yourself, or have us build and run it.</p>
+                <p>The free audit finds the problem and hands you the plan. What you do next is up to you.</p>
             </div>
             <div class="how-steps reveal">
                 <div class="how-step">
@@ -1264,7 +1265,7 @@
                 </div>
             </div>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-how-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-how-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1282,6 +1283,7 @@
                     <span class="preview-dot preview-dot-red"></span>
                     <span class="preview-dot preview-dot-yellow"></span>
                     <span class="preview-dot preview-dot-green"></span>
+                    <span style="font-family: var(--font-mono); font-size: 10px; color: var(--gray-400); padding: 3px 9px; border-radius: 4px; border: 1px solid var(--border-2); margin-left: 4px; white-space: nowrap;">Illustrative &middot; sample data</span>
                     <span class="preview-url">dashboard.badir.studio/client/your-store</span>
                     <span style="font-family: var(--font-mono); font-size: 11px; color: var(--emerald); padding: 3px 10px; border-radius: 4px; background: var(--emerald-dim);">MANAGED BY BADIR</span>
                 </div>
@@ -1330,40 +1332,40 @@
                     </div>
                     <div class="preview-metrics">
                         <div class="preview-metric">
-                            <div class="preview-metric-val">2,847</div>
+                            <div class="preview-metric-val">26,140</div>
                             <div class="preview-metric-label">Sessions</div>
                             <div class="preview-metric-trend trend-up">+12.4%</div>
+                        </div>
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">523</div>
+                            <div class="preview-metric-label">Conversions</div>
+                            <div class="preview-metric-trend trend-up">+64</div>
+                        </div>
+                        <div class="preview-metric">
+                            <div class="preview-metric-val">$41,280</div>
+                            <div class="preview-metric-label">Revenue</div>
+                            <div class="preview-metric-trend trend-up">+14.8%</div>
                         </div>
                         <div class="preview-metric">
                             <div class="preview-metric-val">42.1%</div>
                             <div class="preview-metric-label">Bounce Rate</div>
                             <div class="preview-metric-trend trend-down">+3.2%</div>
                         </div>
-                        <div class="preview-metric">
-                            <div class="preview-metric-val">2m 34s</div>
-                            <div class="preview-metric-label">Avg Duration</div>
-                            <div class="preview-metric-trend trend-up">+18s</div>
-                        </div>
-                        <div class="preview-metric">
-                            <div class="preview-metric-val">14</div>
-                            <div class="preview-metric-label">Conversions</div>
-                            <div class="preview-metric-trend trend-up">+3</div>
-                        </div>
                     </div>
                     <div class="preview-recs">
                         <div class="preview-rec">
-                            <span class="rec-priority rec-p0">P0</span>
+                            <span class="rec-priority rec-p0">FIX FIRST</span>
                             <span class="rec-text">Add a clear CTA above the fold on your homepage &mdash; 68% of visitors leave without scrolling</span>
                             <span class="rec-impact">HIGH</span>
                         </div>
                         <div class="preview-rec">
-                            <span class="rec-priority rec-p1">P1</span>
-                            <span class="rec-text">Your pricing page loads in 4.2s &mdash; compress images and defer JavaScript to cut this in half</span>
+                            <span class="rec-priority rec-p1">NEXT</span>
+                            <span class="rec-text">Your pricing page loads in 4.2s &mdash; compress images and trim what loads first to cut this in half</span>
                             <span class="rec-impact">MED</span>
                         </div>
                         <div class="preview-rec">
-                            <span class="rec-priority rec-p2">P2</span>
-                            <span class="rec-text">ChatGPT is sending 89 sessions/week to your site &mdash; optimize your FAQ schema for AI citation</span>
+                            <span class="rec-priority rec-p2">LATER</span>
+                            <span class="rec-text">ChatGPT is sending 818 sessions/week to your site &mdash; structure your FAQ page so Google and AI understand and cite it</span>
                             <span class="rec-impact">MED</span>
                         </div>
                     </div>
@@ -1376,46 +1378,46 @@
                             <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px;">AI Search Referral Traffic</div>
                             <div style="font-size: 13px; color: var(--gray-500);">Sessions sent to your site by AI chatbots this week</div>
                         </div>
-                        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--white);">176 <span style="font-size: 13px; color: var(--emerald); font-weight: 500;">+34%</span></div>
+                        <div style="font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: var(--white);">1,614 <span style="font-size: 13px; color: var(--emerald); font-weight: 500;">+34%</span></div>
                     </div>
                     <div class="ai-bar-row">
                         <div class="ai-bar-dot" style="background: #10B981;"></div>
                         <span class="ai-bar-name">ChatGPT</span>
                         <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 51%; background: #10B981;"></div></div>
-                        <span class="ai-bar-count">89</span>
-                        <span class="ai-bar-pct">50.6%</span>
+                        <span class="ai-bar-count">818</span>
+                        <span class="ai-bar-pct">50.7%</span>
                     </div>
                     <div class="ai-bar-row">
                         <div class="ai-bar-dot" style="background: #8B5CF6;"></div>
                         <span class="ai-bar-name">Perplexity</span>
                         <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 27%; background: #8B5CF6;"></div></div>
-                        <span class="ai-bar-count">47</span>
+                        <span class="ai-bar-count">431</span>
                         <span class="ai-bar-pct">26.7%</span>
                     </div>
                     <div class="ai-bar-row">
                         <div class="ai-bar-dot" style="background: #3B82F6;"></div>
                         <span class="ai-bar-name">Gemini</span>
                         <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 13%; background: #3B82F6;"></div></div>
-                        <span class="ai-bar-count">23</span>
+                        <span class="ai-bar-count">211</span>
                         <span class="ai-bar-pct">13.1%</span>
                     </div>
                     <div class="ai-bar-row">
                         <div class="ai-bar-dot" style="background: #F59E0B;"></div>
                         <span class="ai-bar-name">Claude</span>
                         <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 7%; background: #F59E0B;"></div></div>
-                        <span class="ai-bar-count">12</span>
+                        <span class="ai-bar-count">110</span>
                         <span class="ai-bar-pct">6.8%</span>
                     </div>
                     <div class="ai-bar-row">
                         <div class="ai-bar-dot" style="background: #06B6D4;"></div>
                         <span class="ai-bar-name">Copilot</span>
                         <div class="ai-bar-track"><div class="ai-bar-fill" style="width: 3%; background: #06B6D4;"></div></div>
-                        <span class="ai-bar-count">5</span>
-                        <span class="ai-bar-pct">2.8%</span>
+                        <span class="ai-bar-count">44</span>
+                        <span class="ai-bar-pct">2.7%</span>
                     </div>
                     <div style="margin-top: 20px; padding: 16px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-sm);">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px;">&#x1F4A1; Recommendation</div>
-                        <div style="font-size: 13px; color: var(--gray-400); line-height: 1.6;">Your FAQ page is your #1 AI-cited page. Expand it from 8 to 20 questions with structured Q&amp;A schema to increase AI referrals by an estimated 2-3x. ChatGPT cited your competitor 12 times this week &mdash; 0 citations for you on "best NZ [your category]" queries.</div>
+                        <div style="font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px;"><span aria-hidden="true">&#x1F4A1;</span> Recommendation</div>
+                        <div style="font-size: 13px; color: var(--gray-400); line-height: 1.6;">Your FAQ page is your #1 AI-cited page. Expand it from 8 to 20 questions in a clear Q&amp;A layout so Google and AI understand it &mdash; an estimated 2-3x more AI referrals. ChatGPT cited your competitor 12 times this week &mdash; 0 citations for you on "best [your category]" queries.</div>
                     </div>
                 </div>
 
@@ -1449,7 +1451,7 @@
                             <span class="comp-type comp-type-campaign">AD CAMPAIGN</span>
                             <div class="comp-info">
                                 <div class="comp-name">Competitor C</div>
-                                <div class="comp-detail">Running new Google Ads targeting "best [your category] NZ" &mdash; bidding on your brand name. Cost ~$2.40/click in your market.</div>
+                                <div class="comp-detail">Running new Google Ads targeting "best [your category] in [your market]" &mdash; bidding on your brand name. Cost ~$2.40/click in your market.</div>
                             </div>
                             <span class="comp-time">1d ago</span>
                         </li>
@@ -1457,7 +1459,7 @@
                             <span class="comp-type comp-type-seo">SEO</span>
                             <div class="comp-info">
                                 <div class="comp-name">Competitor A</div>
-                                <div class="comp-detail">Now ranking #1 for "affordable [your category] auckland" &mdash; they added a new landing page with local schema markup.</div>
+                                <div class="comp-detail">Now ranking #1 for "affordable [your category] in [your city]" &mdash; they added a new local landing page built to help Google understand their pages.</div>
                             </div>
                             <span class="comp-time">2d ago</span>
                         </li>
@@ -1485,8 +1487,8 @@
                         <li class="social-item">
                             <span class="social-platform social-reddit">REDDIT</span>
                             <div class="social-info">
-                                <div class="social-quote">"Can anyone recommend a good [your category] in NZ? I've tried Competitor A but their customer service is terrible..."</div>
-                                <div class="social-meta">r/newzealand &bull; 47 upvotes &bull; 23 comments</div>
+                                <div class="social-quote">"Can anyone recommend a good [your category] near me? I've tried Competitor A but their customer service is terrible..."</div>
+                                <div class="social-meta">r/[your market] &bull; 47 upvotes &bull; 23 comments</div>
                             </div>
                             <span class="social-sentiment sentiment-opportunity">OPPORTUNITY</span>
                         </li>
@@ -1502,7 +1504,7 @@
                             <span class="social-platform social-twitter">X / TWITTER</span>
                             <div class="social-info">
                                 <div class="social-quote">"Just discovered @yourbrand &mdash; way better pricing than the alternatives. Why isn't anyone talking about them?"</div>
-                                <div class="social-meta">@nz_shopper &bull; 12 likes &bull; 3 retweets</div>
+                                <div class="social-meta">@happy_shopper &bull; 12 likes &bull; 3 retweets</div>
                             </div>
                             <span class="social-sentiment sentiment-positive">POSITIVE</span>
                         </li>
@@ -1510,15 +1512,15 @@
                             <span class="social-platform social-forum">FORUM</span>
                             <div class="social-info">
                                 <div class="social-quote">"Has anyone noticed [your category] prices going up across the board? Looking for budget options..."</div>
-                                <div class="social-meta">NZ Consumer Forum &bull; 34 replies &bull; Trending topic</div>
+                                <div class="social-meta">Consumer forum &bull; 34 replies &bull; Trending topic</div>
                             </div>
                             <span class="social-sentiment sentiment-opportunity">TREND</span>
                         </li>
                         <li class="social-item">
                             <span class="social-platform social-google">GOOGLE</span>
                             <div class="social-info">
-                                <div class="social-quote">"Absolutely love this product. Already told 3 friends about it. The quality is unmatched at this price point."</div>
-                                <div class="social-meta">Google Reviews &bull; 5 stars</div>
+                                <div class="social-quote">"Ordered for Eid &mdash; arrived on time and the quality's lovely. Would order again."</div>
+                                <div class="social-meta">Google Reviews &bull; new mention &mdash; reply drafted</div>
                             </div>
                             <span class="social-sentiment sentiment-positive">POSITIVE</span>
                         </li>
@@ -1539,14 +1541,14 @@
                             </div>
                             <div style="text-align: right;">
                                 <div class="report-date">This week</div>
-                                <span class="report-pdf-badge">&#x1F4C4; PDF</span>
+                                <span class="report-pdf-badge"><span aria-hidden="true">&#x1F4C4;</span> PDF</span>
                             </div>
                         </div>
                         <div class="report-section">
                             <div class="report-section-title">Performance Snapshot</div>
                             <div class="report-kpi-row">
                                 <div class="report-kpi">
-                                    <div class="report-kpi-val">2,847</div>
+                                    <div class="report-kpi-val">26,140</div>
                                     <div class="report-kpi-label">Sessions <span style="color: var(--emerald);">+12%</span></div>
                                 </div>
                                 <div class="report-kpi">
@@ -1554,16 +1556,16 @@
                                     <div class="report-kpi-label">Health Score <span style="color: var(--emerald);">+3</span></div>
                                 </div>
                                 <div class="report-kpi">
-                                    <div class="report-kpi-val">176</div>
+                                    <div class="report-kpi-val">1,614</div>
                                     <div class="report-kpi-label">AI Sessions <span style="color: var(--emerald);">+34%</span></div>
                                 </div>
                             </div>
                         </div>
                         <div class="report-section">
                             <div class="report-section-title">Top 5 Actions This Week</div>
-                            <div class="report-action"><span class="report-action-num">1.</span> Fix mobile signup form &mdash; broken on screens under 400px (est. +$800/mo)</div>
+                            <div class="report-action"><span class="report-action-num">1.</span> Fix mobile signup form &mdash; broken on screens under 400px (est. +$6,400/mo)</div>
                             <div class="report-action"><span class="report-action-num">2.</span> Compress 3 images on pricing page &mdash; cut load time from 4.2s to 2.1s</div>
-                            <div class="report-action"><span class="report-action-num">3.</span> Add FAQ schema for AI citation &mdash; competitors are getting 3x your AI traffic</div>
+                            <div class="report-action"><span class="report-action-num">3.</span> Structure your FAQ page so Google and AI understand and cite it &mdash; competitors are getting 3x your AI traffic</div>
                             <div class="report-action"><span class="report-action-num">4.</span> Respond to 3 negative Google reviews (delivery complaints)</div>
                             <div class="report-action"><span class="report-action-num">5.</span> Create a "vs Competitor A" comparison page &mdash; they're bidding on your brand name</div>
                         </div>
@@ -1580,6 +1582,60 @@
                     <span class="demo-auto-dot"></span>
                     Auto-cycling &mdash; click any tab to explore
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW BADIR COMPARES -->
+    <section class="compare-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-gold">HOW IT COMPARES</span>
+                <h2>DIY, a tool, an agency &mdash;<br>or Badir</h2>
+                <p>The same growth work, four ways. Here's who actually does it &mdash; and what it usually costs.</p>
+            </div>
+            <div class="compare-wrap reveal">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" aria-label="Category"></th>
+                            <th scope="col">Do it yourself</th>
+                            <th scope="col">An AI tool</th>
+                            <th scope="col">Traditional agency</th>
+                            <th scope="col" class="compare-badir">Badir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Who does the work</th>
+                            <td>You</td>
+                            <td>You &mdash; it only suggests</td>
+                            <td>A team you manage</td>
+                            <td class="compare-badir">Your agent + a real Badir human</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Typical cost</th>
+                            <td>Your time</td>
+                            <td>Monthly subscription</td>
+                            <td>Agencies ~$5&ndash;15K/mo, or ~NZD 200K/yr for an in-house team</td>
+                            <td class="compare-badir">Founding rate &mdash; revealed on your call</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Speed to live</th>
+                            <td>Whenever you get to it</td>
+                            <td>Fast, but you build it</td>
+                            <td>Weeks of onboarding</td>
+                            <td class="compare-badir">About a month, done for you</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Knows your brand &amp; values</th>
+                            <td>Yes &mdash; but it's all on you</td>
+                            <td>Generic out of the box</td>
+                            <td>Sometimes, if you brief them well</td>
+                            <td class="compare-badir">Built in &mdash; and human-checked</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>
@@ -1603,7 +1659,7 @@
                         <li>Exactly where you're leaking sales, found</li>
                         <li>A ranked plan &mdash; yours to keep or hand to us</li>
                     </ul>
-                    <a href="#signup" class="btn btn-primary" humblytics="offer-pricing-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#signup" class="btn btn-primary" data-cta="offer-pricing-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
                 </div>
                 <div class="pricing-tier">
                     <span class="pricing-tag pricing-tag-gold">ONE-TIME · FOUNDING RATE</span>
@@ -1615,7 +1671,7 @@
                         <li>Trained on your brand, products &amp; customers</li>
                         <li>Tracking wired in, channels connected</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-build">Reserve your founding spot</a>
+                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-build">Reserve your founding spot</a>
                 </div>
                 <div class="pricing-tier">
                     <span class="pricing-tag pricing-tag-gold">MONTHLY · FOUNDING RATE</span>
@@ -1627,7 +1683,7 @@
                         <li>CRO, ads, email/SMS, SEO, content, reporting</li>
                         <li>Founding rate locked &mdash; cancel anytime</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" humblytics="offer-pricing-run">Reserve your founding spot</a>
+                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-run">Reserve your founding spot</a>
                 </div>
             </div>
             <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
@@ -1639,8 +1695,9 @@
                 <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
             </div>
             <p class="pricing-note">Build and Run cover the AI agent, strategy and execution. Your ad spend and creative production &mdash; creatives, video, images &mdash; are billed separately. We'll lay it out on your call.</p>
+            <p class="pricing-note" style="color: var(--emerald-light); margin-top: 12px;">Public pricing goes up once the founding 20 are in. Your founding rate doesn't.</p>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-founding-claim">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-founding-claim">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1650,10 +1707,10 @@
     <section class="guarantee-section">
         <div class="container">
             <div class="guarantee-box reveal">
-                <div class="guarantee-shield">&#x1F6E1;&#xFE0F;</div>
+                <div class="guarantee-shield" aria-hidden="true">&#x1F6E1;&#xFE0F;</div>
                 <div class="guarantee-title">5 ranked ways to grow &mdash; guaranteed in your free audit</div>
                 <div class="guarantee-text">
-                    You'll leave your free audit with at least 5 specific, ranked ways to grow &mdash; yours to keep whether or not you work with us. Run them yourself, or have us build and run them.
+                    You'll leave your free audit with at least 5 specific, ranked ways to grow &mdash; yours to keep whether or not you work with us.
                 </div>
                 <div class="guarantee-fine">Free. Founding cohort first. No obligation.</div>
             </div>
@@ -1664,11 +1721,12 @@
     <section class="founder-section">
         <div class="container">
             <div class="founder-box reveal">
-                <div class="founder-avatar">MK</div>
+                <!-- TODO: real founder photo + LinkedIn link -->
+                <div class="founder-avatar" aria-hidden="true">MK</div>
                 <div class="founder-content">
                     <h3>Mustafa Kivanc Demirsoy</h3>
                     <div class="founder-title">Founder, Badir Studio</div>
-                    <div class="founder-bio">I run my own halal kebab shop and built the growth systems behind 9 live businesses. Badir brings that same AI-run marketing to Muslim brands &mdash; done for you, no agency fluff: we find the leaks, fix them, and run your growth.</div>
+                    <div class="founder-bio">I've spent years building the growth systems &mdash; conversion, ads, email, SEO &mdash; behind my own businesses. Badir Studio brings that to Muslim brands, done-for-you. You'll be among the first 20 e-commerce brands we run this for.</div>
                 </div>
             </div>
         </div>
@@ -1683,44 +1741,57 @@
             </div>
             <div class="faq-list reveal">
                 <div class="faq-item">
-                    <div class="faq-q">What does "founding" mean &mdash; what do I get for being first?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">What does "founding" mean &mdash; what do I get for being first?</button>
                     <div class="faq-a">Your free audit runs ahead of the public queue, founding rates locked on Build and Run, and priority onboarding. You get in first, on the best terms we'll offer.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Is my store data safe?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">What happens when the founding 20 close?</button>
+                    <div class="faq-a">Once the 20 founding spots are filled, we open a waitlist and pricing goes public &mdash; higher than founding terms. Founding members keep their locked-in rate for as long as they stay.</div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is my store data safe?</button>
                     <div class="faq-a">Yes. We only connect to the data we need, store it securely, never sell it, and delete it on request. Your accounts stay yours.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">How much do I actually have to do?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">How much do I actually have to do?</button>
                     <div class="faq-a">Your call. The free audit hands you the plan to run yourself &mdash; or with Build &rarr; Run we build the agent and run every channel, and you just approve the direction.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">I already run ads / have an agency &mdash; how is this different?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">I already run ads / have an agency &mdash; how is this different?</button>
                     <div class="faq-a">Most agencies hand you a retainer and a monthly slide deck. We build an AI agent that does the work across every channel &mdash; CRO, ads, email, SEO, content &mdash; and manage it. Start with the free audit.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Is there a lock-in or contract?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">Is there a lock-in or contract?</button>
                     <div class="faq-a">No. Run is month-to-month, cancel anytime. You keep your data, accounts and everything we build.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">What's included &mdash; and what costs extra?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">What's included &mdash; and what costs extra?</button>
                     <div class="faq-a">Build and Run cover the AI agent, strategy and execution across your channels. Separate: your ad spend (paid to Meta, Google and the like) and creative production &mdash; creatives, video, images. We'll lay it out on your call.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Will it actually stay on-brand, or is AI output generic?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">Will it actually stay on-brand, or is AI output generic?</button>
                     <div class="faq-a">The agent knows your brand, products, voice and customers, so it doesn't write generic copy &mdash; and a human at Badir reviews and rejects anything off-brand before it goes out.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">What does the free audit actually involve?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">Will it stay true to my brand and values?</button>
+                    <div class="faq-a">Yes &mdash; a real person at Badir reviews everything before it goes out: modest visuals, your calendar (Ramadan, Eid), nothing off-brand or off-values. The AI does the work; a human owns the taste.</div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">What does the free audit actually involve?</button>
                     <div class="faq-a">We connect to your store and funnel data, find where you're leaking sales, and walk you through a ranked plan on a call. It's the diagnosis, not the build &mdash; yours to keep and run yourself, or have us build and run it.</div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-q">Is Badir Studio only for Muslim brands?</div>
+                    <button type="button" class="faq-q" aria-expanded="false">What if it doesn't work for my store?</button>
+                    <div class="faq-a">Start with the free audit &mdash; if there's nothing worth fixing, we'll tell you, and you've lost nothing. If you go ahead, there's no lock-in: Run is month-to-month and you can walk away anytime, keeping everything we built.</div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">How fast will I see results?</button>
+                    <div class="faq-a">You get audit findings right away &mdash; specific, ranked fixes you can act on immediately. Real growth compounds over the first weeks as flows, tests and campaigns go live. We won't promise a magic percentage; we'll show you the numbers as they move.</div>
+                </div>
+                <div class="faq-item">
+                    <button type="button" class="faq-q" aria-expanded="false">Is Badir Studio only for Muslim brands?</button>
                     <div class="faq-a">It's built for Muslim-owned online brands &mdash; that's who we understand best. If you're doing real revenue and want your marketing handled properly, you're exactly who this is for.</div>
                 </div>
-            </div>
-            <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" humblytics="offer-faq-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1729,7 +1800,7 @@
     <section class="keep-section">
         <div class="container">
             <div class="keep-box reveal">
-                <div class="keep-icon">&#x1F4BE;</div>
+                <div class="keep-icon" aria-hidden="true">&#x1F4BE;</div>
                 <div class="keep-content">
                     <h3>No lock-in. You own everything.</h3>
                     <p>No contract. You keep your data, accounts and every asset we build &mdash; cancel Run anytime, it all stays yours.</p>
@@ -1775,7 +1846,8 @@
                     <form id="trial-form" onsubmit="return handleTrialSignup(event)">
                         <div class="form-row">
                             <label class="form-label" for="trial-website">Store URL</label>
-                            <input class="form-input" type="url" id="trial-website" name="website_url" placeholder="https://yourstore.com" required>
+                            <input class="form-input" type="text" inputmode="url" autocomplete="url" id="trial-website" name="website_url" placeholder="yourstore.com" required>
+                            <p class="form-note" style="margin-top:6px;">yourstore.com is fine &mdash; we'll add the https://.</p>
                         </div>
                         <div class="form-row-half">
                             <div>
@@ -1787,7 +1859,7 @@
                                 <input class="form-input" type="text" id="trial-name" name="name" placeholder="Your name">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="trial-btn" humblytics="offer-form-submit">
+                        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="trial-btn" data-cta="offer-form-submit">
                             Claim your founding spot <span aria-hidden="true">&rarr;</span>
                         </button>
                         <p class="form-note">No cost, no obligation. We'll be in touch to run your free audit first.</p>
@@ -1802,14 +1874,14 @@
     <!-- STICKY CTA -->
     <div class="sticky-cta" id="sticky-cta">
         <span class="sticky-cta-text"><strong>Founding cohort now open</strong> &mdash; claim one of the first spots.</span>
-        <a href="#signup" class="btn btn-primary" humblytics="offer-sticky-free-audit">Claim your founding spot &rarr;</a>
+        <a href="#signup" class="btn btn-primary" data-cta="offer-sticky-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
     </div>
 
     <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-logo">Badir <span class="ar">بادر</span></div>
-            <p>AI-powered product studio &bull; <a href="/">Home</a> &bull; <a href="/services">Services</a> &bull; <a href="/about">About</a></p>
+            <p><a href="/">Home</a> &bull; <a href="/about">About</a></p>
             <p style="margin-top:8px;">&copy; 2026 Badir Studio. Tauranga, New Zealand.</p>
         </div>
     </footer>
@@ -1894,11 +1966,18 @@
         }
     })();
 
+    // ─── MOTION PREFERENCE ───
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // ─── REVEAL ON SCROLL ───
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    if (prefersReducedMotion) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    } else {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
 
     // ─── DASHBOARD DEMO TABS ───
     const demoTabs = document.querySelectorAll('.demo-tab');
@@ -1907,11 +1986,21 @@
     let currentTabIdx = 0;
     let autoCycleTimer = null;
     let userInteracted = false;
+    const demoDash = document.getElementById('demo-dashboard');
 
     function switchTab(tabName) {
         demoTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
         demoPanels.forEach(p => p.classList.toggle('active', p.dataset.panel === tabName));
         currentTabIdx = tabOrder.indexOf(tabName);
+    }
+
+    function startAutoCycle() {
+        if (prefersReducedMotion) return;
+        clearInterval(autoCycleTimer);
+        autoCycleTimer = setInterval(() => {
+            currentTabIdx = (currentTabIdx + 1) % tabOrder.length;
+            switchTab(tabOrder[currentTabIdx]);
+        }, 4000);
     }
 
     demoTabs.forEach(tab => {
@@ -1926,26 +2015,32 @@
         });
     });
 
-    function startAutoCycle() {
-        autoCycleTimer = setInterval(() => {
-            currentTabIdx = (currentTabIdx + 1) % tabOrder.length;
-            switchTab(tabOrder[currentTabIdx]);
-        }, 4000);
-    }
+    if (demoDash && !prefersReducedMotion) {
+        // Pause auto-cycle while the visitor is reading (hover or keyboard focus)
+        demoDash.addEventListener('mouseenter', () => clearInterval(autoCycleTimer));
+        demoDash.addEventListener('mouseleave', () => { if (!userInteracted) startAutoCycle(); });
+        demoDash.addEventListener('focusin', () => clearInterval(autoCycleTimer));
+        demoDash.addEventListener('focusout', () => { if (!userInteracted) startAutoCycle(); });
 
-    // Start auto-cycling when dashboard enters viewport
-    const demoObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) { startAutoCycle(); demoObserver.unobserve(e.target); }
-        });
-    }, { threshold: 0.3 });
-    const demoDash = document.getElementById('demo-dashboard');
-    if (demoDash) demoObserver.observe(demoDash);
+        // Start auto-cycling when dashboard enters viewport
+        const demoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { startAutoCycle(); demoObserver.unobserve(e.target); }
+            });
+        }, { threshold: 0.3 });
+        demoObserver.observe(demoDash);
+    } else if (demoDash) {
+        // Reduced motion: no auto-cycle — keep the hint honest
+        const autoHint = demoDash.querySelector('.demo-auto');
+        if (autoHint) autoHint.textContent = 'Click any tab to explore';
+    }
 
     // ─── FAQ TOGGLE ───
     document.querySelectorAll('.faq-q').forEach(q => {
         q.addEventListener('click', () => {
-            q.closest('.faq-item').classList.toggle('open');
+            const item = q.closest('.faq-item');
+            const isOpen = item.classList.toggle('open');
+            q.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     });
 
@@ -1987,15 +2082,17 @@
         }
         requestAnimationFrame(step);
     }
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-            if (e.isIntersecting) {
-                e.target.querySelectorAll('.stat-val').forEach(animateCounter);
-                counterObserver.unobserve(e.target);
-            }
-        });
-    }, { threshold: 0.3 });
-    document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
+    if (!prefersReducedMotion) {
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.querySelectorAll('.stat-val').forEach(animateCounter);
+                    counterObserver.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
+    }
 
     // ─── FOUNDING COHORT COUNTER (static, not live — single source of truth) ───
     (function() {
@@ -2014,7 +2111,7 @@
         document.querySelectorAll('[data-spots-bar]').forEach(el => { el.style.width = pctFilled + '%'; });
 
         // One-time count-up of the static value when it scrolls into view (never auto-decrements)
-        if (canonical && left > 0) {
+        if (canonical && left > 0 && !prefersReducedMotion) {
             const io = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
                     if (!e.isIntersecting) return;
@@ -2043,10 +2140,13 @@
         btn.disabled = true;
         btn.textContent = 'Sending...';
 
+        let website = form.website_url.value.trim();
+        if (website && !/^https?:\/\//i.test(website)) website = 'https://' + website;
+
         const data = {
             name: (document.getElementById('trial-name')?.value || '').trim(),
             email: form.email.value.trim(),
-            website_url: form.website_url.value.trim(),
+            website_url: website,
             source: 'offer-page-founding',
             scorecard_score: form.scorecard_score ? form.scorecard_score.value : null,
             scorecard_grade: form.scorecard_grade ? form.scorecard_grade.value : null
