@@ -773,6 +773,8 @@
         }
         .founder-title { font-size: 14px; color: var(--emerald); margin-bottom: 12px; font-weight: 500; }
         .founder-bio { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+        .founder-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; font-weight: 600; color: var(--emerald); text-decoration: none; }
+        .founder-link:hover { text-decoration: underline; }
         @media (max-width: 900px) {
             .founder-box { flex-direction: column; text-align: center; }
         }
@@ -1693,12 +1695,13 @@
     <section class="founder-section">
         <div class="container">
             <div class="founder-box reveal">
-                <!-- TODO: real founder photo + LinkedIn link -->
+                <!-- Founder photo optional; LinkedIn added for verifiable credibility -->
                 <div class="founder-avatar" aria-hidden="true">MK</div>
                 <div class="founder-content">
                     <h3>Mustafa Kivanc Demirsoy</h3>
                     <div class="founder-title">Founder, Badir Studio</div>
-                    <div class="founder-bio">I've spent years building the growth systems &mdash; conversion, ads, email, SEO &mdash; behind my own businesses. Badir Studio brings that to Muslim brands, done-for-you. You'll be among the first 20 e-commerce brands we run this for.</div>
+                    <div class="founder-bio">I've spent years building the growth systems &mdash; conversion, ads, email, SEO &mdash; behind my own businesses. I built Badir Studio because Muslim brands get overlooked by the agencies that could help them, or overcharged by the ones that don't get them. This brings agency-grade, AI-run growth to our brands, done-for-you &mdash; and as a founding member, you deal with me directly.</div>
+                    <a href="https://www.linkedin.com/in/mustafa-demirsoy/" target="_blank" rel="noopener" class="founder-link" data-cta="offer-founder-linkedin">Connect with me on LinkedIn <span aria-hidden="true">&rarr;</span></a>
                 </div>
             </div>
         </div>
