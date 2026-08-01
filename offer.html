@@ -946,6 +946,14 @@
             border-left: 1px solid rgba(16,185,129,0.2); border-right: 1px solid rgba(16,185,129,0.2);
         }
         .compare-table thead th.compare-badir { color: var(--emerald); background: rgba(16,185,129,0.14); }
+        .stuck-wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+        .stuck-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+        .stuck-opt { font-family: var(--font-heading); font-size: 16px; font-weight: 600; color: var(--gray-100); margin-bottom: 6px; }
+        .stuck-why { font-size: 14px; color: var(--gray-400); line-height: 1.6; }
+        .stuck-why em { color: var(--gray-100); font-style: italic; }
+        .stuck-resolve { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.35); border-radius: 12px; padding: 24px 26px; margin-top: 6px; }
+        .stuck-resolve-badge { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--emerald); margin-bottom: 8px; }
+        .stuck-resolve p { font-size: 15px; color: var(--gray-300); line-height: 1.65; }
 
         /* ─── REDUCED MOTION (a11y) ─── */
         @media (prefers-reduced-motion: reduce) {
@@ -1552,52 +1560,26 @@
     <section class="compare-section">
         <div class="container">
             <div class="section-header reveal">
-                <span class="badge badge-gold">HOW IT COMPARES</span>
-                <h2>DIY, a tool, an agency &mdash;<br>or Badir</h2>
-                <p>The same growth work, four ways. Here's who actually does it &mdash; and what it usually costs.</p>
+                <span class="badge badge-gold">WHY NOT JUST&hellip;</span>
+                <h2>You've weighed the alternatives.<br>Here's where each one leaves you.</h2>
             </div>
-            <div class="compare-wrap reveal">
-                <table class="compare-table">
-                    <thead>
-                        <tr>
-                            <th scope="col" aria-label="Category"></th>
-                            <th scope="col">Do it yourself</th>
-                            <th scope="col">An AI tool</th>
-                            <th scope="col">Traditional agency</th>
-                            <th scope="col" class="compare-badir">Badir</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Who does the work</th>
-                            <td>You</td>
-                            <td>You &mdash; it only suggests</td>
-                            <td>A team you manage</td>
-                            <td class="compare-badir">Your agent + a real Badir human</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Typical cost</th>
-                            <td>Your time</td>
-                            <td>Monthly subscription</td>
-                            <td>Agencies ~$5&ndash;15K/mo, or ~NZD 200K/yr for an in-house team</td>
-                            <td class="compare-badir">Founding rate &mdash; revealed on your call</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Speed to live</th>
-                            <td>Whenever you get to it</td>
-                            <td>Fast, but you build it</td>
-                            <td>Weeks of onboarding</td>
-                            <td class="compare-badir">About a month, done for you</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Knows your brand &amp; values</th>
-                            <td>Yes &mdash; but it's all on you</td>
-                            <td>Generic out of the box</td>
-                            <td>Sometimes, if you brief them well</td>
-                            <td class="compare-badir">Built in &mdash; and human-checked</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="stuck-wrap reveal">
+                <div class="stuck-item">
+                    <div class="stuck-opt">Do it yourself?</div>
+                    <div class="stuck-why">You know your brand best &mdash; but you don't have the hours. Marketing becomes the thing you'll get to&hellip; eventually.</div>
+                </div>
+                <div class="stuck-item">
+                    <div class="stuck-opt">An AI tool?</div>
+                    <div class="stuck-why">It suggests, drafts and dashboards. But it's still <em>you</em> doing the work at 11pm, wondering if any of it's actually good.</div>
+                </div>
+                <div class="stuck-item">
+                    <div class="stuck-opt">A traditional agency?</div>
+                    <div class="stuck-why">$5&ndash;15K/mo (or a ~$200K/yr in-house team), weeks of onboarding &mdash; and they rarely get your brand or your values.</div>
+                </div>
+                <div class="stuck-resolve">
+                    <div class="stuck-resolve-badge">Badir does all three right.</div>
+                    <p>The AI agent does the work. A real person keeps it on-brand and on-values. And it's priced for a brand that can't justify an agency. You approve; it ships &mdash; that's the whole point.</p>
+                </div>
             </div>
         </div>
     </section>
