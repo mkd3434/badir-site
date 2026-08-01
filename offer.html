@@ -954,6 +954,10 @@
         .stuck-resolve { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.35); border-radius: 12px; padding: 24px 26px; margin-top: 6px; }
         .stuck-resolve-badge { font-family: var(--font-heading); font-size: 15px; font-weight: 700; color: var(--emerald); margin-bottom: 8px; }
         .stuck-resolve p { font-size: 15px; color: var(--gray-300); line-height: 1.65; }
+        .stuck-diff { list-style: none; margin: 12px 0; display: flex; flex-direction: column; gap: 9px; }
+        .stuck-diff li { position: relative; padding-left: 26px; font-size: 14px; color: var(--gray-300); line-height: 1.55; }
+        .stuck-diff li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--emerald); font-weight: 700; }
+        .stuck-diff li strong { color: var(--white); font-weight: 600; }
 
         /* ─── REDUCED MOTION (a11y) ─── */
         @media (prefers-reduced-motion: reduce) {
@@ -1577,8 +1581,14 @@
                     <div class="stuck-why">$5&ndash;15K/mo (or a ~$200K/yr in-house team), weeks of onboarding &mdash; and they rarely get your brand or your values.</div>
                 </div>
                 <div class="stuck-resolve">
-                    <div class="stuck-resolve-badge">Badir does all three right.</div>
-                    <p>The AI agent does the work. A real person keeps it on-brand and on-values. And it's priced for a brand that can't justify an agency. You approve; it ships &mdash; that's the whole point.</p>
+                    <div class="stuck-resolve-badge">Why Badir is different</div>
+                    <p>Three things &mdash; and no one else does all three:</p>
+                    <ul class="stuck-diff">
+                        <li><strong>Run by an AI agent</strong> &mdash; so you get agency-grade work at a price you can actually justify.</li>
+                        <li><strong>Kept honest by a real human</strong> &mdash; reviewed, on-brand, on-values. No AI slop, ever.</li>
+                        <li><strong>Built for Muslim brands</strong> &mdash; your customers, your calendar (Ramadan, Eid) and your values, baked in.</li>
+                    </ul>
+                    <p>The agent does the work, we keep it real, you approve. That's the whole point.</p>
                 </div>
             </div>
         </div>
