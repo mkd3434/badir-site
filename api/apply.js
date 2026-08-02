@@ -1,10 +1,25 @@
-// Careers endpoint.
-//   POST /api/apply            → receive a job application (Resend notify + confirmation, KV store)
-//   GET  /api/apply?key=…      → fail-closed admin view of collected applications
-//   GET  /api/apply?health=1   → non-PII probe { kvConfigured, count }
-// Two methods, one file — keeps us under Vercel's 12-function cap.
-import { get, set, sadd, smembers, isConfigured } from "./lib/kv.js";
+// Careers endpoint (one file — keeps us under Vercel's 12-function cap).
+//   POST   /api/apply            → receive a job application (public; Resend notify + confirmation, KV store)
+//   GET    /api/apply?key=…      → fail-closed admin view of collected applications
+//   GET    /api/apply?health=1   → non-PII probe { kvConfigured, count }
+//   PATCH  /api/apply {id,status}→ admin: mark reviewed / archived / new
+//   DELETE /api/apply {id}       → admin: permanently delete an application
+import { get, set, del, sadd, srem, smembers, isConfigured } from "./lib/kv.js";
 import { timingSafeEqual } from "./lib/auth.js";
+
+const STATUSES = ["new", "reviewed", "archived"];
+
+// Fail-closed admin auth. Bearer header (project convention) or ?key= / x-admin-key.
+function adminAuth(req) {
+  const ADMIN_KEY = process.env.ADMIN_KEY;
+  if (!ADMIN_KEY) return { ok: false, code: 503, error: "Admin not configured. Set ADMIN_KEY." };
+  const authHeader = req.headers.authorization || "";
+  const bearer = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+  const q = req.query || {};
+  const provided = bearer || req.headers["x-admin-key"] || q.key || "";
+  if (!timingSafeEqual(provided, ADMIN_KEY)) return { ok: false, code: 401, error: "Unauthorized" };
+  return { ok: true };
+}
 
 function esc(s) {
   return String(s == null ? "" : s).replace(
@@ -39,19 +54,8 @@ async function adminView(req, res) {
     return res.status(200).json({ ok: true, kvConfigured: isConfigured(), count });
   }
 
-  const ADMIN_KEY = process.env.ADMIN_KEY;
-  if (!ADMIN_KEY) {
-    return res.status(503).json({
-      error: "Admin view not configured. Set ADMIN_KEY in the Vercel environment to enable it.",
-    });
-  }
-  // Bearer header matches the project convention (registrations.js); ?key= is for browser viewing.
-  const authHeader = req.headers.authorization || "";
-  const bearer = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
-  const provided = bearer || req.headers["x-admin-key"] || q.key || "";
-  if (!timingSafeEqual(provided, ADMIN_KEY)) {
-    return res.status(401).json({ error: "Unauthorized" });
-  }
+  const auth = adminAuth(req);
+  if (!auth.ok) return res.status(auth.code).json({ error: auth.error });
   if (!isConfigured()) {
     return res.status(200).json({
       applications: [],
@@ -72,20 +76,49 @@ async function adminView(req, res) {
     return res.status(200).json({ count: records.length, applications: records });
   }
 
-  const rows = records
+  const KEY = q.key || "";
+  const showArchived = !!q.archived;
+  const activeCount = records.filter((r) => (r.status || "new") !== "archived").length;
+  const archivedCount = records.length - activeCount;
+  const visible = records.filter((r) =>
+    showArchived ? (r.status || "new") === "archived" : (r.status || "new") !== "archived"
+  );
+
+  const badge = (s) => {
+    const st = s || "new";
+    return `<span class="badge b-${st}">${st}</span>`;
+  };
+  const actions = (r) => {
+    const st = r.status || "new";
+    const id = esc(r.id);
+    const b = [];
+    if (st !== "reviewed") b.push(`<button data-act="reviewed" data-id="${id}">Reviewed</button>`);
+    if (st === "archived") b.push(`<button data-act="new" data-id="${id}">Restore</button>`);
+    else b.push(`<button data-act="archived" data-id="${id}">Archive</button>`);
+    b.push(`<button class="danger" data-act="delete" data-id="${id}">Delete</button>`);
+    return b.join(" ");
+  };
+
+  const rows = visible
     .map(
       (r) => `
     <tr>
       <td class="ts">${esc((r.timestamp || "").replace("T", " ").slice(0, 16))}</td>
+      <td>${badge(r.status)}</td>
       <td class="nm">${esc(r.name)}</td>
       <td><a href="mailto:${esc(r.email)}">${esc(r.email)}</a></td>
       <td>${esc(r.role)}</td>
       <td class="links">${linkify(esc(r.links))}</td>
       <td class="msg">${esc(r.message)}</td>
       <td class="rate">${esc(r.rate)}</td>
+      <td class="act">${actions(r)}</td>
     </tr>`
     )
     .join("");
+
+  const toggleLink = showArchived
+    ? `<a href="?key=${esc(KEY)}">&larr; Active (${activeCount})</a>`
+    : `<a href="?key=${esc(KEY)}&amp;archived=1">Archived (${archivedCount})</a>`;
 
   const html = `<!doctype html>
 <html lang="en"><head>
@@ -102,7 +135,7 @@ async function adminView(req, res) {
   .count { color:var(--emerald); font-weight:700; }
   .hint { color:var(--muted); font-size:12px; }
   .wrap { padding:16px 24px 60px; overflow-x:auto; }
-  table { border-collapse:collapse; width:100%; min-width:900px; }
+  table { border-collapse:collapse; width:100%; min-width:1040px; }
   th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
   th { position:sticky; top:0; background:var(--surface); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.5px; }
   tr:hover td { background:#0d0d0f; }
@@ -111,36 +144,113 @@ async function adminView(req, res) {
   td.links { max-width:240px; word-break:break-all; }
   td.msg { max-width:360px; color:#c9c9cf; }
   td.rate { white-space:nowrap; color:var(--muted); }
+  td.act { white-space:nowrap; }
   a { color:var(--emerald); text-decoration:none; }
   a:hover { text-decoration:underline; }
+  .badge { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; padding:2px 8px; border-radius:999px; }
+  .b-new { background:rgba(16,185,129,.15); color:var(--emerald); }
+  .b-reviewed { background:rgba(96,165,250,.15); color:#60A5FA; }
+  .b-archived { background:rgba(138,138,147,.15); color:var(--muted); }
+  button { font:600 12px/1 inherit; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:6px 10px; cursor:pointer; margin:0 2px 2px 0; }
+  button:hover { border-color:var(--emerald); color:var(--emerald); }
+  button.danger:hover { border-color:#EF4444; color:#EF4444; }
   .empty { padding:60px 24px; color:var(--muted); text-align:center; }
 </style></head>
 <body>
   <header>
     <h1>Badir Studio — Applications</h1>
-    <span class="count">${records.length}</span>
-    <span class="hint">newest first · <a href="?key=${esc(q.key || "")}&amp;format=json">JSON</a></span>
+    <span class="count">${visible.length}</span>
+    <span class="hint">${showArchived ? "archived" : "active"} · newest first</span>
+    <span class="hint">${toggleLink} · <a href="?key=${esc(KEY)}&amp;format=json">JSON</a></span>
   </header>
   <div class="wrap">
     ${
-      records.length
+      visible.length
         ? `<table>
-      <thead><tr><th>When</th><th>Name</th><th>Email</th><th>Role</th><th>Links</th><th>About / why Badir</th><th>Rate</th></tr></thead>
+      <thead><tr><th>When</th><th>Status</th><th>Name</th><th>Email</th><th>Role</th><th>Links</th><th>About / why Badir</th><th>Rate</th><th>Actions</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`
-        : `<div class="empty">No applications yet. They'll show up here as they come in.</div>`
+        : `<div class="empty">${showArchived ? "No archived applications." : "No applications yet. They'll show up here as they come in."}</div>`
     }
   </div>
+  <script>
+    // Key is read client-side from the URL — never injected server-side (no reflected XSS).
+    const KEY = new URLSearchParams(location.search).get('key') || '';
+    async function act(method, id, status) {
+      const body = { id };
+      if (status) body.status = status;
+      const res = await fetch('/api/apply', {
+        method,
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + KEY },
+        body: JSON.stringify(body)
+      });
+      if (res.ok) { location.reload(); }
+      else { alert('Action failed (' + res.status + '). Make sure you opened this page with ?key=…'); }
+    }
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-act]');
+      if (!btn) return;
+      const id = btn.getAttribute('data-id');
+      const a = btn.getAttribute('data-act');
+      if (a === 'delete') { if (confirm('Delete this application permanently? This cannot be undone.')) act('DELETE', id); }
+      else act('PATCH', id, a);
+    });
+  </script>
 </body></html>`;
 
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   return res.status(200).send(html);
 }
 
-export default async function handler(req, res) {
-  if (req.method === "GET") {
-    return adminView(req, res);
+// DELETE — permanently remove an application.
+async function adminDelete(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+  const auth = adminAuth(req);
+  if (!auth.ok) return res.status(auth.code).json({ error: auth.error });
+  if (!isConfigured()) return res.status(503).json({ error: "KV not configured" });
+  const id = (req.body && req.body.id) || (req.query && req.query.id) || "";
+  if (!id) return res.status(400).json({ error: "Missing id" });
+  try {
+    await del(`apply:${id}`);
+    await srem("apply:index", id);
+  } catch (err) {
+    console.error("KV error:", err.message);
+    return res.status(500).json({ error: "Delete failed" });
   }
+  return res.status(200).json({ ok: true, deleted: id });
+}
+
+// PATCH — update an application's status (new | reviewed | archived).
+async function adminPatch(req, res) {
+  res.setHeader("Cache-Control", "no-store");
+  const auth = adminAuth(req);
+  if (!auth.ok) return res.status(auth.code).json({ error: auth.error });
+  if (!isConfigured()) return res.status(503).json({ error: "KV not configured" });
+  const id = (req.body && req.body.id) || "";
+  const status = (req.body && req.body.status) || "";
+  if (!id) return res.status(400).json({ error: "Missing id" });
+  if (!STATUSES.includes(status)) return res.status(400).json({ error: "Invalid status" });
+  let rec;
+  try {
+    rec = await get(`apply:${id}`);
+  } catch (err) {
+    console.error("KV error:", err.message);
+    return res.status(500).json({ error: "Read failed" });
+  }
+  if (!rec) return res.status(404).json({ error: "Not found" });
+  try {
+    await set(`apply:${id}`, { ...rec, status });
+  } catch (err) {
+    console.error("KV error:", err.message);
+    return res.status(500).json({ error: "Update failed" });
+  }
+  return res.status(200).json({ ok: true, id, status });
+}
+
+export default async function handler(req, res) {
+  if (req.method === "GET") return adminView(req, res);
+  if (req.method === "DELETE") return adminDelete(req, res);
+  if (req.method === "PATCH") return adminPatch(req, res);
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }

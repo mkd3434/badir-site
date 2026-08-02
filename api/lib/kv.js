@@ -27,6 +27,10 @@ export async function set(key, value) {
   return cmd("SET", key, serialized);
 }
 
+export async function del(key) {
+  return cmd("DEL", key);
+}
+
 export async function sadd(key, member) {
   return cmd("SADD", key, member);
 }
