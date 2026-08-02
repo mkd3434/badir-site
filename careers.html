@@ -1223,20 +1223,62 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="badge badge-emerald badge-dot">FOUNDING TEAM</span>
-                <h2>Join the founding team</h2>
-                <p>One email. Tell us who you are and show us your best work &mdash; we read every application.</p>
+                <h2>Apply to join</h2>
+                <p>Two minutes. Tell us who you are and show us your best work &mdash; we read every application.</p>
             </div>
-            <!-- Founder: swap the apply email below (or wire a real form / ATS here) whenever you're ready. -->
-            <div class="apply-box reveal">
-                <p class="apply-lead">In your email, include:</p>
-                <ul class="signup-perks apply-perks">
-                    <li>Which <strong>role</strong> you're going for</li>
-                    <li>Links to your <strong>best work</strong> &mdash; portfolio, samples, case studies</li>
-                    <li>A line on <strong>why Badir</strong></li>
-                    <li>Your <strong>rate expectation</strong></li>
-                </ul>
-                <a href="mailto:mustafa@badir.studio?subject=Application%20%E2%80%94%20%5BRole%5D&body=Role%20I%27m%20applying%20for%3A%0A%0ALinks%20to%20my%20best%20work%3A%0A%0AWhy%20Badir%3A%0A%0AMy%20rate%20expectation%3A%0A" class="btn btn-primary btn-large" data-cta="careers-apply-email">Apply &mdash; email us <span aria-hidden="true">&rarr;</span></a>
-                <p class="apply-note">Rate is by experience &mdash; we'll talk it through on your application. Prefer to keep it short? Just send your role and your best links.</p>
+            <div class="form-card reveal">
+                <div class="form-card-title">Application</div>
+                <div class="form-card-sub">Open roles first &mdash; everyone else joins the talent bench.</div>
+                <form id="apply-form" onsubmit="return handleApply(event)">
+                    <div class="form-row-half">
+                        <div>
+                            <label class="form-label" for="apply-name">Name</label>
+                            <input class="form-input" type="text" id="apply-name" name="name" placeholder="Your name" autocomplete="name" required>
+                        </div>
+                        <div>
+                            <label class="form-label" for="apply-email">Email</label>
+                            <input class="form-input" type="email" id="apply-email" name="email" placeholder="you@email.com" autocomplete="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="apply-role">Role you're applying for</label>
+                        <select class="form-select" id="apply-role" name="role" required>
+                            <option value="" disabled selected>Choose a role&hellip;</option>
+                            <option>Growth marketer / strategist (open now)</option>
+                            <option>Content &amp; copywriter (open now)</option>
+                            <option>Designer (creative / ad)</option>
+                            <option>Paid-ads specialist</option>
+                            <option>Email &amp; lifecycle (CRM) specialist</option>
+                            <option>SEO &amp; GEO specialist</option>
+                            <option>Video / short-form editor</option>
+                            <option>AI-automation engineer</option>
+                            <option>Account manager / client success</option>
+                            <option>QA reviewer (brand &amp; quality gate)</option>
+                            <option>Other / general interest</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="apply-links">Links to your best work</label>
+                        <input class="form-input" type="text" id="apply-links" name="links" placeholder="Portfolio, samples, case studies, LinkedIn&hellip;" required>
+                        <p class="form-note">Paste a few links &mdash; whatever shows what you can do.</p>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="apply-message">A bit about you &amp; why Badir</label>
+                        <textarea class="form-input" id="apply-message" name="message" rows="4" style="min-height:110px; resize:vertical; line-height:1.6;" placeholder="What you're great at, and why this project pulls you in." required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <label class="form-label" for="apply-rate">Rate expectation <span style="color: var(--gray-600); text-transform: none; letter-spacing: 0;">(optional)</span></label>
+                        <input class="form-input" type="text" id="apply-rate" name="rate" placeholder="Your hourly rate, or 'open to discuss'">
+                        <p class="form-note">Rate is by experience &mdash; we'll talk it through. Leave it blank if you'd rather.</p>
+                    </div>
+                    <!-- Honeypot: hidden from humans, catches bots. Do not remove. -->
+                    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+                    <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="apply-btn" data-cta="careers-apply-submit">
+                        Send application <span aria-hidden="true">&rarr;</span>
+                    </button>
+                    <p class="form-note" style="text-align:center; margin-top:14px;">Prefer email? <a href="mailto:mustafa@badir.studio?subject=Application%20%E2%80%94%20Badir%20Studio" style="color:var(--emerald);">mustafa@badir.studio</a></p>
+                    <div id="signup-msg"></div>
+                </form>
             </div>
         </div>
     </section>
@@ -1262,6 +1304,53 @@
             entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    // ─── APPLICATION SUBMIT ───
+    async function handleApply(e) {
+        e.preventDefault();
+        const form = document.getElementById('apply-form');
+        const btn = document.getElementById('apply-btn');
+        const msg = document.getElementById('signup-msg');
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        const data = {
+            name: (document.getElementById('apply-name')?.value || '').trim(),
+            email: (document.getElementById('apply-email')?.value || '').trim(),
+            role: (document.getElementById('apply-role')?.value || '').trim(),
+            links: (document.getElementById('apply-links')?.value || '').trim(),
+            message: (document.getElementById('apply-message')?.value || '').trim(),
+            rate: (document.getElementById('apply-rate')?.value || '').trim(),
+            _gotcha: (form.querySelector('[name="_gotcha"]')?.value || '')
+        };
+
+        try {
+            const res = await fetch('/api/apply', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await res.json();
+
+            if (res.ok) {
+                msg.textContent = 'Application received — thank you. Mustafa reads every one and will be in touch if there’s a fit.';
+                msg.style.display = 'block';
+                msg.style.color = 'var(--emerald)';
+                form.reset();
+                btn.textContent = 'Application sent';
+            } else {
+                throw new Error(result.error || 'Something went wrong');
+            }
+        } catch (err) {
+            msg.textContent = (err.message || 'Something went wrong') + ' — or email mustafa@badir.studio directly.';
+            msg.style.display = 'block';
+            msg.style.color = '#EF4444';
+            btn.disabled = false;
+            btn.innerHTML = 'Send application <span aria-hidden="true">&rarr;</span>';
+        }
+        return false;
     }
     </script>
 </body>
