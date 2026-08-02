@@ -35,6 +35,11 @@ function linkify(escaped) {
   );
 }
 
+// RFC 4180 cell — wrap in quotes, double internal quotes (safe for commas/newlines).
+function csvCell(v) {
+  return `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
+}
+
 // GET — admin view. Fail-closed: no data unless ADMIN_KEY is set AND matches.
 async function adminView(req, res) {
   res.setHeader("Cache-Control", "no-store");
@@ -74,6 +79,32 @@ async function adminView(req, res) {
 
   if (q.format === "json") {
     return res.status(200).json({ count: records.length, applications: records });
+  }
+
+  if (q.format === "csv") {
+    const header = ["When", "Status", "Name", "Email", "Role", "Links", "Message", "Rate"];
+    const lines = [header.map(csvCell).join(",")];
+    for (const r of records) {
+      lines.push(
+        [
+          (r.timestamp || "").replace("T", " ").slice(0, 16),
+          r.status || "new",
+          r.name,
+          r.email,
+          r.role,
+          r.links,
+          r.message,
+          r.rate,
+        ]
+          .map(csvCell)
+          .join(",")
+      );
+    }
+    const csv = "\uFEFF" + lines.join("\r\n"); // BOM so Excel reads UTF-8 correctly
+    const date = new Date().toISOString().slice(0, 10);
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="badir-applications-${date}.csv"`);
+    return res.status(200).send(csv);
   }
 
   const KEY = q.key || "";
@@ -161,7 +192,7 @@ async function adminView(req, res) {
     <h1>Badir Studio — Applications</h1>
     <span class="count">${visible.length}</span>
     <span class="hint">${showArchived ? "archived" : "active"} · newest first</span>
-    <span class="hint">${toggleLink} · <a href="?key=${esc(KEY)}&amp;format=json">JSON</a></span>
+    <span class="hint">${toggleLink} · <a href="?key=${esc(KEY)}&amp;format=csv">Download CSV</a> · <a href="?key=${esc(KEY)}&amp;format=json">JSON</a></span>
   </header>
   <div class="wrap">
     ${
