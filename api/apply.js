@@ -3,15 +3,8 @@
 //   GET  /api/apply?key=…      → fail-closed admin view of collected applications
 //   GET  /api/apply?health=1   → non-PII probe { kvConfigured, count }
 // Two methods, one file — keeps us under Vercel's 12-function cap.
-import crypto from "node:crypto";
 import { get, set, sadd, smembers, isConfigured } from "./lib/kv.js";
-
-function safeEqual(a, b) {
-  const ab = Buffer.from(String(a || ""));
-  const bb = Buffer.from(String(b || ""));
-  if (ab.length !== bb.length) return false;
-  return crypto.timingSafeEqual(ab, bb);
-}
+import { timingSafeEqual } from "./lib/auth.js";
 
 function esc(s) {
   return String(s == null ? "" : s).replace(
@@ -52,8 +45,11 @@ async function adminView(req, res) {
       error: "Admin view not configured. Set ADMIN_KEY in the Vercel environment to enable it.",
     });
   }
-  const provided = req.headers["x-admin-key"] || q.key;
-  if (!safeEqual(provided, ADMIN_KEY)) {
+  // Bearer header matches the project convention (registrations.js); ?key= is for browser viewing.
+  const authHeader = req.headers.authorization || "";
+  const bearer = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+  const provided = bearer || req.headers["x-admin-key"] || q.key || "";
+  if (!timingSafeEqual(provided, ADMIN_KEY)) {
     return res.status(401).json({ error: "Unauthorized" });
   }
   if (!isConfigured()) {
