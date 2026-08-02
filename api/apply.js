@@ -1,6 +1,7 @@
 // Careers application endpoint — receives job applications from /careers.
 // Mirrors trial-signup.js (Resend notify + applicant confirmation) but does
 // NOT enrol into any drip sequence — an applicant is not a marketing lead.
+import { set, sadd, isConfigured } from "./lib/kv.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -114,6 +115,28 @@ export default async function handler(req, res) {
       });
     } catch (err) {
       console.error("Resend error:", err.message);
+    }
+  }
+
+  // Persist to KV so applications collect in one list (readable via /api/applications).
+  // Guarded — if KV isn't configured, applications still arrive by email.
+  if (isConfigured()) {
+    try {
+      const id = `${timestamp}-${Math.random().toString(36).slice(2, 8)}`;
+      await set(`apply:${id}`, {
+        id,
+        name: sanitizedName,
+        email: sanitizedEmail,
+        role: sanitizedRole,
+        links: sanitizedLinks,
+        message: sanitizedMessage,
+        rate: sanitizedRate,
+        timestamp,
+        ip,
+      });
+      await sadd("apply:index", id);
+    } catch (err) {
+      console.error("KV error:", err.message);
     }
   }
 
