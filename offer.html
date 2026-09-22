@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The AI Marketing Agency for Muslim Brands — Founding Cohort Open | Badir Studio</title>
-    <meta name="description" content="Badir Studio is the AI marketing agency built for Muslim online brands — agency-grade growth, AI-run and human-checked, without the agency price. Founding cohort of 20 open now: get your free sales audit first. Claim a founding spot.">
-    <meta property="og:title" content="The AI marketing agency for Muslim brands — founding cohort open | Badir Studio">
-    <meta property="og:description" content="The AI marketing agency for Muslim brands: agency-grade growth, AI-run and human-checked, without the agency price. Founding cohort of 20 — free sales audit first. Claim your founding spot.">
+    <title>Find where your store leaks sales — done-for-you growth for Muslim brands | Badir Studio</title>
+    <meta name="description" content="Badir Studio finds exactly where your store is leaking sales, then fixes it — CRO, email, ads, SEO, content — human-checked and measured against your real numbers. Free sales audit first. Founding cohort of 20 open now.">
+    <meta property="og:title" content="Find where your store leaks sales — done-for-you growth for Muslim brands | Badir Studio">
+    <meta property="og:description" content="We find where your store is leaking sales, fix it, and prove it in your own numbers — CRO, email, ads, SEO, content, human-checked. Free sales audit first. Founding cohort of 20 open.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://badir.studio/offer">
     <meta property="og:image" content="https://badir.studio/og-image.png">
     <meta property="og:locale" content="en_NZ">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The AI marketing agency for Muslim brands — founding cohort open | Badir Studio">
-    <meta name="twitter:description" content="The AI marketing agency for Muslim brands — agency-grade growth, AI-run and human-checked, without the agency price. Founding cohort of 20, free sales audit first.">
+    <meta name="twitter:title" content="Find where your store leaks sales — done-for-you growth for Muslim brands | Badir Studio">
+    <meta name="twitter:description" content="We find where your store is leaking sales, fix it, and prove it in your own numbers. Free sales audit first — founding cohort of 20 open.">
     <meta name="twitter:image" content="https://badir.studio/og-image.png">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -24,7 +24,7 @@
       "@context": "https://schema.org",
       "@type": "Offer",
       "name": "Founding Cohort — Free Sales Audit First",
-      "description": "Badir Studio is onboarding a founding cohort of 20 Muslim-owned online brands. Founding members get their free sales audit first — we connect to your store and funnel data, find exactly where you're leaking sales, and hand you a ranked plan to grow — the first rung of a done-for-you AI marketing agent (Audit → Build → Run).",
+      "description": "Badir Studio is onboarding a founding cohort of 20 Muslim-owned online brands. Founding members get their free sales audit first — we connect to your store and funnel data, find exactly where you're leaking sales, and hand you a ranked plan to grow — the first rung of done-for-you growth (Audit → Build → Run).",
       "price": "0",
       "priceCurrency": "NZD",
       "isAccessibleForFree": true,
@@ -247,6 +247,36 @@
             color: var(--white); margin-bottom: 10px;
         }
         .value-card p { font-size: 14px; color: var(--gray-400); line-height: 1.7; }
+
+        /* ─── PROOF (leak → fix) ─── */
+        .proof-section { padding: 72px 0; }
+        .proof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .proof-card {
+            background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 28px; transition: border-color 0.3s;
+        }
+        .proof-card:hover { border-color: var(--border-hover); }
+        .proof-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+        .proof-brand { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--white); }
+        .proof-label {
+            font-family: var(--font-mono); font-size: 10px; color: var(--gold);
+            background: var(--gold-dim); border: 1px solid rgba(245,158,11,0.15);
+            padding: 4px 8px; border-radius: 6px; white-space: nowrap;
+        }
+        .proof-row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+        .proof-k { font-family: var(--font-mono); font-size: 10px; color: var(--emerald); text-transform: uppercase; letter-spacing: 1px; padding-top: 2px; }
+        .proof-v { font-size: 13.5px; color: var(--gray-300); line-height: 1.6; }
+        .proof-cta { display: inline-block; margin-top: 18px; font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: var(--emerald); text-decoration: none; }
+        .proof-cta:hover { color: var(--emerald-light); }
+        .proof-foot { text-align: center; margin-top: 28px; font-size: 13px; color: var(--gray-500); font-family: var(--font-mono); }
+        @media (max-width: 720px) {
+            .proof-grid { grid-template-columns: 1fr; }
+            .proof-row { grid-template-columns: 84px 1fr; }
+        }
+
+        /* ─── TEXT LINK (demoted secondary CTA) ─── */
+        .btn-textlink { display: inline-flex; align-items: center; gap: 6px; color: var(--gray-400); font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-decoration: none; padding: 8px 4px; transition: color 0.2s; }
+        .btn-textlink:hover { color: var(--emerald); }
 
         /* ─── HOW IT WORKS ─── */
         .how-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -989,18 +1019,18 @@
         <div class="container">
             <div class="hero-badges">
                 <span class="badge badge-emerald badge-dot">NOW ONBOARDING · FOUNDING COHORT</span>
-                <span class="badge badge-gold">AI MARKETING AGENCY · MUSLIM BRANDS</span>
+                <span class="badge badge-gold">DONE-FOR-YOU GROWTH · MUSLIM BRANDS</span>
             </div>
-            <h1>Your store is leaking sales.<br><span class="gradient">We build the AI agent that plugs the leaks — and grows the rest.</span></h1>
+            <h1>Your store is leaking sales.<br><span class="gradient">We find exactly where &mdash; then fix it, and prove it in your own numbers.</span></h1>
             <p class="hero-launch"><span class="hero-launch-dot"></span> We're opening our founding cohort — the first <strong>20 Muslim brands</strong> get in first.</p>
             <p class="hero-sub">
-                Badir is the AI marketing agency for Muslim brands. We build you an <strong>AI agent that helps you do more sales</strong> &mdash; it runs your growth (content, ads, email, SEO, CRO), a real human keeps it honest, you approve.
+                Badir is done-for-you growth for Muslim online brands &mdash; modest fashion, halal DTC, and the rest. We start with a <strong>free sales audit</strong> that finds where you're losing revenue and hands you a ranked plan to keep. Want us to run the fixes? We do the work &mdash; CRO, email, ads, SEO, content &mdash; a real human checks everything, we measure it against your real store, and you approve.
                 Agency-grade work, without the agency price or the chase.
             </p>
-            <p class="hero-mission"><strong>Our mission:</strong> put a world-class AI marketing team in every Muslim brand's corner &mdash; and grow them, the halal way.</p>
+            <p class="hero-mission"><strong>Our mission:</strong> put a world-class growth team in every Muslim brand's corner &mdash; and grow them, the halal way.</p>
             <div class="hero-ctas">
                 <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-hero-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
-                <a href="#how" class="btn btn-outline" data-cta="offer-hero-how-it-works">How it works</a>
+                <a href="#how" class="btn-textlink" data-cta="offer-hero-how-it-works">See how Audit &rarr; Build &rarr; Run works &darr;</a>
             </div>
             <p class="hero-cta-sub">One of 20 founding spots &middot; no cost, no obligation.</p>
             <!-- FOUNDING COHORT COUNTER — single source of truth for spots-left -->
@@ -1035,6 +1065,40 @@
     <section style="padding: 0;" id="score-bridge-section">
         <div class="container">
             <div class="score-bridge" id="score-bridge"></div>
+        </div>
+    </section>
+
+    <!-- PROOF — LEAK → FIX (self-portfolio, honestly labeled) -->
+    <section class="proof-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="badge badge-emerald badge-dot">PROOF · SAME SYSTEM</span>
+                <h2>Same system. Real leaks. Honest labels.</h2>
+                <p>These are businesses we build and run ourselves &mdash; not client testimonials. Same Audit &rarr; Build &rarr; Run we'd install for you. When we have founding-cohort results, we'll publish those too. Until then, here's what the pipeline actually found and fixed.</p>
+            </div>
+            <div class="proof-grid reveal">
+                <div class="proof-card">
+                    <div class="proof-card-top">
+                        <span class="proof-brand">MarketMate</span>
+                        <span class="proof-label">Our product &middot; not a client case study</span>
+                    </div>
+                    <div class="proof-row"><span class="proof-k">Leak found</span><span class="proof-v">Homepage was a bounce trap &mdash; roughly 90% bounce, ~0.3% homepage&rarr;signup. Paid and organic traffic hit a wall before signup.</span></div>
+                    <div class="proof-row"><span class="proof-k">What we did</span><span class="proof-v">CRO pass on the first-screen job: one clear "sell your clothes" path, tightened hero&rarr;auth, and stopped treating a pretty homepage as the conversion surface.</span></div>
+                    <div class="proof-row"><span class="proof-k">Outcome</span><span class="proof-v">Leak diagnosed and ranked; the auth funnel is the live fix target. No borrowed third-party lift number &mdash; the value is the pattern: find the drop-off, rank it, ship the fix.</span></div>
+                    <a href="#signup" class="proof-cta" data-cta="offer-proof-marketmate">Want this ranked for your store? Get the free audit &rarr;</a>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-card-top">
+                        <span class="proof-brand">LUA Jewellery</span>
+                        <span class="proof-label">Our product &middot; not a client case study</span>
+                    </div>
+                    <div class="proof-row"><span class="proof-k">Leak found</span><span class="proof-v">Carts expired with no recovery. One-of-one inventory meant a standard "abandoned cart" chase would lie when a piece was already gone.</span></div>
+                    <div class="proof-row"><span class="proof-k">What we did</span><span class="proof-v">Built inventory-honest recovery: one email per cart per 14 days, only if the piece is still available; quiet NZ-compliant opt-out; a day-10 care flow.</span></div>
+                    <div class="proof-row"><span class="proof-k">Outcome</span><span class="proof-v">Welcome, recovery and care flows live in production. No fake "still waiting" when stock is gone &mdash; brand voice protected while plugging the cheapest leak channel.</span></div>
+                    <a href="#signup" class="proof-cta" data-cta="offer-proof-lua">Same playbook for your store &mdash; Get the free audit &rarr;</a>
+                </div>
+            </div>
+            <p class="proof-foot reveal">Founding-cohort brands get named case studies &mdash; with permission, real numbers, no borrowed logos.</p>
         </div>
     </section>
 
@@ -1123,7 +1187,7 @@
             </div>
             <p class="reveal" style="text-align:center; max-width:560px; margin:28px auto 0; color:var(--gray-400); font-size:14px; line-height:1.7;">From your free audit to a live agent takes <strong style="color:var(--emerald-light); font-weight:600;">about a month</strong> &mdash; audit first, then, if you're in, we build and run the fix. No surprises.</p>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-how-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-how-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1613,7 +1677,7 @@
                         <li>Exactly where you're leaking sales, found</li>
                         <li>A ranked plan &mdash; yours to keep or hand to us</li>
                     </ul>
-                    <a href="#signup" class="btn btn-primary" data-cta="offer-pricing-free-audit">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                    <a href="#signup" class="btn btn-primary" data-cta="offer-pricing-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
                 </div>
                 <div class="pricing-tier">
                     <span class="pricing-tag pricing-tag-gold">ONE-TIME · FOUNDING RATE</span>
@@ -1625,7 +1689,7 @@
                         <li>Trained on your brand, products &amp; customers</li>
                         <li>Tracking wired in, channels connected</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-build">Reserve your founding spot</a>
+                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-build">After the audit &mdash; Build</a>
                 </div>
                 <div class="pricing-tier">
                     <span class="pricing-tag pricing-tag-gold">MONTHLY · FOUNDING RATE</span>
@@ -1637,7 +1701,7 @@
                         <li>CRO, ads, email/SMS, SEO, content, reporting</li>
                         <li>Founding rate locked &mdash; cancel anytime</li>
                     </ul>
-                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-run">Reserve your founding spot</a>
+                    <a href="#signup" class="btn btn-outline" data-cta="offer-pricing-run">After the audit &mdash; Run</a>
                 </div>
             </div>
             <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
@@ -1651,7 +1715,7 @@
             <p class="pricing-note">Build and Run cover the AI agent, strategy and execution. Your ad spend and creative production &mdash; creatives, video, images &mdash; are billed separately. We'll lay it out on your call.</p>
             <p class="pricing-note" style="color: var(--emerald-light); margin-top: 12px;">Public pricing goes up once the founding 20 are in. Your founding rate doesn't.</p>
             <div class="section-cta reveal">
-                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-founding-claim">Claim your founding spot <span aria-hidden="true">&rarr;</span></a>
+                <a href="#signup" class="btn btn-primary btn-large" data-cta="offer-founding-claim">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -1831,7 +1895,7 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; margin-top:8px;" id="trial-btn" data-cta="offer-form-submit">
-                            Claim your founding spot <span aria-hidden="true">&rarr;</span>
+                            Get my free sales audit <span aria-hidden="true">&rarr;</span>
                         </button>
                         <p class="form-note">No cost, no obligation. We'll be in touch to run your free audit first.</p>
                         <div id="signup-msg"></div>
@@ -1844,7 +1908,7 @@
 
     <!-- STICKY CTA -->
     <div class="sticky-cta" id="sticky-cta">
-        <span class="sticky-cta-text"><strong>Founding cohort now open</strong> &mdash; claim one of the first spots.</span>
+        <span class="sticky-cta-text"><strong>Founding cohort open</strong> &mdash; free sales audit first, no obligation.</span>
         <a href="#signup" class="btn btn-primary" data-cta="offer-sticky-free-audit">Get my free sales audit <span aria-hidden="true">&rarr;</span></a>
     </div>
 
@@ -2147,7 +2211,7 @@
             msg.style.display = 'block';
             msg.style.color = '#EF4444';
             btn.disabled = false;
-            btn.innerHTML = 'Claim your founding spot <span aria-hidden="true">&rarr;</span>';
+            btn.innerHTML = 'Get my free sales audit <span aria-hidden="true">&rarr;</span>';
         }
 
         return false;

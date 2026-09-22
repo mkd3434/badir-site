@@ -393,7 +393,9 @@
             margin: 0 auto 40px; line-height: 1.7;
         }
         .hero-sub strong { color: var(--gray-100); font-weight: 500; }
-        .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+        .hero-ctas { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 56px; }
+        .hero-textlink { display: inline-flex; align-items: center; gap: 6px; color: var(--gray-400); font-family: var(--font-heading); font-size: 14px; font-weight: 600; text-decoration: none; transition: color 0.2s; }
+        .hero-textlink:hover { color: var(--emerald); }
 
         /* ─── BUTTONS ─── */
         .btn {
@@ -1192,7 +1194,7 @@
             </p>
             <div class="hero-ctas">
                 <a href="/build#join" class="btn btn-primary" humblytics="hero-build">Build With Us <span aria-hidden="true">→</span></a>
-                <a href="/assessments" class="btn btn-outline" humblytics="hero-assessments">Take a Free Check</a>
+                <a href="/scorecard" class="hero-textlink" humblytics="hero-scorecard">Check your marketing health <span aria-hidden="true">→</span></a>
             </div>
             <div class="stats-bar reveal">
                 <div class="stat"><div class="stat-val"><span class="accent">6</span></div><div class="stat-label">Products Shipped</div></div>

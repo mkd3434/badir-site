@@ -26,6 +26,16 @@ function weakestDims(sub) {
     .join("\n");
 }
 
+// Single lowest-scoring dimension — for the subject line + "biggest leak" copy.
+// Returns null when no dimension data is available (pure; never mutates sub).
+function weakestDim(sub) {
+  const dims = sub.meta?.dimensions || {};
+  const entries = Object.entries(dims).sort(([, a], [, b]) => (a.score || 0) - (b.score || 0));
+  if (!entries.length) return null;
+  const [name, d] = entries[0];
+  return { name, score: d.score, max: d.max };
+}
+
 // ─────────────────────────────────────────────
 // Sequence 1: Trial signup (steps 1-6, step 0 = existing welcome in trial-signup.js)
 // ─────────────────────────────────────────────
@@ -149,47 +159,73 @@ const trial = [
 const scorecardMarketing = [
   {
     day: 0,
-    subject: (sub) => `Your score: ${sub.meta?.score || "?"}/120 — what to focus on first`,
+    subject: (sub) => {
+      const score = sub.meta?.score || "?";
+      const weak = weakestDim(sub);
+      return weak
+        ? `Your score: ${score}/120 — biggest leak: ${weak.name}`
+        : `Your score: ${score}/120 — what to focus on first`;
+    },
     text: (sub) => {
       const score = sub.meta?.score || "?";
       const grade = sub.meta?.grade || "Unknown";
+      const weak = weakestDim(sub);
+      const leakLine = weak
+        ? `Your biggest leak right now: ${weak.name} (${weak.score}/${weak.max}).`
+        : "Your biggest leak is the dimension you scored lowest on below.";
       return body(sub.name, [
-        `You scored ${score}/120 on the Marketing Health Scorecard. Grade: ${grade}.`,
+        `You scored ${score}/120 on the Marketing Health Scorecard (${grade}).`,
+        "",
+        leakLine,
+        "",
+        "That's where you're most likely leaving paid and organic traffic on the table — and every week you wait, that leak compounds. We're not inventing a dollar figure; your scorecard measured this directly.",
         "",
         "Your 3 weakest areas:",
         weakestDims(sub) || "- (dimension data not available)",
         "",
-        "Here's what I'd focus on first:",
+        "What to do next, in order:",
+        "1. Fix the #1 leak above first — not your strongest channel.",
+        "2. If you want it ranked against your real store and funnel (not a quiz), claim a free founding sales audit — you keep the plan either way.",
+        "3. The founding cohort is capped at 20, so every brand gets real, human-checked work — not a shared chatbot.",
         "",
-        "1. Start with your lowest-scoring dimension — that's where the biggest gains are",
-        "2. Check if your website passes the 5-second test (can a visitor understand what you do instantly?)",
-        "3. Search for your business name in ChatGPT — you might be surprised by what you find (or don't find)",
+        "Claim your free founding audit:",
+        "https://badir.studio/offer#signup",
         "",
-        "These three steps alone can shift your marketing trajectory. You don't need to fix everything at once — just start with the area that scored lowest.",
+        "No obligation. You leave with at least 5 ranked ways to grow — whether or not we build and run the fixes.",
         "",
-        "Reply to this email if you want to talk through your results.",
+        "Bismillah — ship the fix.",
       ]);
     },
   },
   {
     day: 2,
-    subject: "Your weakest dimension — and why it matters most",
-    text: (sub) => body(sub.name, [
-      "Two days ago you took our Marketing Health Scorecard.",
-      "",
-      "Your weakest dimension is where you're leaving the most on the table. Here's why:",
-      "",
-      "- Low Website & CRO score = visitors come but don't convert",
-      "- Low SEO score = you're invisible on Google",
-      "- Low AI Search score = you don't exist in ChatGPT/Perplexity",
-      "- Low Competitor Intel = you're always reacting, never leading",
-      "- Low Analytics = you're making decisions blind",
-      "- Low Brand score = visitors don't trust you enough to buy",
-      "",
-      "Pick your lowest one. Google \"how to improve [that area]\" and spend 30 minutes reading. That's genuinely the best first step.",
-      "",
-      "If you want a second opinion on what to prioritize, reply to this email.",
-    ]),
+    subject: (sub) => {
+      const weak = weakestDim(sub);
+      return weak ? `Still leaking on ${weak.name}?` : "Your weakest dimension — and why it matters most";
+    },
+    text: (sub) => {
+      const weak = weakestDim(sub);
+      const openLine = weak
+        ? `Two days ago your scorecard flagged ${weak.name} as your biggest leak. Until it's fixed, it keeps costing you traffic and sales.`
+        : "Two days ago you took our Marketing Health Scorecard. Your weakest dimension is where you're leaving the most on the table.";
+      return body(sub.name, [
+        openLine,
+        "",
+        "Here's what each weak area actually costs you:",
+        "",
+        "- Low Website & CRO = visitors come but don't convert",
+        "- Low SEO = you're invisible on Google",
+        "- Low AI Search = you don't exist in ChatGPT/Perplexity",
+        "- Low Competitor Intel = you're always reacting, never leading",
+        "- Low Analytics = you're making decisions blind",
+        "- Low Brand = visitors don't trust you enough to buy",
+        "",
+        "You can fix your lowest one yourself — read up for 30 minutes and start. Or have us rank it against your real store and hand you the plan, free:",
+        "https://badir.studio/offer#signup",
+        "",
+        "Either way, fix the biggest leak first. Reply if you want a second opinion on what to prioritize.",
+      ]);
+    },
   },
   {
     day: 5,
