@@ -1037,12 +1037,10 @@
             <div class="founding-counter reveal" data-founding-total="20">
                 <div class="founding-counter-top">
                     <span class="founding-counter-left">
-                        <!-- Founding cohort remaining — update this number manually; static, not live -->
-                        <b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left
+                        Founding cohort capped at <b><span data-founding-total-text>20</span></b> brands
                     </span>
                     <span class="founding-counter-tag">Founding cohort</span>
                 </div>
-                <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
             </div>
             <div class="stats-bar reveal">
                 <div class="stat">
@@ -1707,10 +1705,9 @@
             <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
             <div class="founding-counter reveal" style="margin-top:40px;">
                 <div class="founding-counter-top">
-                    <span class="founding-counter-left"><b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left</span>
+                    <span class="founding-counter-left">Founding cohort capped at <b><span data-founding-total-text>20</span></b> brands</span>
                     <span class="founding-counter-tag">Founding cohort</span>
                 </div>
-                <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
             </div>
             <p class="pricing-note" style="color: var(--emerald-light); font-weight: 600; margin-top: 16px;"><strong>The Run guarantee:</strong> we don't bill Run until you can see the lift in your own store &mdash; recovered checkout plus owned email/SMS revenue, measured in your numbers, not ours. If we can't show it, you don't pay Run.</p>
             <p class="pricing-note">Build and Run cover the AI agent, strategy and execution. Your ad spend and creative production &mdash; creatives, video, images &mdash; are billed separately. We'll lay it out on your call.</p>
@@ -1745,7 +1742,7 @@
                 <h2>Marketing, the honest way</h2>
             </div>
             <ul class="principles-list reveal">
-                <li><strong>No fake scarcity.</strong> The founding cap is real, and the counter never fake-counts down.</li>
+                <li><strong>No fake scarcity.</strong> The founding cap of 20 is real. We don't show a spots-left countdown, because we're not going to invent one.</li>
                 <li><strong>No fake reviews or borrowed testimonials.</strong> Ever. When we have results, they'll be real.</li>
                 <li><strong>A human reviews everything</strong> before it goes live &mdash; nothing off-brand, nothing off-values.</li>
                 <li><strong>Built around your world</strong> &mdash; modest visuals, your calendar (Ramadan, Eid), your voice.</li>
@@ -1870,10 +1867,9 @@
                     <!-- FOUNDING COHORT COUNTER (mirror — value filled from hero single source) -->
                     <div class="founding-counter compact">
                         <div class="founding-counter-top">
-                            <span class="founding-counter-left"><b><span data-spots-left>13</span></b> of <span data-founding-total-text>20</span> founding spots left</span>
+                            <span class="founding-counter-left">Founding cohort capped at <b><span data-founding-total-text>20</span></b> brands</span>
                             <span class="founding-counter-tag">Founding cohort</span>
                         </div>
-                        <div class="founding-bar"><div class="founding-bar-fill" data-spots-bar style="width:35%"></div></div>
                     </div>
                 </div>
                 <div class="form-card reveal">
@@ -2130,43 +2126,20 @@
         document.querySelectorAll('.stats-bar').forEach(el => counterObserver.observe(el));
     }
 
-    // ─── FOUNDING COHORT COUNTER (static, not live — single source of truth) ───
-    (function() {
-        const hero = document.querySelector('.founding-counter[data-founding-total]');
-        if (!hero) return;
-        const total = parseInt(hero.getAttribute('data-founding-total')) || 20;
-        // canonical remaining value = the hero counter's data-spots-left span (see its HTML comment)
-        const canonical = hero.querySelector('[data-spots-left]');
-        const left = parseInt(canonical ? canonical.textContent : '') || 0;
-        const claimed = Math.max(0, Math.min(total, total - left));
-        const pctFilled = total ? Math.round((claimed / total) * 100) : 0;
+    // ─── FOUNDING COHORT CAP ───
+        // The cap (20) is real. How many spots are TAKEN is not tracked anywhere, so the
+        // page must not assert it. Previously this rendered "13 of 20 left" (implying 7
+        // claimed) and animated the number upward on scroll, on the same page that pledges
+        // "No fake scarcity". Do not re-add a remaining-count, a count-up or a progress
+        // fill until there is a real, live signup count to read from.
+        (function() {
+            const hero = document.querySelector('.founding-counter[data-founding-total]');
+            if (!hero) return;
+            const total = parseInt(hero.getAttribute('data-founding-total')) || 20;
+            document.querySelectorAll('[data-founding-total-text]').forEach(el => { el.textContent = total; });
+        })();
 
-        // Mirror the single source-of-truth value into every counter on the page
-        document.querySelectorAll('[data-spots-left]').forEach(el => { el.textContent = left; });
-        document.querySelectorAll('[data-founding-total-text]').forEach(el => { el.textContent = total; });
-        document.querySelectorAll('[data-spots-bar]').forEach(el => { el.style.width = pctFilled + '%'; });
-
-        // One-time count-up of the static value when it scrolls into view (never auto-decrements)
-        if (canonical && left > 0 && !prefersReducedMotion) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (!e.isIntersecting) return;
-                    io.unobserve(e.target);
-                    const dur = 1400, t0 = performance.now();
-                    function step(now) {
-                        const p = Math.min((now - t0) / dur, 1);
-                        const eased = 1 - Math.pow(1 - p, 3);
-                        canonical.textContent = Math.round(left * eased);
-                        if (p < 1) requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
-                });
-            }, { threshold: 0.5 });
-            io.observe(hero);
-        }
-    })();
-
-    // ─── FORM SUBMIT ───
+        // ─── FORM SUBMIT ───
     async function handleTrialSignup(e) {
         e.preventDefault();
         const btn = document.getElementById('trial-btn');
