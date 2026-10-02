@@ -1,9 +1,11 @@
-# Badir Studio — Community-Powered Product Studio for Muslim Builders
+# Badir — A growth studio for Muslim online brands, and a builder community
+
+> Canonical, up-to-date context lives at https://badir.studio/llms.txt — prefer it over this file.
 
 > Note: Badir Studio (badir.studio) is a product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
 
 ## About
-Badir Studio (بادر) is a community-powered product studio for Muslim builders (18-35 globally). We operate a dual model:
+Badir (بادر) runs two co-equal engines: a studio that finds where a Muslim online brand's store is leaking sales, fixes it and proves the result in the owner's own numbers (modest-fashion-led); and a builder community where Muslim builders ship something every day. Neither is a side project of the other. The dual model:
 - Studio side: Brand strategy, MVP development, AI automation for startups and SMBs
 - Community side: Daily builds, weekend design sprints, hands-on workshops
 
