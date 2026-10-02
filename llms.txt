@@ -23,14 +23,22 @@ Current open builds:
 
 Join at: https://badir.studio/build
 
-## Studio Offer (how a studio engagement works)
-1. **Audit — free.** We go through your store the way a buyer does and rank where it is leaking money. The ranked plan is yours to keep, whether or not you hire us to fix it.
-2. **Build — one-time.** We fix the leaks we found.
-3. **Run — monthly.** We keep growing it with your approval on the work. Badir steers, you approve; it does not run itself.
+## Studio: two doors
 
-Currently taking a founding cohort of 20 brands. Ad spend and creative production are billed separately. Start at https://badir.studio/offer
+The studio sells two distinct things. They are not two prices for the same work, and they apply to buyers at opposite ends of the build timeline.
 
-The products listed under Founder below are Badir's OWN products, not client case studies. We label them that way deliberately.
+### 1. Leak Check — FREE, diagnosis only
+For a store that already exists and is already selling. We read the store's own numbers and rank where money is falling out (abandoned carts, weak product pages, wasted ad spend, thin email/SMS follow-up, no attribution), with what each gap costs per month. The ranked list is the client's to keep whether or not they hire us.
+**Scope boundary (important):** the Leak Check is a DIAGNOSIS ONLY. It does not cover who the brand should serve, what it should build next, or brand direction. That is the paid work below. It also does not include the fix.
+Then, if they want the leaks fixed: **Build** (one-time) and **Run** (monthly), both quoted on a call during the founding cohort of 20 brands. Ad spend and creative production are billed separately. Badir steers, the client approves; it does not run itself.
+Start at https://badir.studio/offer
+
+### 2. Before You Build — PAID, strategy first
+For a brand that is not built yet, or one being rebuilt. The paid, senior engagement that decides who the brand is actually for — in the customers' own words — and what is worth shipping, BEFORE anything gets built. Deliverables (website, MVP, brand system, marketing, AI automation) are quoted separately once the direction is set.
+Start at https://badir.studio/services
+
+### How they relate
+Leak Check reads numbers a store already has. Before You Build is for when there are no numbers to read yet, because the thing does not exist. A Leak Check can also point a client toward Before You Build if the real problem turns out to be direction rather than plumbing. Nothing gets built off a free Leak Check.
 
 ## Founder
 Mustafa Kivanc Demirsoy (MKD) — Builder. No corporate titles by choice: "I'm here to do the work, not to be called something."
@@ -45,7 +53,7 @@ Location: Tauranga, New Zealand (global reach)
 - Always action-oriented, never preachy
 - No titles, no credentialism — judge the work, not the label
 
-## Studio Services (4-Phase Pipeline)
+## Before You Build — the 4-phase pipeline
 1. Discovery — Market research, competitor audit, audience intelligence, ICP profiling
 2. Brand — CORE framework brand discovery, positioning, voice, design system, messaging
 3. Build — Websites, MVPs, marketing materials, content, creatives, AI automation

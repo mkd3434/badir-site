@@ -935,6 +935,22 @@
             .apply-form-card { padding: 24px 16px; }
         }
 
+
+        /* ─── STUDIO FORK: two doors, free diagnosis vs paid direction ─── */
+        .fork-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 8px; }
+        .fork-card { background: var(--surface-2); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 14px; }
+        .fork-free { border-color: rgba(16,185,129,0.28); }
+        .fork-paid { border-color: rgba(245,158,11,0.28); }
+        .fork-tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.2px;
+            text-transform: uppercase; color: var(--emerald); }
+        .fork-tag-gold { color: var(--gold); }
+        .fork-card h3 { font-family: var(--font-heading); font-size: 26px; font-weight: 700; margin: 0; }
+        .fork-card p { color: var(--gray-400); font-size: 15px; line-height: 1.7; margin: 0; }
+        .fork-bound { font-size: 13.5px !important; color: var(--gray-500) !important;
+            border-left: 2px solid var(--border); padding-left: 12px; }
+        .fork-card .btn { margin-top: auto; align-self: flex-start; }
+        @media (max-width: 900px) { .fork-grid { grid-template-columns: 1fr; } }
         /* ─── STUDIO: FREE SALES AUDIT SECTION ─── */
         .trial-section { padding: 80px 0; position: relative; overflow: hidden; }
         .trial-section::before {
@@ -1157,7 +1173,7 @@
     <nav>
         <a href="#" class="nav-logo">Badir <span class="ar">بادر</span></a>
         <div class="nav-center">
-            <a href="/offer">Studio</a>
+            <a href="#services">Studio</a>
             <a href="#community">Community</a>
             <a href="#portfolio">Work</a>
             <a href="/about">About</a>
@@ -1170,7 +1186,7 @@
         </button>
     </nav>
     <div class="mobile-menu" id="mobile-menu">
-        <a href="/offer" onclick="toggleMenu()">Studio</a>
+        <a href="#services" onclick="toggleMenu()">Studio</a>
         <a href="#community" onclick="toggleMenu()">Community</a>
         <a href="#portfolio" onclick="toggleMenu()">Work</a>
         <a href="/about" onclick="toggleMenu()">About</a>
@@ -1480,9 +1496,29 @@
     <section id="services" class="services-section">
         <div class="container">
             <div class="section-header">
-                <div class="badge badge-emerald">How We Solve It</div>
-                <h2>Your problem.<br>Fixed end to end.</h2>
-                <p>We don't hand you a deck and wish you luck — we do the work. Discovery, brand, build, monitor. The AI system behind it is how one founder delivers at team speed.</p>
+                <div class="badge badge-emerald">Two ways in</div>
+                <h2>Already built,<br>or still building?</h2>
+                <p>Two different starting points, so they start in two different places. One door&rsquo;s for a store that already exists and is quietly leaking money. The other&rsquo;s for a brand that isn&rsquo;t built yet &mdash; or needs rebuilding from the studs. Pick where you&rsquo;re standing.</p>
+            </div>
+            <div class="fork-grid reveal">
+                <div class="fork-card fork-free">
+                    <div class="fork-tag">Free &middot; diagnosis only</div>
+                    <h3>Leak Check</h3>
+                    <p>You&rsquo;re already selling, but money keeps slipping out &mdash; carts abandoned, product pages that don&rsquo;t close, ad spend with nothing to show, email flows half-built. We read your own store numbers and show you exactly where it&rsquo;s leaking, ranked by what each gap costs you a month. Yours to keep whether you hire us or not.</p>
+                    <p class="fork-bound">It won&rsquo;t tell you who to serve or what to build next. That&rsquo;s the paid work.</p>
+                    <a href="/offer" class="btn btn-primary" humblytics="fork-leak-check">Find the leaks &mdash; free <span aria-hidden="true">&rarr;</span></a>
+                </div>
+                <div class="fork-card fork-paid">
+                    <div class="fork-tag fork-tag-gold">Paid &middot; strategy first</div>
+                    <h3>Before You Build</h3>
+                    <p>Starting a brand, or rebuilding one that never really landed? We don&rsquo;t build on a guess. First we work out who you&rsquo;re actually for &mdash; in your own customers&rsquo; words &mdash; and what&rsquo;s worth shipping. That&rsquo;s the paid part, and it&rsquo;s where the real value is. Once the direction&rsquo;s clear, we quote the build separately.</p>
+                    <p class="fork-bound">Nothing gets built off a guess, and nothing gets quoted before the direction is set.</p>
+                    <a href="/services" class="btn btn-outline" humblytics="fork-before-you-build">See how it works <span aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+            <div class="section-header" style="margin-top:72px">
+                <h2>What we actually do</h2>
+                <p>Discovery, brand, build, monitor. The AI system behind it is how one founder delivers at team speed.</p>
             </div>
             <div class="services-bento">
                 <div class="svc-card reveal">
