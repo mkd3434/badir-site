@@ -9,13 +9,13 @@ test.describe('Badir Homepage', () => {
   test('should load with correct title and meta', async ({ page }) => {
     await expect(page).toHaveTitle(/Badir/)
     const description = page.locator('meta[name="description"]')
-    await expect(description).toHaveAttribute('content', /product studio|Muslim builders/i)
+    await expect(description).toHaveAttribute('content', /leaking sales|builder community/i)
   })
 
   test('should display hero section with key elements', async ({ page }) => {
     await expect(page.locator('h1')).toBeVisible()
-    await expect(page.locator('h1')).toContainText('Build businesses')
-    await expect(page.locator('h1')).toContainText('Serve the Ummah')
+    await expect(page.locator('h1')).toContainText('leaking sales')
+    await expect(page.locator('h1')).toContainText('We fix both')
 
     // Hero CTAs
     const heroCtas = page.locator('.hero-ctas a')
@@ -25,8 +25,8 @@ test.describe('Badir Homepage', () => {
   test('should display stats bar', async ({ page }) => {
     const stats = page.locator('.stats-bar .stat')
     await expect(stats).toHaveCount(4)
-    await expect(page.locator('.stats-bar')).toContainText('24')
-    await expect(page.locator('.stats-bar')).toContainText('AI Agents')
+    await expect(page.locator('.stats-bar')).toContainText('Products Shipped')
+    await expect(page.locator('.stats-bar')).toContainText('Halal Economy')
   })
 
   test('should display mission strip with Quran verse', async ({ page }) => {

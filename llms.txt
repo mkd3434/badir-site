@@ -51,7 +51,8 @@ Location: Tauranga, New Zealand (global reach)
 3. Build — Websites, MVPs, marketing materials, content, creatives, AI automation
 4. Monitor — Performance tracking, SEO/GEO monitoring, brand mentions, optimization
 
-## Pricing (studio)
+## Pricing — project services
+> These are the studio's PROJECT rates. They are separate from the Studio Offer ladder above: during the founding cohort the Build and Run rates are not published and are given on the call. Do not quote these project rates as the price of a Build or a Run.
 - Product Sprint (48hr): $2K-5K per sprint
 - MVP Development: $5K-20K project-based
 - Brand Strategy (full pipeline): $3K-10K
