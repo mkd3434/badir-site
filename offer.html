@@ -1878,6 +1878,13 @@
                     <div class="form-card-title">Claim your founding spot</div>
                     <div class="form-card-sub">Takes 30 seconds. We'll reserve your spot and run your free audit first.</div>
                     <form id="trial-form" onsubmit="return handleTrialSignup(event)">
+                    <!-- Spam trap: hidden from people, irresistible to bots. Do not remove,
+                         do not add a label, do not make it visible. -->
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
+                        <label for="company_website">Company website</label>
+                        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <input type="hidden" id="trial-rendered-at" name="rendered_at" value="">
                         <div class="form-row">
                             <label class="form-label" for="trial-website">Store URL</label>
                             <input class="form-input" type="text" inputmode="url" autocomplete="url" id="trial-website" name="website_url" placeholder="yourstore.com" required>
@@ -2142,6 +2149,13 @@
         })();
 
         // ─── FORM SUBMIT ───
+    // Stamp when the form was actually rendered, so the server can spot
+    // submissions that arrive faster than a human could type.
+    (function () {
+        var f = document.getElementById("trial-rendered-at");
+        if (f) f.value = String(Date.now());
+    })();
+
     async function handleTrialSignup(e) {
         e.preventDefault();
         const btn = document.getElementById('trial-btn');
@@ -2158,6 +2172,8 @@
             name: (document.getElementById('trial-name')?.value || '').trim(),
             email: form.email.value.trim(),
             website_url: website,
+            company_website: (document.getElementById('company_website')?.value || ''),
+            rendered_at: (document.getElementById('trial-rendered-at')?.value || ''),
             source: 'offer-page-founding',
             scorecard_score: form.scorecard_score ? form.scorecard_score.value : null,
             scorecard_grade: form.scorecard_grade ? form.scorecard_grade.value : null

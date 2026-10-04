@@ -46,3 +46,16 @@ export async function smembers(key) {
 export function isConfigured() {
   return Boolean(KV_URL && KV_TOKEN);
 }
+
+// --- counters / existence, for rate limiting and dedupe ---
+export async function incr(key) {
+  return cmd("INCR", key);
+}
+
+export async function expire(key, seconds) {
+  return cmd("EXPIRE", key, String(seconds));
+}
+
+export async function exists(key) {
+  return Boolean(await cmd("EXISTS", key));
+}
