@@ -1,5 +1,4 @@
-import { set, sadd, isConfigured } from "./lib/kv.js";
-import { screen } from "./lib/antispam.js";
+import { set, sadd, isConfigured, screen } from "./lib/kv.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

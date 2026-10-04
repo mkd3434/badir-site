@@ -1,4 +1,4 @@
-import { set, sadd, smembers, isConfigured } from "./lib/kv.js";
+import { set, sadd, smembers, isConfigured, screen } from "./lib/kv.js";
 
 export default async function handler(req, res) {
   // Only allow POST
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   // Rate limit: basic check via header (Vercel handles DDoS at edge)
   const ip = req.headers["x-forwarded-for"] || "unknown";
 
-  const { email, source, metadata } = req.body || {};
+  const { email, source, metadata, company_website, rendered_at } = req.body || {};
 
   // Validate email
   if (!email || typeof email !== "string" || !email.includes("@") || email.length > 320) {
@@ -21,6 +21,24 @@ export default async function handler(req, res) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sanitized)) {
     return res.status(400).json({ error: "Invalid email format" });
   }
+
+  // Spam screen — see api/lib/antispam.js. Fails open; never reveals the verdict.
+  let spam = { verdict: "ok", duplicate: false, reasons: [] };
+  try {
+    spam = await screen({
+      email: sanitized,
+      url: null,
+      ip: req.headers["x-forwarded-for"] || "unknown",
+      honeypot: company_website,
+      renderedAt: rendered_at,
+      formKey: "waitlist",
+    });
+  } catch (err) { console.error("antispam error (failing open):", err.message); }
+  if (spam.verdict === "block") {
+    console.log(`SPAM_BLOCKED | waitlist | ${spam.reasons.join("; ")}`);
+    return res.status(200).json({ success: true });
+  }
+  const suspect = spam.verdict === "quarantine";
 
   const timestamp = new Date().toISOString();
   const isApplication = source === "builder-application";
