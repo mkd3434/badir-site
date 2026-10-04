@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   const ip = req.headers["x-forwarded-for"] || "unknown";
   const email = data.email ? data.email.trim().toLowerCase() : null;
 
-  // Spam screen — see api/lib/antispam.js. Fails open; never reveals the verdict.
+  // Spam screen — see screen() in api/lib/kv.js. Fails open; never reveals the verdict.
   let spam = { verdict: "ok", duplicate: false, reasons: [] };
   try {
     spam = await screen({

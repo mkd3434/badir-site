@@ -1074,7 +1074,7 @@
             <div class="section-header reveal">
                 <span class="badge badge-emerald badge-dot">PROOF · SAME SYSTEM</span>
                 <h2>Same system. Real leaks. Honest labels.</h2>
-                <p>These are businesses we build and run ourselves &mdash; not client testimonials. Same Audit &rarr; Build &rarr; Run we'd install for you. When we have founding-cohort results, we'll publish those too. Until then, here's what the pipeline actually found and fixed.</p>
+                <p>These are businesses we build and run ourselves &mdash; not client testimonials. Same Audit &rarr; Build &rarr; Run we'd install for you. When we have founding-cohort results, we'll publish those too. Until then, here's what the pipeline actually found, and what we did about it.</p>
             </div>
             <div class="proof-grid reveal">
                 <div class="proof-card">
@@ -1094,7 +1094,7 @@
                     </div>
                     <div class="proof-row"><span class="proof-k">Leak found</span><span class="proof-v">Carts expired with no recovery. One-of-one inventory meant a standard "abandoned cart" chase would lie when a piece was already gone.</span></div>
                     <div class="proof-row"><span class="proof-k">What we did</span><span class="proof-v">Built inventory-honest recovery: one email per cart per 14 days, only if the piece is still available; quiet NZ-compliant opt-out; a day-10 care flow.</span></div>
-                    <div class="proof-row"><span class="proof-k">Outcome</span><span class="proof-v">Welcome, recovery and care flows live in production. No fake "still waiting" when stock is gone &mdash; brand voice protected while plugging the cheapest leak channel.</span></div>
+                    <div class="proof-row"><span class="proof-k">Outcome</span><span class="proof-v">Welcome, recovery and care flows built into the store. No fake "still waiting" when stock is gone &mdash; brand voice protected while plugging the cheapest leak channel.</span></div>
                     <a href="#signup" class="proof-cta" data-cta="offer-proof-lua">Same playbook for your store &mdash; Get the free audit &rarr;</a>
                 </div>
             </div>
@@ -1881,8 +1881,8 @@
                     <!-- Spam trap: hidden from people, irresistible to bots. Do not remove,
                          do not add a label, do not make it visible. -->
                     <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">
-                        <label for="company_website">Company website</label>
-                        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+                        <label for="hp_leave_empty">Leave this field empty</label>
+                        <input type="text" id="hp_leave_empty" name="hp_leave_empty" tabindex="-1" autocomplete="off">
                     </div>
                     <input type="hidden" id="trial-rendered-at" name="rendered_at" value="">
                         <div class="form-row">
@@ -2172,7 +2172,7 @@
             name: (document.getElementById('trial-name')?.value || '').trim(),
             email: form.email.value.trim(),
             website_url: website,
-            company_website: (document.getElementById('company_website')?.value || ''),
+            company_website: (document.getElementById('hp_leave_empty')?.value || ''),
             rendered_at: (document.getElementById('trial-rendered-at')?.value || ''),
             source: 'offer-page-founding',
             scorecard_score: form.scorecard_score ? form.scorecard_score.value : null,

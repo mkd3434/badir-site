@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
   const sanitized = email.trim().toLowerCase();
 
-  // Spam screen — see api/lib/antispam.js. Fails open; never reveals the verdict.
+  // Spam screen — see screen() in api/lib/kv.js. Fails open; never reveals the verdict.
   let spam = { verdict: "ok", duplicate: false, reasons: [] };
   try {
     spam = await screen({

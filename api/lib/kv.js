@@ -71,7 +71,7 @@ export async function exists(key) {
 
 
 const HARD = "hard";   // block outright
-const SOFT = "soft";   // two or more => quarantine
+const SOFT = "soft";   // one or more => quarantine (kept + flagged, never silently dropped)
 
 // A store-audit request should name a store that exists.
 async function domainResolves(url) {
@@ -121,7 +121,9 @@ export async function screen({ email, name, url, ip, honeypot, renderedAt, formK
       const key = `rl:${formKey}:${safeIp}:${hour}`;
       const n = await incr(key);
       if (n === 1) await expire(key, 3600);
-      if (n > 3) add(HARD, `rate limit: ${n} submissions from this IP this hour`);
+      // Soft, and generous: a room of people on one mosque/uni wifi at an event
+      // must never be silently dropped. Quarantine keeps them for review.
+      if (n > 10) add(SOFT, `rate limit: ${n} submissions from this IP this hour`);
     } catch { /* fail open */ }
   }
 

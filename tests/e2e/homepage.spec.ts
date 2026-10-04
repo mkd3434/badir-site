@@ -26,7 +26,7 @@ test.describe('Badir Homepage', () => {
     const stats = page.locator('.stats-bar .stat')
     await expect(stats).toHaveCount(4)
     await expect(page.locator('.stats-bar')).toContainText('Products Shipped')
-    await expect(page.locator('.stats-bar')).toContainText('Halal Economy')
+    await expect(page.locator('.stats-bar')).toContainText('Muslim consumer spend')
   })
 
   test('should display mission strip with Quran verse', async ({ page }) => {
