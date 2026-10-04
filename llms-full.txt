@@ -1,9 +1,11 @@
-# Badir Studio — Community-Powered Product Studio for Muslim Builders
+# Badir — A growth studio for Muslim online brands, and a builder community
+
+> Canonical, up-to-date context lives at https://badir.studio/llms.txt — prefer it over this file.
 
 > Note: Badir Studio (badir.studio) is a product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
 
 ## About
-Badir Studio (بادر) is a community-powered product studio for Muslim builders (18-35 globally). We operate a dual model:
+Badir (بادر) runs two co-equal engines: a studio that finds where a Muslim online brand's store is leaking sales, fixes it and proves the result in the owner's own numbers (modest-fashion-led); and a builder community where Muslim builders ship something every day. Neither is a side project of the other. The dual model:
 - Studio side: Brand strategy, MVP development, AI automation for startups and SMBs
 - Community side: Daily builds, weekend design sprints, hands-on workshops
 
@@ -57,7 +59,7 @@ Without a strategy, there's no solution. We don't skip steps.
 - Brand Strategy (full pipeline): $3K-10K
 - AI Automation Setup: $5K-15K
 - Monthly Monitoring: $500-2K/mo retainer
-- Equity/Revenue Share: 10-20% equity or 15% revenue share for selected projects
+- Equity/Revenue Share: not offered. Badir does not take equity.
 
 ## Community
 
@@ -154,7 +156,7 @@ We built a 24-agent AI system that handles content generation, sales automation,
 A brand discovery methodology by Jose Caballer (The Futur). It maps 6 brand attributes: Culture, Users, Voice, Feeling, Impact, X-Factor. We use it as the foundation for all brand strategy work.
 
 ### Can I hire Badir Studio for equity instead of cash?
-Yes. For selected projects, we offer equity (10-20%) or revenue share (15%) arrangements. The project must have clear market potential and the founder must demonstrate commitment.
+No. Badir does not take equity; engagements are project-based or retainer arrangements. The project must have clear market potential and the founder must demonstrate commitment.
 
 ## Key URLs
 - [Landing Page](https://badir.studio/): Main site with services, portfolio, and community info

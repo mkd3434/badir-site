@@ -26,122 +26,23 @@ function weakestDims(sub) {
     .join("\n");
 }
 
+// Single lowest-scoring dimension — for the subject line + "biggest leak" copy.
+// Returns null when no dimension data is available (pure; never mutates sub).
+function weakestDim(sub) {
+  const dims = sub.meta?.dimensions || {};
+  const entries = Object.entries(dims).sort(([, a], [, b]) => (a.score || 0) - (b.score || 0));
+  if (!entries.length) return null;
+  const [name, d] = entries[0];
+  return { name, score: d.score, max: d.max };
+}
+
 // ─────────────────────────────────────────────
-// Sequence 1: Trial signup (steps 1-6, step 0 = existing welcome in trial-signup.js)
+// Sequence 1: Trial signup — RETIRED, see below
 // ─────────────────────────────────────────────
-const trial = [
-  {
-    day: 1,
-    subject: "Your dashboard: 14 intelligence layers explained",
-    text: (sub) => body(sub.name, [
-      "Your trial is live. Here's what's running on your site right now:",
-      "",
-      "1. Website & CRO health score",
-      "2. Exit page analysis",
-      "3. Technical SEO audit (200+ checks)",
-      "4. Content gap detection",
-      "5. Keyword rank tracking",
-      "6. AI search visibility (ChatGPT, Perplexity, Gemini)",
-      "7. AI citation monitoring",
-      "8. llms.txt optimization",
-      "9. Competitor pricing alerts",
-      "10. Competitor campaign tracking",
-      "11. Brand mention monitoring",
-      "12. Review aggregation",
-      "13. Weekly PDF intelligence reports",
-      "14. Priority-ranked action items",
-      "",
-      "Most of these run daily. You'll start seeing insights within 24-48 hours.",
-      "",
-      "Questions? Just reply to this email.",
-    ]),
-  },
-  {
-    day: 3,
-    subject: "Most businesses miss this one metric",
-    text: (sub) => body(sub.name, [
-      "Quick question: do you know if ChatGPT mentions your business?",
-      "",
-      "Most businesses track Google rankings but completely ignore AI search engines. And AI search is where your next customers are looking.",
-      "",
-      "Here's what we track for you:",
-      "- Whether ChatGPT, Perplexity, or Gemini cite your business",
-      "- How your content scores for AI readability",
-      "- What your competitors look like in AI search results",
-      "",
-      "This is called GEO — Generative Engine Optimization. It's brand new, and almost nobody is doing it yet.",
-      "",
-      "Your dashboard already tracks this. Keep an eye on the AI Search layer.",
-    ]),
-  },
-  {
-    day: 5,
-    subject: "Week 1 — here's what we'd typically find",
-    text: (sub) => body(sub.name, [
-      "After a few days of monitoring, here's what we usually uncover:",
-      "",
-      "- 3-5 technical SEO issues dragging down rankings",
-      "- 2-3 pages where visitors leave without converting",
-      "- At least 1 competitor doing something you should react to",
-      "- Content gaps — keywords you should rank for but don't",
-      "- Zero AI search presence (most businesses score 0/100 on GEO)",
-      "",
-      "Have you checked your dashboard yet?",
-      "",
-      "If not, now's a good time. The insights only get more useful as more data comes in.",
-      "",
-      "https://badir.studio/offer",
-    ]),
-  },
-  {
-    day: 9,
-    subject: "What your dashboard has found so far",
-    text: (sub) => body(sub.name, [
-      "You're over a week into your trial. By now your dashboard has:",
-      "",
-      "- Daily CRO health scores with trend data",
-      "- A full technical SEO audit",
-      "- Competitor movements tracked",
-      "- Content gap analysis complete",
-      "- AI search visibility baseline established",
-      "",
-      "This is the kind of data most agencies charge $500-2,000/month to provide.",
-      "",
-      "Your trial runs for 5 more days. Want to talk about what we've found? Reply to this email and I'll walk you through it.",
-    ]),
-  },
-  {
-    day: 12,
-    subject: "2 days left on your trial",
-    text: (sub) => body(sub.name, [
-      "Your free trial ends in 2 days.",
-      "",
-      "When it ends, you'll lose access to:",
-      "- Daily monitoring of 14 intelligence layers",
-      "- Competitor alerts",
-      "- AI search visibility tracking",
-      "- Weekly PDF reports",
-      "- Priority-ranked action items",
-      "",
-      "If you've found value in the insights, reply to this email and I'll set you up with a plan that makes sense for your business.",
-      "",
-      "No pressure — but the data stops flowing on day 14.",
-    ]),
-  },
-  {
-    day: 14,
-    subject: "Your trial ends today",
-    text: (sub) => body(sub.name, [
-      "Today's the last day of your free trial.",
-      "",
-      "If you want to keep your dashboard running, just reply to this email.",
-      "",
-      "Either way, it's been great having you. The insights we've gathered are yours to keep.",
-      "",
-      "Bismillah.",
-    ]),
-  },
-];
+// RETIRED 2026-10-04: the "14-Day Free Trial" never existed, so this sequence
+// must not send. Left empty (not deleted) so any old "trial" records in KV
+// complete quietly on the next cron run instead of erroring.
+const trial = [];
 
 // ─────────────────────────────────────────────
 // Sequence 2: Marketing Health Scorecard (original)
@@ -149,60 +50,84 @@ const trial = [
 const scorecardMarketing = [
   {
     day: 0,
-    subject: (sub) => `Your score: ${sub.meta?.score || "?"}/120 — what to focus on first`,
+    subject: (sub) => {
+      const score = sub.meta?.score || "?";
+      const weak = weakestDim(sub);
+      return weak
+        ? `Your score: ${score}/120 — biggest leak: ${weak.name}`
+        : `Your score: ${score}/120 — what to focus on first`;
+    },
     text: (sub) => {
       const score = sub.meta?.score || "?";
       const grade = sub.meta?.grade || "Unknown";
+      const weak = weakestDim(sub);
+      const leakLine = weak
+        ? `Your biggest leak right now: ${weak.name} (${weak.score}/${weak.max}).`
+        : "Your biggest leak is the dimension you scored lowest on below.";
       return body(sub.name, [
-        `You scored ${score}/120 on the Marketing Health Scorecard. Grade: ${grade}.`,
+        `You scored ${score}/120 on the Marketing Health Scorecard (${grade}).`,
+        "",
+        leakLine,
+        "",
+        "That's where you're most likely leaving paid and organic traffic on the table — and every week you wait, that leak compounds. That's from your own answers, not a look at your store — but it's the right place to start.",
         "",
         "Your 3 weakest areas:",
         weakestDims(sub) || "- (dimension data not available)",
         "",
-        "Here's what I'd focus on first:",
+        "What to do next, in order:",
+        "1. Fix the #1 leak above first — not your strongest channel.",
+        "2. If you want it checked against your real store numbers (not a quiz), claim a free founding sales audit — you keep the ranked list either way.",
+        "3. The founding cohort is capped at 20, so every brand gets real, human-checked work — not a shared chatbot.",
         "",
-        "1. Start with your lowest-scoring dimension — that's where the biggest gains are",
-        "2. Check if your website passes the 5-second test (can a visitor understand what you do instantly?)",
-        "3. Search for your business name in ChatGPT — you might be surprised by what you find (or don't find)",
+        "Claim your free founding audit:",
+        "https://badir.studio/offer#signup",
         "",
-        "These three steps alone can shift your marketing trajectory. You don't need to fix everything at once — just start with the area that scored lowest.",
+        "No obligation. You leave with at least 5 leaks, ranked by what each one costs you — whether or not we fix them.",
         "",
-        "Reply to this email if you want to talk through your results.",
+        "Bismillah — ship the fix.",
       ]);
     },
   },
   {
     day: 2,
-    subject: "Your weakest dimension — and why it matters most",
-    text: (sub) => body(sub.name, [
-      "Two days ago you took our Marketing Health Scorecard.",
-      "",
-      "Your weakest dimension is where you're leaving the most on the table. Here's why:",
-      "",
-      "- Low Website & CRO score = visitors come but don't convert",
-      "- Low SEO score = you're invisible on Google",
-      "- Low AI Search score = you don't exist in ChatGPT/Perplexity",
-      "- Low Competitor Intel = you're always reacting, never leading",
-      "- Low Analytics = you're making decisions blind",
-      "- Low Brand score = visitors don't trust you enough to buy",
-      "",
-      "Pick your lowest one. Google \"how to improve [that area]\" and spend 30 minutes reading. That's genuinely the best first step.",
-      "",
-      "If you want a second opinion on what to prioritize, reply to this email.",
-    ]),
+    subject: (sub) => {
+      const weak = weakestDim(sub);
+      return weak ? `Still leaking on ${weak.name}?` : "Your weakest dimension — and why it matters most";
+    },
+    text: (sub) => {
+      const weak = weakestDim(sub);
+      const openLine = weak
+        ? `Two days ago your scorecard flagged ${weak.name} as your biggest leak. Until it's fixed, it keeps costing you traffic and sales.`
+        : "Two days ago you took our Marketing Health Scorecard. Your weakest dimension is where you're leaving the most on the table.";
+      return body(sub.name, [
+        openLine,
+        "",
+        "Here's what each weak area actually costs you:",
+        "",
+        "- Low Website & CRO = visitors come but don't convert",
+        "- Low SEO = you're invisible on Google",
+        "- Low AI Search = you don't exist in ChatGPT/Perplexity",
+        "- Low Competitor Intel = you're always reacting, never leading",
+        "- Low Analytics = you're making decisions blind",
+        "- Low Brand = visitors don't trust you enough to buy",
+        "",
+        "You can fix your lowest one yourself — read up for 30 minutes and start. Or have us check your real store and rank where the money's leaking, free:",
+        "https://badir.studio/offer#signup",
+        "",
+        "Either way, fix the biggest leak first. Reply if you want a second opinion on what to prioritize.",
+      ]);
+    },
   },
   {
     day: 5,
     subject: "Small changes, real results",
     text: (sub) => body(sub.name, [
-      "Most businesses that take our scorecard start with a score between 30-60.",
-      "",
-      "The ones that improve fastest do three things:",
+      "Three habits that turn a score into progress:",
       "- Fix their weakest dimension first (not their strongest)",
       "- Make one change per week instead of trying to fix everything",
       "- Re-assess after 90 days to measure progress",
       "",
-      "You already have your baseline. That puts you ahead of most businesses who never measure at all.",
+      "You already have your baseline. That's the hard part done.",
       "",
       "https://badir.studio/scorecard",
       "",
@@ -215,7 +140,7 @@ const scorecardMarketing = [
     text: (sub) => body(sub.name, [
       "One week ago you took our Marketing Health Scorecard.",
       "",
-      "If you've made even one change based on your results, you're ahead of 90% of businesses that take assessments and do nothing.",
+      "If you've made even one change based on your results, that's the whole point. Keep going.",
       "",
       "If you haven't — that's OK too. The scorecard isn't going anywhere. Your results are saved.",
       "",
@@ -257,21 +182,21 @@ const scorecardAiReadiness = [
   },
   {
     day: 2,
-    subject: "The AI gap most businesses don't see",
+    subject: "Where the AI gap usually is",
     text: (sub) => body(sub.name, [
       "Two days ago you took our AI Readiness Assessment.",
       "",
-      "Here's what we see across hundreds of businesses:",
+      "A pattern worth knowing:",
       "",
-      "- Most have tried ChatGPT at least once",
-      "- Almost none have integrated AI into a daily workflow",
-      "- The gap isn't awareness — it's consistency",
+      "- Trying ChatGPT once is easy",
+      "- Building it into a daily workflow is the hard part",
+      "- The gap usually isn't awareness — it's consistency",
       "",
-      "The businesses that pull ahead aren't the ones with the most AI tools. They're the ones that use ONE tool, every day, for a specific task.",
+      "More AI tools won't close it. One tool, used every day for one specific task, will.",
       "",
       "Examples:",
       "- A restaurant using AI to rewrite their menu descriptions weekly",
-      "- A tradie using AI to draft quotes in 5 minutes instead of 30",
+      "- A tradie using AI to draft quotes",
       "- A shop owner using AI to write product descriptions that actually sell",
       "",
       "What's the one task you do every week that AI could help with? Start there.",
@@ -292,7 +217,7 @@ const scorecardAiReadiness = [
       "",
       "That's it. One task. Four weeks. No expensive tools needed.",
       "",
-      "The businesses that score highest on AI readiness didn't get there by buying platforms. They got there by building small habits and expanding from there.",
+      "AI readiness doesn't come from buying platforms. It comes from small habits you expand from there.",
       "",
       "If you're curious which AI tools work best for your industry, reply to this email.",
     ]),
@@ -306,7 +231,7 @@ const scorecardAiReadiness = [
       "Quick check: have you tried using AI for one task this week?",
       "",
       "If yes — great. The habit is more valuable than the tool.",
-      "If not — no judgment. Most people take a few weeks to start.",
+      "If not — no judgment. Starting is the hard part.",
       "",
       "When you're ready to explore more, we have other free assessments that might help:",
       "https://badir.studio/assessments",
@@ -337,7 +262,7 @@ const scorecardAiReadinessYouth = [
         "",
         "Here's what this actually means:",
         "",
-        "Your score isn't a judgment — it's a starting point. The fact that you took this assessment puts you ahead of most people your age.",
+        "Your score isn't a judgment — it's a starting point. Taking it at all is the first step.",
         "",
         "Three things you can do this week:",
         "1. Try using AI for one school or work task (writing, research, brainstorming)",
@@ -366,16 +291,16 @@ const scorecardAiReadinessYouth = [
   },
   {
     day: 5,
-    subject: "Builders your age who are already using AI",
+    subject: "Things you could build with AI this month",
     text: (sub) => body(sub.name, [
-      "Some things young people are building with AI right now:",
+      "Some things you could build with AI this month:",
       "",
-      "- A 16-year-old who built a revision tool that quizzes them based on their notes",
-      "- A university student who uses AI to summarize research papers in seconds",
-      "- A young entrepreneur who built an entire website using AI coding tools",
-      "- A creative who uses AI to generate art references and mood boards",
+      "- A revision tool that quizzes you on your own notes",
+      "- A helper that summarises research papers so you find the useful ones faster",
+      "- A simple website, built with AI coding tools",
+      "- Art references and mood boards for a creative project",
       "",
-      "None of them are \"tech geniuses.\" They just started experimenting and didn't stop.",
+      "None of these need you to be a \"tech genius.\" Start experimenting and don't stop.",
       "",
       "The best time to start building with AI is right now. Not because you need to catch up — but because you have the most time to learn.",
       "",
@@ -422,7 +347,7 @@ const scorecardCroAudit = [
         "Here's where to start:",
         "",
         "1. Open your website on your phone right now. Is the main CTA visible without scrolling? If not, that's fix #1",
-        "2. Time your homepage load — if it takes more than 3 seconds, you're losing 40% of visitors before they see anything",
+        "2. Time your homepage load — if it takes more than 3 seconds, people start leaving before they see anything",
         "3. Check your contact form — how many fields? Anything more than 3 is adding friction",
         "",
         "Most conversion problems are visibility problems. People can't click what they can't see, and they won't wait for what doesn't load.",
@@ -437,7 +362,7 @@ const scorecardCroAudit = [
     text: (sub) => body(sub.name, [
       "Two days ago you audited your website's conversion health.",
       "",
-      "Here's the most common leak we see: trust.",
+      "A leak worth checking first: trust.",
       "",
       "Visitors land on your site. They're interested. But something stops them from taking action. Usually it's one of these:",
       "",
@@ -449,25 +374,20 @@ const scorecardCroAudit = [
       "",
       "You can have the best offer in the world. If visitors don't trust the page, they leave.",
       "",
-      "One quick fix: add one real testimonial above or near your main CTA. Even a short quote with a real name makes a measurable difference.",
+      "One quick fix: add one real testimonial above or near your main CTA. Even a short quote with a real name beats none.",
     ]),
   },
   {
     day: 5,
-    subject: "What good conversion actually looks like",
+    subject: "What good conversion actually means",
     text: (sub) => body(sub.name, [
-      "Here are rough benchmarks for website conversion rates by type:",
-      "",
-      "- E-commerce product pages: 2-4% is good, 5%+ is excellent",
-      "- SaaS free trial pages: 3-7% is good, 10%+ is excellent",
-      "- Service business contact forms: 5-10% is good, 15%+ is excellent",
-      "- Landing pages (paid traffic): 5-15% is good, 20%+ is excellent",
+      "There's no universal \"good\" conversion rate — it depends on your traffic, your price and your product. What matters is your number, and whether it's moving.",
       "",
       "If you don't know your conversion rate, that's actually useful information. It means the first step is setting up basic analytics (Google Analytics is free).",
       "",
       "Three things that reliably improve conversion on any site:",
       "1. Make your CTA impossible to miss (color contrast, size, position)",
-      "2. Remove one form field (every field you remove increases completion)",
+      "2. Remove one form field (fewer fields usually means more people finish)",
       "3. Add one trust signal near the conversion point",
       "",
       "Small changes. Measurable results. That's what CRO is about.",
@@ -479,7 +399,7 @@ const scorecardCroAudit = [
     text: (sub) => body(sub.name, [
       "One week since you took the CRO Audit.",
       "",
-      "If you've made even one change to your website based on the results, you're ahead of most business owners who know they have conversion problems but never fix them.",
+      "If you've made even one change to your website based on the results, that's the whole point. Keep going.",
       "",
       "If you haven't — open your site on your phone right now. Look at it with fresh eyes. Would you trust this site enough to buy from it? Would you fill out this form?",
       "",
@@ -543,7 +463,7 @@ const scorecardRevertSurvey = [
     day: 5,
     subject: "Small steps that make a real difference",
     text: (sub) => body(sub.name, [
-      "Here are practical things that reverts tell us helped them the most:",
+      "Here are some small, practical steps worth trying:",
       "",
       "For community: Attend one community event (even if you sit in the corner). Or join one online group for reverts. Start small.",
       "",
@@ -588,7 +508,7 @@ const waitlist = [
     day: 3,
     subject: "40+ Muslim builder orgs — and what's missing",
     text: (sub) => body(sub.name, [
-      "I spent weeks analyzing 40+ Muslim tech organizations worldwide.",
+      "I analysed 40+ Muslim tech organizations worldwide.",
       "",
       "Accelerators, incubators, communities, conferences, funding bodies — the full ecosystem.",
       "",
@@ -629,13 +549,13 @@ const waitlist = [
 const audit = [
   {
     day: 1,
-    subject: "I'm reviewing your store now",
+    subject: "Your free sales audit — what happens next",
     text: (sub) => body(sub.name, [
-      "Quick note to say your free sales audit is underway.",
+      "Quick note on what happens next with your free sales audit.",
       "",
-      "I'm going through your store the way your AI marketing agent would — looking at where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing.",
+      "I'll go through your store the way a buyer would — looking at where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing.",
       "",
-      "When it's ready, I'll reach out to book a short call and walk you through the findings: at least 5 specific, ranked ways to grow your sales. Yours to keep either way.",
+      "When it's ready, I'll reach out to book a short call and walk you through the findings: at least 5 specific leaks, ranked by what each one costs you. Yours to keep either way.",
       "",
       "If there's a problem you already feel — traffic that won't convert, carts that get abandoned, ads that don't pay back — just reply and tell me. I'll dig into it first.",
     ]),
@@ -646,26 +566,23 @@ const audit = [
     text: (sub) => body(sub.name, [
       "Most online stores lose more sales than the owner realizes — not in big obvious ways, but in small leaks that add up.",
       "",
-      "A few we see constantly:",
+      "A few of the most common:",
       "",
-      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Most stores have no recovery flow catching them.",
-      "- The average ad account wastes about a third of its budget on clicks that never convert (WordStream).",
+      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Without a recovery flow, those sales are just gone.",
       "- A store converting 2.5% instead of 5% is leaving half its potential revenue on the table — on the same traffic.",
       "",
-      "Your audit finds which of these are costing YOU the most, ranked by impact. Then the agent fixes them and keeps optimizing.",
+      "Your audit finds which of these are costing YOU the most, ranked by impact. Then, if you want them fixed, we do the work and you approve every change.",
       "",
       "Reply anytime — happy to talk through what we're seeing.",
     ]),
   },
   {
     day: 5,
-    subject: "Why an AI agent, not another agency",
+    subject: "Why the audit comes first",
     text: (sub) => body(sub.name, [
-      "Most brands your size can't justify a $2,000–10,000/month agency — and plenty get burned by one anyway.",
+      "You don't need a retainer to find out where your store is leaking. That's why the audit comes first, and why it's free.",
       "",
-      "The difference here: we build you an AI marketing agent that runs the whole growth stack — conversion, ads, email and SMS, SEO, content, reporting — and we manage it for you. Agency-grade output, without the agency price or the hand-holding.",
-      "",
-      "You stay hands-off. The agent does the work. You get the sales.",
+      "If you want the fixes, we do the work — conversion, email and SMS, ads, SEO. An AI system handles the repetitive parts so one founder can move fast, and nothing goes live on your store without your yes. Badir steers, you approve.",
       "",
       "Still keen on your free audit? Just reply and we'll lock in a time.",
     ]),
@@ -676,7 +593,7 @@ const audit = [
     text: (sub) => body(sub.name, [
       "I won't chase you — so this is the last nudge.",
       "",
-      "Your free sales audit is still open. It costs nothing, there's no obligation, and you walk away with at least 5 specific, ranked ways to grow your sales, whether or not we work together.",
+      "Your free sales audit is still open. It costs nothing, there's no obligation, and you walk away with at least 5 specific leaks, ranked by what each one costs you, whether or not we work together.",
       "",
       "If now's not the time, no worries at all — reply whenever you're ready and we'll pick it up.",
     ]),
@@ -694,9 +611,9 @@ const foundingWaitlist = [
     text: (sub) => body(sub.name, [
       "Quick note to confirm your founding spot in the Badir Studio cohort is reserved.",
       "",
-      "We're onboarding a limited founding cohort of Muslim brands before this opens publicly — and founding members go first. Your free sales audit runs ahead of the public queue.",
+      "We're onboarding a limited founding cohort of Muslim brands before this opens publicly — and founding members go first.",
       "",
-      "I'll go through your store the way your AI marketing agent would — where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing — then reach out to book a short call to walk you through it.",
+      "I'll go through your store the way a buyer would — where visitors drop off, which pages leak sales, where ad spend gets wasted, and where follow-up is missing — then reach out to book a short call to walk you through it.",
       "",
       "If there's a problem you already feel — traffic that won't convert, carts that get abandoned, ads that don't pay back — just reply and tell me. I'll dig into it first.",
     ]),
@@ -709,10 +626,9 @@ const foundingWaitlist = [
       "",
       "- Your free sales audit first — ahead of everyone who joins after launch.",
       "- Founding terms locked in — a founding rate on the build and the ongoing run, if you decide to go ahead.",
-      "- Priority onboarding — we set your agent up ahead of the queue.",
       "- No lock-in — the run is month-to-month, and everything we build stays yours.",
       "",
-      "The audit itself is yours to keep either way: at least 5 specific, ranked ways to grow your sales, whether or not we work together.",
+      "The audit itself is yours to keep either way: at least 5 specific leaks, ranked by what each one costs you, whether or not we work together.",
       "",
       "Reply anytime — happy to talk through what we're seeing.",
     ]),
@@ -723,26 +639,23 @@ const foundingWaitlist = [
     text: (sub) => body(sub.name, [
       "Most online stores lose more sales than the owner realizes — not in big obvious ways, but in small leaks that add up. These are the ones your audit hunts down first:",
       "",
-      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Most stores have no recovery flow catching them.",
-      "- The average ad account wastes about a third of its budget on clicks that never convert (WordStream, ~$1,127/mo).",
+      "- Roughly 7 in 10 carts are abandoned before checkout (Baymard). Without a recovery flow, those sales are just gone.",
       "- A store converting 2.5% instead of 5% is leaving half its potential revenue on the table — on the same traffic.",
       "",
-      "Your audit finds which of these are costing YOU the most, ranked by impact. Then, if you're in, the agent fixes them and keeps optimizing.",
+      "Your audit finds which of these are costing YOU the most, ranked by impact. Then, if you want them fixed, we do the work and you approve every change.",
       "",
       "Your founding spot is still held — reply whenever you're ready and we'll lock in your audit time.",
     ]),
   },
   {
     day: 8,
-    subject: "The founding cohort is filling up",
+    subject: "Still want your free sales audit?",
     text: (sub) => body(sub.name, [
       "I won't chase you — so this is the last nudge.",
       "",
-      "The founding cohort is capped, and spots are being claimed. Yours is still reserved, but I can't hold it open forever once the cohort fills.",
+      "Just reply and we'll book your free sales audit — no cost, no obligation, and you walk away with at least 5 specific leaks, ranked by what each one costs you, whether or not we work together.",
       "",
-      "To lock it in, just reply and we'll book your free sales audit — no cost, no obligation, and you walk away with at least 5 specific, ranked ways to grow your sales either way.",
-      "",
-      "If now's not the time, no worries at all — reply whenever you're ready and I'll do my best to keep you in.",
+      "If now's not the time, no worries at all — reply whenever you're ready and we'll pick it up.",
     ]),
   },
 ];

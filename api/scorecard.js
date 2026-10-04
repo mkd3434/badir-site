@@ -1,4 +1,4 @@
-import { set, sadd, isConfigured } from "./lib/kv.js";
+import { set, sadd, isConfigured, screen } from "./lib/kv.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   const data = req.body || {};
-  const { score, grade, dimensions } = data;
+  const { score, grade, dimensions, company_website, rendered_at } = data;
   const type = data.type || "marketing-health";
 
   if (typeof score !== "number" || !grade) {
@@ -16,6 +16,24 @@ export default async function handler(req, res) {
   const timestamp = new Date().toISOString();
   const ip = req.headers["x-forwarded-for"] || "unknown";
   const email = data.email ? data.email.trim().toLowerCase() : null;
+
+  // Spam screen — see screen() in api/lib/kv.js. Fails open; never reveals the verdict.
+  let spam = { verdict: "ok", duplicate: false, reasons: [] };
+  try {
+    spam = await screen({
+      email: email,
+      url: (data.website_url || data.website || null),
+      ip: req.headers["x-forwarded-for"] || "unknown",
+      honeypot: company_website,
+      renderedAt: rendered_at,
+      formKey: "scorecard",
+    });
+  } catch (err) { console.error("antispam error (failing open):", err.message); }
+  if (spam.verdict === "block") {
+    console.log(`SPAM_BLOCKED | scorecard | ${spam.reasons.join("; ")}`);
+    return res.status(200).json({ success: true });
+  }
+  const suspect = spam.verdict === "quarantine";
   const name = data.name ? data.name.trim() : null;
 
   // Log to Vercel function logs

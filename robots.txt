@@ -2,44 +2,98 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: GPTBot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: CCBot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Googlebot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Bingbot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 User-agent: Bytespider
 Allow: /
+Disallow: /admin
+Disallow: /draft
+Disallow: /ldj-admin
+Disallow: /dashboard-preview
 
 Sitemap: https://badir.studio/sitemap.xml

@@ -41,5 +41,5 @@ export default async function handler(req, res) {
 
   console.log(`SIGNIN | ${user.name} | ${sanitizedEmail} | ${new Date().toISOString()}`);
 
-  return res.status(200).json({ ok: true, redirect: "/feed.html" });
+  return res.status(200).json({ ok: true, redirect: "/build" });
 }

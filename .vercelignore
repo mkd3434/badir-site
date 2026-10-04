@@ -1,0 +1,12 @@
+# `vercel --prod` uploads this working folder, not the git commit, and it does
+# not read .gitignore. Without this file, local screenshots, test output and
+# drafts were being served on badir.studio. Keep local-only files out of prod.
+/Badir
+/screenshots
+/exports
+/test-results
+/tests
+/node_modules
+/preview-*.png
+/og-image.html
+/playwright.config.ts

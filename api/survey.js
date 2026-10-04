@@ -1,16 +1,35 @@
+import { screen } from "./lib/kv.js";
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
   const data = req.body || {};
-  const { name, email } = data;
+  const { name, email, company_website, rendered_at } = data;
 
   if (!name || !email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
     return res.status(400).json({ error: "Name and valid email required" });
   }
 
   const sanitized = email.trim().toLowerCase();
+
+  // Spam screen — see screen() in api/lib/kv.js. Fails open; never reveals the verdict.
+  let spam = { verdict: "ok", duplicate: false, reasons: [] };
+  try {
+    spam = await screen({
+      email: sanitized,
+      url: (data.website_url || data.website || null),
+      ip: req.headers["x-forwarded-for"] || "unknown",
+      honeypot: company_website,
+      renderedAt: rendered_at,
+      formKey: "survey",
+    });
+  } catch (err) { console.error("antispam error (failing open):", err.message); }
+  if (spam.verdict === "block") {
+    console.log(`SPAM_BLOCKED | survey | ${spam.reasons.join("; ")}`);
+    return res.status(200).json({ success: true });
+  }
+  const suspect = spam.verdict === "quarantine";
   const timestamp = new Date().toISOString();
   const ip = req.headers["x-forwarded-for"] || "unknown";
 

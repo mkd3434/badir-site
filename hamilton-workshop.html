@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lightning Decision Jam — Hamilton, Sun 14 June | Badir</title>
-    <meta name="description" content="A Lightning Decision Jam for Muslim builders in Hamilton this Sunday (14 June), at the masjid after Isha. Bring your biggest blocker, leave with a clear plan in ~45 min. Free.">
-    <meta property="og:title" content="Lightning Decision Jam — Hamilton, Sun 14 June | Badir">
-    <meta property="og:description" content="Bring your biggest blocker, leave with a plan. A 45-min Lightning Decision Jam for Muslim builders — Hamilton masjid, after Isha. Free.">
+    <title>Lightning Decision Jam — Hamilton, 14 June 2026 (past event) | Badir</title>
+    <meta name="description" content="A Lightning Decision Jam for Muslim builders held in Hamilton on Sunday 14 June 2026, at the masjid after Isha. Past event — the next session date goes up on badir.studio.">
+    <meta property="og:title" content="Lightning Decision Jam — Hamilton, 14 June 2026 (past event) | Badir">
+    <meta property="og:description" content="A 45-min Lightning Decision Jam for Muslim builders, held at the Hamilton masjid after Isha on 14 June 2026. Past event.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://badir.studio/hamilton-workshop">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Lightning Decision Jam — Hamilton, Sun 14 June | Badir">
-    <meta name="twitter:description" content="Bring your biggest blocker, leave with a plan. A 45-min Lightning Decision Jam for Muslim builders — Hamilton masjid, after Isha. Free.">
+    <meta name="twitter:title" content="Lightning Decision Jam — Hamilton, 14 June 2026 (past event) | Badir">
+    <meta name="twitter:description" content="A 45-min Lightning Decision Jam for Muslim builders, held at the Hamilton masjid after Isha on 14 June 2026. Past event.">
     <meta property="og:image" content="https://badir.studio/og-image.png">
     <meta name="twitter:image" content="https://badir.studio/og-image.png">
     <meta name="robots" content="index, follow">
@@ -116,7 +116,7 @@
     <div class="wrap">
         <div class="badge">HAMILTON · LIGHTNING DECISION JAM</div>
         <h1>Bring your blocker.<br><span class="grad">Leave with a plan.</span></h1>
-        <p class="lead">I'm running a <b style="color:var(--white)">Lightning Decision Jam</b> in Hamilton this Sunday — at the masjid, <b style="color:var(--white)">after Isha</b>. If you're a Muslim who builds (or wants to), bring the one thing you're stuck on. In ~45 minutes, together, we turn it into clear next steps. The method Google, Spotify and LEGO use — no fluff, no endless discussion.</p>
+        <p class="lead">I ran a <b style="color:var(--white)">Lightning Decision Jam</b> in Hamilton on Sunday 14 June 2026 — at the masjid, <b style="color:var(--white)">after Isha</b>. Muslims who build (or want to) brought the one thing they were stuck on, and in ~45 minutes, together, we turned it into clear next steps. A 45-minute decision format used widely in product teams — no fluff, no endless discussion.</p>
 
         <div class="facts">
             <div class="fact"><div class="k">When</div><div class="v">Sun 14 June</div></div>
@@ -134,25 +134,9 @@
 
         <div class="form-card" id="card">
             <div id="form-view">
-                <h2>Grab your spot</h2>
-                <p class="sub">At the masjid, <b style="color:var(--white)">after Isha</b>, this Sunday (14 June). Limited seats — it's small and hands-on. I'll email you the exact time and the masjid details.</p>
-                <form id="reg-form">
-                    <div class="field">
-                        <label for="name">Your name</label>
-                        <input type="text" id="name" name="name" placeholder="First name" required>
-                    </div>
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="you@email.com" required>
-                    </div>
-                    <div class="field">
-                        <label for="blocker">What's your biggest blocker right now? <span style="text-transform:none;color:var(--gray-dark)">(optional)</span></label>
-                        <textarea id="blocker" name="blocker" placeholder="The one thing slowing you down — that's what we'll jam on."></textarea>
-                    </div>
-                    <button type="submit" class="btn" id="submit-btn">Save my spot →</button>
-                    <div class="err" id="err">Something went wrong. Try again or email hello@badir.studio.</div>
-                    <p class="note">Free. I'll email you the final time + the masjid details. No spam.</p>
-                </form>
+                <h2>This one's done</h2>
+                <p class="sub">This jam ran at the masjid after Isha on Sunday 14 June 2026. The next session date goes up on the site as soon as it's set.</p>
+                <a href="/#apply" class="btn" style="display:block;text-align:center;text-decoration:none;box-sizing:border-box">Join the builders &rarr;</a>
             </div>
             <div class="success" id="success-view">
                 <div class="check">🟢</div>
@@ -170,6 +154,7 @@
     (function () {
         "use strict";
         var form = document.getElementById("reg-form");
+        if (!form) return; // past event: the signup form was removed
         var btn = document.getElementById("submit-btn");
         var err = document.getElementById("err");
 

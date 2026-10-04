@@ -69,5 +69,5 @@ export default async function handler(req, res) {
     console.error("Drip enrollment error:", err.message);
   }
 
-  return res.status(200).json({ ok: true, redirect: "/feed.html" });
+  return res.status(200).json({ ok: true, redirect: "/build" });
 }

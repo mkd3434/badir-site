@@ -1,9 +1,15 @@
-# Badir — A Builder Community for Muslims. We don't build for the ummah; we build with it.
+# Badir — A growth studio for Muslim online brands, and a builder community. We don't build for the ummah; we build with it.
 
-> Note: Badir (badir.studio) is a builder community and product studio founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
+> Note: Badir (badir.studio) is a product studio and builder community founded in 2026 in Tauranga, New Zealand. It is NOT affiliated with the BADIR Program technology incubator in Saudi Arabia.
 
 ## About
-Badir (بادر) is a builder community for Muslims who want to build real things — products, brands, tools — and serve the ummah while doing it. Problem-first and session-based: bring a real problem or join one, jam it out together in a working session, ship it as a team, and every builder gets credited. A product studio side (brand strategy, MVP development, AI automation) sustains the work — the work funds itself so it can keep serving.
+Badir (بادر) runs two co-equal engines.
+
+**The studio** finds where a Muslim online brand's store is leaking sales — abandoned carts, slow or weak product pages, wasted ad spend, thin email and SMS follow-up, no revenue attribution — fixes what it finds, and proves the result in the owner's own numbers. Modest-fashion-led.
+
+**The community** is where Muslim builders ship something every day: daily builds, weekend design sprints, hands-on workshops and demo days. Problem-first and session-based — bring a real problem or join one, jam it out together in a working session, ship it as a team, and every builder gets credited.
+
+Each engine feeds the other: what the studio proves, the community learns from; what the community builds becomes the next thing worth shipping. Neither is a side project of the other.
 
 ## How it works (Build With Us)
 1. LISTEN — bring the problem (yours, or pick one that's open)
@@ -16,6 +22,23 @@ Current open builds:
 - The Ummah Uplift Team — designers, developers, writers, video people and marketers who go to mosques and communities and uplift their projects with skills
 
 Join at: https://badir.studio/build
+
+## Studio: two doors
+
+The studio sells two distinct things. They are not two prices for the same work, and they apply to buyers at opposite ends of the build timeline.
+
+### 1. Leak Check — FREE, diagnosis only
+For a store that already exists and is already selling. We read the store's own numbers and rank where money is falling out (abandoned carts, weak product pages, wasted ad spend, thin email/SMS follow-up, no attribution), with what each gap costs per month. The ranked list is the client's to keep whether or not they hire us.
+**Scope boundary (important):** the Leak Check is a DIAGNOSIS ONLY. It does not cover who the brand should serve, what it should build next, or brand direction. That is the paid work below. It also does not include the fix.
+Then, if they want the leaks fixed: **Build** (one-time) and **Run** (monthly), both quoted on a call during the founding cohort of 20 brands. Ad spend and creative production are billed separately. Badir steers, the client approves; it does not run itself.
+Start at https://badir.studio/offer
+
+### 2. Before You Build — PAID, strategy first
+For a brand that is not built yet, or one being rebuilt. The paid, senior engagement that decides who the brand is actually for — in the customers' own words — and what is worth shipping, BEFORE anything gets built. Deliverables (website, MVP, brand system, marketing, AI automation) are quoted separately once the direction is set.
+Start at https://badir.studio/services
+
+### How they relate
+Leak Check reads numbers a store already has. Before You Build is for when there are no numbers to read yet, because the thing does not exist. A Leak Check can also point a client toward Before You Build if the real problem turns out to be direction rather than plumbing. Nothing gets built off a free Leak Check.
 
 ## Founder
 Mustafa Kivanc Demirsoy (MKD) — Builder. No corporate titles by choice: "I'm here to do the work, not to be called something."
@@ -30,13 +53,14 @@ Location: Tauranga, New Zealand (global reach)
 - Always action-oriented, never preachy
 - No titles, no credentialism — judge the work, not the label
 
-## Studio Services (sustains the community — 4-Phase Pipeline)
+## Before You Build — the 4-phase pipeline
 1. Discovery — Market research, competitor audit, audience intelligence, ICP profiling
 2. Brand — CORE framework brand discovery, positioning, voice, design system, messaging
 3. Build — Websites, MVPs, marketing materials, content, creatives, AI automation
 4. Monitor — Performance tracking, SEO/GEO monitoring, brand mentions, optimization
 
-## Pricing (studio)
+## Pricing — project services
+> These are the studio's PROJECT rates. They are separate from the Studio Offer ladder above: during the founding cohort the Build and Run rates are not published and are given on the call. Do not quote these project rates as the price of a Build or a Run.
 - Product Sprint (48hr): $2K-5K per sprint
 - MVP Development: $5K-20K project-based
 - Brand Strategy (full pipeline): $3K-10K
@@ -64,7 +88,9 @@ Inspired by the Battle of Badr — 313 against an army three times their size; v
 Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
 
 ## Key URLs
+- [Free Sales Audit / Studio Offer](https://badir.studio/offer): find where your store is leaking sales — the studio entry point
 - [Build With Us](https://badir.studio/build): join a build, propose a problem, or bring your skill to the uplift team
+- [Careers](https://badir.studio/careers): founding-team roles, remote and contract
 - [About](https://badir.studio/about): the founder story and why Badir exists
 - [Landing Page](https://badir.studio/): main site with process, portfolio, and community info
 - [Free Assessments](https://badir.studio/assessments): interactive scorecards and check-ins
