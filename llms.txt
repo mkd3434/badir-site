@@ -88,7 +88,7 @@ Inspired by the Battle of Badr — 313 against an army three times their size; v
 Quranic reference: Surah Al-Baqarah (2:148) — "So race to [all that is] good."
 
 ## Key URLs
-- [Free Sales Audit / Studio Offer](https://badir.studio/offer): find where your store is leaking sales — the studio entry point
+- [Leak Check / Studio Offer](https://badir.studio/offer): find where your store is leaking sales — free, diagnosis only, the studio entry point
 - [Build With Us](https://badir.studio/build): join a build, propose a problem, or bring your skill to the uplift team
 - [Careers](https://badir.studio/careers): founding-team roles, remote and contract
 - [About](https://badir.studio/about): the founder story and why Badir exists

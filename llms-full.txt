@@ -164,7 +164,6 @@ No. Badir does not take equity; engagements are project-based or retainer arrang
 - [Builder Application](https://badir.studio/apply): Team and contributor application scorecard
 - [Project Discovery Survey](https://badir.studio/survey): Project intake form for potential clients
 - [About the Founder](https://badir.studio/about): Mustafa's story and why Badir exists
-- [Community Dashboard](https://badir.studio/community): Community events, activities, and sprint schedule
 - [Privacy Policy](https://badir.studio/privacy): Data handling and NZ Privacy Act 2020 compliance
 
 ## Contact
