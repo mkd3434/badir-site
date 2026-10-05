@@ -445,7 +445,7 @@
                 <h1>Your <span class="gradient">CRO Audit</span> Score</h1>
                 <p class="intro-sub">
                     Your website gets traffic. But how much of it converts?
-                    Most sites lose 96% of visitors. Find out where yours is leaking revenue.
+                    Most visitors leave without buying. Find out where yours are leaking.
                 </p>
                 <div class="intro-dims">
                     <div class="intro-dim"><span>&#x26A1;</span> Page Speed</div>
@@ -694,9 +694,9 @@
         solid: {
             min: 72,
             title: "Solid Converter",
-            desc: "Good foundations. Your site converts, but there's meaningful revenue being left on the table. You're probably losing 15-30% of potential conversions to friction, speed issues, or trust gaps. These are all fixable.",
+            desc: "Good foundations. Your site converts, but there's meaningful revenue being left on the table. You're probably losing conversions to friction, speed issues, or trust gaps. These are all fixable.",
             recs: [
-                { phase: "SPEED", title: "Performance Sprint", desc: "Compress images, defer JS, optimize fonts, fix CLS. Every 1-second improvement lifts conversions ~7%." },
+                { phase: "SPEED", title: "Performance Sprint", desc: "Compress images, defer JS, optimize fonts, fix CLS. Speed is the one fix that helps every page at once." },
                 { phase: "TRUST", title: "Social Proof Overhaul", desc: "Add testimonials, review widgets, and trust badges to every landing page. Show real numbers and real customer names." },
                 { phase: "MOBILE", title: "Mobile-First Redesign", desc: "Sticky CTAs, thumb-friendly touch targets, mobile-specific layouts. Most of your traffic is mobile \u2014 treat it like the primary experience." },
                 { phase: "TEST", title: "Testing Program", desc: "Set up a monthly testing cadence: 1 headline test, 1 CTA test, 1 layout test. Document everything and compound the wins." }
@@ -729,7 +729,7 @@
     var dimInsights = {
         0: {
             low: {
-                insight: "Your site is slow and you don\u2019t know it. Every second of load time costs you ~7% of conversions. If your pages take 5+ seconds on mobile, you\u2019re losing nearly half your visitors before they see anything.",
+                insight: "Your site is slow and you don\u2019t know it. Every second of load time costs you conversions. If your pages take 5+ seconds on mobile, a lot of people leave before they see anything at all.",
                 tips: [
                     "Run PageSpeed Insights on your homepage right now \u2014 check the mobile score. Anything below 50 needs immediate attention",
                     "Compress all images using a free tool like Squoosh or TinyPNG \u2014 most sites can cut image size by 60-80% with no visible quality loss"
@@ -737,7 +737,7 @@
                 fix: "Start with the biggest bottleneck: images. Compress everything, lazy-load below-the-fold content, and defer non-critical scripts. Then set up a monthly Core Web Vitals check so regressions don\u2019t sneak in."
             },
             mid: {
-                insight: "Your site loads, but it\u2019s not fast enough to compete. Pages in the 3-5 second range on mobile lose 25-35% of visitors. You\u2019re leaving money on the table with every slow page.",
+                insight: "Your site loads, but it\u2019s not fast enough to compete. Pages in the 3-5 second range on mobile lose people who would otherwise have scrolled. You\u2019re leaving money on the table with every slow page.",
                 tips: [
                     "Defer all non-critical JavaScript and CSS \u2014 only load what\u2019s needed for the above-fold content first",
                     "Preload your hero image and primary font to eliminate the biggest LCP bottleneck"
@@ -763,12 +763,12 @@
                 fix: "Your hero section is the single most important thing to fix. Strip it back to one clear value statement and one CTA button. Remove competing navigation on your highest-traffic pages. Clarity converts \u2014 cleverness confuses."
             },
             mid: {
-                insight: "Your landing pages have the basics but aren\u2019t optimized for conversion. Clear headline, visible CTA \u2014 but not tested or refined. You\u2019re likely converting 1-2% when you could be at 3-5%.",
+                insight: "Your landing pages have the basics but aren\u2019t optimized for conversion. Clear headline, visible CTA \u2014 but not tested or refined. Pages that have never been tested leave the easiest gains on the table.",
                 tips: [
-                    "Test your headline against one alternative for 2 weeks \u2014 even small wording changes can lift conversions 10-30%",
-                    "Add urgency or specificity to your CTA: \u2018Start Free Trial\u2019 beats \u2018Learn More\u2019 by 2-3x in most tests"
+                    "Test your headline against one alternative for 2 weeks \u2014 a one-word change can move the number",
+                    "Make your CTA specific about what happens next \u2014 a button that names the outcome beats one that names an action"
                 ],
-                fix: "Set up a simple A/B test on your primary headline this week. Even changing one word can move conversion rates 10-30%. Build a cadence: test one element per page per month (headline, then CTA text, then layout). Compound the wins."
+                fix: "Set up a simple A/B test on your primary headline this week. Even changing one word can move the number. Build a cadence: test one element per page per month (headline, then CTA text, then layout). Compound the wins."
             },
             high: {
                 insight: "Strong landing pages. Clear value props, focused CTAs, good visual hierarchy. Your edge is systematic testing and personalization.",
@@ -799,8 +799,8 @@
             high: {
                 insight: "Strong social proof game. Reviews, testimonials, and trust badges are visible where they matter. The next level is real-time proof and user-generated content.",
                 tips: [
-                    "Add live proof notifications (\u2018John from Auckland just signed up\u2019) \u2014 social proof that updates in real-time lifts conversions 10-15%",
-                    "Create video testimonials from your best customers \u2014 video proof converts 2-3x better than text testimonials"
+                    "Add live proof notifications (\u2018John from Auckland just signed up\u2019) \u2014 real-time social proof works, but only if the events behind it are real \u2014 invented ones get noticed",
+                    "Create video testimonials from your best customers \u2014 video proof is harder to fake, so it reads as more credible than text"
                 ],
                 fix: "Add real-time proof notifications (\u2018Someone just signed up\u2019), collect video testimonials from your strongest advocates, and implement dynamic proof matching \u2014 show industry-relevant reviews to visitors from that industry. Make trust feel alive, not static."
             }
@@ -833,7 +833,7 @@
         },
         4: {
             low: {
-                insight: "Your forms are conversion killers. Too many fields, no validation feedback, no indication of progress. Every unnecessary field reduces completion by ~10%. If you\u2019re asking for 8+ fields, you\u2019re losing most people.",
+                insight: "Your forms are conversion killers. Too many fields, no validation feedback, no indication of progress. Every unnecessary field costs you completions. If you\u2019re asking for 8+ fields, you\u2019re losing most people.",
                 tips: [
                     "Cut your form to 3-4 essential fields maximum. Name, email, and one qualifying question. You can ask for more later",
                     "Add inline validation (green checkmarks as fields are filled) and helpful error messages that appear immediately, not after submission"
@@ -843,10 +843,10 @@
             mid: {
                 insight: "Your forms are functional but not optimized. Standard fields, basic validation. You know some people abandon but don\u2019t know exactly where or why.",
                 tips: [
-                    "Enable browser auto-fill on all form fields (use correct \u2018autocomplete\u2019 attributes) \u2014 auto-fill increases completion rates by 25-30%",
-                    "For forms with 4+ fields, switch to a multi-step format with a progress bar. Multi-step forms convert 86% better than single-step"
+                    "Enable browser auto-fill on all form fields (use correct \u2018autocomplete\u2019 attributes) \u2014 auto-fill takes most of the typing away",
+                    "For forms with 4+ fields, switch to a multi-step format with a progress bar. Multi-step forms tend to beat one long form, because each step looks easy"
                 ],
-                fix: "Switch to multi-step forms with a progress bar \u2014 they convert 86% better than single long forms. Enable browser auto-fill (use correct autocomplete attributes). Install field-level analytics to identify exactly which fields cause drop-off, then eliminate or restructure them."
+                fix: "Switch to multi-step forms with a progress bar \u2014 each step looks easier than one long form. Enable browser auto-fill (use correct autocomplete attributes). Install field-level analytics to identify exactly which fields cause drop-off, then eliminate or restructure them."
             },
             high: {
                 insight: "Low-friction forms with good UX. You\u2019re tracking completion and optimizing. The next level is predictive forms and behavioral triggers.",
